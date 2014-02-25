@@ -1,0 +1,55 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<html>
+    <body>
+         <p>[<a
+                href="http://wso2.com/products/data-services-server/">Download</a>]
+            | [<a href="index_docs.html">Documentation Home</a>] | [<a
+                    href="release_notes.html">Release Note</a>]
+        </p>
+        <h1>Binary Data Support</h1>
+        <h2>Introduction</h2>
+        <p>
+            When using data services, the user may come across the need to transfer binary data from/to the server. This is handled in <a href="http://wso2.org/projects/data-services-server/java">WSO2 Data Services Server</a> using Base64 encoding, where when sending binary data, it should be encoded in Base64 format and sent. Also when receiving data, to get the original binary data back, the receiving character data must be Base64 decoded to get the binary data.
+        </p>
+        <h2>Adding Binary Data Types to Data Services</h2>
+        <h3>Input Mappings</h3>
+        <p>In the input mappings section, when adding a new entry, the "SQL Type" should be selected as "BINARY". This step is showed in Figure 1.
+            <p>
+            <img src="./images/user-guide/binary/figure01.png" /> <br />
+            Figure 1: Adding binary types to input mappings.
+            </p>
+        </p>
+        <h3>Output Mappings</h3>
+        <p>When defining the result of a data service, in order to declare there is a binary value is expected, we have to add a suitable
+output mappings entry. In the output mappings, the "Schema Type" should be selected as "xs:base64Binary", as shown below in Figure 2.
+            <p>
+            <img src="./images/user-guide/binary/figure02.png" /> <br />
+            Figure 2: Adding binary types to output mappings.
+            </p>
+        </p>
+       <p>
+          When using code generated clients, the encoding/decoding of Base64 data will not have to be explicitely done by the user, since the existance of the binary data is mentioned in the WSDL. For example, in Axis2 code generated stubs, the binary types are handled using the <a href="http://java.sun.com/j2ee/1.4/docs/api/javax/activation/DataHandler.html">DataHandler</a> class.
+       </p>
+
+       <h2>Demo</h2>
+       <p>
+          For a demonstration of the usage of binary data types, refer to the <a href="./samples/file_service_app_sample.html">File App Sample</a>.
+       </p>
+
+    </body>
+</html>

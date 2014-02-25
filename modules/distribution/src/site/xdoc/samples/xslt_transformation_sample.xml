@@ -1,0 +1,70 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<html>
+    <body>
+        <p>[<a
+                href="http://wso2.org/downloads/solutions/data-services">Download</a>]
+            | [<a href="../index_docs.html">Documentation Home</a>] | [<a
+                    href="../release_notes.html">Release Note</a>]
+        </p>
+        <h1>XSLT Transformation Sample</h1>
+        <h2>Introduction</h2>
+        <p>When using data services, the user may come across the need to transform the result as
+            they wish. This is handled in
+            <a href="http://wso2.org/projects/data-services-server/java">
+                WSO2 Data Services Server
+            </a>
+            using XSLT Transformation, where user can define the transformation
+            in xslt and provide the url of the transformation file in the result element.
+        </p>
+        <h2>Prerequisites</h2>
+        <p>
+            The sample data service "ExcelSampleService" should be deployed as per the instructions
+            mentioned in
+            <a href="deploying_samples.html">Deploying Samples</a>
+            section.
+        </p>
+        <h2>Running the Sample</h2>
+        <p>The sample service can be run using the "tryit" tool, which is bundled with 
+<a href="http://wso2.org/projects/data-services-server/java">WSO2 Data Services Server</a>.
+        </p>
+        <h2>Service Definition</h2>
+        <p>
+            The Excel sample data service contains two operations "getProducts" to list all the
+            products that are manufactured in the company, each result record will contain "ID" and
+            "Name" fields. And "getProductClassifications" where to list all the products along with
+            the classifications, which contains two result records
+            which are "Name" and "classification".
+        </p>
+        <p>Second operation's ("getProductClassifications") actual output has changed as "product-Name" and
+            "product-classification" by using the xslt transformation.
+        </p>
+        <h2>Sample Run</h2>
+        <p>
+            A sample run of the service using the "tryit" tool is shown below.
+            <br/>
+            <p>
+                <img src="../images/samples/excel_sample_img2.png"/>
+                <br/>
+                Figure 1: Excel data service invocation after transforming the result.
+            </p>
+            <br/>
+        </p>
+
+
+    </body>
+</html>

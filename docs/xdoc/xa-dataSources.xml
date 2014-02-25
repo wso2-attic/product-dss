@@ -1,0 +1,101 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<html>
+    <body>
+        <p>[<a
+                href="http://wso2.com/products/data-services-server/">Download</a>]
+            | [<a href="index_docs.html">Documentation Home</a>] | [<a
+                    href="release_notes.html">Release Note</a>]
+        </p>
+        <h1>Distributed Transactions</h1>
+        <h2>Introduction</h2>
+        <p>
+            Distributed transaction involves two or more transactions, often using multiple databases
+            where transactions should be handled in coordinated way. Transaction manager is set in
+            middle which handle all the transactions.
+            <a href="http://wso2.org/projects/data-services-server/java">WSO2 Data Services Server
+            </a>
+            use the Java Transaction API (JTA) which allows distributed transactions
+            to be done across multiple XA resources in a Java environment. We facilitate to override
+            this transaction manager by your own transaction manager as well.
+        </p>
+        <h2>Distributed Transactions with Multiple Data Sources</h2>
+        <p>
+            By default, Distributed Transaction is disabled in a data service, and can be explicitly
+            enabled in a data service. When using the wizard, at the initial "Service Details" page,
+            select "Enable Boxcarring" and "Enable Distributed Transactions".
+            <p>
+                <img src="./images/user-guide/xa-datasources/figure01.png"/>
+                <br/>
+                Figure 1: Enabling Distributed Transaction in a data service.
+            </p>
+            <p>
+                Second step is to enter details about the XA-DataSources which we are using to create
+                the service. You need to select the data source type as "RDBMS" and select
+                "XA-DataSource". Then select the required "Database Engine". This will provide you
+                the required XA-Datasource class.
+                <p>
+                <img src="./images/user-guide/xa-datasources/figure02.png"/>
+                <br/>
+                Figure 2: Configure XA Data Source.
+                </p>
+            </p>
+            <p>
+                After all the XA-DataSources has been created, these can be used as usual data sources in queries. And you would simply use the "boxcarring" fascility to create and execute a distributed transaction. So when boxcarring is taking place, it automatically knows that we are dealing with XADataSources and also since distributed transactions are enabled in the service, the necessory steps will executed to run this in JTA mode.
+            </p>
+        </p>
+
+        <h2>Reliable Messaging with Distributed Transactions</h2>
+        <p>
+               Here we are going to discuess reliable messaging with the use of JMS. JMS has ability to join into a distributed transaction. So we can use JMS as the communication channel and our database transactions can be run in a single distributed transaction. So in this way, we can guarantee there will not be any message loss or failure, and can assure single successful message delivary. 
+        </p>
+        <p>
+               In a data service, we only have to enable distributed transactions option to enable this feature. The data service will automatically sense  that status, when an incoming message is arriving, and if someone else has started a JTA transaction, it will bind automatically to that. So here, this aformentioned starting of the transaction will be done using the JMS transport receiver. So for this, we've to enable the JMS transport receiver which is mentioned in the /repository/conf/axis2.xml and also add the following two properties to configure it to use JTA transactions. <br />
+             <ul>
+                <li><pre><parameter name="transport.Transactionality">jta</parameter></pre></li>
+                <li><pre><parameter name="transport.jms.SessionTransacted">true</parameter></pre></li>
+             </ul>
+             NOTE: axis2.xml by default, contains the properties related to Apache ActiveMQ JMS broker, change the settings suitably to the JMS broker you're using and also, the required dependant libraries should be added to /repository/components/lib. <br/>
+        </p>
+        <p>
+             After the JMS transport is configured, we can use any JMS client to send messages to the configured JMS broker. This can also be done using the internal try-it tool. In order to do this, the client axis2.xml file, which is located at /repository/conf/axis2_client.xml should be edited. In there, the JMSSender has to be commented out to enable the JMS transport sender. A sample execution of a data service which uses distributed transactions with JMS can be seen in Figure 3. <br/>
+                <p>
+                <img src="./images/user-guide/xa-datasources/figure03.png"/>
+                <br/>
+                Figure 3: Data service invoked with JTA/JMS.
+                </p>
+        </p>
+
+        <h2>Overriding Default Transaction Manager</h2>
+        <p>
+            The default transaction manager can be overriden by giving the location to a JNDI name that the transaction manager is bound to. This is specially useful when WSO2 DSS is embedded in other application servers, and they may not be using the standard JNDI name for binding to the transaction manager. In this case, a custom JNDI name can be provided, to find the transaction manager. For example, Figure 4 shows how a data service has overidden this property to point to WebLogic's JTA transaction manager.
+                <p>
+                <img src="./images/user-guide/xa-datasources/figure04.png"/>
+                <br/>
+                Figure 4: Overriding JTA transaction manager JNDI name.
+                </p>
+        </p>
+        
+        <h2>Demo</h2>
+        <p>
+            For a demonstration of the usage of distributed transactions, refer to the
+            <a href="./samples/distributed_transactions_sample.html">distributed transactions demo</a>
+            in the samples.
+        </p>
+
+    </body>
+</html>

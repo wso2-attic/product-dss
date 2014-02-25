@@ -1,0 +1,265 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <body>
+        <p>[<a
+                href="http://wso2.com/products/data-services-server/">Download</a>]
+            | [<a href="index_docs.html">Documentation Home</a>] | [<a
+                    href="release_notes.html">Release Note</a>]
+        </p>
+        <h1>Step-by-Step Guide on Creating Data Services Using Excel Data Sheet</h1>
+        <br/>
+        <p>
+            <b>Introduction</b>
+        </p>
+        <hr/>
+        <p>WSO2 Data Services Server supports to expose data in Excel 97-2007 as a service. We can create Excel data sources in two different modes.</p>
+	<ul>
+	    <li><a href="#non_qmode">Non-Query mode</a></li>
+	    <li><a href="#qmode">Query-mode</a></li>
+	</ul>
+	
+        <p>
+            <b>Sample Excel Data sheet</b>
+        </p>
+        <hr/>
+        <p>Before we start on create the data service we will create an excel sheet which contains
+            three columns, namely ID, Model and Classification (i.e. Do not paste the above content
+            into a single cell). Fill the data sheet with some values under those three columns.
+        </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/excel/step0.png"/>
+        <p>Figure 1: Sample excel data sheet</p>
+        <br/>
+	<h2 id="non_qmode">Excel Data Sources in non-query Mode</h2>
+	<p>
+	This functionality allows to expose the content of an Excel sheet as a service. 
+	</p>
+        <p>
+            <b>Step 1: Start by giving a name</b>
+        </p>
+        <hr/>
+        <p>Lets start to create the data service by click on "Create" link under
+            Manage/Services/Add/Data Service.
+            We will name the service as ExcelSampleService. Click on "Next" button once you enter
+            the name, and the description if required.
+        </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/excel/step1.png"/>
+        <p>Figure 2: Create excel data service</p>
+        <br/>
+        <p>
+            <b>Step 2: Enter details about your Excel file.</b>
+        </p>
+        <hr/>
+        <p>Next step is to provide the details about the excel file. Select the Data Source Type as
+            "EXCEL" from the drop down list after you giving a name to the data source. Then enter
+            the location of the excel file and save.
+        </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/excel/step2.png"/>
+        <p>Figure 3: Configure data source</p>
+        <br/>
+        <p>Created data source will list as below. Click on "Next" to create the query.</p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/excel/step2.1.png"/>
+        <p>Figure 4: View data source</p>
+        <br/>
+        <p>
+            <b>Step 3: Enter excel and query details using which values will be extracted, and
+                configure how the response should look like
+            </b>
+        </p>
+        <hr/>
+        <p>Lets name the Query Id as sheet1Query and select the data source which created in
+            previous
+            step amd fill the excel sheet details. Enter a name for Grouped By Element and Row Name.
+            You can also give a namespace if you wish.
+            Click on "Add Output Mapping" button to create how the output should look like. Lets
+            create
+            ID as an element and Name and Classification as attributes. Save the query once you
+            enter
+            the details.
+        </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/excel/step3.1.png"/>
+        <p>Figure 5: Create query</p>
+        <br/>
+        <p>Once you add a query, it will be listed as follows. Click on "Next" to create the
+            operation.
+        </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/excel/step3.2.png"/>
+        <p>Figure 6: View querry</p>
+        <br/>
+        <p>
+            <b>Step 4: Create a web service operation</b>
+        </p>
+        <hr/>
+        <p>Click on "Add on Operation", and enter a name to the operation. Lets name it as
+            getProducts.
+            Select the created query from the drop down list and save the operaion.
+        </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/excel/step4.1.png"/>
+        <p>Figure 7: Add operation</p>
+        <br/>
+        <hr/>
+        <p>Existing operations will be listed as follows. Click on "Finish" button. Service will be
+            created and deployed.
+        </p>
+        <hr/>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/excel/step4.2.png"/>
+        <p>Figure 8: View operations</p>
+        <br/>
+        <p>
+            <b>Step 5: Service deployed</b>
+        </p>
+        <hr/>
+        <p>Now we have created a data service. You can go the deployed services list which is under
+            Manage/Service/List. Created service will be list as follows.
+        </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/excel/step5.png"/>
+        <p>Figure 9: Deployed data services</p>
+        <br/>
+        <p>
+            <b>Step 6: Try your service</b>
+        </p>
+        <hr/>
+        <p>By click on "Try It" link you can invoke the created service.</p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/excel/step6.png"/>
+        <p>Figure 10: Invoke service using Try-it</p>
+        <br/>
+        <p>Click on the deployed service and click on "Edit Data Service(XML Edit)" to view the data
+            service in xml format.
+        </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/excel/step7.png"/>
+        <p>Figure 11: Edit data service</p>
+        <br/>
+	<h2 id="qmode">Excel Data Sources in Query Mode</h2>
+	<p>This functionality allows users to query an Excel sheet in a much familiar SQL-like manner, and expose it as a service.
+	Internally org.wso2.carbon.dataservices.sql.driver.TDriver class will be used as the SQL Driver. It is a JDBC driver implemenation
+	 to be used with tabular data models such as Google SpreadSheets, Excel sheets.
+	</p>
+	
+	<p>
+            <b>Step 1: Start by giving a name</b>
+        </p>
+        <hr/>
+	<p>As we did earlier lets start by creating a new data service. Let's name it as 'ExcelQueryModeSampleService'.</p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/excel/step1_qmode.png"/>
+        <p>Figure 12: Create excel data service</p>
+        <br/>
+        <p>
+            <b>Step 2: Enter details about your Excel file.</b>
+        </p>
+        <hr/>
+        <p>Now let's provide the details about the excel file. Select the Data Source Type as
+            "EXCEL" from the drop down list after you giving a name to the data source. 
+	  Then select "Use Query Mode" check box.
+	  Then enter the location of the excel file and Save.
+        </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/excel/step2_qmode.png"/>
+        <p>Figure 13: Configure data source</p>
+        <br/>
+	<p>As we did earlier click on "Next" to create the query.</p>
+
+	<p>
+            <b>Step 3: Define the Query, input parameters and output parameters. 
+            </b>
+        </p>
+        <hr/>
+        <p>Lets name the Query Id as excelQuery and select the data source which created in
+            previous step. You can see that UI will allow you to define the query, which was 
+	   not supported earlier. Enter the query as given in the below UI and click
+	  on 'Generate Input Mappings' to auto generate the input mapping parameters. 
+        </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/excel/step3_qmode.png"/>
+        <p>Figure 14: Create query</p>
+	<br/>
+	<p>Once you add a query, click on "Next" to create the
+            operation.
+        </p>
+	<br/>
+	<p>
+            <b>Step 4: Create a web service operation</b>
+        </p>
+        <hr/>
+        <p>Click on "Add on Operation", and enter a name to the operation. Lets name it as
+            insertProducts.
+            Select the created query from the drop down list and click on 
+	   'Add Query Params as Operation Params' to add the parmeters to operation.
+	    Now save the operation. 
+        </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/excel/step4_qmode.png"/>
+        <p>Figure 15: Add operation</p>
+        <br/>
+
+	<p>Now Try-it the service and check the excel file for the newly added records.</p>
+
+	<h2>Supported query types</h2>
+<p>Currently, this feature provides support for basic SELECT, INSERT, UPDATE and DELETE functionalities.</p>
+<p>Note : Nested quries are currently not supported</p>
+<br/>
+<p>Eg:</p>
+<p>SELECT customerNumber,customerName,phone,state,country FROM customers</p>
+<p></p>
+<p><img alt="Sample SELECT query" src="./images/user-guide/sql-driver/select_query.png"/>
+   <br/>
+</p>
+<p>INSERT INTO customers(customerNumber,customerName,contactLastName) VALUES(?,?,?)</p>
+<p></p>
+<p><img alt="Sample INSERT query" src="./images/user-guide/sql-driver/insert_query.png"/>
+   <br/>
+</p>
+<p>UPDATE customers SET contactFirstName=?, contactLastName=? WHERE customerNumber=?</p>
+<p></p>
+<p><img alt="Sample UPDATE query" src="./images/user-guide/sql-driver/update_query.png"/>
+   <br/>
+</p>
+<p>DELETE FROM customers WHERE customerNumber=?</p>
+<p></p>
+<p><img alt="Sample DELETE query" src="./images/user-guide/sql-driver/delete_query.png"/>
+   <br/>
+</p>
+
+<p>Also we can create new Sheets and drop an existing sheet from a ExcelSheet.</p>
+
+<br/>
+<p>Eg:</p>
+<p>CREATE SHEET ProductCategories (ProductCode, Category)</p>
+<p></p>
+<p><img alt="Sample SELECT query" src="./images/user-guide/sql-driver/create_sheet_query.png"/>
+   <br/>
+</p>
+<p>DROP SHEET ProductCategories</p>
+<p></p>
+<p><img alt="Sample INSERT query" src="./images/user-guide/sql-driver/drop_sheet.png"/>
+   <br/>
+</p>
+    </body>
+</html>

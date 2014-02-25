@@ -1,0 +1,669 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <body>
+        <p>[<a
+                href="http://wso2.com/products/data-services-server/">Download</a>]
+            | [<a href="index_docs.html">Documentation Index</a>] | [<a
+                    href="release_notes.html">Release Note</a>]
+        </p>
+
+        <h1>Eclipse WTP Integration</h1>
+
+        <p>WSO2 Data Services Solution now supplies pluggable components in the form of Eclipse WTP
+            plugins which enable it to be integrated with the popular IDE Eclipse. This guide is
+            meant to demonstrate the use of the newly introduced Data Services tools in tandem with
+            the Eclipse Web Tools Platform Project using WTP 2.0 drivers or later. The guide shows
+            how to create a simple data service and deploy the service on a data services solution
+            server.
+        </p>
+
+        <h2>Content</h2>
+        <div class="toc">
+            <ul>
+                <li>
+                    <a href="#Install">Installing Eclipse WTP with the Plugin</a>
+                </li>
+                <li>
+                    <a href="#Intro">A Small Introduction to Dataservice Plugin</a>
+                </li>
+                <ul>
+                    <li>
+                        <a href="#Intro_data">Datasources</a>
+                    </li>
+                    <li>
+                        <a href="#Intro_query">Queries</a>
+                    </li>
+                    <li>
+                        <a href="#Intro_op">Operations</a>
+                    </li>
+                </ul>
+                <li>
+                    <a href="#CreateData">Creating a Dataservice through Eclipse WTP</a>
+                </li>
+                <ul>
+                    <li>
+                        <a href="#Truststore">Loading a new truststore</a>
+                    </li>
+                    <li>
+                        <a href="#Credentials">Setting server credentials</a>
+                    </li>
+                    <li>
+                        <a href="#Datasources">Adding Datasources</a>
+                    </li>
+                    <li>
+                        <a href="#Queries">Adding Queries</a>
+                    </li>
+                    <li>
+                        <a href="#Operations">Add Operations</a>
+                    </li>
+                    <li>
+                        <a href="#Deploying">Deploying the dataservice</a>
+                    </li>
+                </ul>
+                <li>
+                    <a href="#ModifyData">Modifying an Existing Dataservice through Eclipse WTP</a>
+                </li>
+                <li>
+                    <a href="#DeployData">Deploying an Existing Dataservice through Eclipse WTP</a>
+                </li>
+                <li>
+                    <a href="#WorkspaceData">Dataservice file Present in Workspace</a>
+                </li>
+            </ul>
+
+
+        </div>
+        <h2 id="Install">Installing Eclipse WTP with the Plugin</h2>
+        <ol type="1">
+            <li>
+                <p>Download
+                    <a href="http://www.eclipse.org/webtools/">Eclipse WTP 2.0 or later</a>
+                    and extract it to a desired location. Eclipse WTP 2.0 or later requires j2sdk
+                    5.0 or higher
+                </p>
+            </li>
+            <li>
+                <p>Close any running instances of Eclipse WTP before starting the installation.</p>
+            </li>
+            <li>
+                <p>Download org.wso2.ws.dataservices.ide_1.0.0 and copy the file in to the eclipse
+                    plugin directory.
+                </p>
+            </li>
+        </ol>
+        <p>Note: If you are running eclipse ganymede under linux and the data service plugin is not
+            visible, copy the plugin instead to the dropins directory instead which is located in
+            parallel with the plugins directory of Eclipse WTP
+        </p>
+
+        <h2 id="Intro">A Small Introduction to Dataservice Plugin</h2>
+        <p>When creating a data service it requires 3 components</p>
+        <ol type="1">
+            <li>
+                <p>Datasources</p>
+            </li>
+            <li>
+                <p>Queries</p>
+            </li>
+            <li>
+                <p>Operations</p>
+            </li>
+        </ol>
+
+        <h3 id="Intro_data">Datasources</h3>
+        <p>This is the data source which our data service will request data from. This release of
+            the plugin supports 4 major types of datasources.
+        </p>
+        <ul>
+            <li>
+                <p>Relational databases</p>
+            </li>
+            <li>
+                <p>Excel files</p>
+            </li>
+            <li>
+                <p>CSV files</p>
+            </li>
+            <li>
+                <p>JNDI datasources</p>
+            </li>
+
+        </ul>
+        <p>Currently in the plugin only mysql and derby is directly shown under relational
+            databases.
+        </p>
+
+        <h3 id="Intro_query">Queries</h3>
+        <p>This is where we can specify what to request from the datasource. Depending upon the type
+            of datasource our method of request of data will differ.
+        </p>
+
+        <h3 id="Intro_op">Operations</h3>
+        <p>This is what the user sees as a web service. An operation is simply a mapping to an
+            existing query. Web service user only sees what you define in operations.
+            For more information about how dataservices created goto ….
+            With that short introduction you are good to go now.
+        </p>
+
+        <h2 id="CreateData">Creating a Dataservice through Eclipse WTP</h2>
+        <p>Lets try and create a dataservice through the plugin now. This version of the plugin
+            creates a dataservice through a wizard. The wizard will collect data required to follow
+            to the next step in each page collecting all the necessary information to create a valid
+            dataservice.
+        </p>
+        <p>
+            First lets start the Eclipse WTP IDE. You may or may not have projects currently loaded
+            to the workspace.
+        </p>
+
+        <p>
+            <br/>
+            <img src="images/ds-plugin/image002.jpg" alt="Eclipse WTP IDE Instance"/>
+            <br/>
+            <br/>
+        </p>
+
+        <p>In the above screenshot I have few projects loaded and in one project I have created a
+            folder named &quot;dataservice&quot; in the hope of saving a copy of the dataservice in
+            this service I might create.
+        </p>
+
+        <p>To create a new dataservice</p>
+        <p>Press Ctrl + N or File -> New -> Other…</p>
+        <p>This will show the new dialog box</p>
+
+        <p>
+            <br/>
+            <img src="images/ds-plugin/image004.jpg" alt="New Wizard"/>
+            <br/>
+            <br/>
+        </p>
+
+        <p>In the New Wizard dialog select WSO2 Dataservice Creation Wizard and click Next.</p>
+        <p>This will show the first page of the dataservice wizard.</p>
+
+        <p>
+            <br/>
+            <img src="images/ds-plugin/image006.jpg" alt="Dataservice Plugin Wizard"/>
+            <br/>
+            <br/>
+        </p>
+
+        <p>This page determines what you want to do. i.e. Create or modify or just deploy a
+            dataservice. In our case we will be creating a dataservice now.
+        </p>
+        <p>Select &quot;Create a new data service from scratch&quot; among the 3 options at the
+            top.
+        </p>
+        <p>Then we need to specify where we are going to deploy the dataservice. Currently we can
+            deploy the dataservice in the dataservices solution or later versions of WSAS 2.3. If
+            you want to deploy it to a running instance of these servers accessible from your
+            computer, then select the first option and specify the url (and port as shown in the
+            example) to that server. However you will have to set the trustore if it is different
+            from the default trust store available and user credentials required to authenticate
+            with the server.
+        </p>
+
+        <h3 id="Truststore">Loading a new truststore</h3>
+        <p>Click on the &quot;Set truststore&quot; button to specify the new truststore file.</p>
+
+        <p>
+            <br/>
+            <img src="images/ds-plugin/image008.jpg" alt="Browse truststore"/>
+            <br/>
+            <br/>
+        </p>
+
+        <p>After selecting a valid trustore it will ask for a valid password. If you leave blank at
+            the password textbox and click ok, the default password for the dataservice solution
+            will be used.
+        </p>
+
+        <h3 id="Credentials">Setting server credentials</h3>
+        <p>You should also set valid credentials to the server by clicking &quot;Set Credentials&quot;</p>
+
+        <p>
+            <br/>
+            <img src="images/ds-plugin/image010.jpg" alt="Credentials"/>
+            <br/>
+            <br/>
+        </p>
+
+        <p>Users are also given the option to try the deployed service if the deployement was
+            successfull and there is no error at the server side. Just tick the &quot;Try it after
+            deploying&quot; checkbox and after the service has been deployed the a browser will open
+            to try the web service.
+        </p>
+        <p>Other than deploying it to a running dataservice solution, if the binary districution of
+            the server resides on a path where the eclipse insance has write access, you can select
+            &quot;CARBON based path&quot; option and specify the path to the binary distribution.
+        </p>
+
+        <p>
+            <br/>
+            <img src="images/ds-plugin/image012.jpg"
+                 alt="Dataservice Plugin Wizard - Carbon based path"/>
+            <br/>
+            <br/>
+        </p>
+
+        <p>If we want a copy of the dataservice saved on to the workspace tick the last option in
+            the page and specify a workspace relative path in the text box provided.
+        </p>
+        <p>
+            <br/>
+            <img src="images/ds-plugin/image014.jpg"
+                 alt="Dataservice Plugin Wizard - deploy in project"/>
+            <br/>
+            <br/>
+        </p>
+
+        <p>If all the information stated are validated to be correct you can proceed to the next
+            page in the wizard where you can specify datasources to the dataservice.
+        </p>
+
+        <h3 id="Datasources">Adding Datasources</h3>
+
+        <p>
+            <br/>
+            <img src="images/ds-plugin/image016.jpg" alt="Datasources"/>
+            <br/>
+            <br/>
+        </p>
+
+        <p>The 2nd page of the wizard is where we actually start building our dataservice. First you
+            have to specify a valid service name. This name should comply any rules governing for
+            creating service names.
+        </p>
+
+        <p>
+            <br/>
+            <img src="images/ds-plugin/image018.jpg" alt="Page1 - Service Name"/>
+            <br/>
+            <br/>
+        </p>
+
+        <p>This version of the plugin supports multiple datasources. Thus each time you click &quot;Add&quot;
+            and add a datasource it will be listed in the table. By default the first datasource you
+            add will have no name/id for it and thus will be called “[Default]” for the purpose of
+            addressing it.
+        </p>
+
+        <p>
+            <br/>
+            <img src="images/ds-plugin/image020.jpg" alt="First datasource"/>
+            <br/>
+            <br/>
+        </p>
+
+        <p>In the case of a missing datasource for a query (which we will be discussing int he next
+            wizard page) it will by default assume its datasource as this &quot;[Default]&quot;
+            datasource.
+        </p>
+        <p>If you add more datasources hereafter adding the first one you will be required to
+            specify a unique datasource id for them.
+        </p>
+        <p>Click &quot;Add&quot; and you will be presented with a small dialog which requests for a
+            datasource id and the datasource type. If it is the first datasource the datasource id
+            will be readonly. The datasource type can be of 4 types. Here we will add a relational
+            database datasource (RDBMS) as an example.
+        </p>
+
+        <p>
+            <br/>
+            <img src="images/ds-plugin/image022.jpg" alt="RDBMS Datasource"/>
+            <br/>
+            <br/>
+        </p>
+
+        <p>Connecting to a RDMBS requires that the relevant driver class being present in the class
+            path. If it is not present you will be asked to specify the jar which contains the
+            class.
+        </p>
+
+        <p>
+            <br/>
+            <img src="images/ds-plugin/image024.jpg" alt="Error Msg"/>
+            <br/>
+            <br/>
+        </p>
+
+        <p>Specify the path to the jar file in the provided textbox.</p>
+
+        <p>
+            <br/>
+            <img src="images/ds-plugin/image026.jpg" alt="Jar Specified"/>
+            <br/>
+            <br/>
+        </p>
+
+        <p>Note: It is not neccessary to provide the library which has the neccessary driver classes
+            since if the server supports they will contain the driver class in it self. The wizard
+            requires the driver class so that it can use the database connection for content
+            assistance in the later stages of the wizard.
+        </p>
+        <p>This textbox to specify the jar will only appear in the event of missing the driver class
+            on the class path.
+        </p>
+        <p>After specifying the relevant details for the database connection you can click &quot;Test
+            Connection&quot; button to test the entered details to connect with the database
+        </p>
+
+        <p>
+            <br/>
+            <img src="images/ds-plugin/image028.jpg" alt="Test Connection"/>
+            <br/>
+            <br/>
+        </p>
+
+        <p>If the connection details are successfull the you will get a success massage. If not it
+            will show the error of which you might have to change the entered values. However
+            testing the connection may not applicable the database is not accessible from you
+            computer (but can be accessed by the server of which you are deploying).
+        </p>
+        <p>Click ok to add the datasource to the dataservice.</p>
+
+        <p>
+            <br/>
+            <img src="images/ds-plugin/image030.jpg" alt="Datasource Added"/>
+            <br/>
+            <br/>
+        </p>
+        <p>That is how you add a RDBMS datasource. Adding other types of datasources are also
+            similar.
+        </p>
+        <p>Lets see how we add an excel datasource.</p>
+
+        <p>
+            <br/>
+            <img src="images/ds-plugin/image032.jpg" alt="Excel datasource"/>
+            <br/>
+            <br/>
+        </p>
+        <p>Since this is the 2nd datasource we are adding we will have to specify a datasource id.
+            Say we put the id as &quot;StudentAgeDataSource&quot; and click OK. Specify the excel
+            file path and click ok.
+        </p>
+
+        <p>
+            <br/>
+            <img src="images/ds-plugin/image034.jpg" alt="Excel Configuration"/>
+            <br/>
+            <br/>
+        </p>
+        <p>
+            <br/>
+            <img src="images/ds-plugin/image036.jpg" alt="Two datasources"/>
+            <br/>
+            <br/>
+        </p>
+
+        <p>Adding a CSV datasource is similar. But you are required to specify a few more
+            information regarding the CSV.
+        </p>
+
+        <p>
+            <br/>
+            <img src="images/ds-plugin/image038.jpg" alt="Adding CSV datasource"/>
+            <br/>
+            <br/>
+        </p>
+        <p>
+            <br/>
+            <img src="images/ds-plugin/image040.jpg" alt="CSV datasource configuration"/>
+            <br/>
+            <br/>
+        </p>
+        <p>Here the Starting row is the row which starts the data. Which means if you select &quot;TRUE&quot;
+            for &quot;Headers Available&quot; the row number before that would contain the header
+            row.
+        </p>
+        <p>If you specify that the header is present you are required to specify the order of the
+            headers. As soon as you specify that the headers are available the wizard attempts to
+            open the specified CSV file and retrieve the headers.
+        </p>
+
+        <p>
+            <br/>
+            <img src="images/ds-plugin/image042.jpg" alt="CSV datasource configuration - headers"/>
+            <br/>
+            <br/>
+        </p>
+
+        <p>Double click on the column row and it will set the next order number to that header.
+            Double clicking on it again will remove the ordering rearranging the order numbers which
+            was set after that header.
+        </p>
+        <p>After that ofcourse you have to click &quot;OK&quot; to add the datasource to the
+            dataservice.
+        </p>
+
+        <p>
+            <br/>
+            <img src="images/ds-plugin/image044.jpg" alt="Three datasources added"/>
+            <br/>
+            <br/>
+        </p>
+        <p>You can just double click on a datasource listed on the table or select and click &quot;Edit&quot;
+            to modify the details of the datasource. Deleting a datasource will delete any queries
+            and operations which use those datasources/queries.
+        </p>
+
+
+        <h3 id="Queries">Adding Queries</h3>
+
+        <p>
+            <br/>
+            <img src="images/ds-plugin/image046.jpg" alt="Query Page"/>
+            <br/>
+            <br/>
+        </p>
+        <p>Adding queries to the datasources is simple as it is done in the Web UI wizard. Click
+            &quot;Add New Query&quot; and the new query dialog will appear.
+        </p>
+        <p>
+            <br/>
+            <img src="images/ds-plugin/image048.jpg" alt="New Query"/>
+            <br/>
+            <br/>
+        </p>
+
+        <p>In the dialog specify the datasource which you want to create the query from. Each
+            datasource type has a different way of specifying its query.
+        </p>
+        <p>Help on the type of information needs to be provided for queries visit
+            <a href="manage_data_services.html">the Web UI wizard documentation.</a>
+        </p>
+        <p>One special feature offered by the plugin is that it supports content assistance for the
+            SQL statement in RDBMS datasource.
+        </p>
+        <p>
+            <br/>
+            <img src="images/ds-plugin/image050.jpg" alt="Content Assistant - Sql"/>
+            <br/>
+            <br/>
+        </p>
+
+        <p>If you have specified the RDBMS datasource details correctly (along with the driver
+            library if it was not present) and the database is accessible through your computer
+            pressing the Ctrl + Space would bring up a popup which would contain a list of tables
+            present in the database specified in the RDBMS datasource. If you press &quot;.&quot;
+            After a table name it will popup a list of columsn present for that table.
+        </p>
+
+        <p>
+            <br/>
+            <img src="images/ds-plugin/image052.jpg" alt="Content Assistant - Sql2"/>
+            <br/>
+            <br/>
+        </p>
+
+        <p>This content assistance is provided when you specify output mappings also.</p>
+
+        <p>
+            <br/>
+            <img src="images/ds-plugin/image054.jpg" alt="Content Assistant - columns"/>
+            <br/>
+            <br/>
+        </p>
+        <p>If you have specified the sql query correctly the wizard will list all the colums which
+            can be present from executing the sql query you have specified.
+        </p>
+        <p>Note: Removing output mappings will permanantly remove corresponding mapping values in
+            defined operations which uses that particular query.
+        </p>
+
+
+        <h3 id="Operations">Adding Operations</h3>
+
+        <p>Adding operations to the dataservice is also very easy and is similar to the wizard in
+            Web UI. For more information on how it is done visit
+            <a href="manage_data_services.html">Web UI wizard documentation.</a>
+        </p>
+        <p>
+            <br/>
+            <img src="images/ds-plugin/image056.jpg" alt="Adding operations"/>
+            <br/>
+            <br/>
+        </p>
+
+        <h3 id="Deploying">Deploying the dataservice</h3>
+
+        <p>After the adding all the necessary datasources, queries and operations now we are ready
+            to deploy our dataservice. The accuracy of the dataservice cannot be determined
+            completely by the plugin since validity of some of the configurations may depend upon
+            the server that it is been deployed.
+        </p>
+        <p>Click finish to deploy the dataservice. The wizard will start deploying the service in
+            the specified location. If the location is a dataservice solution server it will
+            authenticate with the server with the given credentials and send the dataservice to the
+            server.
+        </p>
+        <p>You are just trying save the dataservice in to a CARBON based path the wizard will create
+            the dataservice file in the required folder.
+        </p>
+        <p>
+            <br/>
+            <img src="images/ds-plugin/image058.jpg" alt="Deploying dataservice"/>
+            <br/>
+            <br/>
+        </p>
+        <p>In the case of deploying it to a server the wizard will attempt to test whether the
+            service was deployed without errors.
+        </p>
+
+        <p>
+            <br/>
+            <img src="images/ds-plugin/image060.jpg" alt="Testing dataservice"/>
+            <br/>
+            <br/>
+        </p>
+
+        <p>It will wait for the server to load the service for 60 seconds. If the server loads the
+            service successfully and publishes the wsdl the test will succeed. If not it will
+            timeout with an error. You may have to visit the server and check the errors specified
+            for the uploaded servervices and fix them in the wizard. Visit the documentation on
+            <a href="manage_data_services.html#FaultyServices">faulty services</a>
+            for more information regarding this.
+        </p>
+        <p>If the test was successfull and if you have ticked &quot;try it&quot; the wizard will
+            launch the web browser to test the webservice.
+        </p>
+
+        <p>
+            <br/>
+            <img src="images/ds-plugin/image062.jpg" alt="Launching web browser"/>
+            <br/>
+            <br/>
+        </p>
+        <p>
+            <br/>
+            <img src="images/ds-plugin/image064.jpg" alt="Web browser"/>
+            <br/>
+            <br/>
+        </p>
+        <h2 id="ModifyData">Modifying an Existing Dataservice through Eclipse WTP</h2>
+
+        <p>Modifying an existing dataservice saved locally is as easy as creating a dataservice
+            except that there is less work involved. Just click on the option &quot;Modify an
+            existing dataservice&quot; and browse the dataservice file.
+        </p>
+
+        <p>
+            <br/>
+            <img src="images/ds-plugin/image066.jpg" alt="Modifying dataservice"/>
+            <br/>
+            <br/>
+        </p>
+
+        <p>Other than just allowing to overwrite the local copy of the dataservice file rest of the
+            configurations and settings is as same as creating a dataservice. You can go through the
+            wizard, do the changes and click finish to deploy the service.
+        </p>
+
+        <h2 id="DeployData">Deploying an Existing Dataservice through Eclipse WTP</h2>
+
+        <p>Deploying an existing dataservice saved locally is as easy as creating a dataservice
+            except that there is onyl one page involved. Just click on the option &quot;Deploy an
+            existing dataservice file to a WSAS server or dataservice solution&quot; and browse the
+            dataservice file.
+        </p>
+
+        <p>
+            <br/>
+            <img src="images/ds-plugin/image068.jpg" alt="Deploying dataservice"/>
+            <br/>
+            <br/>
+        </p>
+
+        <p>Specify the correct details on the url field and click finish to deploy.</p>
+
+
+        <h2 id="WorkspaceData">Dataservice file Present in Workspace</h2>
+
+        <p>When creating/modifying/deploying dataservices through the wizard we can have a copy of
+            it in to our workspace. Or you can import it as a file to the workspace. Once you have
+            it on the workspace you can modify it or deploy is by right clicking on the file in the
+            package explorer.
+        </p>
+
+        <p>
+            <br/>
+            <img src="images/ds-plugin/image070.gif" alt="Dataservice file in workspace"/>
+            <br/>
+            <br/>
+        </p>
+
+        <p>Here the deploying and editing are as two seperate wizards. A uset may either edit the
+            datasource or deploy it at a time. If by any chance the user requires to modify the
+            dataservice manually not by the wizard, double click and open the file in the xml
+            editor.
+        </p>
+
+        <p>
+            <br/>
+            <img src="images/ds-plugin/image072.jpg" alt="Manually edit dataservice"/>
+            <br/>
+            <br/>
+        </p>
+
+
+    </body>
+</html>

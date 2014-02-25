@@ -1,0 +1,137 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <body>
+        <p>[<a
+                href="http://wso2.com/products/data-services-server/">Download</a>]
+            | [<a href="index_docs.html">Documentation Home</a>] | [<a
+                    href="release_notes.html">Release Note</a>]
+        </p>
+
+        <h1>Automated Data Service Creation Through DB Connection</h1>
+
+        <p>
+            <b>Introduction</b>
+        </p>
+        <hr/>
+
+        <p><a href="http://wso2.com/products/data-services-server/">WSO2 Data Services Server</a>
+            provides the feature to create data services automatically using a given database structure. When generating the service, DS Generator will consider the table structure. According to the given table structure "SELECT", "INSERT", "UPDATE", and "DELETE" operations will get automatically created.
+        </p>
+
+
+        <p>
+            <b>Step 1 - Create a Carbon Data Source</b>
+        </p>
+        <hr/>
+        <p> Before generating the data services Carbon data source should be created according to the database properties.
+        </p>
+         <br/>
+        <img alt="DS" src="images/user-guide/ds-generation/step1.png"/>
+        <p>Figure 1: Create Carbon Data Source</p>
+        <br/>
+        <p>
+            <b>Step 2 - Select Data Source</b>
+        </p>
+        <hr/>
+        <p>To start the ds generation click on 'Generate' link on your left hand menu.  
+        </p>
+        <br/>
+        <img alt="DS" src="images/user-guide/ds-generation/step2.png"/>
+        <p>Figure 2: Generate Data Service</p>
+        <br/>
+        <p> In the first screen that appears select the Carbon Data Source and the Database Name as shown below.
+        </p>
+
+        <br/>
+        <img alt="DS" src="images/user-guide/ds-generation/step3.png"/>
+        <p>Figure 2: Select Data Source</p>
+        <br/>
+        <p>
+            <b>Step 3 - Select Database Schema</b>
+        </p>   <hr/>
+        <p>After Data Source is selected, DB Schema needs to be selected to identify the needed tables.
+        </p>
+        <img alt="DS" src="images/user-guide/ds-generation/step4.png"/>
+        <p>Figure 3: Select DB Schema</p>
+        <br/>
+
+        <p>
+            <b>Step 4 - Select Tables</b>
+        </p>
+        <hr/>
+        <p> Once the schema is selected, the table structure will display according to the given schema. Select the preferred tables for the data service generation.
+        </p>
+
+
+        <img alt="DS" src="images/user-guide/ds-generation/step5.png"/>
+        <p>Figure 4: Select Table Set </p>
+        <br/>
+	 <p>
+            <b>Step 5 - Select the Service Generation Mode</b>
+        </p>   <hr/>
+        <p> Once tables are defined, service generation mode needs to be specified. There are two options to generate the data service. 1. as a single service - where all operations for each table are given in a single data service. 2. Multiple services for each table - where for a given table only operations related to that table will be specified. Following example creates a single service for all tables as shown below. 
+        </p>
+
+        <br/>
+        <img alt="DS" src="images/user-guide/ds-generation/step6.png"/>
+        <p>Figure 6: Select DS Generation Mode</p>
+        <br/>
+	 <p> Once service generation mode is selcted, data services will get deployed, click next to view deployed services and click finish.
+        </p>
+	<br/>
+        <img alt="DS" src="images/user-guide/ds-generation/step7.png"/>
+        <p>Figure 7: Created Services</p>
+        <br/>
+	<p>
+            <b>Step 8: Service deployed</b>
+        </p>
+        <hr/>
+        <p>Now we have created a data service. You can go the deployed services list which is under
+            Manage/Service/List. Created service will be list as follows. If multiple service mode is selected, multiple services will get generated according to the number of tables selected.
+        </p>
+        <br/>
+        <img alt="DS" src="images/user-guide/ds-generation/step8.png"/>
+        <p>Figure 8: Deployed data services</p>
+        <br/>
+	 
+        <p>
+            <b>Step 9 - Try your service - Single Service Mode</b>
+        </p>
+        <hr/>
+        <p>Click on "Try It" link to invoke the service. As seen in Figure 6, operations (Select, Update, Insert and Delete) for both tables are embedded in the same data service. 
+        </p>
+
+        <br/>
+        <img alt="DS" src="images/user-guide/ds-generation/step9.png"/>
+        <p>Figure 6: Try-it - Single Service Mode </p>
+
+	        <p>
+            <b>Step 9 - Try your service - Multiple Service Mode</b>
+        </p>
+        <hr/>
+        <p>If Multiple service Mode is selected, different data services will get generated per each table.
+        </p>
+
+        <br/>
+        <img alt="DS" src="images/user-guide/ds-generation/step10.png"/>
+        <p>Figure 6: Try-it - Multiple Service Mode</p>
+        
+    </body>
+</html>

@@ -1,0 +1,88 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <body>
+        <h1>Welcome to WSO2 Data Services Server, 3.1.1</h1>
+
+        <h2>@buildNumber@ - WSO2 Data Services Server, 3.1.1 Released!</h2>
+
+        <p>[<a
+                href="http://wso2.com/products/data-services-server/">Download</a>]
+            | [<a href="index_docs.html">Documentation Home</a>] | [<a
+                    href="release_notes.html">Release Note</a>]
+        </p>
+
+        <p>The WSO2 Data Services Server is an extremely simple and elegant mechanism to take data
+            and make it available as a set of WS-* style Web services or as a set of REST style Web
+            resources. It augments SOA development efforts by providing an easy to use platform for
+            creating and hosting data services. This enables easy integration of data into business
+            processes, mashups, gadgets, BI applications and any service in general.
+        </p>
+
+        <p><img src="images/ds_archi.png"/>
+                <br/>
+                Figure : Architecture view of WSO2 Data Services Server.
+       </p>
+
+        <p>The WSO2 Data Services Server is built on top of the WSO2 Carbon platform. It utilizes
+            many features made available by the Carbon platform. A data service can be summarized
+            into a XML descriptor file written in compliance with Data Services Descriptor Language
+            (DSDL). DSDL is a XML based language defined by WSO2 to write data services.
+        </p>
+
+        <p>A custom deployer, written extending the Apache Axis2 deployer framework is responsible
+            for reading this data service descriptor and creating a data service. High performant
+            XML processing capabilities offered by Apache AXIOM is used for generating XML responses
+            on the fly. Some of the third party open source projects used by the WSO2 Data Services
+            Server includes Apache DBCP for managing connection pools for Relational Databases,
+            Google Spreadsheet Data API for reading Google Spreadsheets, OpenCSV for CSV file
+            support and Apache POI for MS-Excel support.
+        </p>
+        <h2>WSO2 Data Services Server, Documentation</h2>
+
+        <p>See the
+            <a href="index_docs.html">full list of documents</a>
+            with
+            instructions on installation, administration, sample guides and how to use
+            the tools packaged with WSO2 Data Services Server , 3.1.1 .
+        </p>
+        <a></a>
+
+        <h2>Mailing Lists</h2>
+
+        <p>Your feedback on WSO2 Data Services Server is most appreciated. Please send them to our
+            user mailing lists:
+        </p>
+        <ul>
+            <li>WSO2 Data Services Server, Users' mailing list:
+                <a
+                        href="mailto:user@wso2.org">user@wso2.org
+                </a>                
+            </li>
+        </ul>
+        <ul>
+            <li>WSO2 Data Services Server, Developers' mailing list
+                <a
+                        href="mailto:dev@wso2.org">dev@wso2.org
+                </a>
+            </li>
+        </ul>
+        <h3></h3>
+
+    </body>
+</html>

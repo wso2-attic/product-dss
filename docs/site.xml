@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ ~ Copyright (c) 2005-2010, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ ~
+ ~ WSO2 Inc. licenses this file to you under the Apache License,
+ ~ Version 2.0 (the "License"); you may not use this file except
+ ~ in compliance with the License.
+ ~ You may obtain a copy of the License at
+ ~
+ ~    http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~ Unless required by applicable law or agreed to in writing,
+ ~ software distributed under the License is distributed on an
+ ~ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ ~ KIND, either express or implied.  See the License for the
+ ~ specific language governing permissions and limitations
+ ~ under the License.
+ -->
+<project name="WSO2 Data Services Server">
+    <!-- TODO deal with banners-->
+    <!--<bannerLeft>
+      <name>Apache Axis2</name>
+      <src>http://www.apache.org/images/asf_logo_wide.png</src>
+      <href>http://ws.apache.org/axis2/</href>
+    </bannerLeft>
+    <bannerRight>
+      <src>http://ws.apache.org/axis2/images/axis.jpg</src>
+    </bannerRight>-->
+    <body>
+        <links>
+            <item name="Axis2/Java" href="http://ws.apache.org/axis2"/>
+            <item name="Axiom" href="http://ws.apache.org/commons/axiom/index.html"/>
+            <item name="Rampart" href="http://ws.apache.org/rampart/index.html"/>
+            <item name="Sandesha2" href="http://ws.apache.org/sandesha/sandesha2/index.html"/>
+            <item name="Neethi" href="http://ws.apache.org/commons/neethi/index.html"/>
+            <item name="Apache WS" href="http://ws.apache.org"/>
+            <item name="Apache	" href="http://www.apache.org"/>	    
+        </links>
+
+        <menu name="WSO2 Data Services Server">
+            <item name="Release Notes" href="release_notes.html"/>
+            <!--<item name="Contents" href="index_docs.html"/>-->
+            <item name="Home" href="index.html"/>
+	    <item name="FAQ" href="faq.html"/>
+        </menu>
+        <!--<menu name="Downloads">-->
+            <!--<item name="Releases"-->
+                  <!--href="http://dist.wso2.org/products/wsas/java/@wso2wsas_version@"/>-->
+        <!--</menu>-->
+        <menu name="Documentation">
+            <item name="Installation" href="installation_guide.html"/>            
+            <item name="Quick Start" href="quickstart_guide.html"/>
+            <item name="User Guide" href="user_guide.html"/>
+            <item name="External Articles" href="http://wso2.org/library/3183"/>
+        </menu>
+
+        <menu name="Samples">
+            <item name="Deploying Samples" href="samples/deploying_samples.html"/>
+            <item name="Data Services Clients" href="samples/ds_clients.html"/>
+            <item name="RDBMS Sample" href="samples/rdbms_sample.html"/>
+            <item name="CSV Sample" href="samples/csv_sample.html"/>
+            <item name="Excel Sample" href="samples/excel_sample.html"/>
+            <item name="Google Spreadsheet Sample" href="samples/gspread_sample.html"/>
+            <item name="Nested Query Sample" href="samples/nested_query_sample.html"/>            
+            <item name="Batch Process Sample" href="samples/batch_process_sample.html"/>                                                            
+            <item name="Eventing Sample" href="samples/eventing_sample.html"/>
+            <item name="Secure Service Sample" href="samples/secure_ds_sample.html"/>
+            <item name="File App Sample" href="samples/file_service_app_sample.html"/>  
+            <item name="XSLT Transformation Sample" href="samples/xslt_transformation_sample.html"/>
+            <item name="Distributed Transactions Sample" href="samples/distributed_transactions_sample.html"/>
+	    <item name="Resources Sample" href="samples/resources_sample.html"/>
+	    <item name="Web Resources Sample" href="samples/web_resource_sample.html"/>
+        </menu>
+
+        <menu name="Getting Help" ref="overview.html">
+            <item name="Forum" href="http://wso2.org/forum/404"/>
+            <item name="Mailing Lists" href="mail-lists.html"/>
+            <item name="Library" href="http://wso2.org/library/data-services-server"/>
+        </menu>
+        
+        <menu name="Project Information">
+            <item name="Issue Tracking" href="issue-tracking.html"/>
+            <item name="License" href="http://www.apache.org/licenses/LICENSE-2.0.html"/>
+            <!--<item name="Dependencies" href="dependencies.html"/> -->     
+	    <item name="Checkout the Source" href="source-repository.html"/>     
+     
+        </menu>
+
+    </body>
+</project>

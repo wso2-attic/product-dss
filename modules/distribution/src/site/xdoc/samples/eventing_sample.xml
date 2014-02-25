@@ -1,0 +1,87 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<html>
+    <body>
+        <p>[<a
+                href="http://wso2.org/downloads/solutions/data-services">Download</a>]
+            | [<a href="../index_docs.html">Documentation Home</a>] | [<a
+                href="../release_notes.html">Release Note</a>]
+        </p>
+        <h1>Eventing Sample</h1>
+        <h2>Introduction</h2>
+        <p>When using data services, we may come across requirements where, when a certain action is done; such as invoking an operation with certain arguments or a specific response is returned, in that situation, we would like to trigger an event to notify of such actions. This is accomplished in <a href="http://wso2.org/projects/data-services-server/java">WSO2 Data Services Server</a> using input and output event triggers.
+        </p>
+        <h2>Prerequisites</h2>
+        <p>
+            The sample data service "EventingSample" should be deployed as per the instructions mentioned in <a href="deploying_samples.html">Deploying Samples</a> section. 
+        <h3>Configuring the mail sender transport</h3>
+        <p>
+            In the sample, we are defining a specific topic for events to be published, and an email address is added as a subscription for that topic. In order to allow mail to be sent, we have to configure the mail sender in the client Axis2 configuration. A sample axis2.xml for the client configuration is stored at CARBON_HOME/samples/resources/sample_axis2_client.xml. Use the aforementioned file to replace the CARBON_HOME/repository/conf/axis2_client.xml file, now the axis2_client.xml will contain an already configured mail sender section and is ready to be used.
+        </p>
+        <h3>Editing the data service to add a valid email address</h3>
+        <p>
+            Here we will use the XML Edit option to edit the dataservice. In the XML view, replace all the occurences of "test@test.com" with your own email address.
+        </p>
+        <p>After the above changes are done, restart the server.</p>
+        </p>
+        <h2>Running the Sample</h2>
+        <p>The sample service can be run using the "tryit" tool, which is bundled with <a href="http://wso2.org/projects/data-services-server/java">WSO2 Data Services Server</a>.
+        </p>
+        <h2>Service Definition</h2>
+        <p>
+            The service is based around the functionality of managing the inventory of a car/motorcycle dealership. It contain the following queries.
+            <ul>
+              <li>addProductQuery: This query adds a new product to the catalogue.
+              </li>
+              <li>updateProductQuantityQuery: This query updates the availablity of a certain product. This is linked with an input event trigger, 
+which monitors if the stock of this product is critically low. If so, if fires an event notifying the subscribers that this product's stock needs to be updated.
+              </li>
+              <li>getProductByCodeQuery: This query retrieves product information, given the product code. The company gives special attention to people querying the database for motocycles. So when a query is made where the product type is a motorcyle, an output trigger associated with this query is triggers and a message is sent to the respective subscribers, here in this case, to our email address. 
+              </li>
+            </ul>
+        </p>
+        <h2>Sample Run</h2>
+        <p>
+            <p>
+            We will first add a new product into the inventory. This is shown in Figure 1. <br />
+            <img src="../images/samples/eventing_sample_img1.png" /> <br />
+            Figure 1: Adding new product. <br />
+            </p>
+            <p>            
+            After adding the product, we will update the availability of it by changing the product quantity in stock. <br />
+            <img src="../images/samples/eventing_sample_img2.png" /> <br />
+            Figure 2: Updating product stock. <br />
+            </p>
+            <p>
+            Here we are setting the "quantityInStock" to 5, and because of the event trigger, when the stock is less than 10, an event is fired, which will be the case here.
+            Soon you will receive an event notification to your mail inbox. Figure 3 shows the contents of the email attachment that will be received. <br />
+            <img src="../images/samples/eventing_sample_img3.png" /> <br />
+            Figure 3: Input event trigger notification content. <br />
+            </p>
+            <p>
+            Here we are querying the inventory system for a specific motorcycle model.<br />
+            <img src="../images/samples/eventing_sample_img4.png" /> <br />
+            Figure 4: Querying an item. <br />
+            </p>
+            <p>
+            By making a request with the motorcycle product line, we are triggering an event associated with it, and an email will be sent regarding this query. The contents of the email is shown below in Figure 5. <br />
+            <img src="../images/samples/eventing_sample_img5.png" /> <br />    
+            Figure 5: Output event trigger notification content. <br />       
+            </p>
+        </p>
+    </body>
+</html>

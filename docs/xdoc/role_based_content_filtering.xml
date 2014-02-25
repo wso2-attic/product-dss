@@ -1,0 +1,124 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <body>
+        <p>[<a
+                href="http://wso2.com/products/data-services-server/">Download</a>]
+            | [<a href="index_docs.html">Documentation Home</a>] | [<a
+                    href="release_notes.html">Release Note</a>]
+        </p>
+
+        <h1>Role based content filtering</h1>
+
+        <p>
+            <b>Introduction</b>
+        </p>
+        <hr/>
+
+        <p><a href="http://wso2.com/products/data-services-server/">WSO2 Data Services Server</a>
+            provides the feature to control the access the sensitive data
+            for specific users roles. Means it will filter the data, where specific data sections
+            are only accessible by the given type of users.
+        </p>
+
+
+        <p>
+            <b>Step 1 - Create New Roles and Assign them to Users</b>
+        </p>
+        <hr/>
+        <p>Users and new roles needs to be created and new roles should be assigned to the users.
+        </p>
+        <br/>
+
+
+        <p>
+            <b>Step 2 - Edit data service</b>
+        </p>
+        <hr/>
+        <p>In order to filter the data service click on the data service and click on edit. Under
+            Query section in the edit wizard click edit query on the query which needed to filtered.
+        </p>
+        <br/>
+        <img alt="DS" src="images/user-guide/content-filtering/step1.png"/>
+        <p>Figure 1: Edit querry</p>
+        <br/>
+
+
+        <p>
+            <b>Step 3 - Edit Query with the Required Roles Set</b>
+        </p>
+        <hr/>
+        <p>Edit the field which needed to be filtered under output mapping and tick the appropriate
+            user role in the "Allowed user role selection".
+        </p>
+
+        <br/>
+        <img alt="DS" src="images/user-guide/content-filtering/step2.png"/>
+        <p>Figure 2: Edit output mapping</p>
+        <br/>
+        <p>After all the required roles have been set for the result entries the Edit Query page
+            should resemble Figure 3.
+        </p>
+        <img alt="DS" src="images/user-guide/content-filtering/step2.1.png"/>
+        <p>Figure 3: Output mapping</p>
+        <br/>
+
+        <p>
+            <b>Step 4 - Enable User Authentication for the Data Service</b>
+        </p>
+        <hr/>
+        <p>In order for the service to identify the user who is sending requests, security must be
+            enabled for it and a method for authentication must be provided.
+            Therefore, click on the security under service and enable the security. And also select
+            the type of authentication under the 'Basic Scenarios' section.
+        </p>
+
+
+        <img alt="DS" src="images/user-guide/content-filtering/step3.png"/>
+        <p>Figure 4: Enable security</p>
+        <br/>
+
+        <p>Activate Security will display the user groups that have the access the service, select
+            the needed user group to allow access to the service.Activate Security will display the
+            user groups that have the access the service, select the needed user group to allow
+            access to the service.
+        </p>
+
+        <br/>
+        <img alt="DS" src="images/user-guide/content-filtering/step4.png"/>
+        <p>Figure 5: Enable security</p>
+        <br/>
+
+        <p>
+            <b>Step 5 - Try your service</b>
+        </p>
+        <hr/>
+        <p>Click on "Try It" link to invoke the servie. According to the user login the result of
+            try it will vary.
+        </p>
+
+        <br/>
+        <img alt="DS" src="images/user-guide/content-filtering/step5.1.png"/>
+        <p>Figure 6: Try-it without filtering</p>
+        <br/>
+        <img alt="DS" src="images/user-guide/content-filtering/step5.2.png"/>
+        <p>Figure 7: Try-it with filtering</p>
+        <br/>
+    </body>
+</html>

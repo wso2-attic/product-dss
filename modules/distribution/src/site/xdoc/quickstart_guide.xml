@@ -1,0 +1,368 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <body>
+        <p>[<a
+                href="http://wso2.com/products/data-services-server/">Download</a>]
+            | [<a href="index_docs.html">Documentation Home</a>] | [<a
+                    href="release_notes.html">Release Note</a>]
+        </p>
+
+        <h1>WSO2 Data Services Server Quick Start Guide</h1>
+
+        <p>The purpose of this guide is to get you started on creating and invoking a data service
+            using WSO2 Data
+            Services Server as quickly as possible.
+            We'll create a simple data service using Data Services Server creation wizard and then
+            look at creating clients to
+            access that service.
+        </p>
+
+        <h2>Content</h2>
+        <div class="toc">
+            <ul>
+                <li>
+                    <a href="#Introducti">Introduction</a>
+                </li>
+                <li>
+                    <a href="#System">Installing WSO2 Data Services Server and Accessing management
+                        console
+                    </a>
+                </li>
+                <li>
+                    <a href="#createdb">Creating a sample database and populate data</a>
+                </li>
+                <li>
+                    <a href="#createds">Creating your first data service</a>
+                </li>
+                <li>
+                    <a href="#invokeservice">Invoking Data Service</a>
+                </li>
+            </ul>
+
+
+        </div>
+        <h2 id="Introducti">Introduction</h2>
+        <p>WSO2 Data Services Server is a convenient mechanism to provide a web service interface
+            for data stored in some data
+            sources.
+            Data sources such as relational databases, CSV files, Microsoft Excel files and google
+            spread sheets can be easily service enabled
+            using Data Services Server. Now, the data can be exposed and accessed in a secured(using
+            WS-Security) and
+            reliable(using WS-ReliableMessaging) manner, and is also available for mashing-up with
+            other Web services.
+        </p>
+        <p>You can download WSO2 Data Services Server from the following location.</p>
+        <p>
+            <a class="externalLink"
+               href="http://www.wso2.org/projects/solutions/data-services/java">
+                <strong>[Download
+                    WSO2 Data services Server ]
+                </strong>
+            </a>
+        </p>
+        <h2 id="System">Installing WSO2 Data Services Server and Accessing management console</h2>
+        <ul>
+            <li>If you downloaded WSO2 Data services server from the above link, extract
+                wso2-dataservices-XX.zip in
+                to a directory in your local file system.
+            </li>
+            <li>From the command prompt, run bin/wso2server.bat{sh}</li>
+            <li>When the server startup is complete, access
+                <a href="https://localhost:9443/carbon">http://localhost:9443/carbon</a>
+                in your favorite browser. Welcome
+                page of the WSO2 Data Services Server will be displayed. Click on Signin link at the
+                top right corner
+                of the page. Then you can sign in to the management console using default admin user
+                credentials(username=admin, password=admin).
+            </li>
+        </ul>
+
+        <p>
+            <br/>
+            <img src="images/quick-start/homepage.png" alt="WSO2 Data Services Server Home page"/>
+            <br/>
+            <p>Figure 1: WSO2 Data Services Server Home Page</p>
+            <br/>
+
+            <br/>
+        </p>
+
+
+        <h2 id="createdb">Creating a sample database and populate data</h2>
+
+        <p>This guide assumes MySQL is configured in your system. If not, please download MySQL 5 or
+            later version from
+            <a href="http://dev.mysql.com/downloads/mysql/5.0.html#downloads">here.</a>
+        </p>
+        <ul>
+            <li>From the command prompt, run MySQL_HOME/bin/mysqld.bat{sh} to start MySQL server
+            </li>
+            <li>
+                <p>Lets create a simple data base with one table. Open a command prompt and type
+                    'mysql -u root -p' to
+                    access mySQL prompt. If you installed mySQL default configurations, you may
+                    enter blank password and
+                    access mySQL prompt. Enter the following commands to create a sample database,
+                    create a table and
+                    populate sample data.
+                </p>
+                <p>mysql>create database employeedb;</p>
+                <p>mysql>use employeedb;</p>
+                <p>mysql>create table employee(id VARCHAR(10) NOT NULL PRIMARY KEY, name
+                    VARCHAR(100), address VARCHAR(100));</p>
+                <p>mysql> insert into employee values('01','john','Boston');</p>
+                <p>mysql> insert into employee values('02','Micheal','Dallas');</p>
+                <p>mysql> insert into employee values('03','richard','Chicago');</p>
+                <p>mysql> exit;</p>
+            </li>
+        </ul>
+
+        <p>Since we are using a MySQL database for our demonstration, we should copy mySQL JDBC
+            driver to
+            CARBON_HOME/repository/components/lib directory (e.g:- cp
+            mysql-connector-java-5.0.3-bin.jar
+            /home/user/wso2ds/wso2-dataservices-2.5.0/repository/components/lib).
+        </p>
+        <p>After copying the necessary jdbc driver, make sure to restart WSO2 Data services solution
+            server.
+        </p>
+
+        <h2 id="createds">Creating your first data service</h2>
+
+        <p>We are ready to create our first data service using WSO2 Data Services Server. We will
+            make use of the
+            sample MySQL 'employeedb' database we have created in the previous step.
+        </p>
+        <ul>
+            <li>Select 'Create' from the left navigation menu of WSO2 Data Services Server
+                management console. Data
+                Service Step-1 will be displayed.
+            </li>
+            <li>Provide a name for the data service (e.g:- EmployeeDataService) and you can give a
+                description if you prefer.
+            </li>
+            <li>Click on 'Next' once you enter the details.</li>
+        </ul>
+        <p>
+            <br/>
+            <img src="images/quick-start/create_ds.png"
+                 alt="WSO2 Data Services Create Data Service page"/>
+            <br/>
+            <p>Figure 2: WSO2 Data Services Server Create Data Service page</p>
+            <br/>
+           
+        </p>
+
+
+        <p>Now we can enter the data source details in this step. Let's start with giving a name for
+            the data source as 'DataSourceEmp'.
+        </p>
+        <p>Select the data source type as 'RDBMS' and enter the following values.</p>
+        <p>Database Engine = MySQL</p>
+        <p>Driver Class = com.mysql.jdbc.Driver</p>
+        <p>JDBC URL = jdbc:mysql://localhost:3306/employeedb</p>
+        <p>User name = root</p>
+        <ul>
+            <li>Click on 'Test Connection' button. You should get 'Database connection is
+                successfull with driver class
+                com.mysql.jdbc.Driver , jdbc url jdbc:mysql://localhost:3306/employeedb and user
+                name root' message if the
+                database connection is successful.
+            </li>
+        </ul>
+
+        <p>
+            <br/>
+            <img src="images/quick-start/add_data_source.png" alt="Create Data source"/>
+            <br/>
+            <p>Figure 3: Create Data source</p>
+            <br/>
+            
+        </p>
+
+
+        <p>Click on 'Save' button. You will see the created data source as follows.</p>
+
+        <p>
+            <br/>
+            <img src="images/quick-start/added_data_sources.png"
+                 alt="Preview of added data sources"/>
+            <br/>
+            <p>Figure 4: Created data sources list</p>
+            <br/>
+     
+        </p>
+
+        <ul>
+            <li>Next, click on 'Next' button at the Data Sources. Initially your service does not
+                include any queries.
+            </li>
+            <li>Click on 'Add New Query' to add a new query to our service. 'Add New Query' window
+                will be displayed.
+                Enter the following values there.
+            </li>
+        </ul>
+        <p>Query ID = DataQueryEmp</p><br/><br/>
+        <p>SQL Statement = select id, name, address from employee</p>
+        <p>Grouped by Element = Employees</p>
+        <p>Row name = Employee</p>
+        <p>Row namespace = http://test.org</p>
+        <ul>
+            <li>Now click on 'Add New Output Mapping' button in 'Add New Query' window. 'Add New
+                Output Mapping' window will
+                be appeared. Add three output mappings as follows
+            </li>
+        </ul>
+        <ol type="1">
+            <li>
+                <p>Mapping Type = Element</p>
+                <p>Output field name = id</p>
+                <p>Data source column Name = id</p>
+                <p>Schema Type = xs:string</p>
+            </li>
+            <li>
+                <p>Mapping Type = Element</p>
+                <p>Output field name = name</p>
+                <p>Data source column Name = name</p>
+                <p>Schema Type = xs:string</p>
+            </li>
+            <li>
+                <p>Mapping Type = Attribute</p>
+                <p>Output field name = address</p>
+                <p>Data source column Name = address</p>
+                <p>Schema Type = xs:string</p>
+            </li>
+        </ol>
+
+
+        <p>We have added one query to our data service configuration. In this example, we do not use
+            an SQL statement
+            which accepts input parameters. Therefore, we can ignore 'Input Mappings'.
+        </p>
+        <p>
+            <br/>
+            <img src="images/quick-start/configur_query.png" alt="Add New Query"/>
+            <br/>
+            <p>Figure 5: Add New Querry</p>
+            
+        </p>
+
+        <ul>
+            <li>Save the query and click on 'Next' button at the operations. You will be directed to
+                the 'Add Operations' page where you
+                can add new operations to the data service configuration.
+            </li>
+        </ul>
+        <p>
+            <img src="images/quick-start/add-operations.png" alt="Add New Operations"/>
+            <br/>
+            <p>Figure 6: Add New Operations</p>
+         
+        </p>
+
+        <p>
+            You will notice that the query we have created in the previous step will be shown in
+            'Query' dropdown of the
+            'Add New Operation' window. Provide a name for the operation (e.g:- getEmployees) and
+            click on 'Save'.
+        </p>
+        <ul>
+            <li>
+                Click on 'Finish' to deploy the service
+            </li>
+        </ul>
+        <p>
+            Your new data service will be listed in 'Deployed Services' page as follows.
+        </p>
+
+        <p>
+            <br/>
+            <img src="images/quick-start/services.png" alt="Deployed Services"/>
+            <br/>
+            <p>Figure 7: Deployed Services</p>
+          
+        </p>
+
+
+        <h2 id="invokeservice">Invoking Data Service</h2>
+
+        <p>
+            In this section, we'll look at two different ways to invoke our data service without
+            writing single line of
+            code. First we will invoke our data service using 'Tryit' utility which integrated in to
+            WSO2 Data Service
+            Server Management console. Then we invoke it using a simple HTTP GET request.
+        </p>
+        <ul>
+            <li>Click on 'EmployeeDataService' in 'Deployed Services' page. You will be directed to
+                'Service Management'
+                page as follows.
+            </li>
+        </ul>
+        <p>
+            <br/>
+            <img src="images/quick-start/service-mgt.png" alt="Service Management"/>
+            <br/>
+            <p>Figure 8: Service Management</p>
+     
+        </p>
+
+        <ul>
+            <li>Select 'Try This Service' link. Following page will be displayed.</li>
+        </ul>
+        <p>
+            <br/>
+            <img src="images/quick-start/try-it.png" alt="Try it page of EmployeeDataService"/>
+            <br/>
+            <p>Figure 9: Try-it</p>
+        
+        </p>
+
+        <p>Click on 'getEmployees' button to invoke our data service. You will get the response
+            message in the same
+            page. Note that employee id and name will be returned as xml elements and address will
+            be wrapped as an
+            attribute. This is due to our output mapping configuration at step 2 of the wizard. We
+            have configured id
+            and name as element mapping types and address as attribute mapping type. You can edit
+            them and observe the
+            associated changes in response very easily using Tryit.
+        </p>
+        <ul>
+            <li>Now, we will invoke the same data service using our second approach, HTTP GET
+                request. Copy and paste the
+                dollowing URL in your browser and hit enter.
+            </li>
+        </ul>
+        <p>
+            <a href="http://localhost:9763/services/EmployeeDataService/getEmployees">
+                http://localhost:9763/services/EmployeeDataService/getEmployees
+            </a>
+        </p>
+        <p>You will get the same result back as in 'Tryit' approach</p>
+
+
+        <p>For more details on the Data services see
+            <a href="user_guide.html">User Guide</a>
+        </p>
+
+    </body>
+</html>

@@ -1,0 +1,41 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<html>
+    <body>
+        <p>[<a
+                href="http://wso2.com/products/data-services-server/">Download</a>]
+            | [<a href="index_docs.html">Documentation Home</a>] | [<a
+                    href="release_notes.html">Release Note</a>]
+        </p>
+        <h1>JMX Statistics</h1>
+        <h2>Introduction</h2>
+        <p>
+            <a href="http://wso2.org/projects/data-services-server/java">WSO2 Data Services Server</a> provides statistics on the data services it has deployed, using Java Management Extensions (JMX) technology. However using this interface, the server itself, deploying/undeploying services and any operational changes cannot be done.
+        </p>
+        <h2>Accessing the Registered Data Services MBeans</h2>
+        <p>
+            A JMX MBean is registered per data service that is deployed. The Object Name of an MBean has the following format,
+"org.wso2.carbon.dataservices.jmx:section=Services,service=$SERVICE_NAME", where $SERVICE_NAME is the name of the data service. The MBeans contains information regarding the data service's data sources, queries etc.. A sample session using the "jconsole" tool is shown below in Figure 1.
+            <p>
+                <img src="./images/user-guide/jmx-stats/figure01.png"/>
+                <br/>
+                Figure 1: Accessing Data Services JMX statistics.
+            </p>
+        </p>
+     
+    </body>
+</html>

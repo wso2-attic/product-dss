@@ -1,0 +1,49 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<html>
+    <body>
+        <p>[<a
+                href="http://wso2.org/downloads/solutions/data-services">Download</a>]
+            | [<a href="../index_docs.html">Documentation Home</a>] | [<a
+                href="../release_notes.html">Release Note</a>]
+        </p>
+        <h1>Deploying Data Services Samples</h1>
+        <h2>Introduction</h2>
+        <p>
+            The data services samples consists of several data services configuration files (.dbs), which are to be deployed in <a href="http://wso2.org/projects/data-services-server/java">WSO2 Data Services Server</a>. Also if a data service contains a services.xml file, it should also be deployed alongside the .dbs file.
+        </p>
+        <h2>Deploy</h2>
+        <p>
+            Follow the below steps for deploying the data services samples.
+            <ol>
+                <li>Stop the currently running Data Services Server - This is recommended, to clean the current sample database and redeploy the services.
+                </li>
+                <li>Remove the current sample database and remove existing sample data services. <br />
+                    # cd CARBON_HOME/samples <br />
+                    # ant clean
+                </li>
+                <li>Deploy all the samples. <br />
+                    # ant
+                </li>
+                <li>Start the Data Services Server <br />
+                    # cd CARBON_HOME/bin <br />
+                    # wso2server.bat|sh
+                </li>
+            </ol>
+        </p>
+    </body>
+</html>

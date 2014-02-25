@@ -1,0 +1,293 @@
+/* ---------------- template styles ------------------------- */
+
+table#main-table td#header {
+	background-image: url( ../images/dss-header-region-bg.png);
+    height:80px;
+}
+
+table#main-table td#menu-panel {
+	border-right: solid 1px #777777;
+	background-image: url(../images/menu-panel-bg.png);
+	background-position: right top;
+	background-repeat: repeat-y;
+}
+
+
+/* ---------------- header styles ------------------ */
+div#header-div {
+    background-image: url( ../images/dss-header-back.png);
+    height:80px;
+}
+
+div#header-div div.left-logo {
+	background-image: url( ../images/logo.png );
+	   margin-left: 11px;
+    margin-top: 25px;
+	
+	width:246px;
+	height:50px;
+}
+
+div#header-div div.right-logo {
+	/*background-image:url("../images/right-logo-bg.gif");
+	background-position:right top;
+	background-repeat:no-repeat;*/
+	color:#00447c;
+	height:32px;
+	margin-right:20px;
+	line-height: 30px;
+	margin-top:7px;
+	padding-right:0px;
+	padding-top:5px;
+}
+div#header-div div.header-links {
+	margin-top:-20px;
+}
+div#header-div div.header-links div.right-links {
+	margin-right: 0px;
+	height: 35px;
+	padding-top: 0px;
+}
+div#header-div div.header-links div.right-links ul {
+	background:none;
+	padding-left: 25px;
+	padding-right: 15px;
+	padding-top: 0px;
+	padding-bottom: 7px;
+}
+#logged-user{
+    color:#555;
+}
+/* ------------- menu styles ---------------------- */
+div#menu {
+}
+
+div#menu ul.main {
+}
+
+div#menu ul.main li {
+}
+
+div#menu ul.main li.normal {
+}
+
+div#menu ul.main li a.menu-home {
+background-image:url(../images/menu_header.png);
+height:28px;
+}
+
+div#menu ul.main li.menu-header {
+	background-image: url(../images/server-menu-header.png);
+	background-position: left bottom;
+	background-repeat: repeat-x;
+	height: 32px;
+	line-height: 32px;
+}
+
+div#menu ul.main li a.menu-default {
+}
+
+div#menu ul.main li a.menu-default:hover {
+	background-color: #EFECF5;
+	border-bottom: solid 1px #C2B7D8;
+	border-top: solid 1px #C2B7D8;
+	color: #00447C;
+}
+
+div#menu ul.sub {
+}
+
+/* -------------- child no-01 styles -------------- */
+
+div#menu ul.sub li.normal {
+
+}
+
+div#menu ul.sub li a.menu-default {
+}
+
+/* ----------- child no-01 (disabled) styles ------------------- */
+
+div#menu ul.sub li a.menu-disabled-link {
+	}
+
+	div#menu ul.sub li a.menu-disabled-link:hover {
+	}
+
+/* -------------- child no-02 styles -------------- */
+
+div#menu ul.sub li.normal ul.sub li a.menu-default {
+
+}
+
+/* -------------- child no-03 styles -------------- */
+
+div#menu ul.sub li.normal ul.sub li.normal ul.sub li a.menu-default {
+}
+
+/* ------------- footer styles -------------------- */
+
+div#footer-div div.footer-content div.poweredby {
+	background-image: url(../images/powered-synapse.gif);
+	background-position: right top;
+}
+
+/* ---- login styles ----- */
+
+
+/* --------------- table styles -------------------- */
+
+.tableOddRow{background-color: white;}
+.tableEvenRow{background-color: #EFECF5;}
+
+.button:hover{
+	/*background-image:url(../images/esb-button-bg-hover.gif);
+	border:solid 1px #8268A8;*/
+}
+
+/* =============================================================================================================== */
+
+
+
+.cornerExpand {
+    position: relative;
+    top: 3px;
+    left: -12px;
+    cursor: pointer;
+}
+
+.cornerCollapse {
+    position: relative;
+    top: 3px;
+    left: -12px;
+    cursor: pointer;
+}
+
+/* chanaka */
+
+.form-table td{
+   padding-bottom:5px !important;
+   padding-left:5px !important;
+   padding-top:5px !important;
+   padding-right:10px !important;
+}
+.form-table td div.indented{
+    padding-left:7px !important;
+    color:#595959 !important;
+}
+.form-table-left{
+width:80px;
+}
+table#main-table td#header{
+    height:80px;
+}
+
+.longTextField{
+width:270px;
+}
+.rowAlone{
+padding-top:10px;
+padding-bottom:10px;
+}
+.tabedBox{
+border:solid 1px #cccccc;
+margin-left:10px;
+padding:10px;
+margin-bottom:10px;
+}
+/* chanaka end */
+
+a.fact-selector-icon-link {
+    background-image: url( ../images/facts-selector.gif );
+    background-repeat: no-repeat;
+    background-position: left top;
+    padding-left: 20px;
+    line-height: 17px;
+    height: 17px;
+    float: left;
+    position: relative;
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 3px;
+    white-space: nowrap;
+}
+table#main-table td#middle-content {
+background-color:#f5f6fb;
+}
+div#middle{
+background-color:#f5f6fb;
+}
+div#middle h2{
+color:#312845;
+}
+div#menu ul.main li.menu-disabled-link{
+	background-color:#eff1f9;
+}
+/* -------------- Sidew menu styles --------------- */
+
+.menu-panel-buttons{
+  
+
+    background-color: #827d91;
+    border-right: 1px solid #CCCCCC;
+    border-top: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
+
+    -moz-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    border-radius: 2px;
+
+    margin-bottom:10px;
+    height:48px;
+    padding: 10px 4px;
+    padding-bottom:10px;
+
+
+    text-align: center;
+}
+.menu-panel-buttons span{
+    color: #fff;
+	background-color:transparent;
+}
+.menu-panel-buttons span.ie{
+	margin-left:0px;
+    *margin-left:-10px;
+    margin-top:-10px;
+}
+div.selected{
+    border:solid 1px #000;
+}
+div.selected{
+    -moz-box-shadow: 3px 3px 3px #888;
+    -webkit-box-shadow: 3px 3px 3px #888;
+    box-shadow: 3px 3px 3px #888;
+}
+div.selected span{
+    color:#c9e3f2;  
+	background-color:transparent;
+}
+#menu-panel-button0{
+    height:20px;
+    margin-top:5px;
+    margin-bottom:5px;
+    margin-left:2px;
+    cursor:pointer;
+}
+
+.showToHidden{
+    background:transparent url(../images/leftRightSlider-dark.png) no-repeat 0 0;
+}
+.hiddenToShow{
+    background:transparent url(../images/leftRightSlider-dark.png) no-repeat -35px 0;
+}
+.vertical-menu{
+    background-color: #b0bcc3;
+    width:20px;
+}
+
+/* -- Footer Styles */
+
+table#main-table td#footer {
+    background-color: #464646;
+}

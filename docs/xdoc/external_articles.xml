@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--
+  ~  Copyright (c) 2005-2008, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+  ~
+  ~  WSO2 Inc. licenses this file to you under the Apache License,
+  ~  Version 2.0 (the "License"); you may not use this file except
+  ~  in compliance with the License.
+  ~  You may obtain a copy of the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~  Unless required by applicable law or agreed to in writing,
+  ~  software distributed under the License is distributed on an
+  ~  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  ~  KIND, either express or implied.  See the License for the
+  ~  specific language governing permissions and limitations
+  ~  under the License.
+  ~
+  -->
+
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd" >
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=iso-8859-1"/>
+        <title>
+            External Articles
+        </title>
+        <link href="css/greg-docs.css" rel="stylesheet"/>
+        <link href="styles/dist-docs.css" rel="stylesheet" type="text/css" media="all"/>
+    </head>
+    <body xml:lang="en">
+
+        <p>[<a href="http://wso2.com/products/data-services-server/">Download</a>] |
+            [<a href="index.html">Documentation Index</a>] | [<a
+                    href="release_notes.html">Release Note</a>]
+        </p>
+
+        <h1>
+            External Articles
+        </h1>
+        <p>
+            <!--strong>Extending the Registry</strong-->
+            <ul>
+                <li>
+                    <a href="http://wso2.org/blog/sumedha/3082">How to use MySQL 5 INOUT variables
+                        in Data Services?
+                    </a>
+                </li>
+                <li>
+                    <a href="http://wso2.org/library/2617">Bringing relational data into web</a>
+                </li>
+                <li>
+                    <a href="http://wso2.org/blog/sumedha/3029">How to call MySQL 5 Stored Function
+                        from Data Service?
+                    </a>
+                </li>
+            </ul>
+            <!--strong>Installation and Deployment</strong-->
+            <ul>
+                <li>
+                    <a href="http://wso2.org/blog/sumedha/2623">How to call MySQL 5 stored procedure
+                        from Data Services ?
+                    </a>
+                </li>
+                <li>
+                    <a href="http://wso2.org/blog/sumedha/3051 ">Getting started with Data Services
+                        using Oracle
+                    </a>
+                </li>
+                <li>
+                    <a href="http://wso2.org/blog/sumedha/2573">Getting started with Data Services
+                        using WSO2 WSAS-2.0 - using Derby as database
+                    </a>
+                </li>
+            </ul>
+            <!--strong>Configuring the Registry</strong-->
+            <ul>
+                <li>
+                    <a href="http://wso2.org/blog/sumedha/2590">Getting started with Data Service
+                        Samples - Movie - using Derby as database
+                    </a>
+                </li>
+                <li>
+                    <a href="http://wso2.org/blog/sumedha/3175">How to use Data Service nested query
+                        feature
+                    </a>
+                </li>
+            </ul>
+            <!--strong>Governance</strong-->
+            <ul>
+                <li>
+                    <a href="http://wso2.org/blog/sumedha/3158">How to expose CSV file as a data
+                        service
+                    </a>
+                </li>
+                <li>
+                    <a href="http://wso2.org/blog/sumedha/2581">How to expose Excel 97-2002
+                        spreadsheet as a Data Service using WSAS - 2.0
+                    </a>
+                </li>
+                <li>
+                    <a href="http://wso2.org/blog/sumedha/4051">How to RESTify your data with WSO2
+                        Data Services?
+                    </a>
+                </li>
+                <li>
+                    <a href="http://wso2.org/blog/sumedha/4046">How to use Data Services multiple
+                        datasource support?
+                    </a>
+                </li>
+                <li>
+                    <a href="http://wso2.org/blog/sumedha/4081">How to connect to JNDI bound
+                        datasource from WSO2 Data Services?
+                    </a>
+                </li>
+                <li>
+                    <a href="http://wso2.org/blog/sumedha/4663">How to access data service nested
+                        query results using a client stub?
+                    </a>
+                </li>
+            </ul>
+            <!--strong>Lifecycle Management</strong-->
+            <ul>
+                <li>
+                    <a href="http://wso2.org/library/articles/content-filtering-data-services-user-roles">
+                        How to filter data service response content?
+                    </a>
+                </li>
+                <li>
+                    <a href="http://wso2.org/library/tutorials/use-oracle-ref-cursors-wso2-data-services-server">
+                        How to use Oracle Ref cursors with Data Services?
+                    </a>
+                </li>
+                <li>
+                    <a href="http://wso2.org/library/knowledge-base/large-scale-data-transfer-data-services-streaming">
+                        Large Scale Data Transfer with Data Services Streaming
+                    </a>
+                </li>
+                <li>
+                    <a href="http://wso2.org/forum/thread/8692#comment-12288">Example on Connecting
+                        to a Sybase Server
+                    </a>
+                </li>
+            </ul>
+
+        </p>
+
+        <h2>
+            Other External Content
+        </h2>
+        <p>
+            <ul>
+                <li>
+                    <a href="http://www.xml.com/pub/a/2007/10/25/data-sources-as-web-services.html">
+                        Data Sources as Web services
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.infoq.com/news/2007/11/data-services-in-soa;jsessionid=7BC59AD6C77B6037F9D96D8F44523933">
+                        Data Services in SOA: Issues and Possible Solutions
+                    </a>
+                </li>
+                <li>
+                    <a href="http://wso2.org/wiki/display/wsf/Data+Services+and+Resources">
+                        Specification
+                    </a>
+                </li>
+
+            </ul>
+        </p>
+    </body>
+</html>
+

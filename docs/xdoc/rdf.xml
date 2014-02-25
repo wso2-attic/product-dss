@@ -1,0 +1,147 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <body>
+        <p>[<a
+                href="http://wso2.com/products/data-services-server/">Download</a>]
+            | [<a href="index_docs.html">Documentation Home</a>] | [<a
+                    href="release_notes.html">Release Note</a>]
+        </p>
+<h1>Step-by-Step Guide on Creating Data Services Using RDF Resource</h1>
+<P><b>Introduction</b> 
+</P>
+<P>WSO2 Data Services Server supports to expose data in RDF(Resource
+Description Framework) as a service. This guide will use an online
+RDF resource hosted by NASA, to demonstrate RDF data extraction
+feature supported by wso2 data services server. The guide will be
+using the RDF data source available @
+(<a href="http://nasa.dataincubator.org/~search.rdf?query=all">http://nasa.dataincubator.org/</a>)
+which contains all the aircraft information for the past years. 
+</P>
+<P> <img alt="DS" src="images/ds-wizard/rdf/rdf_file.png"/>
+</P>
+<P>Figure 1: Sample RDF File</P>
+<P><b>Step 1: Start by giving a name</b> 
+</P><hr/>
+<P>Lets begin to create the data service by clicking on &quot;Create&quot;
+link in left menu under Services/Add/Data Service. It requires to
+enter a name to the Data service. Lets name it as AircraftInfoService
+and click on &quot;Next&quot;. 
+</P>
+<P> <img alt="DS" src="images/ds-wizard/rdf/step1.png"/>
+</P>
+<P>Figure 2: Create Data Service</P>
+<P><b>Step 2: Enter details about your RDF data source</b> 
+</P><hr/>
+<P>Second step is to enter details about the data source which we are
+using to create the service. Not only from an online hosted file, you
+can also use a RDF file which is in your local machine or the
+registry. 
+</P>
+<P> <img alt="DS" src="images/ds-wizard/rdf/step2.png"/>
+</P>
+<P>Figure 2: Configure RDF Data Source</P>
+<P><b>Step 3: Configure how the response should look like</b> 
+</P><hr/>
+<P>To extract information you need to create a query along with the
+structure of the response. 
+<br />Give a name to the query, and select the data source name from the
+drop down, which is created in previous step. Give the SPARQL query
+to extract the specific aircraft information from the data source.</P>
+
+<P>The following SPARQL query is used to extract aircraft information</P>
+<P><pre >PREFIX space: &lt;http://purl.org/net/schemas/space/&gt; 
+PREFIX relevance: &lt;http://a9.com/-/opensearch/extensions/relevance/1.0/&gt; 
+PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt;       
+PREFIX dc: &lt;http://purl.org/dc/elements/1.1/&gt;                                                 
+
+SELECT ?homepage ?name ?alternateName ?internationalDesignator ?mass ?score ?launch ?agency ?description 
+WHERE { 
+  ?craft foaf:homepage ?homepage. 
+  ?craft foaf:name ?name. 
+  ?craft space:alternateName ?alternateName. 
+  ?craft space:internationalDesignator ?internationalDesignator. 
+  ?craft space:mass ?mass. 
+  ?craft relevance:score ?score. 
+  ?craft space:launch ?launch. 
+  ?craft space:agency ?agency. 
+  ?craft dc:description ?description. 
+}</pre ></P>
+<br />
+<P>To give parameters to the query, input mapping section can be used.
+Following query extract aircraft information according to the agency
+therefore, we will take agency as an input parameter. Input
+parameters can be added by clicking &quot;Add Input Mappings&quot;
+and add the input mappings accordingly. 
+</P>
+<P>Enter a name for Grouped By Element and Row Name. You can also
+give a name space if you wish. Click on Add Output Mappings to map
+the response to output XML 
+</P>
+<P> <img alt="DS" src="images/ds-wizard/rdf/step4.png"/>
+</P>
+<P>Figure 3: Create New Query</P>
+<P> Once you have entered the output mapping
+details click on &quot;Main Configuration&quot; and click on &quot;Save&quot;
+button. 
+</P>
+<P> <img alt="DS" src="images/ds-wizard/rdf/step5.png"/>
+</P>
+<P>Figure 4: Add Output Mappings</P>
+<P>Created query will be listed as follows. Click on &quot;Next&quot;
+to create the operation.</P>
+<P> <img alt="DS" src="images/ds-wizard/rdf/step6.png"/>
+</P>
+<P>Figure 5: Created Query</P>
+<P><b>Step 4: Create a web service operation</b> 
+</P><hr/>
+<P>Enter a name for the operation and select the query from the drop
+down list. Click on &quot;Save&quot;. 
+</P>
+<P> <img alt="DS" src="images/ds-wizard/rdf/step7.png"/>
+</P>
+<P>Figure 6: Add operation</P>
+<P>Once you click on &quot;Finish&quot; your data service will be
+created and deployed. 
+</P>
+<P><b>Step 5: Service deployed</b> <hr/>
+</P>
+<P>You can see the deployed service by clicking on &quot;List&quot;
+under Manage/Services left menu. Deployed AircraftInfoService service
+will be list as follows. 
+</P>
+<P> <img alt="DS" src="images/ds-wizard/rdf/step8.png"/>
+</P>
+<P>Figure 7: Deployed Services</P>
+<P>Click on the &quot;EarthquakeInfoService&quot;. It will direct to
+the Service Dashboard (AircraftInfoService). You can click on &quot;Edit
+Data Service (XML Edit)&quot; and view the created data service as a
+XML. 
+</P>
+<P> <img alt="DS" src="images/ds-wizard/rdf/edit_service.png"/>
+</P>
+<P>Figure 9: Edit data service</P>
+<P><b>Step 6: Try your service</b> 
+</P><hr/>
+<P>Click on &quot;Try It&quot; link to invoke the service.</P>
+<P> <img alt="DS" src="images/ds-wizard/rdf/step9.png"/>
+</P>
+<P>Figure 10: Invoke service using Try-it</P>
+    </body>
+</html>

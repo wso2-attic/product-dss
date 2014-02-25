@@ -1,0 +1,89 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <body>
+        <p>[<a
+                href="http://wso2.com/products/data-services-server/">Download</a>]
+            | [<a href="index.html">Documentation Index</a>] | [<a
+                    href="release_notes.html">Release Note</a>]
+        </p>
+
+        <h1>Welcome Page</h1>
+
+        <p>Once WSO2 Data Services Server 3.1.1 has been successfully installed (see Installation
+            Guide for
+            installation details), start
+            the WSO2 Data Services server. Then, launch a Web browser instance and point it to the
+            URL
+            <a href="https://localhost:9443">https://localhost:9443</a>
+            or
+            <a href="http://localhost:9763">http://localhost:9763</a>
+            (when running in Stand-alone mode)
+            or
+            <a href="https://localhost:9443/ds">https://localhost:9443/carbon</a>
+            or
+            <a href="http://localhost:9763/ds">http://localhost:9763/carbon</a>
+            (when deployed inside a Servlet container) if you are using the default settings. This
+            will take you to the welcome
+            page page of the WSO2 Data Services Server 3.1.1 Management Console as shown below.
+        </p>
+        <p>
+            <b>Note:</b>
+        </p>
+        <p>WSO2 WSO2 Data Services Server has two transport listeners: HTTP and HTTPS. By default,
+            the HTTP listener opens on port
+            9763, while the HTTPS listener opens on port 9443. The administrator functionality is
+            exposed only via the HTTPS
+            port.
+        </p>
+        <p>You can now read all the WSO2 Data Services Server documents by pointing your Web browser
+            to
+            <a
+                    href="https://localhost:9443/docs/index.html">
+                https://localhost:9443/docs/index.html
+            </a>
+            or
+            <a
+                    href="http://localhost:9763/docs/index.html">
+                http://localhost:9763/docs/index.html
+            </a>
+            (Stand-alone) or
+            <a
+                    href="https://localhost:9443/docs/index.html">
+                https://localhost:9443/docs/index.html
+            </a>
+            or
+            <a
+                    href="https://localhost:9763/docs/index.html">
+                https://localhost:9763/docs/index.html (Servlet)
+            </a>
+            if you are
+            using the default settings.
+        </p>
+        <p>
+            <img alt="DS" src="images/welcome_page.jpg"/>
+
+        </p>
+
+        <p>
+            <b>Figure: Welcome Page</b>
+        </p>
+    </body>
+</html>
+

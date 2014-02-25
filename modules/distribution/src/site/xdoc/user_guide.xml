@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+      "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+  <title></title>
+</head>
+
+<body>
+        <p>[<a
+                href="http://wso2.com/products/data-services-server/">Download</a>]
+            | [<a href="index_docs.html">Documentation Home</a>] | [<a
+                    href="release_notes.html">Release Note</a>]
+        </p>
+<h1>User Guide</h1>
+
+<p>This document provides information and instructions on the functionality of
+WSO2 Data Services UI console.</p>
+
+<p>Your feedback on WSO2 Data Service Server is most appreciated. Please send them to
+our <a href="mail-lists.html">mailing lists</a>.</p>
+
+<h2>Content</h2>
+
+<div class="toc">
+<ul>
+  <li><a href="index_docs.html">Home</a></li>
+  <li><a href="sign_in.html">Signing In</a></li>
+  <li><a href="rdbms.html">Data Source Support</a>
+    <ul>      
+	    <li><a href="rdbms.html">RDBMS</a></li>
+            <li><a href="cassandra.html">Cassandra</a></li>
+	    <li><a href="excel.html">Excel</a></li>
+	    <li><a href="csv.html">CSV</a></li>
+	    <li><a href="rdf.html">RDF</a></li>
+            <li><a href="web.html">Web Resource</a></li>
+	    <li><a href="google_spread_sheet.html">Google Spreadsheet</a></li>
+    </ul>
+  </li>
+  <li><a href="manage_data_services.html">Manage Services</a> 
+    <ul>      
+      <li><a href="rdbms.html">Create new service</a></li>   
+      <li><a href="manage_data_services.html#EditService">Edit Service</a></li>          
+      <li><a href="manage_data_services.html#DeleteService">Delete Service</a></li>      
+      <li><a href="manage_data_services.html#UploadService">Upload Service</a></li>
+      <li><a href="wip_services.html">WIP Services</a></li>
+    </ul>
+  </li>
+  <li><a href="namespace_handling.html">Namespace Handling</a></li>
+  <li><a href="role_based_content_filtering.html">Role-Based Content Filtering</a></li>
+  <li><a href="batch_requests.html">Batch Request Support</a></li>
+  <!--li><a href="secureVault.html">Secure Vault Support</a></li-->
+  <li><a href="boxcarring.html">Boxcarring Support</a></li>
+  <li><a href="xa-dataSources.html">Distributed Transactions Support</a></li>
+  <li><a href="custom_datasources.html">Custom Data Source Support</a></li>
+  <li><a href="binary_data.html">Binary Data Support</a></li>
+  <li><a href="array_data_type.html">Array Data Type Support</a></li>
+  <li><a href="advanced_datasource_prop.html">Advanced Data Source Properties in RDBMS Data Sources</a></li>
+  <li><a href="dynamic_user_auth.html">Dynamic User Authentication</a></li>
+  <li><a href="advanced_query_prop.html">Advanced Query Properties</a></li>
+  <li><a href="export.html">Query Result Export</a></li>
+  <li><a href="nested_query.html">Nested Queries</a></li>
+  <li><a href="complex_types.html">Complex Elements</a></li>
+  <li><a href="generate_response.html">Generate Response</a></li>
+<li><a href="return_generated_keys.html">Return Generated Keys</a></li>
+<li><a href="sql_dialects.html">SQL Dialects Support</a></li>
+  <li><a href="named_param.html">Named Parameter Support</a></li>
+  <li><a href="default_vals.html">Handling Default Values</a></li>
+  <li><a href="rdfuc2.html">Generate RDF Resources</a></li>
+  <li><a href="validation.html">Input Validation Logic</a>
+    <ul>
+      <li><a href="validation.html#builtin">Built-in</a></li>
+      <li><a href="validation.html#custom">Custom</a></li>
+    </ul>
+  </li>
+
+  <li><a href="ds_generator.html">Data Service Generator</a></li>
+  <li><a href="eventing.html">Configure Eventing</a></li>
+  <li><a href="scheduled_tasks.html">Configure Scheduled Task</a></li> 
+  <li><a href="jmx_stats.html">JMX Statistics</a></li>
+  <li><a href="security_userguide.html">Security</a>
+    <ul>
+      <li><a href="user.core/admin_guide.html">User Core Admin Guide</a></li>  
+      <li><a href="security_userguide.html#userstoremgt">User Stores Management</a></li>
+      <li><a href="security_userguide.html#usergroupmgt">User Groups Management</a></li>
+      <li><a href="security_userguide.html#keystoremgt">Keystore Management</a></li>
+      <li><a href="security_userguide.html#usermgt">Users Management</a></li>
+    </ul>
+  </li>
+  <!--li><a href="dashboard_userguide.html">Dashboard</a></li-->  
+  <li><a href="transports_userguide.html">Manage Transports</a></li>
+  <li><a href="manage_logging_userguide.html">Logging Configuration</a> </li>
+  <li><a href="restart_server.html">Restart Server</a></li>
+  <li><a href="#">Monitoring</a>
+    <ul>
+      <li><a href="statistics_userguide.html">Statistics</a></li>
+      <li><a href="monitor_logs_userguide.html">Logs</a></li>
+      <li><a href="tracer_userguide.html">Tracer</a></li>
+    </ul>
+  </li>
+  <li><a href="udt_support.html">UDT Support</a></li>
+  <li><a href="secure_vault.html">Secure Vault</a></li>
+  <li><a href="rest_support.html">REST Support</a></li>
+  <!--li><a href="sql_driver.html">Write support for Excel and Google Spread Sheets</a></li-->
+</ul>
+</div>
+</body>
+</html>

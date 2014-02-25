@@ -1,0 +1,150 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<html>
+    <body>
+        <p>[<a
+                href="http://wso2.org/downloads/solutions/data-services">Download</a>]
+            | [<a href="../index_docs.html">Documentation Home</a>] | [<a
+                href="../release_notes.html">Release Note</a>]
+        </p>
+	<h1>Resources Sample</h1>
+	<h2>Introduction</h2>
+
+	<p>
+	WSO2 data services supports making data available as a set of REST style resources. This sample will be demonstrating how data can be exposed as REST 		resources through a data service and also how the service can be invoked in REST style.
+	</p>
+
+	<h2>Prerequisites</h2>
+
+	<p>
+	The sample data service "ResourcesSample" should be deployed as per the instructions mentioned in <a href="deploying_samples.html">Deploying Samples</a> 	section.
+	</p>
+
+	<h2>Database Definition</h2>
+
+	<p>
+	The scenario is based on a possible database used in a small company to handle information about the products that are produced in the company. 
+	</p>
+
+	<h2>Service Definition</h2>
+
+	<p>
+	There are seperate queries/resources written for specific tasks of the products; resources are defined inorder to access data through REST calls. The 		resources implemented in the service are listed as follows. 
+	</p>
+
+	 <ul>
+		<li>Create Product - Use HTTP POST request to insert new products.
+		<br/>
+		Resource Path : product
+		<br/>
+		Resource Method : POST
+		</li>
+
+		<br/>
+
+		<li>Update Product - Use HTTP PUT request to update product infomation.
+		<br/>
+		Resource Path : product
+		<br/>
+		Resource Method : PUT
+		</li>
+		
+		<br/>
+
+		<li>GET Product - Use HTTP GET request to retreive product infomation for a given product code.
+		<br/>
+		Resource Path : product/{productCode}
+		<br/>
+		Resource Method : GET
+		</li>
+
+		<br/>
+
+		<li>Get All Products - Use HTTP GET request to get all the products.
+		<br/>
+		Resource Path : products
+		<br/>
+		Resource Method : GET
+		</li>
+		
+		<br/>
+
+		<li>Delete Product - Use HTTP DELETE request to delete a given product from the database.
+		<br/>
+		Resource Path : product/{productCode}
+		<br/>
+		Resource Method : DELETE
+		</li>
+	</ul>
+
+	<h2>Running the Sample</h2>
+
+	<p>
+	The service can be invoked in REST style via curl. You can execute the following commands in command line to invoke each of the resources.
+	</p>
+
+	<ul>
+		<li>
+		Create Product.
+		<br/>
+		curl -X POST -d '&lt;product&gt;&lt;productCode&gt;S10_100&lt;/productCode&gt;&lt;productName&gt;1969 Harley Davidson Ultimate Chopper&lt;/productName&gt;&lt;productLine&gt;Motorcycles&lt;/productLine&gt;&lt;quantityInStock&gt;7933&lt;/quantityInStock&gt;&lt;buyPrice&gt;48.81&lt;/buyPrice&gt;&lt;/product&gt;' --header 'Content-Type: application/xml' http://localhost:9763/services/samples/ResourcesSample.HTTPEndpoint/product
+		</li>
+		
+		<br/>
+
+		<li>
+		Update Product.
+		<br/>
+		curl -X PUT -d '&lt;product&gt;&lt;productCode&gt;S10_100&lt;/productCode&gt;&lt;productName&gt;1969 Harley Davidson Ultimate Chopper&lt;/productName&gt;&lt;productLine&gt;Motorcycles&lt;/productLine&gt;&lt;quantityInStock&gt;8000&lt;/quantityInStock&gt;&lt;buyPrice&gt;48.81&lt;/buyPrice&gt;&lt;/product&gt;' --header 'Content-Type: application/xml' http://localhost:9763/services/samples/ResourcesSample.HTTPEndpoint/product
+		</li>
+
+		<br/>
+
+		<li>
+		GET Product
+		<br/>
+		curl -X GET http://localhost:9763/services/samples/ResourcesSample.HTTPEndpoint/product/S10_100
+		</li>
+
+		<br/>
+
+		<li>
+		Get All Products
+		<br/>
+		curl -X GET http://localhost:9763/services/samples/ResourcesSample.HTTPEndpoint/products
+		</li>
+
+		<br/>
+		
+		<li>
+		Delete Product
+		<br/>
+		curl -X DELETE http://localhost:9763/services/samples/ResourcesSample.HTTPEndpoint/product/S10_100
+		</li>
+	</ul>
+
+    </body>
+</html>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,49 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <body>
+        <p>[<a
+                href="http://wso2.com/products/data-services-server/">Download</a>]
+            | [<a href="index_docs.html">Documentation Home</a>] | [<a
+                    href="release_notes.html">Release Note</a>]
+        </p>
+<h1>UDT Support</h1>
+<p><b>Introduction</b></p>
+<p style="text-align:justify">Apart from the standard data types such as Varchar, Integer, etc, WSO2 Data Services also supports the querying of custom objects which are usually called User Defined Types(UDT). This paticular feature, further enables users to query UDTs with ordinary SQl queries as well as OUT parameters of stored procedures.</p>
+
+<h2>Query UDTs with ordinary SQL queries</h2>  
+<p style="text-align:justify">In this option, it is only required to define an output mapping corresponding to the UDT to be queried. Here, one important thing to notice is that, the attributes of a particular UDT is queried depending on the order they are specified in the UDT. For example, if the UDT carries the structure "SampleUDT{Id Integer, Name Varchar(100)}", then the attribute index "0" maps to the attribute "Id". Similarly, attribute "Name" can be retrieved via the index "1". The following image depicts how it is done in the Data Services Wizard.</p>  
+<p><img alt="Define the necessary output mapping" src="./images/user-guide/udt-support/udt_with_normal_query.png"/>
+   <br/>
+   <b>Figure 01: Define the necessary output mapping</b>
+</p>
+
+<h2>Query UDTs via OUT parameters of a stored procedure</h2>  
+<p style="text-align:justify">
+Not only with usual SQL queries but, it is also possible to retrieve the values of UDTs via the OUT parameters defined in stored procedures. This requires the user to define an input mapping as an OUT parameters as well as to define an output mappings to actually retrieve the values of the UDT attributes.
+</p> 
+<p style="text-align:justify">Let's first see how we can define the Input mapping in order to register an OUT parameter to be able to retrieve the value of a sample UDT called "PERSON_T".</p>
+<p><img alt="Register an OUT parameter as an Input mapping" src = "./images/user-guide/udt-support/register_out_parameter.png"/>
+   <br/>
+  <b> Figure 02: Register an OUT parameter as an Input mapping</b>
+</p>
+<p style="text-align:justify">The next required step is to define ouput parameters to actually retrieve UDT attribute values similarly to what's described under the topic "Query UDTs via OUT parameters of a stored procedure".</p>
+    </body>
+</html>
+

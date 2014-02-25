@@ -1,0 +1,46 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="DssTestSuite" parallel="false">
+    <parameter name="useDefaultListeners" value="false"/>
+
+    <test name="DSS-Schedule-task-tests" parallel="false" verbose="2">
+        <packages>
+            <package name="org.wso2.carbon.dss.scheduletask.test"/>
+        </packages>
+    </test>
+
+    <test name="DSS-service-tests" parallel="false" verbose="2">
+        <packages>
+            <package name="org.wso2.carbon.dss.fileservice.test"/>
+            <package name="org.wso2.carbon.dss.services.test"/>
+            <package name="org.wso2.carbon.dss.syntax.test"/>
+            <package name="org.wso2.carbon.dss.faulty.service.test"/>
+        </packages>
+    </test>
+
+    <test name="DSS-datasource-tests" parallel="false" verbose="2">
+        <packages>
+            <package name="org.wso2.carbon.dss.datasource.test"/>
+        </packages>
+    </test>
+                                                                   g
+    <test name="DSS-jms-tests" parallel="false" verbose="2">
+        <packages>
+            <package name="org.wso2.carbon.dss.jmx.statistics.test"/>
+        </packages>
+    </test>
+
+    <test name="DSS-jira-issues-tests" parallel="false" verbose="2">
+        <packages>
+            <package name="org.wso2.carbon.dss.jira.issues.test"/>
+        </packages>
+    </test>
+
+
+    <test name="DSS-samples-tests" parallel="false" verbose="2">
+        <packages>
+            <package name="org.wso2.carbon.dss.samples.test"/>
+        </packages>
+    </test>
+
+</suite>

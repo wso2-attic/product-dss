@@ -1,0 +1,271 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <body>
+        <p>[<a
+                href="http://wso2.com/products/data-services-server/">Download</a>]
+            | [<a href="index_docs.html">Documentation Home</a>] | [<a
+                    href="release_notes.html">Release Note</a>]
+        </p>
+        <p>
+            <b>Introduction</b>
+        </p>
+        <hr/>
+        <p>WSO2 Data Services Server provides the capability of exposing data from Google spread
+            sheets.
+            You can use either private or public google spread sheets as the data source. 
+	   We can create google spread sheet datasources in two different modes.
+        </p>
+	<ul>
+	    <li><a href="#non_qmode">Non-Query mode</a></li>
+	    <li><a href="#qmode">Query-mode</a></li>
+	</ul>
+	<hr/>
+        <p>
+            <b>Sample Google Spread Sheet</b>
+        </p>
+        <hr/>
+        <p>Following is a sample spread sheet which is hosted in
+            <a href="https://spreadsheets.google.com/ccc?key=0Av5bU8aVtFjPdElrUVN3VmZlRkoyM1ZzVlE1MzdtbXc&amp;hl=en">
+                https://spreadsheets.google.com/ccc?key=0Av5bU8aVtFjPdElrUVN3VmZlRkoyM1ZzVlE1MzdtbXc&amp;hl=en
+            </a>
+        </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/google/step0.png"/>
+        <p>Figure 1: Sample google spread sheet</p>
+        <br/>
+	<h2 id="non_qmode">Google SpreadSheet Data Sources in non-query Mode</h2>
+        <p>
+            <b>Step 1: Start by giving a name</b>
+        </p>
+        <hr/>
+        <p>Lets begin to create the data service by clicking on "Create" link in left menu under
+            Services/Add/Data Service. We will name the data service as "GoogleSpreadSheet" and
+            click
+            on "Next" to enter the details for the data source.
+        </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/google/step1.png"/>
+        <p>Figure 2: Create data google spread sheet data service</p>
+        <br/>
+        <p>
+            <b>Step 2: Enter details about your Google Spread Sheet</b>
+        </p>
+        <hr/>
+        <p>After giving a data source id select the data source type as Google Spread Sheet and
+            enter
+            the url for the sheet. Note that public visibility is supported when 
+	    Google Spread Sheet is published on the web. To start publishing a spreadsheet to
+	    the web, select File > Publish to the web from the Spreadsheets user interface, and 
+	    then click the Start Publishing button. Use the URL generated there as the URL of the 
+            sheet.
+	    If the spread sheet is Private you have to enter the user name
+            and
+            the password for the sheet. Click on "Save" once you done with entering the details.
+        </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/google/step2.png"/>
+        <p>Figure 3: Configure data service</p>
+        <br/>
+        <p>
+            <b>Step 3: Enter google spread sheet and query details using which values will be
+                extracted.
+            </b>
+        </p>
+        <hr/>
+        <p>Click on "Add New Query" to enter a new query. Lets name the query as "getCustomers" and
+            select the data source which we created in the previous step. Enter the worksheet
+            details
+            and configure how the response look like.
+        </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/google/step3.1.png"/>
+        <p>Figure 4: Add query</p>
+        <br/>
+        <p>
+            <b>Step 4: Configure how the response should look like.</b>
+        </p>
+        <hr/>
+        <p>Lets create customer Number as element and customer name and city as attributes. Click on
+            "Mian Configuration" once you enter the output mappings and "Save" the query details.
+        </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/google/step3.2.png"/>
+        <p>Figure 5: Response configuration</p>
+        <br/>
+        <p>Once you add a query, it will be listed as follows.</p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/google/step4.png"/>
+        <p>Figure 6: View query</p>
+        <br/>
+        <p>
+            <b>Step 5: Create an operation</b>
+        </p>
+        <hr/>
+        <p>Add a new operation and select the created query. Save the created operation.</p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/google/step4.1.png"/>
+        <p>Figure 6: Add operation</p>
+        <br/>
+
+        <p>Existing operations will be listed as follows. Click on "Finish".</p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/google/step4.2.png"/>
+        <p>Figure 7: View operations</p>
+        <br/>
+
+        <p>
+            <b>Step 6: Service deployed</b>
+        </p>
+        <hr/>
+        <p>You can find the deployed service under Deployed services list.</p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/google/step5.png"/>
+        <p>Figure 8: Deployed services</p>
+        <br/>
+
+        <p>
+            <b>Step 7: Try your service</b>
+        </p>
+        <hr/>
+        <p>Simplest way to invoke and check your created service is using "Try It" option provided
+            in the service list. Click on "Try It" link and invoke the service by clicking on the
+            "getCustomers" button.
+        </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/google/step6.png"/>
+        <p>Figure 9: Invoke service using Try-it</p>
+        <br/>
+
+	<h2 id="qmode">Google SpreadSheet Data Sources in Query Mode</h2>
+	<p>This functionality allows users to query an Google Spreadsheet in a much familiar SQL-like manner, and expose it as a service.
+	Internally org.wso2.carbon.dataservices.sql.driver.TDriver class will be used as the SQL Driver. It is a JDBC driver implemenation
+	 to be used with tabular data models such as Google SpreadSheets, Excel sheets.
+	</p>
+        <p>
+            <b>Step 1: Start by giving a name</b>
+        </p>
+        <hr/>
+        <p>As we did earlier lets start by creating a new data service. Let's name it as GoogleSpreadSheetQueryMode. 
+        </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/google/step1_qmode.png"/>
+        <p>Figure 10: Create data google spread sheet data service</p>
+        <br/>
+        <p>
+            <b>Step 2: Enter details about your Google Spread Sheet</b>
+        </p>
+        <hr/>
+        <p>After giving a data source id select the data source type as 'Google Spreadsheet' and
+	   select "Use Query Mode" check box. Then enter the Google Spreadsheet name for 'SpreadSheet Name' and
+	    url for the sheet. 
+
+	    Note that public visibility is supported when 
+	    Google Spread Sheet is published on the web. To start publishing a spreadsheet to
+	    the web, select File > Publish to the web from the Spreadsheets user interface, and 
+	    then click the Start Publishing button. Use the URL generated there as the URL of the 
+            sheet.
+	    If the spread sheet is Private you have to enter the user name
+            and
+            the password for the sheet. Click on "Save" once you done with entering the details.
+        </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/google/step2_qmode.png"/>
+        <p>Figure 11: Configure data service</p>
+        <br/>
+	<p>As we did earlier click on "Next" to create the query.</p>
+
+	<p>
+            <b>Step 3: Define the Query, input parameters and output parameters. 
+            </b>
+        </p>
+        <hr/>
+        <p>Lets name the Query Id as googleQuery and select the data source which created in
+            previous step. You can see that UI will allow you to define the query, which was 
+	   not supported earlier. Enter the query as given in the below UI and click
+	  on 'Generate Input Mappings' to auto generate the input mapping parameters. 
+        </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/google/step3_qmode.png"/>
+        <p>Figure 12: Add query</p>
+        <br/>
+	<p>Once you add a query, click on "Next" to create the
+            operation.
+        </p>
+	<br/>
+
+	<p>
+            <b>Step 4: Create a web service operation</b>
+        </p>
+        <hr/>
+        <p>Click on "Add on Operation", and enter a name to the operation. Lets name it as
+            insertCustomers.
+            Select the created query from the drop down list and click on 
+	   'Add Query Params as Operation Params' to add the parmeters to operation.
+	    Now save the operation. 
+        </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/google/step4_qmode.png"/>
+        <p>Figure 13: Add operation</p>
+        <br/>
+
+	<p>Now Try-it the service and check the Google Spreadsheet for the newly added records.</p>
+
+	<h2>Supported query types</h2>
+<p>Currently, this feature provides support for basic SELECT, INSERT, UPDATE and DELETE functionalities.</p>
+<p>Note : Nested quries are currently not supported</p>
+<br/>
+<p>Eg:</p>
+<p>SELECT customerNumber,customerName,phone,state,country FROM customers</p>
+<p></p>
+<p><img alt="Sample SELECT query" src="./images/user-guide/sql-driver/select_query.png"/>
+   <br/>
+</p>
+<p>INSERT INTO customers(customerNumber,customerName,contactLastName) VALUES(?,?,?)</p>
+<p></p>
+<p><img alt="Sample INSERT query" src="./images/user-guide/sql-driver/insert_query.png"/>
+   <br/>
+</p>
+<p>UPDATE customers SET contactFirstName=?, contactLastName=? WHERE customerNumber=?</p>
+<p></p>
+<p><img alt="Sample UPDATE query" src="./images/user-guide/sql-driver/update_query.png"/>
+   <br/>
+</p>
+<p>DELETE FROM customers WHERE customerNumber=?</p>
+<p></p>
+<p><img alt="Sample DELETE query" src="./images/user-guide/sql-driver/delete_query.png"/>
+   <br/>
+</p>
+
+<p>Also we can create new Sheets and drop an existing sheet from a Google Spreadsheet.</p>
+
+<br/>
+<p>Eg:</p>
+<p>CREATE SHEET ProductCategories (ProductCode, Category)</p>
+<p></p>
+<p><img alt="Sample SELECT query" src="./images/user-guide/sql-driver/create_sheet_query.png"/>
+   <br/>
+</p>
+<p>DROP SHEET ProductCategories</p>
+<p></p>
+<p><img alt="Sample INSERT query" src="./images/user-guide/sql-driver/drop_sheet.png"/>
+   <br/>
+</p>
+    </body>
+</html>

@@ -1,0 +1,156 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<html>
+    <body>
+        <p>[<a
+                href="http://wso2.org/downloads/solutions/data-services">Download</a>]
+            | [<a href="../index_docs.html">Documentation Home</a>] | [<a
+                href="../release_notes.html">Release Note</a>]
+        </p>
+        <h1>RDBMS Sample</h1>
+        <h2>Introduction</h2>
+        <p>
+            Relational Databases are one of the mainly used data sources in data services. Here in this sample, we would be using an embedded H2 database
+in demonstrating the use of an RDBMS data source with <a href="http://wso2.org/projects/data-services-server/java">WSO2 Data Services Server</a>.
+        </p>
+        <h2>Prerequisites</h2>
+        <p>
+            The sample data services should be deployed as per the instructions mentioned in <a href="deploying_samples.html">Deploying Samples</a> section.
+        </p>
+        <h2>Running the Sample</h2>
+        <p>The sample service "RDBMSSampleService", can be run using the "tryit" tool, which is bundled with <a href="http://wso2.org/projects/data-services-server/java">WSO2 Data Services Server</a>, or a code-generated java client sample using this service is demonstrated in the <a href="ds_clients.html">Data Services Clients Sample</a> section.
+        </p>
+        <h2>Database Definition</h2>
+        <p>
+            The scenario is based on a possible database used in a small company to handle its internal affairs. Such as keeping employee and customer records, and information about the products that are produced in the company.
+        </p>
+        <h2>Service Definition</h2>
+        <p>
+            There are seperate queries/operations written for specific tasks of the company, the operations implemented in the service are listed as follows.
+            <ul>
+              <li>customersInBoston - Returns all the customers in the Boston area. This operation is linked to a query, which has the following simple SQL statement, "select  * from Customers where city = 'Boston' and country = 'USA'". 
+              </li>
+              <li>employeesByNumber - Returns employee details, given the employee number. This is an example of a data service operation, which takes in a parameter. The linked query's SQL statement is written in the following way, "select * from Employees where employeeNumber = ?", where the "?" represents the parameter which is defined in the query.
+              </li>
+              <li>customerAddress - Returns the customer's address, given the person's name.
+              </li>
+              <li>productsInfo - This operation lists information on all the products that are produced in the company.
+              </li>
+              <li>setEmployeeSalary - Sets the salary of an employee, given the employee number and the revised salary.
+              </li>
+              <li>setSalaryForEmployees - Sets the given salary to a given set of employees, here the usage of array data type is demonstrated.
+Where the employee numbers is an INTEGER ARRAY type.
+              </li>
+              <li>incrementEmployeeSalary - Increment the given employee's salary with the given amount.
+              </li>
+              <li>addEmployee - Adds a new employee records with the given information.
+              </li>
+            </ul>
+        </p>
+        <a name="boxcarring" /> 
+        <h2>Boxcarring Demo</h2>
+        <p>
+            Boxcarring support is enabled in this service. By enabling the boxcarring option, the service will contain "begin_boxcar", "end_boxcar" and "abort_boxcar" control operations. Boxcarring is roughly analogous to transactions we see in database systems. The usage of boxcarring can be demonstrated by executing the following operations using the "tryit" tool. NOTE: An employee with employeeNumber=1002 is already in the system, we will be using that for the demonstration.
+            <ol>
+              <li>Run "employeesByNumber" operation with the "employeeNumber" 1002. And we will see an output as seen below, <br />
+                  <p>
+                  <img src="../images/samples/rdbms_sample_img1.png" /> <br />
+                  Figure 1: Normal service invocation, without boxcarring.
+                  </p>
+                  <br />
+              </li>
+              <li>Run the "begin_boxcar" operation, now the service will switch to a boxcarring session.
+              </li>
+              <li>Run the "incrementEmployeeSalary" operation and give the values "1000" for increment and "1002" for the employeeNumber fields.
+              </li>
+              <li>Open up a second different type of a browser, this is done for the service to have a fresh session, so it wont be in the same boxcarring session as earlier. After switching browsers, run the "employeesByNumber" operation with employeeNumber=1002 to check the employee information, and you will see that the 
+salary has not been incremented. This is because, when the earlier request was made in boxcarring mode, the requests are not executed immediately, but will be executed when
+the boxcarring session is ended.
+              </li>
+              <li>Go back to the original browser, run the "incrementEmployeeSalary" operation another time and give the values "500" for increment and "1002" for the employeeNumber fields, and finally run the "end_boxcar" operation.
+              </li>
+              <li>Now in any of the two browsers, run the "employeesByNumber" operation with employeeNumber=1002 to check the information. The output will be similar to the following, <br />
+                  <p>
+                  <img src="../images/samples/rdbms_sample_img2.png" /> <br />
+                  Figure 2: Service invocation after a boxcarring session.
+                  </p>
+                  <br />
+                  <p>
+                  As we can see, both "incrementEmployeeSalary" operations has been executed at once when the boxcarring session was ended with "end_boxcar", thus resulting in the salary value 3500. If there's any error in any of the operations inside a boxcarring session, non of the operations will be executed and the service calls will be rolled back. A boxcarring session can also be explicitely cancelled by calling the "abort_boxcar" operation.
+                  </p>
+              </li>
+            </ol>
+        </p>
+
+        <a name="validators" /> 
+        <h2>Validators Demo</h2>
+        <p>
+            This service use validators, in places where the validity of the input parameters have to be checked. This is shown in the "addEmployeeQuery" operation,
+by having a length validator for the "lastName" field, where the length of the value should be between 3 and 20, and also the "email" field is validated using a pattern validator which uses an regular expression to check if it's a real email address. Follow the below steps to demonstrate this functionality,
+            <ol>
+              <li>Run the "addEmployee" operation with the parameters, employeeNumber=6001; lastName=AB; firstName=Nick; email=test@test.com; salary=1500. After running the operation, run the "employeesByNumber" operation with the parameter employeeNumber=6001, and you will see that you are not getting any results. This is because, the earlier "addEmployee" operation has failed, because of a validation failure, which is where lastName was only 2 characters long.
+              </li>
+              <li>Run the "addEmployee" with parameters, employeeNumber=6001; lastName=ABC; firstName=Nick; email=test-test.com; salary=1500. Here also you will see that the entry has not been added by checking with the "employeesByNumber" operation, because here, the email address is not valid.
+              </li>
+              <li>Run the "addEmployee" with parameters, employeeNumber=6001; lastName=ABC; firstName=Nick; email=test@test.com; salary=1500. Here the entry will be successfully added and you will get a result as the following when you call the "employeesByNumber" operation with the employeeNumber=6001. <br />
+                  <p>
+                  <img src="../images/samples/rdbms_sample_img3.png" /> <br />
+                  Figure 3: Successful service invocation with validators.
+                  </p>
+                  <br />
+              </li>
+            </ol>
+        </p>
+        <a name="default_values" /> 
+        <h2>Default Values Demo</h2>
+        <p>
+            The operation "addEmployee" uses the facility to give default values to certain fields, if they were chosen not to be given an explicit value. 
+Here the parameter "salary" is given the default value 1500. This can be checked by calling the "addEmployee" operation by giving the parameter values leaving out the "salary" value. For example, if the parameter values are employeeNumber=6002; lastName=Smith; firstName=John; email=john@smith.com, a call to the operation "employeesByNumber" with employeeNumber=6002 will result in the following, <br />
+            <p>
+            <img src="../images/samples/rdbms_sample_img4.png" /> <br />
+            Figure 4: Service invocation with default values.
+            </p>
+            <br />
+            <p>
+            As you see, alongside the given parameters, the "salary" value also have been set to 1500, which is the default value for that field, when the parameter value is not given.
+            </p>
+        </p>
+        <a name="query_result_export" /> 
+        <h2>Query Result Export Demo</h2>
+        <p>
+           The operations "thousandFive" and "incrementEmployeeSalaryEx" are used in demonstrating the query result export functionality in a data service. The query used in "thousandFive" operation exports the a result value with the name "increment". This increment value is taken in as a parameter by the query in the "incrementEmployeeSalaryEx" operation. Figure 5 shows the dbs fragment that defines this behaviour. <br/>
+            <p>
+            <img src="../images/samples/rdbms_sample_img5.png" /> <br />
+            Figure 5: Query result export sample dbs fragment.
+            </p>
+        </p>
+        <p>
+           This scenario can be tested using the try-it tool. Run the following operations sequentially.
+           <ul>
+             <li>employeeByNumber(1002)</li>
+             <li>begin_boxcar()</li>
+             <li>thousandFive()</li>
+             <li>incrementEmployeeSalaryEx(1002)</li>
+             <li>end_boxcar()</li>
+             <li>employeeByNumber(1002)</li>
+           </ul>
+        </p>
+        <p>
+            You will notice that the return values from the first "employeeByNumber()" call and the second will have a difference of 1500, which is the amount that was incremented within the boxcarring session, where the 1500 value was passed into "incrementEmployeeSalaryEx" operation by the "thousandFive" operation.
+        </p>
+    </body>
+</html>

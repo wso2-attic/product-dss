@@ -1,0 +1,32 @@
+<eventBrokerConfig xmlns="http://wso2.org/carbon/event/broker">
+    <eventBroker name="carbonEventBroker" class = "org.wso2.carbon.event.core.internal.CarbonEventBrokerFactory">
+         <!--<subscriptionManager name="subscriptionManager" class ="org.wso2.carbon.event.core.internal.subscription.inmemory.InMemorySubscriptionManagerFactory"/>-->
+        <topicManager name="TopicManager" class="org.wso2.carbon.event.core.internal.topic.registry.RegisistryTopicManagerFactory">
+            <topicStoragePath>event/topics</topicStoragePath>
+        </topicManager>
+        <subscriptionManager name="subscriptionManager"
+                             class="org.wso2.carbon.event.core.internal.subscription.registry.RegistrySubscriptionManagerFactory">
+            <topicStoragePath>event/topics</topicStoragePath>
+            <indexStoragePath>event/topicIndex</indexStoragePath>
+        </subscriptionManager>
+
+        <!--<delivaryManager name="delivaryManager"-->
+                         <!--class="org.wso2.carbon.event.core.internal.delivary.inmemory.InMemoryDelivaryManagerFactory">-->
+            <!--<minSpareThreads>25</minSpareThreads>-->
+            <!--<maxThreads>150</maxThreads>-->
+            <!--<maxQueuedRequests>100</maxQueuedRequests>-->
+            <!--<keepAliveTime>1000</keepAliveTime>-->
+            <!--<matchingManager name="matchingManager" class="org.wso2.carbon.event.core.internal.delivary.inmemory.InMemoryMatchingManagerFactory"/>-->
+            <!--<matchingManager name="matchingManager"-->
+                             <!--class="org.wso2.carbon.event.core.internal.delivary.registry.RegistryMatchingManagerFactory">-->
+                <!--<subscriptionStoragePath>event</subscriptionStoragePath>-->
+            <!--</matchingManager>-->
+        <!--</delivaryManager>-->
+        <delivaryManager name="delivaryManager"
+                         class="org.wso2.carbon.event.core.internal.delivary.jms.QpidJMSDelivaryManagerFactory">
+            <brokerList>tcp://localhost:5672</brokerList>
+            <clientid>clientid</clientid>
+            <virtualHost>carbon</virtualHost>
+        </delivaryManager>
+    </eventBroker>
+</eventBrokerConfig>

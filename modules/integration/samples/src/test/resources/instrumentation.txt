@@ -1,0 +1,3 @@
+org.wso2.carbon.datasource_
+org.wso2.carbon.dataservices.core_
+org.wso2.carbon.transaction.manager_

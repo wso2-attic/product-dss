@@ -1,0 +1,50 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <body>
+        <p>[<a
+                href="http://wso2.com/products/data-services-server/">Download</a>]
+            | [<a href="index_docs.html">Documentation Home</a>] | [<a
+                    href="release_notes.html">Release Note</a>]
+        </p>
+<h1>REST Support</h1>
+<p><b>Introduction</b> 
+</p>
+<p><a href="http://wso2.com/products/data-services-server/">WSO2 Data
+Services Server</a> supports making data available as a set of REST style resources additional to the SOAP services.
+</p>
+<h2>How to expose REST resources through a data service</h2>
+ 
+        <p>Once we follow the data-services UI wizard to create a new data-service, 'Add New Resources' UI comes as the final step of wizard. Here you can define REST resources that can be access as RESTful web-service.
+	</p>
+
+	<p>
+        <img src="./images/user-guide/rest-support/figure01.png"/>
+        <br/>
+        Figure 1: Defining a REST resource.
+         </p>
+
+        <h2>Demo</h2>
+        <p>
+            For a demonstration of the usage of REST support, refer to the
+            <a href="./samples/resources_sample.html">REST support demo</a>
+            in the samples.
+        </p>
+    </body>
+</html>

@@ -1,0 +1,173 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <body>
+        <p>[<a
+                href="http://wso2.com/products/data-services-server/">Download</a>]
+            | [<a href="index.html">Documentation Index</a>] | [<a
+                href="release_notes.html">Release Note</a>]
+        </p>
+        <h1>WSO2 Data Services Server</h1>
+
+        <p>WSO2 Data Services Server is a convenient mechanism to provide a Web service
+            interface for data stored in some data sources.
+        </p>
+
+        <p>Data sources such as relational databases, CSV files, Microsoft Excel files &amp; Google
+           spreadsheets can be easily service enabled using Data Services Server. Now, the data can
+           be exposed and accessed in a secure(using WS-Security) and reliable(using WS-ReliableMessaging)
+           manner, and is also available for mashing-up with other Web services.</p>
+
+        <p>WSO2 Data Services Server is built on Apache Axis2 and the related family of projects.</p>
+
+        <p>An open source product, WSO2 Data Services Server is available under the
+            <a target="_blank" href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache Software
+                License (v2.0)</a>
+            . This includes all of the extra integration and management functionalities as well.
+        </p>
+
+        <h2>Key Features</h2>
+
+        <ul>
+            <li>Service enable data locked in relational databases, CSV, Microsoft Excel files &amp;
+                Google spreadsheets</li>
+            <li>Zero code approach - simple XML descriptor file is all you need</li>
+            <li>Easy configuration via web based graphical console / Eclipse plugin wizard</li>
+            <li>Customizable XML output</li>
+            <li>Both REST &amp; WS-* support</li>
+            <li>Built-in Connection pooling support</li>
+            <li>Aggregate data from multiple data sources</li>
+            <li>Support for exposing Stored procedures &amp; functions</li>
+            <li>Built-in caching to enhace performance</li>
+            <li>Throttling to ensure that your database is never overloaded</li>
+            <li>Try-it tool to test the services on the fly</li>
+            <li>Secured access to data</li>
+            <li>Reliable delivery of messages</li>
+        </ul>
+
+
+        <h2>XML &amp; WS-* Standards Support</h2>
+        <ul>
+            <li>SOAP 1.1/1.2</li>
+            <li>WSDL 1.1</li>
+            <li>WSDL 2.0</li>
+            <li>MTOM, XOP &amp; SOAP with Attachments</li>
+            <li>WS-Addressing</li>
+            <li>WS-Security 1.0/1.1</li>
+            <li>WS-Trust</li>
+            <li>WS-SecureConversation</li>
+            <li>WS-SecurityPolicy</li>
+            <li>WS-ReliableMessaging</li>
+            <li>WS-Policy</li>
+            <li>XKMS</li>
+        </ul>
+
+        <h2>Open Source components included in WSO2 Data Services Server</h2>
+        <ul>
+            <li>Apache Axis2 (SOAP)</li>
+            <li>Apache Axiom (High performance XML Object Model)</li>
+            <li>Apache Rampart/Apache WSS4J (WS-Security)</li>
+            <li>Apache Rahas(WS-SecureConversation)</li>
+            <li>WSO2 Mercury (WS-ReliableMessaging)</li>
+            <li>WS-Addressing implementation in Axis2</li>
+            <li>Apache Neethi (WS-Policy)</li>
+            <li>WS-SecurityPolicy implementation in Axis2</li>
+            <li>Apache XML Schema</li>
+            <li>Apache Derby (Database)</li>
+            <li>Hibernate (Persistence)</li>
+            <li>Embedded Apache Tomcat</li>
+            <li>Apache Tribes (Group Communications Framework)</li>
+            <li>Spring Framework</li>
+        </ul>
+
+        <h2>Tools</h2>
+        <ul>
+            <li>AJAX based Management Console with complete administration capability
+                of the server</li>
+            <li>WSDL2Java/Java2WSDL &amp; and Try it(invoke/test data services on the fly)</li>
+            <li>IDE Integration</li>
+        </ul>
+
+        <h2>Reporting Problems</h2>
+      <p>
+        Issues can be reported using the public JIRA available at
+        <a href="https://wso2.org/jira/browse/CARBON" target="_blank">
+          https://wso2.org/jira/browse/CARBON
+        </a>
+        </p>
+        <h2>Contact us</h2>
+        <p>
+        WSO2 Data Services Server developers can be contacted via mailing lists:
+        <br></br>
+        <strong>For Users:</strong>
+        <a href="mailto:ds-java-user@wso2.org">ds-java-user@wso2.org</a>
+        <br></br>
+        <strong>For Developers:</strong>
+        <a href="mailto:ds-java-dev@wso2.org">ds-java-dev@wso2.org</a>
+        <br></br>
+        For details on subscriptions see
+        <a href="http://wso2.org/mail#ds-java">
+          http://wso2.org/mail#ds-java
+        </a>
+        <br></br>
+        Alternatively, questions can also be raised in the WSO2 Data Services Server forum:
+        <br></br>
+        <strong>Forum &#160;&#160;</strong>
+        <a href="http://wso2.org/forum/404" target="_blank">http://wso2.org/forum/404</a>
+        <br></br>
+      </p>
+      
+        <h2>Training</h2>
+        <p>
+            WSO2 Inc. offers a variety of professional Training Programs, including
+            training on general Web services as well as WSO2 WSAS, Apache Axis2, Data Services Server
+            and a number of other products.
+
+            For additional support information please refer to
+            <a target="_blank" href="http://wso2.com/training/course-catalog/">
+                http://wso2.com/training/course-catalog/</a>
+        </p>
+
+        <h2>Support</h2>
+
+        <p>
+            WSO2 Inc. offers a variety of development and production support
+            programs, ranging from Web-based support up through normal business
+            hours, to premium 24x7 phone support.
+            <br/>
+            <br/>
+
+            For additional support information please refer to
+            <a target="_blank" href="http://wso2.com/support/">http://wso2.com/support/</a>
+        </p>
+
+        <p>For more information on WSO2 Data Services Server, visit the
+            <a href="http://wso2.org/" target="_blank">WSO2 Oxygen Tank</a>
+        </p>
+
+
+        <p>Thank you for your interest in WSO2 Data Services Server</p>
+        <strong>
+            <em>-The WSO2 Data Services Server Development Team</em>
+        </strong>
+        <hr></hr>
+
+    </body>
+</html>
+

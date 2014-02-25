@@ -1,0 +1,98 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <body>
+        <p>[<a
+                href="http://wso2.com/products/data-services-server/">Download</a>]
+            | [<a href="index_docs.html">Documentation Home</a>] | [<a
+                    href="release_notes.html">Release Note</a>]
+        </p>
+        <h1>Exposing Relational Data in RDF Format</h1>
+        <p>
+            <b>Introduction</b>
+        </p> 	 
+        <hr/>
+        <p>WSO2 Data Services Server supports to expose relational data in RDF (Resource Description Framework)format as a service. This guide will demonstrate how CSV data source can be exposed as a RDF resource. To create CSV datasource
+        please refer <a href="csv.html">Create CSV DataServices User Guide.</a> 
+        </p>
+        <p>
+         <b>Step 1: Create a Query </b>
+        </p><hr/>
+        <p> In order to expose relational data in RDF format you need to configure the query accordingly. Therefore, we will add a new query to our CSVDataService.
+        </p>
+        <p>To Add Query, click on "Add New Query" under query section, and fill query details as shown below.
+        </p> 
+        <p>Since our output is RDF result set, we need to specify our output type as RDF. RDF Base URI is the format of rdf:about URI which uniquely identifies each resource. We will give RDF base URI as http://www.product/cd/{1}; this takes the CSV column 1(which is the ProductCode) value for each row and replaces it for the RDF about attribute inside rdf:Description element.
+        </p><p>
+         RDF Base URI :- http://www.product/cd/{1}
+        </p>
+         <p>
+         Row namespace :- http://www.product/cd#
+        </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/rdf/step10.png"/>
+        <p>Figure 1: Add Query</p>
+        <br/>
+        <p>
+            <b>Step 2: Generate the Response</b>
+        </p>
+        <hr/>
+        <p> To generate the response in RDF format click on "Add New Output Mappings" button. There are two mapping types in RDF Output mapping. 1) as a element, 2) as a resource.
+When mapping an element as a resource, you need to give the resource URI along with the column name which needs to be mapped in curly brackets as shown below. This way we can link two RDF resources together and create a relationship between each other.
+        </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/rdf/step11.png"/>
+        <p>Figure 2: Configure Output Mappings</p>
+        <br/>
+        <p>Once you create the output mappings you can can go back to main configuration and save your RDF query. </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/rdf/step12.png"/>
+        <p>Figure 3: Configured RDF Query</p>
+        <br/>
+        <p><b>Step 3: Add Resource</b>
+        </p>
+        <hr/>
+        <p> To create the RDF resource you need to map your RDF query as a resource in WSO2 Data Services. In order to create a resource you need to go to resource section
+        and click "Add New Resource". Give a suitable name and a description for your resource and give the resource method as "Get" and select the the rdfQuery created in the previous step
+        as the Query ID. Once we create the resource we can access our RDF resource via a rest call. Click "Finish" to deploy the Data Service.
+        </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/rdf/step13.png"/>
+        <p>Figure 4: Add New Resource</p>
+        <br/>
+        <p>
+            <b>Step 4: Invoke the service</b>
+        </p>
+        <hr/>
+        <p>You can invoke the created web service as a rest call by accessing the following URL <a href="http://10.100.0.170:9763/services/CSVSampleService.HTTPEndpoint/products">http://10.100.0.170:9763/services/CSVSampleService.HTTPEndpoint/products</a></p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/rdf/step14.png"/>
+        <p>Figure 5: Invoke service</p>
+        <br/>
+        <p>
+            <b>Step 5: Validate the RDF Resource</b>
+        </p>
+        <hr/>
+        <p>You can validate generated RDF response by using an  <a href="http://www.w3.org/RDF/Validator/">Online validator</a></p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/rdf/step15.png"/>
+        <p>Figure 6: Validated Results</p>
+        
+    </body>
+</html>

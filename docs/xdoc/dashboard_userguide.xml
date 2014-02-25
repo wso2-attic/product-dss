@@ -1,0 +1,123 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <body>
+        <p>[<a
+                href="http://wso2.com/products/data-services-server/">Download</a>]
+            | [<a href="index_docs.html">Documentation Home</a>] | [<a
+                    href="release_notes.html">Release Note</a>]
+        </p>
+        <h1>Dashboard</h1>
+        <p>The Dashboard is an Executive Information System, which gives users a
+            Bird's Eye view of their SOA by way of a set of
+            Gadgets. Users can use the default set of
+            Gadgets shipped with a WSO2 product as well as
+            adding their own.
+        </p>
+
+        <p><strong>Note:</strong>Users
+            without proper Role
+            permissions may not be able to manipulate Gadgets in System Dashboards.
+            Currently, in order to manipulate a system Dashboard, users must belong
+            to the Admin Role
+        </p>
+
+        <h2>Gadgets</h2>
+        <p>WSO2 Gadgets adhere to the<a href="http://code.google.com/apis/gadgets/docs/spec.html">
+            Google Gadget Specification</a>. This allows users to extend the default Dashboard by
+            adding new Gadgets.
+        </p>
+        <ul>
+            <li>
+                <h3>Adding a Gadget</h3>
+            </li>
+            <li>Click "Add Gadgets"</li>
+            <li>Enter the URL of the Gadget XML</li>
+
+            <li>
+                <h3>Configuring Gadgets</h3>
+            </li>
+            By default the gadget authors can set gadget preferences for each gadget.
+            These preferences can be viewed and modified by the users by opening the settings drop
+            down in gadgets preferences.
+            <li>
+                <h3>Copy a gadget</h3>
+            </li>
+
+            <li>Click on settings button</li>
+            <li>From the drop down menu, select "copy this gadget "</li>
+
+            <li>
+                <h3>Move a gadget</h3>
+            </li>
+
+            <li>Click on settings button</li>
+            <li>From the drop down menu, select "Move To "</li>
+            <li>Choose the tab that the gadget should be moved</li>
+
+        </ul>
+        <h2>Tabs</h2>
+
+        To minimize clutter, the Dashboard supports multiple Tabs.
+        <ul>
+            <li>
+                <h3>create new Tab</h3>
+            </li>
+
+            <li>Click "Add a New Tab"</li>
+            <li>Enter a name for the new Tab</li>
+
+            Once a Tab is created, users can select the newly created Tab and add
+            Gadgets to it as described
+            above.
+            <li>
+                <h3>Cloning a Tab</h3>
+            </li>
+            Dashboard users can clone an existing tab. To clone a tab;
+
+            <li>Click "Clone Active Tab"</li>
+            <li>Enter a name for the new Tab</li>
+        </ul>
+        <p>Once the Clone is created users can configure the gadgets.</p>
+        <h2>Finding Gadget Details</h2>
+        Once the gadget is added, the user can inquire the gadget details by clicking on about
+        gadget in the preferences
+        menu.
+        <ul>
+            <li>Click on settings button</li>
+            <li>From the drop down menu, select "About Gadget "</li>
+        </ul>
+
+        <h2>Further Reading</h2>
+        <ul>
+            <li>
+                <a href="http://code.google.com/apis/gadgets/docs/dev_guide.html" target="_blank">
+                    Gadget Developer's
+                    Guide
+                </a>
+            </li>
+            <li>
+                <a href="http://code.google.com/apis/gadgets/docs/spec.html" target="_blank">Google
+                    Gadget Specification
+                </a>
+            </li>
+        </ul>
+
+    </body>
+</html>

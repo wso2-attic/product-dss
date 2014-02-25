@@ -1,0 +1,64 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<html>
+    <body>
+        <p>[<a
+                href="http://wso2.com/products/data-services-server/">Download</a>]
+            | [<a href="index_docs.html">Documentation Home</a>] | [<a
+                    href="release_notes.html">Release Note</a>]
+        </p>
+        <h1>Complex Elements</h1>
+        <h2>Introduction</h2>
+        <p>
+            Complex Elements helps to represent the data in a tructured manner. For an example, let's take
+	    a table which contains customer information. There can be several columns which keep data related to the address,
+	    such as number, street, city, postal code. By using complex elements, this can be group into a one element called 
+	    address and represent this in more structured manner.            
+        </p>
+        <p>How to create complex elements</p>
+        <p>Following example illustrates how to use complex elements. Figure 1 shows the query, which the sample going to use.</p>
+        <p>
+           <img src="./images/user-guide/complex-elements/step1.png"/>
+           <br/>
+                Figure 1: Defining the query
+        </p>
+        <p>After defining the query, under output mappings, select the Mapping Type as complex element. By giving a Element
+        Name add on 'Add Nested Element' to enter the elements, which should come under nested elements. As for the figure
+        illustrating below addressline1, addressline2 and city are nested elements which comes under address element.</p>
+        <p>
+            <img src="./images/user-guide/complex-elements/step2.png"/>
+            <br/>
+                Figure 2: Adding complex elements
+        </p>
+        <p>
+          Added complex element will be listed under output mappings table as below.
+          <p>
+              <img src="./images/user-guide/complex-elements/step3.png"/>
+              <br/>
+                Figure 3: Added complex element
+          </p>
+        </p>
+        <p>
+          Try it will show the result as below.
+        </p>
+        <p>
+            <img src="./images/user-guide/complex-elements/step4.png"/>
+            <br/>
+                Figure 4: Invoke service using Try-it
+        </p>
+    </body>
+</html>

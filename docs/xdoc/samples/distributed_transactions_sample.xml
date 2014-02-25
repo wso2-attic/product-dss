@@ -1,0 +1,113 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<html>
+    <body>
+        <p>[<a
+                href="http://wso2.org/downloads/solutions/data-services">Download</a>]
+            | [<a href="../index_docs.html">Documentation Home</a>] | [<a
+                href="../release_notes.html">Release Note</a>]
+        </p>
+        <h1>Distributed Transactions Sample</h1>
+        <h2>Introduction</h2>
+        <p>
+            Distributed transactions are important when need to handle multiple transactions across multiple databases in a coordinated way. In this sample, We demonstrate the distributed transactions support
+in <a href="http://wso2.org/projects/data-services-server/java">WSO2 Data Services Server</a>.
+        </p>
+        <h2>Prerequisites</h2>
+        <p>
+            The sample data services should be deployed as per the instructions mentioned in <a href="deploying_samples.html">Deploying Samples</a> section.
+        </p>
+        <h2>Running the Sample</h2>
+        <p>The sample service "DTPSampleService", can be run using the "tryit" tool, which is bundled with <a href="http://wso2.org/projects/data-services-server/java">WSO2 Data Services Server</a>, or a code-generated java client sample using this service is demonstrated in the <a href="ds_clients.html">Data Services Clients Sample</a> section.
+        </p>
+        <h2>Service Definition</h2>
+        <p>
+            The scenario is based on a two separate banks which use two separate databases where distributed transactions get involves when doing bank transactions(transfer of money) between two accounts of different banks.
+        </p>
+        <p>
+            This service has used "distributed transactions with multiple data source" support. The
+            usage of distributed transactions can be demonstrated by executing the following
+            operations using the "tryit" tool.
+            <ol>
+                <li>Run "addAccountToBank1" operation with the "balance" 1000. This will create a
+                    new account in bank1 and return the bank id. We will see an output as seen
+                    below,
+                    <br/>
+                    <p>
+                        <img src="../images/samples/dtx_sample_image1.png"/>
+                        <br/>
+                        Figure 1: Add account to bank1.
+                    </p>
+                    <br/>
+                </li>
+                <li>Run "addAccountToBank2" operation with the "balance" 2000. This will create a
+                    new account in bank2 and return the bank id. We will see an output as seen
+                    below,
+                    <br/>
+                    <p>
+                        <img src="../images/samples/dtx_sample_image2.png"/>
+                        <br/>
+                        Figure 2: Add account to bank2.
+                    </p>
+                    <br/>
+                </li>
+                <li>Run the "begin_boxcar" operation, now the service will switch to a boxcarring
+                    session.
+                </li>
+                <li>Run the "addToAccountBalanceInBank1" operation and give the values "1" for
+                    "accountId" and "-100" for the "value" fields.
+                </li>
+                <li>Run the "addToAccountBalanceInBank2" operation and give the values "1" for
+                    "accountId" field and "h200" for the "value" field. Here we are giving incorrect
+                    value to the "value" field. So if distributed transaction works correctly whole
+                    transaction(including the previous operation done on addToAccountBalanceInBank1)
+                    should be aborted though transaction involves two different databases.
+                </li>
+                <li>Run the "end_boxcar" operation.
+                </li>
+                <li>We can run "getAccountBalanceFromBank1" and "getAccountBalanceFromBank2"
+                    operations to verify transactions has aborted and distributed transaction works
+                    properly.
+                </li>
+                <li>Run the "getAccountBalanceFromBank1" operation. We will see an output as seen
+                    below,
+                    <br/>
+                    <p>
+                        <img src="../images/samples/dtx_sample_image3.png"/>
+                        <br/>
+                        Figure 3: Get account balance from bank1.
+                    </p>
+                    <br/>
+                </li>
+                <li>Run the "getAccountBalanceFromBank2" operation. We will see an output as seen
+                    below,
+                    <br/>
+                    <p>
+                        <img src="../images/samples/dtx_sample_image4.png"/>
+                        <br/>
+                        Figure 4: Get account balance from bank2.
+                    </p>
+                    <br/>
+                    <p>
+                        As we can see, "addAccountToBank1" service call also rolled back because of
+                        the error in "addAccountToBank2" operation.
+                    </p>
+                </li>
+            </ol>
+        </p>
+    </body>
+</html>

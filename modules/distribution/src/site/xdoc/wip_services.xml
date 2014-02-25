@@ -1,0 +1,61 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+    <body>
+        <p>[<a
+                href="http://wso2.com/products/data-services-server/">Download</a>]
+            | [<a href="index_docs.html">Documentation Home</a>] | [<a
+                    href="release_notes.html">Release Note</a>]
+        </p>
+        <h1>WIP Services</h1>
+        <p>Users can now define a data service as a Work in Progress data service, which will help
+        to prevent the service being a faulty service while if the service is under construction or
+        any other reason.</p>
+        <p>While creating the data service using the create wizard, you can click on 'Save as Draft'
+        button to make the service as WIP service.</p>
+        <p>
+            <br/>
+            <img src="images/user-guide/wip/wip_in_wizard.png"
+                 alt="Create WIP Service"/>
+            <br/>
+            <br/>
+        </p>
+        <p>WIP service will be deployed and showed under deployed services list, yet it would not be
+        an Active service. Therefore service will not be provide options to get the wsdls, and the
+        try it options.</p>
+         <p>
+            <br/>
+            <img src="images/user-guide/wip/wip_service_list.png"
+                 alt="WIP Service in List"/>
+            <br/>
+            <br/>
+        </p>
+
+        <p>By click on 'Activate' link on the services dashboard or by finish the service
+        after editing the data service you can make the service to an activate service.</p>
+        <p>WIP Data Service file will be as follows.</p>
+        <p>
+            <br/>
+            <img src="images/user-guide/wip/wip_dbs.png"
+                 alt="WIP data service"/>
+            <br/>
+            <br/>
+        </p>
+    </body>
+</html>

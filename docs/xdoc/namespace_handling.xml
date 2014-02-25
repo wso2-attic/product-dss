@@ -1,0 +1,90 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<html>
+    <body>
+        <p>[<a
+                href="http://wso2.com/products/data-services-server/">Download</a>]
+            | [<a href="index_docs.html">Documentation Home</a>] | [<a
+                    href="release_notes.html">Release Note</a>]
+        </p>
+        <h1>Namespace Handling</h1>
+        <h2>Introduction</h2>
+        <p>
+            A data service is also a typical web service, with some added specialized functionality. So when talking about a web service, namespace handling is a crucial requirement, as every aspect is based on XML. In this section, we will show how <a href="http://wso2.org/projects/data-services-server/java">WSO2 Data Services Server</a> handles namespaces, from how the service namespace is set, to having multiple namespaces inside a complex result.
+        </p>
+        <h2>Service Namespace</h2>
+        <p>
+            The service namespace is the namespace that is used to unique identify a web service uniquely. In the WSDL which represents the service, it will be indicated with the "targetNamespace" attribute of the WSDL document element. The service namespace is set in the first step of the data services wizard. Figure 1 shows an example on how this is done.
+        </p>
+        <p><img src="./images/user-guide/namespaces/figure01.png"/><br/>
+                Figure 1: Setting the service namespace.
+        </p>
+        <h2>Data Service Result Row Namespace</h2>
+        <p>
+            This namespace is set by setting the "Row namespace" value in the query result section. This namespace basically associates the result rows or result entries a specific namespace. So all the subelements in that result raw will be under this namespace by default. Figure 2 shows how the row namespace is set for the query result element "customers".
+        </p>
+        <p><img src="./images/user-guide/namespaces/figure02.png"/><br/>
+                Figure 2: Setting the service row namespace.
+        </p>
+        After setting the row namespace, the element "customers"'s datatype falls under the given namespace, the XML Schema fragment in data types section taken from the service's WSDL is shown in Figure 3.
+        <p><img src="./images/user-guide/namespaces/figure03.png"/><br/>
+                Figure 3: XML Schema type definition of the "customers" element with the given namespace.
+        </p>
+        <h2>Setting Namespaces for Specific Elements in the Result</h2>
+        <p>
+            We may get the requirement that, only some of the elements in the result row should contain a specific namespace. This can be done by setting the namespace in the output mappings. Figure 4 shows how it is done.
+        </p>
+        <p><img src="./images/user-guide/namespaces/figure04.png"/><br/>
+                Figure 4: Setting a namespace for a single element in a result row.
+        </p>
+        <p>
+            Figure 5 shows how this is reflected in the WSDL.
+        </p>
+        <p><img src="./images/user-guide/namespaces/figure05.png"/><br/>
+                Figure 5: WSDL of a data service with a specific namespace assigned to the "country" element.
+        </p>
+        <h2>Setting Namespaces for Complex Results</h2>
+        <p>
+            In complex results in data services, result elements can be arbitrarily nested. These nested elements can have their own namespaces. Figure 6 shows how this is represented in a dbs file fragment, which has a complex result.
+        </p>
+        <p><img src="./images/user-guide/namespaces/figure06.png"/><br/>
+                Figure 6: Data service configuration with namespace assigned to a nested element.
+        </p>
+        <p>
+            The WSDL created for the above service is shown in Figure 7.
+        </p>
+        <p><img src="./images/user-guide/namespaces/figure07.png"/><br/>
+                Figure 7: Data service WSDL with namespaces provided to a complex result.
+        </p>
+        <p>
+            Finally, when this service is executed, the resulted XML is shown below in Figure 8.
+        </p>
+        <p><img src="./images/user-guide/namespaces/figure08.png"/><br/>
+                Figure 8: Data service result with complex types.
+        </p>
+        <h2>Namespace Inheritance in a Data Service</h2>
+        <p>
+            There are several places in a data service where you will define namespaces. And there's an inheritance order, where a top level defined namespace will be inherited by its children. The below list summarizes the inheritance order.
+            <ol>
+              <li>Service namespace will be applied to all the aspects of the data service, i.e. results</li>
+              <li>Result row namespace will override the service namespace and apply the given namespace for the whole result</li>
+              <li>Complex result, nested elements will override the result row namespace and it will assign the namespace to all its child elements</li>
+              <li>A namespace specifically assigned to an element will override the parent elements namespace and assign the given namespace to itself</li>
+            </ol>
+        </p>
+    </body>
+</html>

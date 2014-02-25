@@ -1,0 +1,70 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <body>
+        <p>[<a
+                href="http://wso2.com/products/data-services-server/">Download</a>]
+            | [<a href="index_docs.html">Documentation Home</a>] | [<a
+                    href="release_notes.html">Release Note</a>]
+        </p>
+<h1>SQL Dialects</h1>
+<p><b>Introduction</b></p>
+<p>This functionality allows users to create multiple SQL queries (for different SQL dialects) by checking the driver. This helps users to have driver specific functionalities/key words in their SQL statements in a single data service query.</p>
+<p>For example :- If a user wants to determine the data length retrieved from a column, there can be different ways to write the SQL query depending on the SQL driver.</p>
+<p>
+On MySQL and PostgreSQL :
+<br>SELECT OCTET_LENGTH(employeeNumber) FROM Employees;</br>
+
+<br/>
+<br>On Microsoft SQL Server :</br>
+<br>SELECT DATALENGTH(employeeNumber) FROM Employees</br>
+
+<br/>
+<br>On Oracle :</br>
+<br>SELECT LENGTH(employeeNumber) FROM Employees</br></p>
+
+<h2>How to use SQL Dialects support to avoid writing different data service queries</h2>
+<p>To avoid writing differant data service queries for the same operation depending on the configuration we can write all three SQL queries in the same data service query as shown below.</p>
+<p><img alt="Define dbs file" src="./images/user-guide/sql-dialects/dialect0.png"/>
+   <br/>
+</p>
+
+<h2>How to use SQL Dialects feature from DSS wizard</h2>
+<p>In 'Add Query' page we can define the sql query. This query will execute if non of the sql dialects matches.
+To define sql dialect, click on the 'Add New SQL Dialect' link as shown in the Figure 01.</p>
+<p><img alt="Add New SQL Dialect" src="./images/user-guide/sql-dialects/dialect1.png"/>
+   <br/>
+   <b>Figure 01: Add New SQL Dialect</b>
+</p>
+
+<p>Once click on Add New SQL Dialect it will redirect to the page shown in Figure 02 and from there you can select the required sql driver and define the sql statement.</p>
+<p><img alt="Click Add New SQL Dialect" src = "./images/user-guide/sql-dialects/dialect2.png"/>
+   <br/>
+  <b> Figure 02: Click on Add New SQL Dialect</b>
+</p>
+
+<p>If the sql query is same for multiple drivers, then we can select all these drivers at once and define the sql query.</p>
+<p><img alt="Selecting Multiple Drivers" src = "./images/user-guide/sql-dialects/dialect3.png"/>
+   <br/>
+  <b> Figure 03: Selecting Multiple Drivers</b>
+</p>
+
+<p>If you want to define sql dialect for other than the drivers in supported driver list, you can provide the driver prefix in provided text field and define the sql query.</p>
+    </body>
+</html>

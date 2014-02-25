@@ -1,0 +1,86 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <body>
+        <p>[<a
+                href="http://wso2.com/products/data-services-server/">Download</a>]
+            | [<a href="index_docs.html">Documentation Home</a>] | [<a
+                    href="release_notes.html">Release Note</a>]
+        </p>
+        <h1>Batch Request Support</h1>
+        
+        <p>
+            <b>Introduction</b>
+        </p>
+        <hr/>
+        <p>
+            <a href="http://wso2.com/products/data-services-server/">WSO2 Data Services Server</a>
+            provides the capability to support batch requests for operations, which contain multiple
+            parameter sets for a single request. When a data service is created with the batch
+            request mode set, for all the in-only operations (operations which does not have any
+            return value), a corresponding batch operation will also be automatically created. This
+            batch operation will taken in an array of parameters lists, compared to the single
+            parameter list the non-batch operation require.
+        </p>
+        <br/>
+        <h1>Configuring batch request for a data service</h1>
+        
+        <p>In order to make an operation supporting batch requests, first you need to enable the
+            batch request functionality in the data service. Therefore, enable the batch request
+            when creating the data service.
+        </p>
+        <br/>
+        <img alt="DS" src="images/user-guide/batch-requests/step1.png"/>
+        <p>Figure 1: Create batch request support data service</p>
+        <br/>
+
+        <p>Then you can define data sources, queries and operations for the data service.
+        Figure 2 and Figure 3 show you the sample insert query and the operation created for that.</p>
+        <br/>
+        <img alt="DS" src="images/user-guide/batch-requests/step2.png"/>
+        <p>Figure 2: Insert query</p>
+        <br/>
+        <img alt="DS" src="images/user-guide/batch-requests/step3.png"/>
+        <p>Figure 3: Operation</p>
+        <br/>
+
+        <p>Once the operations are created and the service is deployed, corresponding batch operation
+            will be created according to the given operation. For the above sample operation
+            "addEmployee", the corresponding batch operation is "addEmployee_batch_req". You can see
+            this by clicking the "Try this service" as in the Figure 4.
+        </p>
+        <br/>
+        <img alt="DS" src="images/user-guide/batch-requests/step4.png"/>
+        <p>Figure 4: Try it</p>
+        <br/>
+
+        <p>You can use "try it" tool for testing the batch requests support. For that click on
+            corresponding batch request operation. In this sample click on "addEmployee_batch_req"
+            operation. This will give you a request SOAP body for inserting one data set as shown in
+            the Figure 4.
+        </p>
+        <p>You can change the request SOAP body to handle multiple requests by repeating the SOAP body
+            use in single request. Figure 5 shows the request SOAP message for inserting two data sets
+            using the "addEmployee_batch_req" operation.</p>
+        <br/>
+        <img alt="DS" src="images/user-guide/batch-requests/step5.png"/>
+        <p>Figure 5: Try it for handle batch requests</p>
+        <br/>
+    </body>
+</html>

@@ -1,0 +1,62 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <body>
+        <p>[<a
+                href="http://wso2.com/products/data-services-server/">Download</a>]
+            | [<a href="index_docs.html">Documentation Home</a>] | [<a
+                    href="release_notes.html">Release Note</a>]
+        </p>
+
+        <h1>Signing In</h1>
+
+        <p>Signing will be available in the upper right hand corner. Sign In page will be as shown
+            below. When user clicks the
+            "sign in" link, it will automatically redirect the request to secure protocol https, if
+            user has already in http
+            protocol. Once the correct credentials has been provided, user will be logged in to the
+            Data Services Server management
+            mode.
+        </p>
+
+        <p>
+            <img alt="DS" src="images/loging.jpg"/>
+            <br clear="all"/>
+        </p>
+        <p>Figure 1: Sign In page</p>
+        <p>The default user name and password to sign into WSO2 Data Services Server Management
+            Console:
+        </p>
+        <p>
+            <b>User name :</b>
+            admin
+        </p>
+        <p>
+            <b>Password :</b>
+            admin
+        </p>
+        <p>To solve any problems with signing in, click "Sign-in Help"</p>
+        <p>The Sign In page contains links to the "FAQ" and the "About WSO2 Data Services Server"
+            page which gives an introduction
+            about WSO2 Data Services Server and WSO2 Inc.
+        </p>
+
+    </body>
+</html>
+

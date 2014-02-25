@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+ <var-def name='BooksInfo'>
+  <xslt>
+   <xml>
+    <html-to-xml>
+     <http method='get' url='http://www.sitepoint.com/html/'/>
+    </html-to-xml>
+   </xml>
+   <stylesheet>
+   <![CDATA[ <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+		<xsl:output method="xml" omit-xml-declaration="yes" indent="yes"/>
+		<xsl:template match="/">
+		 <BooksInfo>
+		    <xsl:for-each select="//li[@class='article-list_item  tile post-tile']">
+		    <Book>
+		     <Title><xsl:value-of select="article/section/h1"/></Title>
+		     <Author><xsl:value-of select="article/section/div[@class='contributor article_contributor']/p/a"/></Author>
+		    </Book>
+		  </xsl:for-each>
+		 </BooksInfo>
+		</xsl:template>
+	     </xsl:stylesheet>
+   ]]>
+   </stylesheet>
+  </xslt>
+ </var-def>
+</config>

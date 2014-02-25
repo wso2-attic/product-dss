@@ -1,0 +1,114 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<html>
+    <body>
+	<p>[<a
+                href="http://wso2.com/products/data-services-server/">Download</a>]
+            | [<a href="index_docs.html">Documentation Home</a>] | [<a
+                    href="release_notes.html">Release Note</a>]
+        </p>
+        <h1>Nested Queries</h1>
+        <h2>Introduction</h2>
+        <p>
+            When using a data service query, we may need to use the result of one query to be used as an input parameter of another query. This can be achieved using WSO2 Data Services Server which is explained here.
+        </p>
+        <h2>Step 1</h2>
+
+	<p>
+	First add the query with an input parameter which is evaluated as the result of another query. So here the 'customerNumber' input maping will be result of another query.
+	</p>
+
+	 <p>
+	    <img src="./images/user-guide/nested-query/nested-query1.png"/>
+            <br/>
+                Figure 1: Define Query 1
+         </p>
+
+	<h2>Step 2</h2>
+
+	<p>
+	Now add the query which will result 'customerNumber'. Below shows the query page with the query 'customerOrderSQL'.
+	</p>
+
+	 <p>
+	    <img src="./images/user-guide/nested-query/nested-query2.png"/>
+            <br/>
+                Figure 2: Define Query 2
+         </p>
+
+	<h2>Step 3</h2>
+
+	<p>
+	Then go to Add New Output Mapping option of the above query page and define the values as below. Here 'query' should be selected as the mapping type which will allow to select the query name and define query parameter mapping. Now as shown in below the query 'customerNameSQL' will be invoked with 'customerNumber' parameter which is a result of 'customerOrderSQL'.
+	</p>
+
+	 <p>
+	    <img src="./images/user-guide/nested-query/nested-query-mapping.png"/>
+            <br/>
+                Figure 3: Define Nested Query Mapping
+         </p>
+
+	<h2>Invoke Nested Query Operation</h2>
+
+	<p>
+	Add an operation with customerOrderSQL as follows. 
+	</p>
+
+	 <p>
+	    <img src="./images/user-guide/nested-query/nested-query-operation.png"/>
+            <br/>
+                Figure 4: Define Nested Query Operation
+         </p>
+	<br/>
+	<p>
+	So when we invoke the operation result will contain the nested result element 'Customer' which is returned from 'customerNameSQL' query. 
+	</p>
+
+	<p>
+	<img src="./images/user-guide/nested-query/nested-query-result.png"/>
+            <br/>
+                Figure 5: Nested Query Result
+	</p>
+
+	<h2>Nested Query Configuration Syntax with call-query</h2>
+
+	<p>
+	As described above, nested queries can be configured and invoked in data services. In the configuration syntax this is achieved by defining call-query element as a result element of a query.
+	</p>
+
+	 <p>
+	    <img src="./images/user-guide/nested-query/call-query-syntax.png"/>
+            <br/>
+                Figure 6: Call-query syntax for nested queries
+         </p>
+
+	<p> Here is the description of the child elements and attributes of the call-query.</p>
+
+	<p>
+	<ul>
+	<li>call-query/@href : Name of the nested query </li>
+	<li>call-query/with-param : Define the input parameter to be passed to nested query</li>
+	<li>call-query/with-param/@name : name of the parameter as defined in the nested query</li>
+	<li>call-query/with-param/@query-param : name of the parameter as returned from this query</li>
+	<li>call-query/with-param/@column : name of the parameter as returned from the immediate parent result element</li>
+	</ul>
+	</p>
+
+	<p>From call-query/with-param/@query-param and call-query/with-param/@column attributes only one is used in a single call-query/with-param element. </p>
+
+    </body>
+</html>

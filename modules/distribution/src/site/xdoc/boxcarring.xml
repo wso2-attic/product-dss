@@ -1,0 +1,144 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<html>
+    <body>
+        <p>[<a
+                href="http://wso2.com/products/data-services-server/">Download</a>]
+            | [<a href="index_docs.html">Documentation Home</a>] | [<a
+                    href="release_notes.html">Release Note</a>]
+        </p>
+        <h1>Boxcarring</h1>
+        <h2>Introduction</h2>
+        <p>
+            Boxcarring is a method of grouping a set of service calls together and executing them at
+            once. And also, when applicable, a boxcarring session would work in a transactional
+            manner, for example, when using with an RDBMS data source.
+            <a href="http://wso2.org/projects/data-services-server/java">WSO2 Data Services Server
+            </a>
+            fascilitates boxcarring by grouping service calls in the server side, so with this,
+            special service clients are not required, and as usual, successive service calls can be
+            made to the server to participate in a boxcarring session.
+        </p>
+        <h2>Prerequisites</h2>
+        <p>
+            In order for boxcarring to function, a transport that supports session management must
+            be used, i.e. HTTP. And the service client should also support handling session
+            management, which is, returning back session cookies when sent by the server. Axis2
+            Service Clients has full support for session management.
+        </p>
+        <h2>Enabling Boxcarring in a Data Service</h2>
+        <p>
+            By default, boxcarring is disabled in a data service, and has be explicitely enabled in
+            a data service. When using the wizard, at the initial "Service Details" page, select
+            "Enable Boxcarring" to "True".
+            <p>
+                <img src="./images/user-guide/boxcarring/figure01.png"/>
+                <br/>
+                Figure 1: Enabling Boxcarring in a data service.
+            </p>
+        </p>
+        <h2>How to use Boxcarring</h2>
+        <p>
+            When boxcarring is enabled in a data service, the following control operations are
+            automatically added to a data service.
+            <ul>
+                <li>begin_boxcar :- A boxcarring session must be started by calling this operation.
+                    Once this is called, the server is notified that, the subsequent operation calls
+                    belongs to this boxcarring session, and those calls will be stored in the
+                    server, without immediately executing them.
+                </li>
+                <li>end_boxcar :- After "begin_boxcar" is called, then follows the actual operations
+                    that belongs to the boxcarring session. The last step is executing the grouped
+                    operations and ending the boxcarring session. This is done with the "end_boxcar"
+                    operation, once this is called, all the grouped operations are executed at once,
+                    and the boxcarring session is ended.
+                </li>
+                <li>abort_boxcar :- If a certain error condition is occured while inside a
+                    boxcarring session, the user can chose to end the session by calling the
+                    "abort_boxcar" operation. This invalidates the boxcarring session and removes
+                    all the pending operations inside it.
+                </li>
+            </ul>
+            NOTE: When using boxcarring, after calling "end_boxcar" to execute the grouped
+            operations, a result will not be returned to the client, since there will be multiple
+            service calls executed at once. If there are any results in the operations of the
+            boxcarring session, they will be discarded.
+            <br/>
+            <h3>Using Axis2 Service Clients</h3>
+            <p>
+                When using Axis2 Service Clients in executing a boxcarring session. The session
+                management functionality must be enabled. The following code snippet shows the
+                process of enabling session in the client and invoking operations inside a
+                boxcarring session.
+            </p>
+            <div>
+                <pre style="font-family: monospace;">
+                    RDBMSSampleStub stub = new RDBMSSampleStub(epr);
+                    stub._getServiceClient().getOptions().setManageSession(true);
+                    stub.begin_boxcar();
+                    stub.addEmployee(49001, "Smith", "John", "john@test.com", 10000.0);
+                    stub.incrementEmployeeSalary(5000.0, 1002);
+                    stub.incrementEmployeeSalary(4500.0, 1003);
+                    stub.end_boxcar();
+                </pre>
+            </div>
+            <p>
+                In the above code, we see that in the 2'nd line, we are telling the client, that
+                sessions should be handled. This is required, or else the boxcarring sessions will
+                not be created in the server side. The after the "begin_boxcar" operation is called,
+                the following three operation calls belong to the newly created boxcarring session.
+                Then at the end when "end_boxcar" is being called, the earlier three operations will
+                be executed together as a group, in one transaction.
+            </p>
+
+            <p>
+                For a demonstration of the usage of boxcarring, refer to the
+                <a href="./samples/rdbms_sample.html#boxcarring">boxcarring demo</a>
+                in the samples.
+            </p>
+        </p>
+        <h2>Query Result Export</h2>
+        <p>
+            <p>
+            This is a feature that must be used in conjunction with boxcarring. What this provides is an approach for individual queries to be executed in a boxcarring session to communicate with each other. The concept is 'exporting' a specific result element so the next calling query will get that result element as a query parameter. So if you've two queries 'query1' and 'query2' that's executed sequentially in a boxcarring session, and if 'query1' has a specific result element, and that element is exported with the name 'foo', then 'query2' also has a query param named 'foo'. So when this boxcarring session is executed the query1's exported value will be passed into query2 as an input parameter. 
+            </p>
+            <p>
+            This feature is specially useful in situations where, if in a boxcarring session, some result value of an earlier executed query is required (e.g. a newly created primay key) for the execution of a subsequent query. In a situation like that, the query result export feature can be used. 
+            </p>
+            <p>
+               In Figure 2 shows how a result element can be declared to be exported with a given name.
+               <p>
+                <img src="./images/user-guide/boxcarring/figure02.png"/>
+                <br/>
+                Figure 2: Exporting a result element from a query.
+                </p>
+            </p>
+            <p>
+                There are two export types that can be used.
+                <ul>
+                  <li>SCALAR - The single element value is exported, if there were multiple occurences of this value, the last value will be exported.</li>
+                  <li>ARRAY - An array of values will be exported, each occurence of the value will be added to an array and will be exported.</li>
+                </ul>
+            </p>
+            <p>
+                For a demonstration of the usage of query result export, refer to the
+                <a href="./samples/rdbms_sample.html#query_result_export">query result export demo</a>
+                in the samples.
+            </p>
+        </p>
+    </body>
+</html>

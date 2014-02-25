@@ -1,0 +1,176 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <body>
+        <p>[<a
+                href="http://wso2.com/products/data-services-server/">Download</a>]
+            | [<a href="index_docs.html">Documentation Home</a>] | [<a
+                    href="release_notes.html">Release Note</a>]
+        </p>
+        <h1>Step-by-step guide on creating data Services using CSV file</h1>
+        <p>
+            <b>Introduction</b>
+        </p>
+        <hr/>
+        <p>WSO2 Data Services Server provides the capability of exposing data from a CSV (Comma
+            seperated
+            Text file) file as a service over the web. This guide will use a csv file which has
+            hosted by USGS
+            (<a href="http://www.usgs.gov">http://www.usgs.gov</a>). USGS provides reliable
+            scientific
+            information to describe &amp; understand the Earth. As part of its services, USGS hosts
+            latest
+            earthquake information in comma separated (CSV) text files online.
+        </p>
+        <p>This guide explains how to create a web service that will expose earthe quake information
+            - the SOA way, using WSO2 Data Services Server.
+        </p>
+
+        <p>The guide will be using the CSV file available @
+            <a href="http://earthquake.usgs.gov/eqcenter/catalogs/eqs1day-M1.txt">
+                http://earthquake.usgs.gov/eqcenter/catalogs/eqs1day-M1.txt
+            </a>
+            and expose its 9 columns
+            conforming to following xml format.
+        </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/csv/csv_file.png"/>
+        <p>Figure 1: Sample csv file</p>
+        <p>
+            <b>Step 1: Start by giving a name</b>
+        </p>
+        <hr/>
+        <p>Lets begin to create the data service by clicking on "Create" link in left menu under
+            Services/Add/Data Service. It requires to enter a name to the Data service.
+            Lets name it as EarthquakeInfoService and click on "Next".
+        </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/csv/step1.png"/>
+        <p>Figure 2: Create data service</p>
+        <br/>
+        <p>
+            <b>Step 2: Enter details about your CSV file</b>
+        </p>
+        <hr/>
+        <p>Second step is to enter details about the data source which we are using to create the
+            service. Not only from an online hosted file, you can also use a CSV file which is in
+            your local machine.
+        </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/csv/step2.png"/>
+        <p>Figure 2: Configure csv data source</p>
+
+        <p><h3>Column Separator Values</h3>
+          <ul>
+            <li>Single Character = "X" (X is any character), e.g. ","</li>
+            <li>Tab = "\t"</li>
+            <li>Space = "\s"</li>
+            <li>Any Unicode Character = "\uXXXX" (XXXX is the hexadecimal unicode value)</li>
+          </ul>
+        </p>
+
+        <p>Click on "Save" once you have entered the details about the data source. Created data
+            source will be listed as below. Click on "Next" to add queries.
+        </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/csv/step3.png"/>
+        <p>Figure 3: View data source</p>
+        <br/>
+        <p>
+            <b>Step 3: Configure how the response should look like</b>
+        </p>
+        <hr/>
+        <p>You can enter the details of the query to create the structure of the response you
+            wish.
+        </p>
+        <p>Enter a name to the query, and select the data source name from the drop down, which is
+            created in previous step. Enter a name for Grouped By Element and Row Name. You can also
+            give a namespace if you wish. Click on "Add Output Mapping" button to create how the
+            output should look like.
+            Once you have entered the output mapping details click on "Main Configuration" and lick
+            on "Save" button.
+        </p>
+	<br/>
+	<p>Please note that when you are defining each output parameter, you can give column number if you gave 'false'
+	for 'Contains Column Header Row' when creating the excel datasource. If you gave 'true'for 'Contains Column Header Row'
+	you have to specify column names. Since we gave 'false' in previous step we can define each output parameter with column numbers. </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/csv/step4.png"/>
+        <p>Figure 4: Create new querry</p>
+        <br/>
+        <p>Created query will be listed as follows. Click on "Next" to create the operation.</p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/csv/step5.png"/>
+        <p>Figure 5: View operation</p>
+        <br/>
+        <p>
+            <b>Step 4: Create a web service operation</b>
+        </p>
+        <hr/>
+        <p>Enter a name for the operation and select the query from the drop down list. Click on
+            "Save".
+        </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/csv/step6.png"/>
+        <p>Figure 6: Add operation</p>
+        <br/>
+        <p>Added operation will list as follows. Once you click on "Finish" your data service will
+            be created and deployed.
+        </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/csv/step7.png"/>
+        <p>Figure 7: View operation</p>
+        <br/>
+        <p>
+            <b>Step 5: Service deployed</b>
+        </p>
+        <hr/>
+        <p>You can see the deployed service by clicking on "List" under Manage/Services left menu.
+            Deployed EarthquakeInfoService service will be list as follows.
+        </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/csv/step8.png"/>
+        <p>Figure 8: Deployed services</p>
+        <br/>
+        <p>Click on the "EarthquakeInfoService". It will direct to the Service Dashboard
+            (EarthquakeInfoService). You can click on "Edit Data Service(XML Edit)" and view the
+            created data service as a xml.
+        </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/csv/csv_data_service.png"/>
+        <p>Figure 9: Edit data service</p>
+        <br/>
+        <p>
+            <b>Step 6: Try your service</b>
+        </p>
+        <hr/>
+        <p>Click on "Try It" link to invoke the servie.</p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/csv/step9.png"/>
+        <p>Figure 10: Invoke service using Try-it</p>
+        <br/>
+        <p>Browser URL - using SOAP HTTP binding</p>
+        <p>http://localhost:9762/services/EarthquakeInfoService/getEarthquakesForPastDay</p>
+        <p>https://10.100.1.145:9443/services/EarthquakeInfoService/getEarthquakesForPastDay</p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/csv/step10.png"/>
+        <p>Figure 11: Invoke services using SOAP HTTP binding</p>
+        <br/>
+    </body>
+</html>

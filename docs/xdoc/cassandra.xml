@@ -1,0 +1,122 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <body>
+        <p>[<a
+                href="http://wso2.com/products/data-services-server/">Download</a>]
+            | [<a href="index_docs.html">Documentation Home</a>] | [<a
+                    href="release_notes.html">Release Note</a>]
+        </p>
+    <h1>Step-by-Step Guide on Creating a Data Service Using Cassandra Data Source</h1>
+    <p><b>Introduction</b></p>
+    <p>WSO2 Data Services Server provides the capability of exposing data from a Cassandra data-source as a service. This guide will explain how a Data Service can be created using a Cassandra data-source.
+    </p>
+    <p>NOTE: WSO2DSS-3.2.0 has inbuilt support for Cassandra server versions 1.2.5 or later. If you need to use Cassandra server versions older than 1.2.5, then you need to uninstall the cassandra-jdbc-1.2.5 feature using 'Feature Management' and install the cassandra-jdbc-1.1.1/cassandra-jdbc-1.0.5 feature.
+    </p>
+
+        <p>Let's begin by creating a simple keyspace add some column family to work with. Here is the Cassandra-cli commands to perform this tasks.</p>
+        <p><b>Step 1: Create Keyspace and Column Family</b></p><hr/>
+        <p>create keyspace Keyspace1;</p>
+        <p>use Keyspace1;</p>
+        <p>create column family USER with comparator=UTF8Type and key_validation_class=UTF8Type<br />
+                and column_metadata=[{column_name: user_id, validation_class: UTF8Type, index_type: KEYS},<br />
+                {column_name: username, validation_class: UTF8Type},<br />
+                {column_name: password, validation_class: UTF8Type}];
+        </p>
+        <p>set USER[user1][username]='dinusha';<br />
+              set USER[user1][password]='mypwd';
+        </p>
+
+    <p><b>Step 2: Start by giving a name</b>
+    </p><hr/>
+    <p>Lets begin to create the data service by clicking on the 'Create'
+    link in left menu . It requires to enter a name to the Data service. Lets name it as CassandraSampleService
+    and click on Next.
+    </p>
+    <p> <img alt="DS" src="images/ds-wizard/cassandra/step1.png"/>
+    </p>
+    <p>Figure 1: Create Data Service</p>
+    <p><b>Step 3: Enter details about your Cassandra data-source</b>
+    </p><hr/>
+    <p>Next step is to enter details about the data-source which we are
+    using to create the service. Select the Data Source Type as "Cassandra" from the drop down list after you giving a name to the data source.
+    </p>
+    <p> <img alt="DS" src="images/ds-wizard/cassandra/step2.png"/></p>
+    <p>Figure 2: Configure Cassandra data-source</p>
+    <p>Created data source will list and click on "Next" to create the query.</p>
+           
+    <p><b>Step 4: Create Query</b>
+    </p><hr/>
+    <p>To extract information you need to create a query along with the
+    structure of the response.
+    </p>
+    <p>Give a name to the query, and select the data source name from the
+    drop down, which is created in previous step. Specify the CQL query and parameters. Save the query once you enter the details.
+    </p>
+
+    <p> <img alt="DS" src="images/ds-wizard/cassandra/step3.png"/>
+    </p>
+    <p>Figure 3: Create New Query</p>
+    <p>Click on &quot;Add Output Mapping&quot; button to create how the
+    output should look like. Once you have entered the output mapping
+    details click on &quot;Main Configuration&quot; and click on &quot;Save&quot;
+    button.
+    </p>
+    <p> <img alt="DS" src="images/ds-wizard/cassandra/step4.png"/>
+    </p>
+    <p>Figure 4: Add Output Mappings</p>
+    <p>Created query will be listed as follows. Click on &quot;Next&quot;
+    to create the operation.</p>
+
+    <p><b>Step 5: Create a web service operation</b> <hr/>
+    </p>
+    <p>Enter a name for the operation and select the query from the drop
+    down list. Click on &quot;Save&quot;.
+    </p>
+    <p> <img alt="DS" src="images/ds-wizard/cassandra/step5.png"/>
+    </p>
+    <p>Figure 5: Add operation</p>
+    <p>Once you click on &quot;Finish&quot; your data service will be
+    created and deployed.
+    </p>
+    <p><b>Step 6: Service deployed</b> <hr/>
+    </p>
+    <p>You can see the deployed service by clicking on &quot;List&quot;
+    under Main/List left menu. Deployed CassandraSampleService service
+    will be list as follows.
+    </p>
+    <p> <img alt="DS" src="images/ds-wizard/cassandra/step6.png"/>
+    </p>
+    <p>Figure 6: Deployed Services</p>
+    <p>Click on the &quot;CassandraSampleService&quot;. It will direct to
+    the Service Dashboard. You can click on &quot;Edit
+    Data Service (XML Edit)&quot; and view the created data service as a
+    XML.
+    </p>
+    <p> <img alt="DS" src="images/ds-wizard/cassandra/step7.png"/>
+    </p>
+    <p>Figure 7: Edit data service</p>
+    <p><b>Step 7: Try your service</b>
+    </p><hr/>
+    <p>Click on &quot;Try It&quot; link to invoke the service.</p>
+    <p> <img alt="DS" src="images/ds-wizard/cassandra/step8.png"/>
+    </p>
+    <p>Figure 8: Invoke service using Try-it</p>
+    </body>
+</html>

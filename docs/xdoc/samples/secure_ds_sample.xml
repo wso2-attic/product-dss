@@ -1,0 +1,112 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<html>
+    <body>
+        <p>[<a
+                href="http://wso2.org/downloads/solutions/data-services">Download</a>]
+            | [<a href="../index_docs.html">Documentation Home</a>] | [<a
+                    href="../release_notes.html">Release Note</a>]
+        </p>
+        <h1>Secure Data Service Sample</h1>
+        <h2>Introduction</h2>
+        <p>When deploying a data service, we may have the need to secure it, by requiring user
+            authentication, and maybe encryption and the usage of signatures. This can be fullfilled
+            using
+            <a href="http://wso2.org/projects/data-services-server/java">WSO2 Data Services Server
+            </a>
+            by applying security properties directly to the data service. In this sample, we will be
+            showing how a service client is used to access a secured data service.
+        </p>
+        <h2>Prerequisites</h2>
+        <p>
+            The sample data service "SecureDataService" should be deployed as per the instructions
+            mentioned in
+            <a href="deploying_samples.html">Deploying Samples</a>
+            section.
+            <h3>Securing the Data Service</h3>
+            <p>
+                From the service list in the console, select the "SecureDataService" data service
+                and goto the service dashboard. Under the "Quality of Service Configuration", click
+                on "Security". In the next screen, set "enable security" to "true" and select
+                "UsernameToken" in the basic scenario. Here we are simply enabling username/password
+                based authentication for the data service. In the next page, select "everyone" as
+                the user group, and finish.
+            </p>
+        </p>
+        <h2>Running the Sample</h2>
+        <p>The sample service can be run using the "tryit" tool, which is bundled with<a
+                href="http://wso2.org/projects/data-services-server/java">WSO2 Data Services
+            Server</a>, or a code-generated java client sample using this service is demonstrated in
+            the
+            <a href="ds_clients.html">Data Services Clients Sample</a>
+            section.
+        </p>
+        <h2>Service Definition</h2>
+        <p>
+            This service contains a single query/opertion "showAllOffices", which returns all the
+            office branches in a company.
+        </p>
+        <h2>Secure Service Client</h2>
+        <p>
+            When using a service client to access a secured data service, it must follow special
+            steps in creating a secured connection to the service. The following code snippet is
+            taken from the Axis2 service client used to access our sample secure data service.
+            <div>
+                <pre style="font-family: monospace;">
+                    String epr = "https://" + HOST_IP + ":" + HOST_HTTPS_PORT +
+                    "/services/SecureDataService";
+                    System.setProperty("javax.net.ssl.trustStore", (new
+                    File(CLIENT_JKS_PATH)).getAbsolutePath());
+                    ConfigurationContext ctx = ConfigurationContextFactory.
+                    createConfigurationContextFromFileSystem(null, null);
+                    SecureDataServiceStub stub = new SecureDataServiceStub(ctx, epr);
+                    ServiceClient client = stub._getServiceClient();
+                    Options options = client.getOptions();
+                    client.engageModule("rampart");
+                    options.setUserName("admin");
+                    options.setPassword("admin");
+
+                    options.setProperty(RampartMessageData.KEY_RAMPART_POLICY,
+                    loadPolicy(SECURITY_POLICY_PATH));
+                </pre>
+            </div>
+            Here first, we are setting the client key store file path (CLIENT_JKS_PATH) as a Java
+            system property. The next few lines are Axis2 specific code to initiate the Axis2
+            runtime and its security module, Rampart. There at the end, the security policy path
+            (SECURITY_POLICY_PATH) is given to be processed by Rampart. In the security policy, we
+            are notifying the runtime that we are securing the service and using UsernameToken as
+            the authentication method. After these steps are successfully carried out, we can use
+            the service client to make secure service calls to our data service.
+        </p>
+        <h2>Sample Run</h2>
+        <p>
+            The command line application is used here to present the functionality of the secured
+            data service. As shown in<a href="ds_clients.html">Data Services Clients Sample</a>, run
+            the command "ant secure_sample", to run the sample. The output will resemble Figure 1.
+            <br/>
+            <img src="../images/samples/secure_sample_img1.png"/>
+            <br/>
+            Figure 1: Secure Data Service invocation using service client.
+            <br/>
+        </p>
+
+        <p>
+            So the above demonstration shows how a Java service client can be used in accessing a
+            secured data service.
+        </p>
+    </body>
+</html>

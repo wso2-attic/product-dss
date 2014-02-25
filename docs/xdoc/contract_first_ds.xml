@@ -1,0 +1,116 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html>
+    <body>
+        <p>[<a
+                href="http://wso2.com/products/data-services-server/">Download</a>]
+            | [<a href="index_docs.html">Documentation Home</a>] | [<a
+                    href="release_notes.html">Release Note</a>]
+        </p>
+        <h1>Contract First Data Services</h1>
+        <p>WSO2 Data Services Server provides the functionality which can simply create a data
+            service for
+            a given WSDL.
+        </p>
+        <h2>Create contract first data service</h2>
+        <p>Go through the following steps to create a simple contract first data service.</p>
+        <p>Click on Contract First link in left menu under Manage/Services/Add/Data Service. Create
+            Contract Service wizard will be appear. You can either provide a wsdl file which is
+            located in
+            your local file system or you can provide a wsdl which is hosted online.
+        </p>
+        <p>Once you select the wsdl file it will appear as in following figure.</p>
+        <p>
+            <br/>
+            <img src="images/user-guide/contract-first/contract_first_wizard.png"
+                 alt="Contract first service wizard"/>
+            <br/>
+            <br/>
+        </p>
+        <p>Click on 'Upload' button after you have select the file. If the wsld is uploaded
+            successfully
+            you will get the success message as follows.
+        </p>
+        <p>
+            <br/>
+            <img src="images/user-guide/contract-first/wsdl_upload.png"
+                 alt="Contract first wsdl upload"/>
+            <br/>
+            <br/>
+        </p>
+        <p>Created data service will be list in the services listing page, as a work in progress
+            service. Since we cannot specify the data source configuration and the sql query in the
+            wsdl, the created
+            service will be deployed as a WIP service. Therefore the wsdls, and the tryit links will
+            not be provided in the service list page.
+        </p>
+        <p>
+            <br/>
+            <img src="images/user-guide/contract-first/contract_first_service_list.png"
+                 alt="Contract first wsdl upload"/>
+            <br/>
+            <br/>
+        </p>
+        <p>Click on 'Edit Data Service Wizard' to fill the dummy data which has generated in the
+            data
+            service.
+        </p>
+        <p>Following image shows the dummy data which has filled in the add data source page. Change
+            them according to the required information. Same steps has to be followed for the query
+            page
+            as well to change the dummy sql query.
+        </p>
+        <p>
+            <br/>
+            <img src="images/user-guide/contract-first/dummy_data_source.png"
+                 alt="Contract first wsdl upload"/>
+            <br/>
+            <br/>
+        </p>
+        <p>Once you have enter all the details click on 'Finish' button, this will deploy the
+            service
+            and list down the service in the service list page as a active service.
+        </p>
+        <p>Sample wsdl which we used to create the service is showing below.</p>
+        <p>
+            <br/>
+            <img src="images/user-guide/contract-first/wsdl.png"
+                 alt="Contract first wsdl"/>
+            <br/>
+            <br/>
+        </p>
+        <p>WSDL operation section.</p>
+        <p>
+            <br/>
+            <img src="images/user-guide/contract-first/wsdl_operation.png"
+                 alt="Contract first wsdl operation section"/>
+            <br/>
+            <br/>
+        </p>
+        <p>Created data service with dummy values as follows.</p>
+        <p>
+            <br/>
+            <img src="images/user-guide/contract-first/contract_first_dbs.png"
+                 alt="Contract first data service"/>
+            <br/>
+            <br/>
+        </p>
+    </body>
+</html>

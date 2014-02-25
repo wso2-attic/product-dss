@@ -1,0 +1,65 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<html>
+    <body>
+        <p>[<a
+                href="http://wso2.com/products/data-services-server/">Download</a>]
+            | [<a href="index_docs.html">Documentation Home</a>] | [<a
+                    href="release_notes.html">Release Note</a>]
+        </p>
+        <h1>Array Data Support</h1>
+        <h2>Introduction</h2>
+        <p>
+            Array data type support bringg data services the ability to dynamically provide a set of values without knowing the size of the data set beforehand. This is handled in <a href="http://wso2.org/projects/data-services-server/java">WSO2 Data Services Server</a> using the array parameter type. Usually used single parameter types being scalar parameter types, arrays bring the option of building more complex queries depending on the input.
+        </p>
+        <h2>Adding Array Data Types to Data Services</h2>
+        <h3>Input Mappings</h3>
+        <p>In the input mappings section, when adding a new entry, the "Parameter Type" should be selected as "Array". This step is showed in Figure 1.
+            <p>
+            <img src="./images/user-guide/array/figure01.png" /> <br />
+            Figure 1: Adding array parameter types to input mappings.
+            </p>
+        </p>
+        <h2>Array Representation in the Message</h2>
+        <p>
+           Internally, how the array types are handled in the message level is as follows. In the SOAP envelopes body, when the parameters are serialised, in scalar types, there will be only one element per parameter. In the situation of an array type, simply the element representing the parameter will be repeated. The following section shows a sample SOAP message which contains the array type "employeeNumbers".
+        </p>
+          <pre style="font-family: monospace;"> 
+<![CDATA[
+...
+<s:Body>  
+   <p:setSalaryForEmployees xmlns:p="http://ws.wso2.org/dataservice/samples/rdbms_sample">  
+      <salary xmlns="http://ws.wso2.org/dataservice/samples/rdbms_sample">15000</salary>  
+      <employeeNumbers xmlns="http://ws.wso2.org/dataservice/samples/rdbms_sample">1002</employeeNumbers>  
+      <employeeNumbers xmlns="http://ws.wso2.org/dataservice/samples/rdbms_sample">2014</employeeNumbers>  
+      <employeeNumbers xmlns="http://ws.wso2.org/dataservice/samples/rdbms_sample">4411</employeeNumbers>  
+   </p:setSalaryForEmployees>  
+</s:Body>  
+ </s:Envelope>  
+]]>
+          </pre>
+        <p>
+           The array types are properly mentioned in the WSDL generation, so when using a service which was code-generated from the WSDL, the array type will be suitably represented.
+        </p>
+
+        <h2>Demo</h2>
+        <p>
+           For a demonstration of the usage of arrays, refer to the <a href="./samples/rdbms_sample.html">RDBMS Sample</a>.
+        </p>
+
+    </body>
+</html>

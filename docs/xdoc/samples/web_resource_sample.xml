@@ -1,0 +1,54 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<html>
+    <body>
+        <p>[<a
+                href="http://wso2.org/downloads/solutions/data-services">Download</a>]
+            | [<a href="../index_docs.html">Documentation Home</a>] | [<a
+                href="../release_notes.html">Release Note</a>]
+        </p>
+        <h1>Web Resource Sample</h1>
+        <h2>Introduction</h2>
+
+	<p>WSO2 Data Services Server supports to scrape web information and extract web information
+ as a service. This sample will use <a href="http://weather.yahoo.com/">Yahoo Weather Forecasts</a>  to extract weather information.</p>
+
+	<h2>Prerequisites</h2>
+        <p>
+            The sample data service "WebResourceSample" should be deployed as per the instructions mentioned in <a href="deploying_samples.html">Deploying Samples</a> section.
+        </p>
+
+	<h2>Running the Sample</h2>
+        <p>The sample service can be run using the "tryit" tool, which is bundled with <a href="http://wso2.org/projects/data-services-server/java">WSO2 Data Services Server</a>, or a code-generated java client sample using this service.
+        </p>
+	<h2>Web Resource Information</h2>
+        <p>
+            The web resource extracts weather information from <a href="http://weather.yahoo.com/">Yahoo Weather Forecasts</a>
+        </p>
+	<h2>Service Definition</h2>
+        <p> The WebResource sample service contains a single operation named "getBooksInfo" which returns Author and the Title of Book. </p>
+	<h2>Sample Run</h2>
+        <p>
+            A sample run of the service using the "tryit" tool is shown below. <br />
+            <p>
+            <img src="../images/samples/web-resource-result.png" /> <br />
+            Figure 1: Web Resource data source based service invocation.
+            </p>
+            <br />
+        </p>
+    </body>
+</html>

@@ -1,0 +1,119 @@
+(1) Installing  WSO2 Data Services Server ${product.version}
+
+WSO2 Data Services Server ${product.version} can be run either in standalone mode or as a webapp within a
+servlet container.
+
+
+Standalone Mode
+---------------
+1. The directory containing this INSTALL file will the root and it will be
+   treated as Carbon home directory and let it be CARBON_HOME.
+
+2. All the shell scripts and .bat files are available in CARBON_HOME/bin folder.
+
+3. To start Data Services Server one can use either wso2server.sh or daemon.sh in all *nix
+   system & wso2server.bat file on Windows operating systems.
+
+4. Either of the following commands can be used to start Data Services Server
+      i)  ./wso2server.sh {console|start|stop|restart|status|dump|version}
+     ii)  ./daemon.sh {console|start|stop|restart|status|dump}
+    iii)  wso2server.bat {start|stop|version}
+
+            Usage: wso2server.sh [commands] [system-properties]
+
+            commands:
+                --debug <port>     
+                                Start the server in remote debugging mode.
+                                port: The remote debugging port.
+                --run        
+                                Run the server.
+                --start        
+                                Start Carbon as a Unix daemon in the background.
+                --console    
+                                Start Carbon as a Unix daemon in the foreground.
+                --stop        
+                                Stop the Carbon Unix daemon.
+                --status    
+                                Get the status of the Carbon Unix daemon.
+                --dump        
+                                Print a thread dump of the Carbon Unix daemon.
+                --restart    
+                                Restart the Carbon Unix daemon.
+                --cleanRegistry    
+                                Clean registry space.
+                --version    
+                                The version of the product you are running.
+                --n <instances>
+                                Start Multiple Instances of the same server after you
+                                have successfully installed the Multiple-instances features
+                                from a feature repo.
+                                instances: the number of instances to start.
+            system-properties:
+                -DhttpPort    
+                                Overrides the HTTP port defined in the
+                                transports.xml file.
+                -DhttpsPort        
+                                Overrides the HTTPS port defined in the
+                                transports.xml file.
+                -DosgiConsole=[port]    
+                                Start Carbon with Equinox OSGi console.
+                                If the optional 'port' parameter is provided, a
+                                telnet port will be opened.
+                -DosgiDebugOptions=[options-file]
+                                Start Carbon with OSGi debugging enabled.
+                                If the optional 'options-file' is provided, the OSGi
+                                debug options will be loaded from it.
+                -Dsetup        
+                                Clean the Registry and other configuration,
+                                recreate DB, re-populate the configuration,
+                                and start Carbon.
+
+                                Note: If you have changed the webapp context of
+                                carbon from ROOT to foo, you will have to use 
+                                -Dsetup=foo instead.
+                -Dcarbon.registry.root    
+                                The root of the Registry used by
+                                this Carbon instance.
+
+                                Note: Use this property if you want to have chroot
+                                behavior when sharing the database between
+                                multiple products.
+                -Dwso2.transports.xml
+                                Location of the transports.xml file.
+                -Dweb.location    
+                                The directory into which the UI artifacts
+                                included in an Axis2 AAR file are extracted to.
+
+
+System Requirements
+-------------------
+1. Minimum memory - 1GB
+
+2. Processor      - Pentium 800MHz or equivalent at minimum
+
+3. Java SE Development Kit 6 or higher
+
+4. The Management Console requires you to enable JavaScript of the Web browser,
+   with MS IE 6 and 7. In addition to JavaScript, ActiveX should also be enabled
+   with IE. This can be achieved by setting your security level to medium or lower.
+  
+   NOTE:
+     On Windows Server 2003, it is not allowed to go below the medium security
+     level in Internet Explorer 6.x and the default medium security setting with
+     IE does not have sufficient levels of JavaScript and ActiveX enabled for the management
+     console to run.
+
+5. To build ${product.name} from the Source distribution, it is also necessary that you
+   have Maven 2.1.0 or later.
+
+
+For more details see
+http://docs.wso2.org/wiki/display/Carbon400/Installation+Prerequisites
+
+(2) Running Samples
+-------------------
+Data Services Server samples are available at CARBON_HOME/samples directory.
+The instructions to run sample are given in README file of the respective
+samples.
+
+

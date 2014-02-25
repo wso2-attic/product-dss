@@ -1,0 +1,137 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <body>
+         <p>[<a
+                href="http://wso2.com/products/data-services-server/">Download</a>]
+            | [<a href="index_docs.html">Documentation Home</a>] | [<a
+                    href="release_notes.html">Release Note</a>]
+        </p>
+        <h1>Manage Data Services Server</h1>
+        <ul>
+            <li>
+                <a href="rdbms.html">Create New Service</a>
+            </li>
+            <li>
+                <a href="#EditService">Edit Services</a>
+            </li>
+            <li>
+                <a href="#DeleteService">Delete Service</a>
+            </li>
+            <li>
+                <a href="#UploadService">Upload Service</a>
+            </li>
+        </ul>
+
+        <a name="EditService"></a>
+        <h2 id="edit">Edit Service</h2>
+        <p>You can edit the deployed service by click on the service name under deployed services
+            list.
+            It provides two options to edit the service, which are Edit Service through
+            wizard and XML Edit.
+        </p>
+        <br/>
+        <br/>
+        <p>
+            <img src="images/service-mgt/edit_service.png" alt="Figure: Edit Service"/>
+            <br/>
+            <br/>
+            <p>Figure 1 : Edit Service</p>
+            <br/>
+            <br/>
+        </p>
+
+        <a name="DeleteService"></a>
+        <h2 id="deleting">Delete Service</h2>
+        <p>Select the services you want to delete from the services list and click on the delete
+            link placed above
+            the Services Groups table to delete the services. If the service has deployed as a
+            faulty service, it will be displayed
+            on the Deployed Services page as a<span style="font-style: italic; font-weight: bold;">
+                [n] faulty
+                service(s)</span>:. Same as for the deployed services, you can select the
+            appropriate faulty services by ticking them and click
+            on delete.
+        </p>
+        <br/>
+
+        <p>
+            <img src="images/service-mgt/delete_service.png" alt="Figure: Delete Service"/>
+            <br/>
+            <br/>
+            <p>Figure 2: Delete Service</p>
+        </p>
+        <br/>
+        <br/>
+
+
+        <a name="UploadService"></a>
+        <h2 id="Remove">Upload Service</h2>
+        <h3>Step 1</h3>
+        <br/>
+        <p>You can easily upload a created data service by clicking on "Upload" link under
+            Manage/Services/Add/Data Service left menu.
+            Once you click on the link the following page will appear.
+        </p>
+        <br/>
+        <p>
+            <img src="images/file-upload/step1.png" alt="Figure: Upload Services - Step 1"/>
+            <br/>
+            <br/>
+            Figure 3: Upload Data Service wizard
+        </p>
+        <br/>
+        <br/>
+
+        <h3>Step 2</h3>
+        <br/>
+        <p>Select the data service file(.dbs) which you prefer to uplaod.</p>
+        <br/>
+        <p>
+            <img src="images/file-upload/step2.png" alt="Figure: Upload Services - Step 2"/>
+            <br/>
+            <br/>
+            Figure 4: Select the file.
+        </p>
+        <br/>
+        <br/>
+
+        <h3>Step 3</h3>
+        <br/>
+        <p>Once you select the data service file it will display as follows.
+            <br/>
+            <img src="images/file-upload/step3.png" alt="Figure: Upload Services - Step 3"/>
+            <br/>
+            <p>Figure 5: Selected file path</p>
+        </p>
+        <br/>
+        <br/>
+
+        <h3>Step 4</h3>
+        <br/>
+        <p>Selected data source will deploy and list under the deployed service list as below.
+            <br/>
+            <br/>
+            <img src="images/file-upload/step4.png" alt="Figure: Upload Services - Step 4"/>
+            <br/>
+            <p>Figure 6: Deployed Service</p>
+        </p>
+
+    </body>
+</html>

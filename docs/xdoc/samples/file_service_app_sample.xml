@@ -1,0 +1,101 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<html>
+    <body>
+        <p>[<a
+                href="http://wso2.org/downloads/solutions/data-services">Download</a>]
+            | [<a href="../index_docs.html">Documentation Home</a>] | [<a
+                href="../release_notes.html">Release Note</a>]
+        </p>
+        <h1>File App Service Sample</h1>
+        <h2>Introduction</h2>
+        <p>This sample demonstrates a file upload/download/preview application with the usage of several features that is available in <a href="http://wso2.org/projects/data-services-server/java">WSO2 Data Services Server</a>. Some notable functions are listed below.
+          <ul>
+            <li>Streaming Support :- With data streaming functionality, when a service client make a request, the result is streamed to the service client, rather than building the full result in the server and returning it. This allows virtually unlimited payload sizes in the result, and the response is instantaneous to the client.
+            </li>
+            <li>Binary Data :- Binary data is handled by using Base64 encoding to store and retrive non-textual data, such as data files and BLOB fields in databases. 
+            </li>
+          </ul>
+        </p>
+        <h2>Prerequisites</h2>
+        <p>
+            The sample data service "FileService" should be deployed as per the instructions mentioned in <a href="deploying_samples.html">Deploying Samples</a> section. 
+        </p>
+        <h2>Running the Sample</h2>
+        <p>A GUI based application is used here in showing the above mentioned features. As shown in <a href="ds_clients.html">Data Services Clients Sample</a>, run the command "ant file_service_app", to execute the application. <br />
+        </p>
+        <h2>Service Definition</h2>
+        <p>
+            The data service is based around the functionality of transferring and retrieval of file data between the client and a database. Below contains the list of queries that is being used in the data service in carrying out the aforementioned actions.
+            <ul>
+              <li>createNewFileQuery: Creates a new file given the file name and the type.
+              </li>              
+              <li>appendDataToFileQuery: This query appends new data to the given the file to be appended to. By sending in file chunks, data streaming can also be done when sending the data as well.
+              </li>              
+              <li>deleteFileQuery: Deleted a file given the file name.
+              </li>              
+              <li>checkFileExistsQuery: Checks if a file with the given file name exists.
+              </li>              
+              <li>getFileRecordsQuery: Returns all data records associated with a specific file.
+              </li>              
+              <li>getFileNamesQuery: Returns all the name of the files in the database.
+              </li>              
+              <li>getFileTypeQuery: Returns the file type given the file name.
+              </li>              
+              <li>getFileSizeQuery: Returns the size of a file given the file name.
+              </li>              
+            </ul>
+            <p>
+            By using the combined functionality of the above queries, we can create a sample file management system with the use of data services.
+            </p>
+        </p>
+        <h2>Sample Run</h2>
+        <p>
+            <p>
+            <h3>Uploading Files</h3>
+            <p>
+            When uploading files, after a file is selected to be sent, the file is read and the data is transferred in chunks to the server. Figure 1 shows a file upload in progress. <br />
+            <img src="../images/samples/file_app_sample_img1.png" /> <br />
+            Figure 1: Uploading a file. <br />
+            </p>
+            </p>            
+         
+            <p>
+            <h3>Downloading Files</h3>
+            <p>
+            Select a file you want to download from the file list and pressing download. Then after selecting the path to be saved, the file data will be retrived from the server and will be saved on local disk. You will notice that, when you click download, the data starts receiving immediately, as indicated by the progress bar. This is possible because of the data streaming capability of <a href="http://wso2.org/projects/data-services-server/java">WSO2 Data Services Server</a>. <br />
+            <img src="../images/samples/file_app_sample_img2.png" /> <br />
+            Figure 2: Downloading a file. <br />
+            </p>
+            </p>                 
+            <p>
+            <h3>Previewing Files</h3>
+            <p>
+            Images can be previewed using this app. Select an image file and when you click preview, it will download the image to memory, and will be showed in the preview panel. <br />
+            <img src="../images/samples/file_app_sample_img3.png" /> <br />
+            Figure 3: Previewing a file. <br />
+            </p>
+            </p>          
+            <p>
+            <h3>Deleting Files</h3>
+            <p>
+            To delete a file from the server, select the file name from the list and press the delete button. This will invoke a data service operation, and will remove the file data from the database.
+            </p>
+            </p>
+        </p>
+    </body>
+</html>

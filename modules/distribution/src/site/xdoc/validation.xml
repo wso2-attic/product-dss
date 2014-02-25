@@ -1,0 +1,104 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<html>
+    <body>
+        <p>[<a
+                href="http://wso2.com/products/data-services-server/">Download</a>]
+            | [<a href="index_docs.html">Documentation Home</a>] | [<a
+                    href="release_notes.html">Release Note</a>]
+        </p>
+        <h1>Input Validation Support</h1>
+        <h2>Introduction</h2>
+        <p>
+            Input validation allows data services to validate the input parameter values that are presented in a request. This allows to stops the execution of the request, if the input has not met the required criteria. <a href="http://wso2.org/projects/data-services-server/java">WSO2 Data Services Server</a> provides a set of built-in validators which will be sufficient for the mostly used use cases. And also it provides an extension mechanism, where custom validators can be written.
+        </p>
+	
+	<p>
+	  The validators can be set at the "Edit Input Mapping" page for each individual input mappings, which is at "Edit Query" -> "Input Mappings" -> "Edit".
+        </p>
+
+        <a name="builtin" />
+        <h2>Built-in Validators</h2>
+        <p>
+            The following sections explains the pre-defined standard validators that are available, the validators have to be added to individual input mappings in a query.
+            <h3>Long Range Validator</h3>
+            <p>
+                This validator validates an integer value, to check if it is in the specified range. The validator requires the minimum and the maximum value of the range to be validated. Figure 1 shows the addition of a Long Range Validator.
+                <p>
+                 <img src="./images/user-guide/validators/figure01.png" /> <br />
+                 Figure 1: Adding a Long Range Validator.
+                </p>
+            </p>
+            <h3>Double Range Validator</h3>
+            <p>
+                This validator validates an floating point value, to check if it is in the specified range. The validator requires the minimum and the maximum value of the range to be validated. Figure 2 shows the addition of a Double Range Validator.
+                <p>
+                 <img src="./images/user-guide/validators/figure02.png" /> <br />
+                 Figure 2: Adding a Double Range Validator.
+                </p>
+            </p>
+            <h3>Length Validator</h3>
+            <p>
+                This validator validates the string length of the given parameter. The validator requires the length to be passed in for validation. Figure 3 shows the step in adding a Length Validator.
+                <p>
+                 <img src="./images/user-guide/validators/figure03.png" /> <br />
+                 Figure 3: Adding a Length Validator.
+                </p>
+            </p>
+            <h3>Pattern Validator</h3>
+            <p>
+                The pattern validator validates the string value of the parameter against a given regular expression. If the regular expression matches the target parameter, the validator succeeds, or else fails. The validator requires the regular expression to be passed in for validation. Figure 4 shows the step used in adding a Pattern Validator.
+                <p>
+                 <img src="./images/user-guide/validators/figure04.png" /> <br />
+                 Figure 4: Adding a Pattern Validator.
+                </p>
+            </p>
+        </p>
+
+        <a name="custom" />
+        <h2>Custom Validators</h2>
+        <p>
+            Validators feature in <a href="http://wso2.org/projects/data-services-server/java">WSO2 Data Services Server</a> allows the user to instroduce custom validation logic by adding Custom Validators. For defining a custom validator, the user must implement the interface "org.wso2.carbon.dataservices.core.validation.Validator". Below contains the definition of the interface.
+<pre style="font-family: monospace;"> 
+public interface Validator {
+
+	public void validate(ValidationContext context, String name, ParamValue value) throws ValidationException;
+	
+}
+</pre>
+        When defining a custom validator, the class must implement this interface. It contains a single method "validate", where if the validation is successful, nothing should happen, and if the validation fails, the "validate" method should throw an exception of type "ValidationException". The following explains the parameters passed into the "validator" method.
+        <ul>
+          <li>context :- This parameter is of type "ValidationContext", which contains information about the full set of parameters passed into the request. When the validation logic depends on other parameters, the validation context can be used to check the names/values of the rest of the parameters.
+          </li>
+          <li>name :- This is a string value which represents the name of the parameter to be validated.
+          </li>
+          <li>value :- This parameter is of type "ParamType", which represents the value of the parameter to be validated. This can be either a SCALAR or a ARRAY parameter type.
+          </li>
+        </ul>
+
+        NOTE: After a custom validator class is created, it must be packaged in a jar archive file, and must be put in the server's classpath location for external libraries, which is "CARBON_HOME/repository/component/lib/".
+
+        </p>
+
+        <h2>Demo</h2>
+        <p>
+           For a demonstration of the usage of validators, refer to the <a href="./samples/rdbms_sample.html#validators">validators demo</a> in the samples.
+        </p>
+
+
+    </body>
+</html>

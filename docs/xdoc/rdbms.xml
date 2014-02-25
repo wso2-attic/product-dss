@@ -1,0 +1,315 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <body>
+        <p>[<a
+                href="http://wso2.com/products/data-services-server/">Download</a>]
+            | [<a href="index_docs.html">Documentation Home</a>] | [<a
+                    href="release_notes.html">Release Note</a>]
+        </p>
+        <h2>Data Source Support</h2>
+        <p>Data Services Server provide support for the following data sources.</p>
+        <ul>
+            <li><a href="#RDBMS1">RDBMS</a></li>
+            <li><a href="cassandra.html">Cassandra</a></li>
+            <li><a href="excel.html">Excel</a></li>
+            <li><a href="csv.html">CSV</a></li>
+            <li><a href="rdf.html">RDF</a></li>
+            <li><a href="web.html">Web Resource</a></li>
+            <li><a href="google_spread_sheet.html">Google Spreadsheet</a></li>
+        </ul>
+        <a name="RDBMS1"></a>
+        <h2>Data Source support for RDBMS</h2>
+        <p>This section explains how a Data Service can be created using a relational database table
+            as a datasource.
+        </p>
+        <h2>Copying the JDBC Driver</h2>
+        <p>
+            As the first step to create the data service for RDBMS you should copy
+            the relevant JDBC driver into CARBON_HOME/repository/components/lib directory.
+            (e.g:- cp mysql-connector-java-5.XX-bin.jar
+            /home/user/wso2ds/wso2-dataservices-XX/repository/components/lib).
+        </p>
+
+        <p>There are three ways to create a data service using a relational database.</p>
+        <ul>
+            <li>
+                <a href="#RDBMS">RDBMS</a>
+            </li>
+            <li>
+                <a href="#CARBON">Carbon Data Source</a>
+            </li>
+            <li>
+                <a href="#JNDI">JNDI Data Source</a>
+            </li>
+        </ul>
+        <br/>
+
+        <h2>Steps to create a data service for relational database</h2>
+
+        <p>Let's use the graphical wizard to create the data service for RDBMS. To start the wizard
+            click on 'Create' link on your left hand menu. (Figure 1)
+        </p>
+        <br/>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/rdbms/step0.png"/>
+        <br/>
+        <p>Figure 1: Create data service for relational database</p>
+        <br/>
+        <br/>
+        <p>In the first screen that appears, enter a name for your Data
+            Service('DataServiceSample1').(Figure 2)
+        </p>
+        <br/>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/rdbms/step1.png"/>
+        <p>Figure 2: Create data service</p>
+        <br/>
+        <p>Enter data source Id and select 'RDBMS' as 'Data Source' type.Enter values to be used to
+            connect to database.
+        </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/rdbms/step1.1.png"/>
+        <p>Figure 3: Configure Data Source</p>
+        <p>To find more details about data source configuration parameters refer to
+            <a href="advanced_datasource_prop.html">Advanced Data Source Properties in RDBMS Data Sources</a>.</p>
+        <br/>
+        <p>Enter query details using which values will be extracted and specify how SQL response is
+            mapped to output XML.
+        </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/rdbms/step2.1.png"/>
+        <p>Figure 4: Configure Query Information</p>
+        <br/>
+
+        <p>Following query needs two parameters to be supplied for execution. Input Mapping section
+            is used to specify input parameters.
+        </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/rdbms/step2.4.png"/>
+        <p>Figure 5: Input parameters</p>
+        <br/>
+
+        <p>Once you add a query, it will be listed as follows.</p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/rdbms/step2.3.png"/>
+        <p>Figure 6: View query</p>
+        <br/>
+
+        <p>Create an operation and select a query to be executed when this operation is called.</p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/rdbms/step3.1.png"/>
+        <p>Figure 7: Add operation</p>
+        <br/>
+        <p>When query accepts parameters, there is an additional step. Following screen shows it.
+        </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/rdbms/step3.2.png"/>
+        <p>Figure 8: Add operation with input parameters</p>
+        <br/>
+        <p>Existing operations will be listed as follows.</p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/rdbms/step3.3.png"/>
+        <p>Figure 9: View operations</p>
+        <br/>
+        <p>Click 'Finish' button to complete the wizard.</p>
+        <br/>
+        <p>Deployed Services will be listed as follows.</p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/rdbms/step4.1.png"/>
+        <p>Figure 10: Deployed services</p>
+        <br/>
+        <p>Following statistics are available for a service. Options mentioned in lower part of the
+            screen can be applied to a service.
+        </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/rdbms/step4.3.png"/>
+        <p>Figure 11: Service statistics</p>
+        <br/>
+        <p>Click on 'Try it' link and you will be directed to a screen similar to following.</p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/rdbms/step5.1.png"/>
+        <p>Figure 12: Invoke service using Try-it</p>
+        <br/>
+        <p>This is how Try-it shows results after service invocation.</p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/rdbms/step5.2.png"/>
+        <p>Figure 13: Service invocation</p>
+        <br/>
+        <p>If there are parameters, Try it allows you to enter them as well.</p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/rdbms/step5.3.png"/>
+        <p>Figure 14: Service invocation-with parameters</p>
+        <br/>
+        <p>WSDL for the service can be viewed by clicking 'WSDL' link.</p>
+
+        <br/>
+        <img alt="DS" src="images/ds-wizard/rdbms/step6.2.png"/>
+        <p>Figure 15: WSDL</p>
+
+        <a name="RDBMS"></a>
+        <h2>RDBMS data source</h2>
+        <p>For the RDBMS data source, select the data source type as 'RDBMS' after naming the
+            data source. Enter values to be used to connect to the database.
+        </p>
+
+        <br/>
+        <img alt="DS" src="images/ds-wizard/rdbms/step1.1.png"/>
+        <br/>
+        <p>
+            <b>Figure 16: Creating the data source for RDBMS</b>
+        </p>
+        <br/>
+
+        <a name="CARBON"></a>
+        <h2>Carbon Data Source</h2>
+        <p>For the Carbon data sources, you have to create the carbon data source first.</p>
+        <p>To create the carbon data source click on the Data Sources menu item under the
+            configuration.
+        </p>
+
+        <br/>
+        <img alt="DS" src="images/ds-wizard/rdbms/create_datasource.png"/>
+        <p>Figure 17: Create Carbon Data Source menu</p>
+        <br/>
+
+        <p>Click on 'Add Data Source' link in Data Sources page which will direct you to a page
+            where you
+            can enter the details for the data source. 
+        </p>
+
+	<p>
+	As you can see in the following data source creation UI, first you need to select the 'Data Source Type'. 
+	</p>
+
+	<br/>
+	<img alt="DS" src="images/ds-wizard/rdbms/data_source_type.png"/>
+        <p>Figure 18: Selecting Data Source Type</p>
+        <br/>
+
+	<p>
+	There are two types of Data Sources available. The default Data Source Type is 'RDBMS'. 'Custom' is the other Data Source Type.
+	</p>
+
+	<h2>Carbon Data Sources - RDBMS</h2>
+	
+	<p>When you select 'RDBMS' as the Data Source Type, you can create RDBMS Data Sources through the UI. </p>
+	<p>
+	You can select a datasource provider from the highlighted combo box. For the 'default' Data 
+	Source Provider, given connection properties Driver, URL, User Name and 
+	Password need to be entered.
+	</p>
+
+        <br/>
+        <img alt="DS" src="images/ds-wizard/rdbms/carbon_datasource_default.png"/>
+        <p>Figure 18: Creating a RDBMS Carbon Data Source</p>
+        <br/>
+
+	<p>
+	If you need to add a data source supported by an External Datasource Provider class such 
+	as com.mysql.jdbc.jdbc2.optional.MysqlXADataSource, select 'external' as the Data 
+	Source Provider. Then enter the name and value of connection properties by 
+	clicking 'Add Property'. Given below is an example data source  of External 
+	Datasource Provider
+	with eneterd values. 
+	</p>
+
+	<br/>
+	<img alt="DS" src="images/ds-wizard/rdbms/carbon_datasource_external.png"/>
+        <p>Figure 19: Creating the Carbon Data Source of External Data Source Provider</p>
+        
+
+	<p>
+	After entering the details you can test the connection by click on 'Test Connection' 
+	button on bottom of the page. Then click 'Add' to save the data source. 
+	</p>
+
+	<br/>
+
+        <p>Once you have created the carbon data source, you can use it inside the data service.
+            Select the 'Carbon Data Source' as the type of the data source in Add data source page
+            in the
+            data services wizard. Select the carbon data source name which you have created from the
+            drop down list.
+        </p>
+
+        <br/>
+        <img alt="DS" src="images/ds-wizard/rdbms/add_carbon_ds.png"/>
+        <p>Figure 20: Creating the data source for Carbon Data Source</p>
+        <br/>
+
+
+        <a name="JNDI"></a>
+        <h2>Expose as a JNDI Data source</h2>
+        <p>The adding data source can be exposed as a JNDI Data Source as well. Expand
+	'Expose as a JNDI data source' and enter the required values. If the 
+	data source will be using Data Source Factory, click on the checkbox 
+	'Use Data Source Factory' and define the JNDI properties. Given below is an 
+	example JNDI configuration. 
+        </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/rdbms/carbon_datasource_jndi.png"/>
+        <p>Figure 21: Expose as a JNDI Data source</p>
+        <br/>
+        <p>When creating the data service select the data source type as 'JNDI' and enter the values
+            to be used to connect to the previously created JNDI enabled data source.
+        </p>
+        <br/>
+        <img alt="DS" src="images/ds-wizard/rdbms/jndi_dataservice.png"/>
+        <p>Figure 22: Creating the data source for JNDI</p>
+        <br/>
+        
+	<a name="ConfigParams"></a>
+        <h2>Defining Data Source Configuration Parameters</h2>
+	<p>
+	By expanding the 'Data Source Configuration Parameters' you can set the jdbc-pool 
+	properties for the data source.
+	</p>
+	<br/>
+        <img alt="DS" src="images/ds-wizard/rdbms/ds_expand_config_params.png"/>
+        <p>Figure 23: Expanding Data Source Configuration Parameters</p>
+        <br/>
+
+	<p>
+	Data Source Configuration Parameters with default values is showing below. 
+	</p>
+	<br/>
+        <img alt="DS" src="images/ds-wizard/rdbms/ds_config_params.png"/>
+        <p>Figure 24: Data Source Configuration Parameters</p>
+        <br/>
+
+	<h2>Carbon Data Sources - Custom</h2>
+
+	<p>When you select 'Custom' as the Data Source Type, you can create supported Custom Data Sources as follows.</p>
+	<p>
+	When you are creating a Custom Data Source, the 'Actual Type' of the Custom Data Source must be entered to 
+	'Custom Data Source Type' field. Following shows creating a 'DS_CUSTOM'
+	type Data Source. Then you can enter the Configuration to the XML editor and 'Save'. 
+	</p>
+
+	<br/>
+        <img alt="DS" src="images/ds-wizard/rdbms/custom_data_source.png"/>
+        <p>Figure 18: Creating a Custom Carbon Data Source</p>
+        <br/>
+
+	<p>You can even create RDBMS data source using the editor by entering 'RDBMS' as the 'Custom Data Source Type'.</p>
+        <br/>
+
+    </body>
+</html>

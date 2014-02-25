@@ -1,0 +1,55 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<html>
+    <body>
+        <p>[<a
+                href="http://wso2.org/downloads/solutions/data-services">Download</a>]
+            | [<a href="../index_docs.html">Documentation Home</a>] | [<a
+                href="../release_notes.html">Release Note</a>]
+        </p>
+        <h1>CSV Sample</h1>
+        <h2>Introduction</h2>
+        <p>
+            Usage of CSV files is an easy and a common way of storing simple tabular data. In this sample, it demonstrates the usage of a CSV file as a data source
+in <a href="http://wso2.org/projects/data-services-server/java">WSO2 Data Services Server</a>.
+        </p>
+        <h2>Prerequisites</h2>
+        <p>
+            The sample data service "CSVSampleService" should be deployed as per the instructions mentioned in <a href="deploying_samples.html">Deploying Samples</a> section.
+        </p>
+        <h2>Running the Sample</h2>
+        <p>The sample service can be run using the "tryit" tool, which is bundled with <a href="http://wso2.org/projects/data-services-server/java">WSO2 Data Services Server</a>, or a code-generated java client sample using this service is demonstrated in the <a href="ds_clients.html">Data Services Clients Sample</a> section.
+        </p>
+        <h2>CSV File Contents</h2>
+        <p>
+            The CSV file (CARBON_HOME/samples/resources/Products.csv) contains data about the products that are manafactured in an automobile company. So here the products refer to cars/motorocyles. The data table has "ID, Name, Classification, Price" columns.
+        </p>
+        <h2>Service Definition</h2>
+        <p>
+            The CSV data source based data service contains a single operation "getProducts" to list all the products that are manufactured in the company.
+        </p>
+        <h2>Sample Run</h2>
+        <p>
+            A sample run of the service using the "tryit" tool is shown below. <br />
+            <p>
+            <img src="../images/samples/csv_sample_img1.png" /> <br />
+            Figure 1: CSV data source based service invocation.
+            </p>
+            <br />
+        </p>
+    </body>
+</html>

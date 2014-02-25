@@ -1,0 +1,89 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <body>
+	<h1>WSO2 Data Services Server Frequently Asked Questions</h1>
+
+	<h2>Contents</h2>
+
+	<ol>
+                <li>
+                    <a href="#missing-params">When invoking the data service through Try-it 'INCOMPATIBLE_PARAMETERS_ERROR' is returned ?</a>
+                </li>
+                <li>
+                    <a href="#driver-class-not-found">Why am I getting 'Cannot load JDBC driver class com.mysql.jdbc.Driver' exception when i try to create a Data Source in WSO2 DSS ?</a>
+                </li>
+                <li>
+                    <a href="#response-for-inonly">How to get a SOAP response when invoking an IN-ONLY operation in DSS ?</a>
+                </li>
+                <li>
+                    <a href="#sec-policy">Why are the security policies getting removed, when the data service is updated ?</a>
+                </li>
+		<li>
+                    <a href="#error-200-OK">Why is HTTP status code 200 OK returned for data service requests ?</a>
+                </li>
+		<li>
+                    <a href="#transport-session-scoped-services-performance">Why server getting slow down eventually when we invoking a service in transport scope ?</a>
+                </li>
+            </ol>
+
+		<br/>
+                   <h3 id="missing-params">
+                    1. When invoking the data service through Try-it 'INCOMPATIBLE_PARAMETERS_ERROR' is returned ?
+                   </h3>
+		        <p>
+			   When you haven't specified the required parameters in the request message above error is returned.
+		        </p>
+                
+                    <h3 id ="driver-class-not-found">
+                    2. Why am I getting 'Cannot load JDBC driver class com.mysql.jdbc.Driver' exception when i try to create a Data Source in WSO2 DSS ?
+                   </h3>
+		        <p>
+			   You need to add your MySQL driver to /repository/components/lib and restart the server.
+		        </p>
+               
+                    <h3 id="response-for-inonly">
+                    3. How to get a SOAP response when invoking an IN-ONLY operation in DSS ?
+                   </h3>
+		        <p>
+			   Setting returnRequestStatus attribute to true in dataservice operation as follows, will return the response for IN-ONLY operations. 
+				<br/>
+			   &lt;operation name=&quot;operation1&quot; returnrequeststatus=&quot;true&quot;&gt; <br/>&lt;call-query href=&quot;query1&quot;&gt;<br/> &lt;with-param name=&quot;dm1&quot; query-param=&quot;dm1&quot;/&gt; <br/>&lt;with-param name=&quot;dm2&quot; query-param=&quot;dm3&quot;/&gt; <br/>&lt;/call-query&gt;
+		        </p>
+               
+                    <h3 id="sec-policy">
+                    4. Why are the security policies getting removed, when the data service is updated ?
+                   </h3>
+		        <p>
+			   When you update the service, it is getting changed and re-deployed. So if you have edited the service, you have to finalize the service by adding necessary policies. 
+		        </p>
+		   <h3 id="#error-200-OK">
+                    5. Why is HTTP status code 200 OK returned for data service requests ?
+                   </h3>
+		        <p>
+			   This is observed for data service requests which have a result, which is because of the default streaming behavior. When streaming is enabled for a service, the actual data service request execution is happenning at the very edge of the execution path, so at this point, the HTTP headers would have written out. So to get a proper HTTP 500 code for SOAP faults, streaming must be disabled. Streaming property can be set in service level as well as the operation level. 
+		        </p>
+		   <h3 id="transport-session-scoped-services-performance">
+                    6. Why server getting slow down eventually when we invoking a service in transport scope ?
+                   </h3>
+		        <p>
+			   When we have transport session scoped services(when we enable boxcarring) and if we don't maintain the HTTP session, Axis2 server creates new context objects in the backend for each request. So these objects pile up and ultimately will run out of memory. Therefore when boxcarring is enabled, the user always have to retain the session (send back the session cookie) else server will eventually go out of memory and before that the server will become slow. If you are using Axis2 client to send request, you can set this by setting 'Options.setManagedSession(true)'.
+		        </p>
+                
+    </body>
+</html>

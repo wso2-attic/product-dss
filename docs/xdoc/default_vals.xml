@@ -1,0 +1,62 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<html>
+    <body>
+        <p>[<a
+                href="http://wso2.com/products/data-services-server/">Download</a>]
+            | [<a href="index_docs.html">Documentation Home</a>] | [<a
+                    href="release_notes.html">Release Note</a>]
+        </p>
+        <h1>Default Values</h1>
+        <h2>Introduction</h2>
+        <p>
+            When defining a data service, a user may have an requirement, that even if a user has not entered a specific parameter value in a request, a default value should be automatically added to the query. This can be done in <a href="http://wso2.org/projects/data-services-server/java">WSO2 Data Services Server</a> using the default values feature that is found when defining a query.
+        </p>
+        <h2>Setting the Default Value</h2>
+            Figure 1 shows the step in setting a default value for an input-mapping in a query.
+            <p>
+                <img src="./images/user-guide/default-values/figure01.png"/>
+                <br/>
+                Figure 1: Setting a default value to a field.
+            </p>
+        <p>
+        </p>
+
+        <h2>Referring to Internal Property Values using Default Values</h2>
+        <p>
+            <a href="http://wso2.org/projects/data-services-server/java">WSO2 Data Services Server</a> defines special system variables, that can be used as a default value. At the moment, it only provides a variable for retreiving the username of the current user who is authenticated in a secured data service. This variable can be accessed by using the following syntax.
+            <ul>
+              <li>#{USERNAME} :- This value replaces the current input-mapping value dynamically, with the current user's username, when a data service request is processed at the server.
+              </li>
+              <li>#{NULL} :- This value sets the current input-mapping value to null. This is the same as providing "xsi:nil" in the incoming message's input parameter element.
+              </li>
+              <li>#{TENANT_ID} :- This value represents the current tenant ID, this is meaningful when having a Stratos deployement, where multiple tenants will live in the same server.
+              </li>
+              <li>#{USER_ROLES} :- This value will contain the list of user roles that current calling user will have. If the parameter mapped is of ARRAY type, it will have the full list of user roles, or else if it's a SCALAR, it will only contain the first user role of the user.
+              </li>
+            </ul>
+        </p>
+
+        <h2>Demo</h2>
+        <p>
+            For a demonstration of the usage of default values, refer to the
+            <a href="./samples/rdbms_sample.html#default_values">default values demo</a>
+            in the samples.
+        </p>
+     
+    </body>
+</html>

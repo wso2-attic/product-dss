@@ -1,0 +1,107 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<html>
+    <body>
+        <p>[<a
+                href="http://wso2.org/downloads/solutions/data-services">Download</a>]
+            | [<a href="../index_docs.html">Documentation Home</a>] | [<a
+                href="../release_notes.html">Release Note</a>]
+        </p>
+        <h1>Eventing</h1>
+        <h2>Introduction</h2>
+        <p>
+            <a href="http://wso2.org/projects/data-services-server/java">WSO2 Data Services Server</a> features eventing support using the WS-Eventing web services standard. When a specific event is triggered from a data service request or response, a notification can be sent out for the subscribers that were listening to those events. For a data service, "event-trigger" sections can be specified. Which defines the criteria for the event to be triggered, and also the destination topic the event notifications will be sent to. Also, a data service event-trigger contains the subscriptions which represents the interested subscribers, in receiving the notifications sent to the given topic. So effectively, if a certain data service event-trigger is activated, its respective subscribers will be notified.
+        </p>
+        <h2>Data Service "event-trigger" Definition</h2>
+        <p>
+            An event-trigger can be created in the query editing section, there select "Manage Events". The user is presented with the following fields for defining an event-trigger.
+            <ul>
+              <li>Event Id :- The id used to identify the event-trigger, used in data services queries.
+              </li>
+              <li>Expression :- Represents an XPath expression that will be run against the XML message that is being presented, i.e. request/response message. When this evaluation returns "true", it will trigger the event.
+              </li>
+              <li>Target Topic :- The topic, to which the event notifications will be published.
+              </li>
+              <li>Subscriptions :- A subscription can be any WS-Eventing complient endpoint. For example, an SMTP transport can be used to send a message to a mail inbox, where an email address is given as the subscription. Here many subscriptions can be defined for the given topic.
+              </li>
+            </ul>
+        </p>
+
+        <h2>How an event-trigger is executed</h2>
+        <p>
+            An event-trigger can be set as an input event trigger or an ouput event trigger in a data service query. The following section explain the use of the two approaches.
+            <ul>
+              <li>input-event-trigger :- When an input-event-trigger is applied to a query, the event-trigger will be evaluated when the parameters are received to the query. As mentioned in the previous section, an event-trigger executed an XPath expression against an XML element. This XML element is built from the input parameters, which is simply represented by the element of the parameters wrapped by an element with the name of the query. For example, if we have the following query,
+<pre style="font-family: monospace;">
+<![CDATA[
+   <query id="incrementEmployeeSalaryQuery" useConfig="default">                  
+      <sql>update Employees set salary=salary+? where employeeNumber=?</sql>                  
+      <param name="increment" paramType="SCALAR" sqlType="DOUBLE" type="IN" ordinal="1" />                  
+      <param name="employeeNumber" paramType="SCALAR" sqlType="INTEGER" type="IN" ordinal="2" />         
+   </query>         
+]]>
+</pre>
+              Given the values of "increment" and "employeeNumber" are "value1" and "value2" respectively, The XML element created to be evaluated with the XPath expression would be the following.
+<pre style="font-family: monospace;">
+<![CDATA[
+   <incrementEmployeeSalaryQuery>                  
+       <increment>value1</increment>
+       <employeeNumber>value2</employeeNumber>
+   </incrementEmployeeSalaryQuery>         
+]]>
+</pre>
+              Also note that, this XML element will not have any namespaces associated with it.
+              </li>
+              <li>output-event-trigger :- In the case of an output-event-trigger, the event-trigger is evaluated when a specific query is returning its result. Here there will not be any special creation of an XML element like in the input-event-trigger, that is used with the XPath expression, but simply the full result XML will be used to evaluate it. And here, the result will be namespace qualified, thus the XPath expressions must be written accordingly.
+              </li>
+            </ul>            
+        </p>
+
+            <h2>Contents of Event Notification</h2>
+            <p>
+                In the event notification messages, additional information about the event is added to the SOAP Envelope/Body element. The following section illustrates this.
+<pre style="font-family: monospace;">
+<![CDATA[
+   <data-services-event>          
+       <service-name>$SERVICE_NAME</service-name>
+       <query-id>$QUERY_ID</query-id>
+       <time>$TIME</time>
+       <content>
+         $CONTENT
+       </content>
+   </data-services-event>     
+]]>
+</pre>
+            <ul>
+              <li>$SERVICE_NAME :- Name of the service which the event originated.
+              </li>
+              <li>$QUERY_ID :- The id of the query which triggered the event.
+              </li>
+              <li>$TIME :- The date/time when the event occured.
+              </li>
+              <li>$CONTENT :- In the case of a input-event-trigger, this will be the XML element generated as described in the earlier section, which is used for used with executing the XPath expression, where basically contains the input parameters wrapped with the query id value. In the case of the output-event-trigger, it will contain the full result XML.
+              </li>
+            </ul>                
+            </p>
+
+            <h2>Demo</h2>
+            <p>
+                For a demonstration of the usage of eventing, refer to the
+                <a href="./samples/eventing_sample.html">Eventing Sample</a>.
+            </p>
+    </body>
+</html>

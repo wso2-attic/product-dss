@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+  ~  Copyright (c) 2009, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+  ~
+  ~  WSO2 Inc. licenses this file to you under the Apache License,
+  ~  Version 2.0 (the "License"); you may not use this file except
+  ~  in compliance with the License.
+  ~  You may obtain a copy of the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~  Unless required by applicable law or agreed to in writing,
+  ~  software distributed under the License is distributed on an
+  ~  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  ~  KIND, either express or implied.  See the License for the
+  ~  specific language governing permissions and limitations
+  ~  under the License.
+  -->
+
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=iso-8859-1"/>
+    <title>
+      WSO2 DSS - Documentation Index
+    </title>
+    
+    <link href="styles/dist-docs.css" rel="stylesheet" type="text/css" media="all"/>
+  </head>
+  <body xml:lang="en">
+    <h1>
+      WSO2 Data Services Server (DSS) Documentation Index
+    </h1>
+    <h2>
+      Getting Started
+    </h2>
+    <p>
+      <a href="installation_guide.html">Installation Guide</a> : Gives
+      basic steps on how to download, install, and run WSO2 Data Services Server using the binary
+      distribution, and how to build WSO2 Data Services Server using the source distribution.
+    </p>
+    <p>
+      <a href="quickstart_guide.html">Quick Start Guide</a> :
+      Demonstrates data services sample covering the basic and the most
+      common usage scenarios of the WSO2 Data Services Server - Message mediation and Service
+      mediation.
+    </p>
+    <p>
+      <a href="user_guide.html">User Guide</a> : User guide provides information and instructions on the functionality of WSO2 Data Services Server UI console.
+    </p>
+   
+    <h2>
+      Samples
+    </h2>
+    <p>
+      <a href="samples/deploying_samples.html">Deploying Samples</a> :
+      Provides step-by-step instructions on how to deploy the data services samples.
+    </p>
+    <p>
+      <a href="samples/ds_clients.html">Data Services Clients</a> :
+     This sample demonstrates the usage of code-generated clients when used with data-services.
+    </p>
+    <p>
+      <a href="samples/rdbms_sample.html">RDBMS Sample</a> :
+      Demonstrates how to use a sample RDBMS data service with the use of an relational databases.
+    </p>
+     <p>
+      <a href="samples/rdf_sample.html">RDF Sample</a> :
+      Demonstrates how to use a sample RDBMS data service with the use of an relational databases.
+    </p>
+     <p>
+      <a href="samples/csv_sample.html">CSV Sample</a> :
+     Demonstrates how to use a sample CVS data service with the use of an comma-separated values (CSV) file.
+    </p>
+    <p>
+      <a href="samples/excel_sample.html">Excel Sample</a> :
+     Demonstrates how to use a sample excel data service with the use of an excel document.
+    </p>
+     <p>
+      <a href="samples/nested_query_sample.html">Nested Query Sample</a> :
+     Demonstrates how to use the data services nested query feature using a sample data service.
+    </p>
+     <p>
+      <a href="samples/batch_process_sample.html">Batch Process Sample</a> :
+     Demonstrates how to use the data services batch processing feature using a sample data service.
+    </p>
+     <p>
+      <a href="samples/eventing_sample.html">Eventing Sample</a> : Demostrates how to triger an event to notify a specific action by using a data service eventing sample. 
+    </p>
+    <p>
+      <a href="samples/secure_ds_sample.html">Secure Service Sample</a> :
+     Demonstrates how a service client is used to access a secured data service. 
+    </p>
+    <p>
+      <a href="samples/file_service_app_sample.html">File App Sample</a> :
+     Demonstrates file upload/download/preview application with the usage of several features. 
+    </p>    
+    <p>
+      <a href="samples/xslt_transformation_sample.html">XSLT Transformation Sample</a> :
+      Demostrate how users can transform data services results according to their need using a sample data service.
+    </p>
+     <p>
+      <a href="samples/distributed_transactions_sample.html">Distributed Transactions Sample</a> :
+      Demonstrates how to use the distributed transactions feature using a sample data service.
+    </p>
+
+   
+    <h2>
+      Other Resources
+    </h2>
+    <p> 
+      <a href="http://wso2.org/forum/404">Forum</a> :  WSO2 Data Services Server Forum
+    </p>
+    <!--<p>
+      <a href="mail-lists.html">Mailing Lists</a> :
+       Contains mailing lists that have been established for the data service project.
+    </p>-->
+    <p>
+      <a href="http://ws.apache.org/synapse/apidocs/index.html">Java Docs</a> : Application
+      Programing Interface of the Apache Synapse version used underneath the WSO2 Data Services Server. If you want
+      to write advanced custom mediators, you will need this API.
+    </p>
+    <p>
+      <a href="external_articles.html">External articles</a> : A collection of external articles published on WSO2
+          Data Services Server.
+    </p>
+    <p>
+      <a href="http://wso2.org/library/data-services-server">The WSO2 Oxygen Tank
+      Library</a> : The Library contains articles, tutorials,
+      presentations, and other knowledge base items published on The Oxygen
+      Tank.
+    </p>
+    <p>
+      <a href="http://wso2.org/wiki/display/wsf/Data+Services+and+Resources">Wiki Space</a> :
+      This is the working Wiki for WSO2 Data Services Server.
+    </p>
+  </body>
+</html>
+

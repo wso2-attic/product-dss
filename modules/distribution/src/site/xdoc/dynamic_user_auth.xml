@@ -1,0 +1,159 @@
+<!--
+  ~ Copyright 2005-2012 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <body>
+        <p>[<a
+                href="http://wso2.com/products/data-services-server/">Download</a>]
+            | [<a href="index_docs.html">Documentation Home</a>] | [<a
+                    href="release_notes.html">Release Note</a>]
+        </p>
+<h1>Dynamic User Authentication</h1>
+<p><b>Introduction</b></p>
+<p>This functionality allows users to authenticate database users dynamically for each data service call. This is done using a mapping between the Carbon users and the database users. This mappings can be given as a static mapping inside the data service configuration itself, or an Java class implementation can be given which implements the interface <code>org.wso2.carbon.dataservices.core.auth.DynamicUserAuthenticator</code> to provide the mapping at runtime.</p>
+
+ <h2>Static Configuration</h2>
+ 
+ <p>The static configuration can be given in the data source configuration section of the data service. Below contains a sample configuration snippet on how this is done.</p>
+ 
+ <code><pre>
+   <![CDATA[
+   <data name="RDBMSSample" serviceGroup="RDBMS">                           
+   <config id="default">                                                      
+      <property name="driverClassName">org.h2.Driver</property>                                                      
+      <property name="url">jdbc:h2:file:./samples/database/DATA_SERV_SAMP</property>                                                      
+      <property name="username">wso2ds</property>                                                      
+      <property name="password">wso2ds</property>                                             
+      <property name="dynamicUserAuthMapping">                                                                        
+         <configuration>                                                                                               
+            <entry request="admin">                                                                                                                      
+               <username>wso2ds</username>                                                                                                                      
+               <password>wso2ds</password>                                                                                               
+            </entry>                                                
+            <entry request="user1">                                                                                                                      
+               <username>dbuser1</username>                                                                                                                      
+               <password>dbpass1</password>                                                                                               
+            </entry>            
+            <entry request="*">                                                                                                                      
+               <username>guest</username>                                                                                                                      
+               <password>guest</password>                                                                                               
+            </entry>                                                                        
+         </configuration>                                                
+      </property>                            
+   </config>  
+   ....
+   ]]></pre>
+ </code>
+ 
+ <p>In the above configuration, it maps the two Carbon users to specific database credentials and all the rest of the users to a different username/password pair. In the XML configuration of "dynamicUserAuthMapping" property, at the location "/configuration/entry/@request", that attribute represents the incoming Carbon user, and the following "username" and "password" elements represents the mapped database credentials.
+ </p>
+ 
+ <p>
+ For dynamic user authentication to work, security should be enabled in the data service with a scenario such as UsernameToken for user authentication. If user authentication is not available when a "dynamicUserAuthMapping" section is there, it will, by default map to the request="*" scenario. 
+ </p>
+ 
+ <p><img alt="Dynamic User Auth Mapping" src="./images/user-guide/dynamic-auth/dyn-user-auth-mapping.png"/>
+   <br/>
+   <b>Figure 01: Dynamic User Auth Mapping</b>
+</p>
+
+ <p>Figure 01 shows the UI at the data sources page in configuring dynamic user mappings, where for each entry, the Carbon user and the target database user / password can be mapped.</p>
+ 
+ <h2>Runtime Request User Mapping Configuration</h2>
+ 
+ <p>In this mode, rather than providing the data source configuration property "dynamicUserAuthMapping", we should provide the property "dynamicUserAuthClass", with the value containing the fully qualified class name of a Java class which implements the interface <code>org.wso2.carbon.dataservices.core.auth.DynamicUserAuthenticator</code>. The interface is as follows:
+
+ <code><pre>
+    public interface DynamicUserAuthenticator {
+
+        /**
+        * This method is used to lookup a username/password pair given a source username.
+        * @param user The source username
+        * @return A two element String array containing the username and password respectively
+        * @throws DataServiceFault
+        */
+        String[] lookupCredentials(String user) throws DataServiceFault;
+
+    }
+  </pre></code>
+ 
+  <p>The following shows a sample implementation of a dynamic user authenticator class:</p>
+  <code><pre>
+    package samples;
+
+    import org.wso2.carbon.dataservices.core.DataServiceFault;
+    import org.wso2.carbon.dataservices.core.auth.DynamicUserAuthenticator;
+
+    public class MyDynAuthClass implements DynamicUserAuthenticator {
+
+        @Override
+        public String[] lookupCredentials(String user) throws DataServiceFault {
+                if ("admin".equals(user)) {
+                   return new String[] {"wso2ds", "wso2ds"};
+                } else if ("user1".equals(user)) {
+                   return new String[] {"dbuser1", "dbpass1"};
+                } else if ("user2".equals(user)) {
+                   return new String[] {"dbuser2", "dbpass2"};
+                } else {
+                   throw new DataServiceFault("The user '" + user + 
+                           "' not supported in invoking the target data service");
+                }
+        }
+
+    }
+  </pre></code>
+  
+  <p>The "lookupCredentials" method takes in the request user and should return the database username/password in a String array respectively.</p>
+ 
+ The dbs file configuration format is as follows:
+ 
+ <code><pre>
+   <![CDATA[
+   <data name="RDBMSSample" serviceGroup="RDBMS">                           
+   <config id="default">                                                      
+      <property name="driverClassName">org.h2.Driver</property>                                                      
+      <property name="url">jdbc:h2:file:./samples/database/DATA_SERV_SAMP</property>                                                      
+      <property name="username">wso2ds</property>                                                      
+      <property name="password">wso2ds</property>                                             
+      <property name="dynamicUserAuthClass">samples.MyDynAuthClass</property>                                                                        
+         
+   ....
+   ]]></pre>
+ </code>
+ 
+  <p><img alt="Dynamic User Auth Class" src="./images/user-guide/dynamic-auth/dyn-user-auth-class.png"/>
+   <br/>
+   <b>Figure 02: Dynamic User Auth Class</b>
+</p>
+
+ <p>Figure 02 shows that the dynamic user auth class can be given in the shown field</p>
+
+ <h2>The Dynamic User Lookup Order of Precedence</h2>
+ <p>
+ In a single data source configuration, both the static mapping and the runtime configuration given by the Java class can be available. In that type of a situation, the higher precedence goes to the static mapping in initially looking up the credentials, and it will ignore the "*" request setting in the first pass. If it cannot find a request user / database credentials mapping, we will use the secondary runtime Java class implementation to look up the user, if that also fails, it will return again for the primary static mapping and process the "*" request mapping. If that also fails, the data service request will return an error.
+ </p>
+ 
+  <h2>The Use of External Data Sources</h2>
+ <p>
+ When using non-inline data sources, i.e. Carbon data sources, JNDI data sources etc.., the data sources must be created in a way that its connections can be created for specific users. Specifically, in Carbon data sources, the setting "alternateUsernameAllowed" must be enabled for dynamic user authentication to function. 
+ </p>
+ 
+ </p>
+ 
+</body>
+</html>

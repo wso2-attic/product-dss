@@ -1,0 +1,90 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <body>
+        <p>[<a
+                href="http://wso2.com/products/data-services-server/">Download</a>]
+            | [<a href="index_docs.html">Documentation Home</a>] | [<a
+                    href="release_notes.html">Release Note</a>]
+        </p>
+<h1>JDBC driver for Excel and Google Spread Sheets</h1>
+<p><b>Introduction</b></p>
+<p>This functionality allows users to query an Excel sheet or a Google SpreadSheet in a much familiar SQL-like manner.</p>
+<p>The users can simply log in to the Data Service Server and create a datasource using the "Generic" option that comes under the RDBMS datasource type and make use of that configuration when you define the dataservice queries</p>
+
+<br/>
+<h2>JDBC URL format</h2>
+<p>Excel</p>
+<p></p>
+<p>Eg:</p>
+<p>jdbc:wso2:excel:filePath=/home/djpro/IdeaProjects/TestParser/workbooks/workbook.xls</p>
+<p>(Note that "filePath" attribute is mandatory for the Excel JDBC URL)</p>
+<br/>
+<p>Google Spreadsheets</p>
+<p></p>
+<p>Eg:</p>
+<p>jdbc:wso2:gspread:filePath=https://docs.google.com/a/wso2.com/spreadsheet/ccc?key=0AkK1ndEwj4-WdGtSTFVxMWJhVzdNRWF6NUhxT01zTXc;sheetName=testDoc;visibility=private</p>
+<p>(Note that "filePath", "sheetName" and "visibility" attributes are mandatory for the Google Spreadsheet JDBC URL)</p>
+<br/>
+
+<h2>How to configure a datasource corresponding to the Excel/Google SpreadSheet that needs to be queried</h2>
+<p>The following images depict the datasource configurations for Excel and Google Spread Sheets</p>
+<p>Excel</p>
+<p><img alt="Configure Excel datasource via UI" src="./images/user-guide/sql-driver/excel_ds.png"/>
+   <br/>
+</p>
+<p><img alt="Configure Excel datasource via the dbs" src="./images/user-guide/sql-driver/excel_ds_config.png"/>
+   <br/>
+</p>
+
+<p>Google Spreadsheets</p>
+<p><img alt="Configure Google Spreadsheet datasource via UI" src="./images/user-guide/sql-driver/gspread_ds.png"/>
+   <br/>
+</p>
+<p><img alt="Configure Google Spreadsheet datasource via the dbs" src="./images/user-guide/sql-driver/gspread_ds_config.png"/>
+   <br/>
+</p>
+
+<h2>Supported query types</h2>
+<p>Currently, this feature provides support for basic SELECT, INSERT, UPDATE and DELETE functionalities.</p>
+<p>Note : Nested quries are currently not supported</p>
+<br/>
+<p>Eg:</p>
+<p>SELECT customerNumber,customerName,phone,state,country FROM customers</p>
+<p></p>
+<p><img alt="Sample SELECT query" src="./images/user-guide/sql-driver/select_query.png"/>
+   <br/>
+</p>
+<p>INSERT INTO customers(customerNumber,customerName,contactLastName) VALUES(?,?,?)</p>
+<p></p>
+<p><img alt="Sample INSERT query" src="./images/user-guide/sql-driver/insert_query.png"/>
+   <br/>
+</p>
+<p>UPDATE customers SET contactFirstName=?, contactLastName=? WHERE customerNumber=?</p>
+<p></p>
+<p><img alt="Sample UPDATE query" src="./images/user-guide/sql-driver/update_query.png"/>
+   <br/>
+</p>
+<p>DELETE FROM customers WHERE customerNumber=?</p>
+<p></p>
+<p><img alt="Sample DELETE query" src="./images/user-guide/sql-driver/delete_query.png"/>
+   <br/>
+</p>
+    </body>
+</html>

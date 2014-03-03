@@ -157,38 +157,49 @@
                 <groupId>org.apache.ws.security.wso2</groupId>
                 <artifactId>wss4j</artifactId>
                 <version>${wss4j.version}</version>
-             </dependency>
-             <dependency>
+            </dependency>
+            <dependency>
+                <groupId>org.wso2.carbon</groupId>
+                <artifactId>org.wso2.carbon.dataservices.core</artifactId>
+                <version>${carbon.platform.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.rampart</groupId>
+                <artifactId>rampart</artifactId>
+                <type>mar</type>
+                <version>1.6.1-wso2v8</version>
+            </dependency>
+            <dependency>
                 <groupId>org.apache.rampart.wso2</groupId>
                 <artifactId>rampart-policy</artifactId>
                 <version>${rampart.osgi.version}</version>
-             </dependency>
-             <dependency>
+            </dependency>
+            <dependency>
                 <groupId>org.apache.rampart.wso2</groupId>
                 <artifactId>rampart-trust</artifactId>
                 <version>${rampart.osgi.version}</version>
-              </dependency>
-             <dependency>
+            </dependency>
+            <dependency>
                 <groupId>org.apache.rampart.wso2</groupId>
                 <artifactId>rampart-core</artifactId>
                 <version>${rampart.osgi.version}</version>
-             </dependency>
-      	     <dependency>
+            </dependency>
+      	    <dependency>
                 <groupId>org.wso2.carbon</groupId>
                 <artifactId>org.wso2.carbon.datasource</artifactId>
                 <version>${carbon.platform.version}</version>
-       	     </dependency>
-      	     <dependency>
+       	    </dependency>
+      	    <dependency>
                 <groupId>org.wso2.carbon</groupId>
                 <artifactId>org.wso2.carbon.datasource.ui</artifactId>
                 <version>${carbon.platform.version}</version>
-       	     </dependency>
-             <dependency>
-           	<groupId>com.h2database.wso2</groupId>
+       	    </dependency>
+            <dependency>
+           	    <groupId>com.h2database.wso2</groupId>
                 <artifactId>h2-database-engine</artifactId>
                 <version>${wso2.h2.orbit.version}</version>
-       	     </dependency>
-	     <!-- Dependencies for dashboard ui -->
+       	    </dependency>
+	        <!-- Dependencies for dashboard ui -->
             <dependency>
                 <groupId>org.apache.axis2.wso2</groupId>
                 <artifactId>axis2</artifactId>
@@ -204,10 +215,75 @@
                 <artifactId>commons-logging</artifactId>
                 <version>${version.commons.logging}</version>
             </dependency>
-	    <dependency>
+	        <dependency>
                 <groupId>org.apache.ws.commons.axiom.wso2</groupId>
                 <artifactId>axiom</artifactId>
                 <version>${axiom.osgi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wso2.dss</groupId>
+                <artifactId>org.wso2.dataservices.styles</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wso2.dss</groupId>
+                <artifactId>org.wso2.stratos.dss.styles</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.derby.wso2</groupId>
+                <artifactId>derby</artifactId>
+                <version>${apache.derby.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate.wso2</groupId>
+                <artifactId>hibernate</artifactId>
+                <version>${hibernate.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.bcel.wso2</groupId>
+                <artifactId>bcel</artifactId>
+                <version>${bcel.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>asm.wso2</groupId>
+                <artifactId>asm</artifactId>
+                <version>${asm.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cglib.wso2</groupId>
+                <artifactId>cglib</artifactId>
+                <version>${cglib.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.axis2.wso2</groupId>
+                <artifactId>axis2-jibx</artifactId>
+                <version>${axis2.jibx.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jibx.wso2</groupId>
+                <artifactId>jibx</artifactId>
+                <version>${jibx.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.axis2.wso2</groupId>
+                <artifactId>axis2-jaxbri</artifactId>
+                <version>${axis2.jaxb.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sun.xml.bind.wso2</groupId>
+                <artifactId>jaxb</artifactId>
+                <version>${jaxb.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wso2.dss</groupId>
+                <artifactId>org.wso2.stratos.dss.dashboard.ui</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wso2.dss</groupId>
+                <artifactId>org.wso2.stratos.dss.login.ui</artifactId>
+                <version>${project.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -217,7 +293,48 @@
         <developerConnection>scm:svn:https://wso2.org/repos/wso2/trunk/solutions/data-services/java</developerConnection>
     </scm>
 
+    <pluginRepositories>
+        <pluginRepository>
+            <id>wso2.releases</id>
+            <name>WSO2 internal Repository</name>
+            <url>http://maven.wso2.org/nexus/content/repositories/releases/</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+        </pluginRepository>
+
+        <pluginRepository>
+            <id>wso2.snapshots</id>
+            <name>WSO2 Snapshot Repository</name>
+            <url>http://maven.wso2.org/nexus/content/repositories/snapshots/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </pluginRepository>
+        <pluginRepository>
+            <id>wso2-nexus</id>
+            <name>WSO2 internal Repository</name>
+            <url>http://maven.wso2.org/nexus/content/groups/wso2-public/</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+        </pluginRepository>
+    </pluginRepositories>
+
     <repositories>
+        <!-- Before adding ANYTHING in here, please start a discussion on the dev list.
+        Ideally the Axis2 build should only use Maven central (which is available
+        by default) and nothing else. We had troubles with other repositories in
+        the past. Therefore configuring additional repositories here should be
+        considered very carefully. -->
         <repository>
             <id>wso2-nexus</id>
             <name>WSO2 internal Repository</name>
@@ -228,64 +345,44 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
         </repository>
-        <!--moved to nexus
 
         <repository>
-            <id>wso2-maven2-snapshot-repository</id>
-            <name>WSO2 Maven2 Snapshot Repository</name>
-            <url>http://dist.wso2.org/snapshots/maven2</url>
-            <snapshots>
+            <id>wso2.releases</id>
+            <name>WSO2 internal Repository</name>
+            <url>http://maven.wso2.org/nexus/content/repositories/releases/</url>
+            <releases>
                 <enabled>true</enabled>
-                <updatePolicy>interval:60</updatePolicy>
+                <updatePolicy>daily</updatePolicy>
                 <checksumPolicy>ignore</checksumPolicy>
-            </snapshots>
-            <releases>
-                <enabled>false</enabled>
             </releases>
         </repository>
 
         <repository>
-            <id>m2-snapshot-repository</id>
-            <url>http://people.apache.org/repo/m2-snapshot-repository</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
+            <id>wso2.snapshots</id>
+            <name>WSO2 Snapshot Repository</name>
+            <url>http://maven.wso2.org/nexus/content/repositories/snapshots/</url>
             <snapshots>
                 <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
             </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
         </repository>
-        <repository>
-            <id>wso2-maven2-repository</id>
-            <url>http://dist.wso2.org/maven2</url>
-        </repository>
-        <repository>
-            <id>tomcat-repository</id>
-            <url>http://tomcat.apache.org/dev/dist/m2-repository</url>
-        </repository>
-        <repository>
-            <id>ws-zones-repository</id>
-            <url>http://ws.zones.apache.org/repository2</url>
-        </repository>
-        <!&ndash;&ndash; Others are available from http://repo1.maven.org/maven2 &ndash;&ndash;>
-
-        -->
     </repositories>
-  <pluginRepositories>
-     	<pluginRepository>
-            <id>wso2-maven2-repository</id>
-            <url>http://dist.wso2.org/maven2</url>
-        </pluginRepository>
-    </pluginRepositories>
+
+
     <distributionManagement>
         <repository>
-            <id>wso2-maven2-repository</id>
-            <name>WSO2 Maven2 Repository</name>
-            <url>scp://dist.wso2.org/home/httpd/dist.wso2.org/maven2/</url>
+            <id>wso2.releases</id>
+            <name>WSO2 internal Repository</name>
+            <url>http://maven.wso2.org/nexus/content/repositories/releases/</url>
         </repository>
+
         <snapshotRepository>
-            <id>wso2-maven2-snapshot-repository</id>
-            <name>WSO2 Maven2 Snapshot Repository</name>
-            <url>scp://dist.wso2.org/home/httpd/dist.wso2.org/snapshots/maven2/</url>
+            <id>wso2.snapshots</id>
+            <name>WSO2 Snapshot Repository</name>
+            <url>http://maven.wso2.org/nexus/content/repositories/snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
 
@@ -328,19 +425,38 @@
     </issueManagement>
 
     <properties>
-        <carbon.version>4.2.0</carbon.version>
-	    <carbon.kernel.version>4.2.0</carbon.kernel.version>
+        <carbon.platform.version>4.3.0-SNAPSHOT</carbon.platform.version>
+        <carbon.version>4.3.0-SNAPSHOT</carbon.version>
+	    <carbon.kernel.version>4.3.0-SNAPSHOT</carbon.kernel.version>
+        <previous.version>4.2.0</previous.version>
         <eclipse.version>3.2.0</eclipse.version>
         <servlet-api.version>2.4</servlet-api.version>
         <wss4j.version>1.5.11.wso2v5</wss4j.version>
         <neethi.version>${neethi.osgi.version}</neethi.version>
+        <neethi.osgi.version>2.0.4.wso2v4</neethi.osgi.version>
+        <rampart.osgi.version>1.6.1.wso2v12</rampart.osgi.version>
+        <carbon.p2.plugin.version>1.5.3</carbon.p2.plugin.version>
+        <orbit.version.jettison>1.3.4.wso2v1</orbit.version.jettison>
+        <emma.version>2.1.5320</emma.version>
+        <version.commons.logging>1.1.1</version.commons.logging>
+        <axiom.osgi.version>1.2.11.wso2v4</axiom.osgi.version>
         <synapse.version>2.1.0-wso2v4</synapse.version>
         <wso2.h2.orbit.version>1.2.140.wso2v3</wso2.h2.orbit.version>
         <log4j.version>1.2.13</log4j.version>
         <commons.logging.version>1.1.1</commons.logging.version>
-        <axis2.wso2.version>1.6.1.wso2v1</axis2.wso2.version>
+        <axis2.wso2.version>1.6.1.wso2v11-SNAPSHOT</axis2.wso2.version>
         <axiom.wso2.version>1.2.11.wso2v2</axiom.wso2.version>
-        <stratos.version>2.2.0</stratos.version>
+        <stratos.version>2.2.1-SNAPSHOT</stratos.version>
+        <wso2carbon.version.caching>${carbon.version}</wso2carbon.version.caching>
+        <apache.derby.version>10.3.2.1wso2v1</apache.derby.version>
+        <hibernate.version>3.2.5.ga-wso2v1</hibernate.version>
+        <bcel.version>5.2.0.wso2v1</bcel.version>
+        <asm.version>1.5.3.wso2v1</asm.version>
+        <cglib.version>2.2.wso2v1</cglib.version>
+        <axis2.jibx.version>1.6.0.wso2v1</axis2.jibx.version>
+        <jibx.version>1.2.1.wso2v1</jibx.version>
+        <axis2.jaxb.version>1.6.0.wso2v1</axis2.jaxb.version>
+        <jaxb.version>2.1.6.wso2v1</jaxb.version>
     </properties>
 
     <mailingLists>

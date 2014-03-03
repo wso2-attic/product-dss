@@ -39,73 +39,48 @@
         <module>org.wso2.stratos.dss.dashboard.ui.feature</module>
     </modules>
 
-    <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.wso2.dss</groupId>
                 <artifactId>org.wso2.stratos.dss.styles</artifactId>
-                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.derby.wso2</groupId>
                 <artifactId>derby</artifactId>
-                <version>${apache.derby.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.hibernate.wso2</groupId>
                 <artifactId>hibernate</artifactId>
-                <version>${hibernate.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.bcel.wso2</groupId>
                 <artifactId>bcel</artifactId>
-                <version>${bcel.version}</version>
             </dependency>
             <dependency>
                 <groupId>asm.wso2</groupId>
                 <artifactId>asm</artifactId>
-                <version>${asm.version}</version>
             </dependency>
             <dependency>
                 <groupId>cglib.wso2</groupId>
                 <artifactId>cglib</artifactId>
-                <version>${cglib.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.axis2.wso2</groupId>
                 <artifactId>axis2-jibx</artifactId>
-                <version>${axis2.jibx.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.jibx.wso2</groupId>
                 <artifactId>jibx</artifactId>
-                <version>${jibx.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.axis2.wso2</groupId>
                 <artifactId>axis2-jaxbri</artifactId>
-                <version>${axis2.jaxb.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.sun.xml.bind.wso2</groupId>
                 <artifactId>jaxb</artifactId>
-                <version>${jaxb.version}</version>
             </dependency>
         </dependencies>
-    </dependencyManagement>
-
-    <properties>
-        <wso2carbon.version.caching>${wso2carbon.version}</wso2carbon.version.caching>
-        <apache.derby.version>10.3.2.1wso2v1</apache.derby.version>
-        <hibernate.version>3.2.5.ga-wso2v1</hibernate.version>
-        <bcel.version>5.2.0.wso2v1</bcel.version>
-        <asm.version>1.5.3.wso2v1</asm.version>
-        <cglib.version>2.2.wso2v1</cglib.version>
-        <axis2.jibx.version>1.6.0.wso2v1</axis2.jibx.version>
-        <jibx.version>1.2.1.wso2v1</jibx.version>
-        <axis2.jaxb.version>1.6.0.wso2v1</axis2.jaxb.version>
-        <jaxb.version>2.1.6.wso2v1</jaxb.version>
-    </properties>
 
 </project>
 

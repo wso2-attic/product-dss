@@ -53,12 +53,6 @@
     </fileSets>
     <files>
         <file>
-            <source>../../../../pom.xml</source>
-            <outputDirectory>wso2dss-${pom.version}-src</outputDirectory>
-            <filtered>true</filtered>
-            <fileMode>644</fileMode>
-        </file>
-        <file>
             <source>LICENSE.txt</source>
             <outputDirectory>wso2dss-${pom.version}-src</outputDirectory>
             <filtered>true</filtered>

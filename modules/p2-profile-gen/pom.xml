@@ -60,65 +60,6 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>2-unpack-kernel-patch</id>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>unpack</goal>
-                        </goals>
-                        <configuration>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>org.wso2.carbon</groupId>
-                                    <artifactId>WSO2-CARBON-PATCH-4.2.0</artifactId>
-                                    <version>0001</version>
-                                    <type>zip</type>
-                                    <overWrite>true</overWrite>
-                                    <outputDirectory>target</outputDirectory>
-                                </artifactItem>
-                                <artifactItem>
-                                    <groupId>org.wso2.carbon</groupId>
-                                    <artifactId>WSO2-CARBON-PATCH-4.2.0</artifactId>
-                                    <version>0002</version>
-                                    <type>zip</type>
-                                    <overWrite>true</overWrite>
-                                    <outputDirectory>target</outputDirectory>
-                                </artifactItem>
-                                <artifactItem>
-                                    <groupId>org.wso2.carbon</groupId>
-                                    <artifactId>WSO2-CARBON-PATCH-4.2.0</artifactId>
-                                    <version>0003</version>
-                                    <type>zip</type>
-                                    <overWrite>true</overWrite>
-                                    <outputDirectory>target</outputDirectory>
-                                </artifactItem>
-                                <artifactItem>
-                                    <groupId>org.wso2.carbon</groupId>
-                                    <artifactId>WSO2-CARBON-PATCH-4.2.0</artifactId>
-                                    <version>0004</version>
-                                    <type>zip</type>
-                                    <overWrite>true</overWrite>
-                                    <outputDirectory>target</outputDirectory>
-                                </artifactItem>
-                                <artifactItem>
-                                    <groupId>org.wso2.carbon</groupId>
-                                    <artifactId>WSO2-CARBON-PATCH-4.2.0</artifactId>
-                                    <version>0005</version>
-                                    <type>zip</type>
-                                    <overWrite>true</overWrite>
-                                    <outputDirectory>target</outputDirectory>
-                                </artifactItem>
-                                <artifactItem>
-                                    <groupId>org.wso2.carbon</groupId>
-                                    <artifactId>WSO2-CARBON-PATCH-4.2.0</artifactId>
-                                    <version>0006</version>
-                                    <type>zip</type>
-                                    <overWrite>true</overWrite>
-                                    <outputDirectory>target</outputDirectory>
-                                </artifactItem>
-                            </artifactItems>
-                        </configuration>
-                    </execution>
-                    <execution>
                         <id>unpack-equinox-executable</id>
                         <phase>test</phase>
                         <goals>
@@ -158,50 +99,50 @@
                             <featureArtifacts>
                                 <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.core.feature:${carbon.kernel.version}</featureArtifactDef>
                                 <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.core.runtime.feature:${carbon.kernel.version}</featureArtifactDef>
-                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.ntask.feature:${chunk02.4.2.2}</featureArtifactDef>
+                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.ntask.feature:${carbon.platform.version}</featureArtifactDef>
                                 <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.dbconsole.ui.feature:${carbon.platform.version}</featureArtifactDef>
-                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.logging.mgt.feature:${chunk02.4.2.2}</featureArtifactDef>
-                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.databridge.datapublisher.feature:${chunk02.4.2.2}</featureArtifactDef>
+                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.logging.mgt.feature:${carbon.platform.version}</featureArtifactDef>
+                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.databridge.datapublisher.feature:${carbon.platform.version}</featureArtifactDef>
                                 <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.wsdl.tools.feature:${carbon.platform.version}</featureArtifactDef>
-                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.system.statistics.feature:${chunk02.4.2.2}</featureArtifactDef>
+                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.system.statistics.feature:${carbon.platform.version}</featureArtifactDef>
                                 <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.soaptracer.feature:${carbon.platform.version}</featureArtifactDef>
-                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.dataservices.feature:${chunk02.4.2.2}</featureArtifactDef>
-								<featureArtifactDef>org.wso2.carbon:org.wso2.carbon.dataservices.task.feature:${chunk02.4.2.2}</featureArtifactDef>
-								<featureArtifactDef>org.wso2.carbon:org.wso2.carbon.ndatasource.feature:${chunk02.4.2.2}</featureArtifactDef>
-                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.ndatasource.ui.feature:${chunk02.4.2.2}</featureArtifactDef>
-                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.service.mgt.feature:${chunk02.4.2.1}</featureArtifactDef>
+                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.dataservices.feature:${carbon.platform.version}</featureArtifactDef>
+								<featureArtifactDef>org.wso2.carbon:org.wso2.carbon.dataservices.task.feature:${carbon.platform.version}</featureArtifactDef>
+								<featureArtifactDef>org.wso2.carbon:org.wso2.carbon.ndatasource.feature:${carbon.platform.version}</featureArtifactDef>
+                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.ndatasource.ui.feature:${carbon.platform.version}</featureArtifactDef>
+                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.service.mgt.feature:${carbon.platform.version}</featureArtifactDef>
                                 <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.transport.mgt.feature:${carbon.platform.version}</featureArtifactDef>
                                 <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.transport.jms.feature:${carbon.platform.version}</featureArtifactDef>
                                 <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.transport.mail.feature:${carbon.platform.version}</featureArtifactDef>
-                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.message.flows.feature:${carbon.platform.version}</featureArtifactDef>
+                                <!--<featureArtifactDef>org.wso2.carbon:org.wso2.carbon.message.flows.feature:${previous.version}</featureArtifactDef>-->
                                 <!--<featureArtifactDef>org.wso2.carbon:org.wso2.carbon.sts.feature:${carbon.platform.version}</featureArtifactDef>-->
-                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.xfer.feature:${carbon.platform.version}</featureArtifactDef>
-                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.mex.feature:${carbon.platform.version}</featureArtifactDef>
-                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.tryit.feature:${chunk02.4.2.1}</featureArtifactDef>
+                                <!--<featureArtifactDef>org.wso2.carbon:org.wso2.carbon.xfer.feature:${carbon.platform.version}</featureArtifactDef>-->
+                                <!--<featureArtifactDef>org.wso2.carbon:org.wso2.carbon.mex.feature:${carbon.platform.version}</featureArtifactDef>-->
+                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.tryit.feature:${carbon.platform.version}</featureArtifactDef>
                                 <!-- registry related features-->
-                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.registry.core.feature:${chunk02.4.2.1}</featureArtifactDef>
+                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.registry.core.feature:${carbon.platform.version}</featureArtifactDef>
                                 <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.registry.ui.menu.feature:${carbon.platform.version}</featureArtifactDef>
-                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.registry.resource.properties.feature:${chunk02.4.2.1}</featureArtifactDef>
+                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.registry.resource.properties.feature:${carbon.platform.version}</featureArtifactDef>
 
                                 <!-- eventing -->
-                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.event.server.feature:${chunk02.4.2.1}</featureArtifactDef>
+                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.event.server.feature:${carbon.platform.version}</featureArtifactDef>
                                 <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.event.common.feature:${carbon.platform.version}</featureArtifactDef>
 
                                 <!--featureArtifactDef>org.wso2.carbon:org.wso2.carbon.dashboard.feature:${carbon.version}</featureArtifactDef>
                                 <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.dashboard.dashboardpopulator.server.feature:${carbon.version}</featureArtifactDef-->
 
-                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.stratos.common.feature:${chunk02.2.2.1.stratos.version}</featureArtifactDef>
-				                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.stratos.deployment.feature:${chunk02.2.2.1.stratos.version}</featureArtifactDef>
+                                <!--<featureArtifactDef>org.wso2.carbon:org.wso2.carbon.stratos.common.feature:${stratos.version}</featureArtifactDef>-->
+				                <!--<featureArtifactDef>org.wso2.carbon:org.wso2.carbon.stratos.deployment.feature:${stratos.version}</featureArtifactDef>-->
                                 <featureArtifactDef>org.wso2.dss:org.wso2.stratos.dss.styles.feature:${stratos.version}</featureArtifactDef>
-                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.stratos.usage.agent.feature:${stratos.version}</featureArtifactDef>
-								<featureArtifactDef>org.wso2.carbon:org.wso2.carbon.stratos.throttling.agent.feature:${stratos.version}</featureArtifactDef>
+                                <!--<featureArtifactDef>org.wso2.carbon:org.wso2.carbon.stratos.usage.agent.feature:${stratos.version}</featureArtifactDef>-->
+								<!--<featureArtifactDef>org.wso2.carbon:org.wso2.carbon.stratos.throttling.agent.feature:${stratos.version}</featureArtifactDef>-->
 
                                 <!-- ws-discovery core feature -->
-                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.discovery.core.feature:${chunk02.4.2.1}</featureArtifactDef>
+                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.discovery.core.feature:${carbon.platform.version}</featureArtifactDef>
 								<featureArtifactDef>org.wso2.carbon:org.wso2.carbon.discovery.admin.ui.feature:${carbon.platform.version}</featureArtifactDef>
 
 				<!-- web scraping related feature -->
-								<featureArtifactDef>org.wso2.carbon:org.wso2.carbon.jsscraper.feature:${carbon.platform.version}</featureArtifactDef>
+								<featureArtifactDef>org.wso2.carbon:org.wso2.carbon.jsscraper.feature:${previous.version}</featureArtifactDef>
 
                                 <!-- cApp related -->
                                 <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.application.mgt.feature:${carbon.platform.version}</featureArtifactDef>
@@ -209,33 +150,20 @@
                                 <featureArtifactDef>org.wso2.dss:org.wso2.stratos.dss.dashboard.ui.feature:${stratos.version}</featureArtifactDef>
 
                                 <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.event.ui.feature:${carbon.platform.version}</featureArtifactDef>
-
-                                <!-- Qpid features -->
-                                <!--featureArtifactDef>org.wso2.carbon:org.wso2.carbon.qpid.feature:${carbon.platform.patch.version.402}</featureArtifactDef-->
-
-                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.load.balance.agent.server.feature:${stratos.version}</featureArtifactDef>
-
-                                <!-- Cassandra Feature -->
-                                <!--<featureArtifactDef>org.wso2.carbon:org.wso2.carbon.cassandra.mgt.feature:${carbon.version}</featureArtifactDef>
-                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.cassandra.mgt.ui.feature:${carbon.version}</featureArtifactDef>
-                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.cassandra.dataaccess.feature:${carbon.version}</featureArtifactDef> -->
-
-                                <!-- RSS Manager Feature -->
-                                <!--<featureArtifactDef>org.wso2.carbon:org.wso2.carbon.rssmanager.feature:${carbon.version}</featureArtifactDef> -->
-
-								<featureArtifactDef>org.wso2.carbon:org.wso2.carbon.deployment.synchronizer.server.feature:${chunk02.4.2.1}</featureArtifactDef>
+                                <!--<featureArtifactDef>org.wso2.carbon:org.wso2.carbon.load.balance.agent.server.feature:${stratos.version}</featureArtifactDef>-->
+								<featureArtifactDef>org.wso2.carbon:org.wso2.carbon.deployment.synchronizer.server.feature:${carbon.platform.version}</featureArtifactDef>
                                 <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.deployment.synchronizer.subversion.feature:${carbon.platform.version}</featureArtifactDef>
 
                                 <!-- reporting features -->
-                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.reporting.server.feature:${chunk02.4.2.1}</featureArtifactDef>
+                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.reporting.server.feature:${carbon.platform.version}</featureArtifactDef>
                                 <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.reporting.ui.feature:${carbon.platform.version}</featureArtifactDef>
-                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.transaction.manager.feature:${chunk02.4.2.1}</featureArtifactDef>
+                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.transaction.manager.feature:${carbon.platform.version}</featureArtifactDef>
 				<!--<featureArtifactDef> org.wso2.carbon:org.wso2.carbon.cloud.gateway.agent.feature:${carbon.platform.patch.version.402}</featureArtifactDef>-->
 
                                 <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.cassandra-jdbc-1.2.5.server.feature:${carbon.platform.version}</featureArtifactDef>
 
-                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.security.mgt.server.feature:${chunk02.4.2.4}</featureArtifactDef>
-                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.security.mgt.ui.feature:${chunk02.4.2.2}</featureArtifactDef>
+                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.security.mgt.server.feature:${carbon.platform.version}</featureArtifactDef>
+                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.security.mgt.ui.feature:${carbon.platform.version}</featureArtifactDef>
                                 <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.module.mgt.server.feature:${carbon.platform.version}</featureArtifactDef>
 				                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.module.mgt.ui.feature:${carbon.platform.version}</featureArtifactDef>
                                 <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.throttle.server.feature:${carbon.platform.version}</featureArtifactDef>
@@ -245,9 +173,9 @@
                                 <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.rm.server.feature:${carbon.platform.version}</featureArtifactDef>
                                 <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.rm.ui.feature:${carbon.platform.version}</featureArtifactDef>
 
-                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.identity.authenticator.saml2.sso.ui.feature:${chunk02.4.2.2}</featureArtifactDef>
-                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.identity.authenticator.saml2.sso.server.feature:${chunk02.4.2.1}</featureArtifactDef>
-                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.user.mgt.feature:${chunk02.4.2.1}</featureArtifactDef>
+                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.identity.authenticator.saml2.sso.ui.feature:${carbon.platform.version}</featureArtifactDef>
+                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.identity.authenticator.saml2.sso.server.feature:${carbon.platform.version}</featureArtifactDef>
+                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.user.mgt.feature:${carbon.platform.version}</featureArtifactDef>
 
                             </featureArtifacts>
                         </configuration>
@@ -301,28 +229,28 @@
                                     <version>${carbon.platform.version}</version>
                                 </feature>
 
-                                <feature>
-                                    <id>org.wso2.carbon.stratos.common.feature.group</id>
-                                    <version>${chunk02.2.2.1.stratos.version}</version>
-                                </feature>
+                                <!--<feature>-->
+                                    <!--<id>org.wso2.carbon.stratos.common.feature.group</id>-->
+                                    <!--<version>${stratos.version}</version>-->
+                                <!--</feature>-->
 
-				                <feature>
-                                    <id>org.wso2.carbon.stratos.deployment.feature.group</id>
-                                    <version>${chunk02.2.2.1.stratos.version}</version>
-                                </feature>
+				                <!--<feature>-->
+                                    <!--<id>org.wso2.carbon.stratos.deployment.feature.group</id>-->
+                                    <!--<version>${stratos.version}</version>-->
+                                <!--</feature>-->
 
                                 <feature>
                                     <id>org.wso2.carbon.ntask.feature.group</id>
-                                    <version>${chunk02.4.2.2}</version>
+                                    <version>${carbon.platform.version}</version>
                                 </feature>
 
                                 <feature>
                                     <id>org.wso2.carbon.logging.mgt.feature.group</id>
-                                    <version>${chunk02.4.2.2}</version>
+                                    <version>${carbon.platform.version}</version>
                                 </feature>
                                 <feature>
                                     <id>org.wso2.carbon.databridge.datapublisher.feature.group</id>
-                                    <version>${chunk02.4.2.2}</version>
+                                    <version>${carbon.platform.version}</version>
                                 </feature>
 
                                 <feature>
@@ -332,7 +260,7 @@
 
                                 <feature>
                                     <id>org.wso2.carbon.system.statistics.feature.group</id>
-                                    <version>${chunk02.4.2.2}</version>
+                                    <version>${carbon.platform.version}</version>
                                 </feature>
 
                                 <feature>
@@ -342,27 +270,27 @@
 
                                 <feature>
                                     <id>org.wso2.carbon.dataservices.feature.group</id>
-                                    <version>${chunk02.4.2.2}</version>
+                                    <version>${carbon.platform.version}</version>
                                 </feature>
 
 				                <feature>
                                     <id>org.wso2.carbon.dataservices.task.feature.group</id>
-                                    <version>${chunk02.4.2.2}</version>
+                                    <version>${carbon.platform.version}</version>
                                 </feature>
                                 
 				                <feature>
                                     <id>org.wso2.carbon.ndatasource.feature.group</id>
-                                    <version>${chunk02.4.2.2}</version>
+                                    <version>${carbon.platform.version}</version>
                                 </feature>
 
 				                <feature>
                                     <id>org.wso2.carbon.ndatasource.ui.feature.group</id>
-                                    <version>${chunk02.4.2.2}</version>
+                                    <version>${carbon.platform.version}</version>
                                 </feature>
 
                                <feature>
                                     <id>org.wso2.carbon.service.mgt.feature.group</id>
-                                    <version>${chunk02.4.2.1}</version>
+                                    <version>${carbon.platform.version}</version>
                                 </feature>
                                 
                                 <feature>
@@ -378,10 +306,10 @@
                                     <version>${carbon.platform.version}</version>
                                 </feature>
                                 
-                                <feature>
-                                    <id>org.wso2.carbon.message.flows.feature.group</id>
-                                    <version>${carbon.platform.version}</version>
-                                </feature>
+                                <!--<feature>-->
+                                    <!--<id>org.wso2.carbon.message.flows.feature.group</id>-->
+                                    <!--<version>${previous.version}</version>-->
+                                <!--</feature>-->
 
                                 <!--feature>
                                     <id>org.wso2.carbon.xkms.mgt.feature.group</id>
@@ -400,25 +328,25 @@
 
                                 <feature>
                                     <id>org.wso2.carbon.event.server.feature.group</id>
-                                    <version>${chunk02.4.2.1}</version>
+                                    <version>${carbon.platform.version}</version>
                                 </feature>
                                 <feature>
                                     <id>org.wso2.carbon.event.ui.feature.group</id>
                                     <version>${carbon.platform.version}</version>
                                 </feature>
                                 
-                                <feature>
-                                    <id>org.wso2.carbon.xfer.feature.group</id>
-                                    <version>${carbon.platform.version}</version>
-                                </feature>
-                                <feature>
-                                    <id>org.wso2.carbon.mex.feature.group</id>
-                                    <version>${carbon.platform.version}</version>
-                                </feature>
+                                <!--<feature>-->
+                                    <!--<id>org.wso2.carbon.xfer.feature.group</id>-->
+                                    <!--<version>${carbon.platform.version}</version>-->
+                                <!--</feature>-->
+                                <!--<feature>-->
+                                    <!--<id>org.wso2.carbon.mex.feature.group</id>-->
+                                    <!--<version>${carbon.platform.version}</version>-->
+                                <!--</feature>-->
                                 
                                 <feature>
                                     <id>org.wso2.carbon.registry.core.feature.group</id>
-                                    <version>${chunk02.4.2.1}</version>
+                                    <version>${carbon.platform.version}</version>
                                 </feature>
                                
                                 <feature>
@@ -428,7 +356,7 @@
                                 
                                 <feature>
                                     <id>org.wso2.carbon.registry.resource.properties.feature.group</id>
-                                    <version>${chunk02.4.2.1}</version>
+                                    <version>${carbon.platform.version}</version>
                                 </feature>
 
 				                <feature>
@@ -453,13 +381,13 @@
 
                                 <feature>
                                     <id>org.wso2.carbon.tryit.feature.group</id>
-                                    <version>${chunk02.4.2.1}</version>
+                                    <version>${carbon.platform.version}</version>
                                 </feature>
 
                                 
                                 <feature>
                                     <id>org.wso2.carbon.discovery.core.feature.group</id>
-                                    <version>${chunk02.4.2.1}</version>
+                                    <version>${carbon.platform.version}</version>
                                 </feature>
 
 								<feature>
@@ -479,17 +407,17 @@
 
 				                <feature>
                                     <id>org.wso2.carbon.jsscraper.feature.group</id>
-                                    <version>${carbon.platform.version}</version>
+                                    <version>${previous.version}</version>
                                 </feature>
 
                                 <!--feature>
                                     <id>org.wso2.carbon.qpid.feature.group</id>
                                     <version>${carbon.platform.patch.version.402}</version>
                                 </feature-->
-                                <feature>
-                                    <id>org.wso2.carbon.load.balance.agent.server.feature.group</id>
-                                    <version>${stratos.version}</version>
-                                </feature>
+                                <!--<feature>-->
+                                    <!--<id>org.wso2.carbon.load.balance.agent.server.feature.group</id>-->
+                                    <!--<version>${stratos.version}</version>-->
+                                <!--</feature>-->
 
                                 <!--<feature>
                                     <id>org.wso2.carbon.cassandra.mgt.feature.group</id>
@@ -512,7 +440,7 @@
 
                                 <feature>
                                     <id>org.wso2.carbon.deployment.synchronizer.server.feature.group</id>
-                                    <version>${chunk02.4.2.1}</version>
+                                    <version>${carbon.platform.version}</version>
                                 </feature>
                                 <feature>
                                     <id>org.wso2.carbon.deployment.synchronizer.subversion.feature.group</id>
@@ -520,23 +448,23 @@
                                 </feature>
                                 <feature>
                                     <id>org.wso2.carbon.reporting.server.feature.group</id>
-                                    <version>${chunk02.4.2.1}</version>
+                                    <version>${carbon.platform.version}</version>
                                 </feature>
                                 <feature>
                                     <id>org.wso2.carbon.reporting.ui.feature.group</id>
                                     <version>${carbon.platform.version}</version>
                                 </feature> 
-				                <feature>
-                                    <id>org.wso2.carbon.stratos.usage.agent.feature.group</id>
-                                    <version>${stratos.version}</version>
-                                </feature>
- 				                <feature>
-                                    <id>org.wso2.carbon.stratos.throttling.agent.feature.group</id>
-                                    <version>${stratos.version}</version>
-                                </feature>
+				                <!--<feature>-->
+                                    <!--<id>org.wso2.carbon.stratos.usage.agent.feature.group</id>-->
+                                    <!--<version>${stratos.version}</version>-->
+                                <!--</feature>-->
+ 				                <!--<feature>-->
+                                    <!--<id>org.wso2.carbon.stratos.throttling.agent.feature.group</id>-->
+                                    <!--<version>${stratos.version}</version>-->
+                                <!--</feature>-->
                                 <feature>
                                     <id>org.wso2.carbon.transaction.manager.feature.group</id>
-                                    <version>${chunk02.4.2.1}</version>
+                                    <version>${carbon.platform.version}</version>
                                 </feature>
                                 <feature>
                                     <id>org.wso2.carbon.cassandra-jdbc-1.2.5.server.feature.group</id>
@@ -544,16 +472,16 @@
                                 </feature>
 				                <feature>
                                     <id>org.wso2.carbon.identity.authenticator.saml2.sso.ui.feature.group</id>
-                                    <version>${chunk02.4.2.2}</version>
+                                    <version>${carbon.platform.version}</version>
                                 </feature>
 
 				                <feature>
                                     <id>org.wso2.carbon.identity.authenticator.saml2.sso.server.feature.group</id>
-                                    <version>${chunk02.4.2.1}</version>
+                                    <version>${carbon.platform.version}</version>
                                 </feature>
                                 <feature>
                                     <id>org.wso2.carbon.user.mgt.feature.group</id>
-                                    <version>${chunk02.4.2.1}</version>
+                                    <version>${carbon.platform.version}</version>
                                 </feature>
                             </features>
                         </configuration>
@@ -573,29 +501,29 @@
                             </destination>
                             <deleteOldProfileFiles>true</deleteOldProfileFiles>
                             <features>
-                                <feature>
-                                    <id>org.wso2.carbon.stratos.common.server.feature.group</id>
-                                    <version>${chunk02.2.2.1.stratos.version}</version>
-                                </feature>
+                                <!--<feature>-->
+                                    <!--<id>org.wso2.carbon.stratos.common.server.feature.group</id>-->
+                                    <!--<version>${stratos.version}</version>-->
+                                <!--</feature>-->
 
-                                <feature>
-                                    <id>org.wso2.carbon.stratos.deployment.feature.group</id>
-                                    <version>${chunk02.2.2.1.stratos.version}</version>
-                                </feature>
+                                <!--<feature>-->
+                                    <!--<id>org.wso2.carbon.stratos.deployment.feature.group</id>-->
+                                    <!--<version>${stratos.version}</version>-->
+                                <!--</feature>-->
 
                                 <feature>
                                     <id>org.wso2.carbon.ntask.feature.group</id>
-                                    <version>${chunk02.4.2.2}</version>
+                                    <version>${carbon.platform.version}</version>
                                 </feature>
 
                                 <feature>
                                     <id>org.wso2.carbon.logging.mgt.server.feature.group</id>
-                                    <version>${chunk02.4.2.1}</version>
+                                    <version>${carbon.platform.version}</version>
                                 </feature>
 
                                 <feature>
                                     <id>org.wso2.carbon.databridge.datapublisher.feature.group</id>
-                                    <version>${chunk02.4.2.2}</version>
+                                    <version>${carbon.platform.version}</version>
                                 </feature>
 
                                 <feature>
@@ -605,7 +533,7 @@
 
                                 <feature>
                                     <id>org.wso2.carbon.system.statistics.server.feature.group</id>
-                                    <version>${chunk02.4.2.2}</version>
+                                    <version>${carbon.platform.version}</version>
                                 </feature>
 
                                 <feature>
@@ -615,27 +543,27 @@
 
                                 <feature>
                                     <id>org.wso2.carbon.dataservices.feature.group</id>
-                                    <version>${chunk02.4.2.2}</version>
+                                    <version>${carbon.platform.version}</version>
                                 </feature>
 
                                 <feature>
                                     <id>org.wso2.carbon.dataservices.task.server.feature.group</id>
-                                    <version>${chunk02.4.2.2}</version>
+                                    <version>${carbon.platform.version}</version>
                                 </feature>
 
                                 <feature>
                                     <id>org.wso2.carbon.ndatasource.feature.group</id>
-                                    <version>${chunk02.4.2.2}</version>
+                                    <version>${carbon.platform.version}</version>
                                 </feature>
 
                                 <feature>
                                     <id>org.wso2.carbon.ndatasource.ui.feature.group</id>
-                                    <version>${chunk02.4.2.2}</version>
+                                    <version>${carbon.platform.version}</version>
                                 </feature>
 
                                 <feature>
                                     <id>org.wso2.carbon.service.mgt.server.feature.group</id>
-                                    <version>${chunk02.4.2.1}</version>
+                                    <version>${carbon.platform.version}</version>
                                 </feature>
 
                                 <feature>
@@ -653,10 +581,10 @@
                                     <version>${carbon.platform.version}</version>
                                 </feature>
 
-                                <feature>
-                                    <id>org.wso2.carbon.message.flows.server.feature.group</id>
-                                    <version>${carbon.platform.version}</version>
-                                </feature>
+                                <!--<feature>-->
+                                    <!--<id>org.wso2.carbon.message.flows.server.feature.group</id>-->
+                                    <!--<version>${previous.version}</version>-->
+                                <!--</feature>-->
 
                                 <!--<feature>-->
                                     <!--<id>org.wso2.carbon.sts.feature.group</id>-->
@@ -671,23 +599,23 @@
 
                                 <feature>
                                     <id>org.wso2.carbon.event.server.feature.group</id>
-                                    <version>${chunk02.4.2.1}</version>
-                                </feature>
-
-                                <feature>
-                                    <id>org.wso2.carbon.xfer.feature.group</id>
                                     <version>${carbon.platform.version}</version>
                                 </feature>
 
-                                <feature>
-                                    <id>org.wso2.carbon.mex.feature.group</id>
-                                    <version>${carbon.platform.version}</version>
-                                </feature>
+                                <!--<feature>-->
+                                    <!--<id>org.wso2.carbon.xfer.feature.group</id>-->
+                                    <!--<version>${carbon.platform.version}</version>-->
+                                <!--</feature>-->
+
+                                <!--<feature>-->
+                                    <!--<id>org.wso2.carbon.mex.feature.group</id>-->
+                                    <!--<version>${carbon.platform.version}</version>-->
+                                <!--</feature>-->
 
 
                                 <feature>
                                     <id>org.wso2.carbon.registry.core.server.feature.group</id>
-                                    <version>${chunk02.4.2.1}</version>
+                                    <version>${carbon.platform.version}</version>
                                 </feature>
 
                                 <feature>
@@ -697,7 +625,7 @@
 
                                 <feature>
                                     <id>org.wso2.carbon.registry.resource.properties.server.feature.group</id>
-                                    <version>${chunk02.4.2.1}</version>
+                                    <version>${carbon.platform.version}</version>
                                 </feature>
 
                                 <feature>
@@ -712,7 +640,7 @@
 
                                 <feature>
                                     <id>org.wso2.carbon.discovery.core.feature.group</id>
-                                    <version>${chunk02.4.2.1}</version>
+                                    <version>${carbon.platform.version}</version>
                                 </feature>
 
                                 <feature>
@@ -732,17 +660,17 @@
 
                                 <feature>
                                     <id>org.wso2.carbon.jsscraper.server.feature.group</id>
-                                    <version>${carbon.platform.version}</version>
+                                    <version>${previous.version}</version>
                                 </feature>
 
-                                <feature>
-                                    <id>org.wso2.carbon.load.balance.agent.server.feature.group</id>
-                                    <version>${stratos.version}</version>
-                                </feature>
+                                <!--<feature>-->
+                                    <!--<id>org.wso2.carbon.load.balance.agent.server.feature.group</id>-->
+                                    <!--<version>${stratos.version}</version>-->
+                                <!--</feature>-->
 
                                 <feature>
                                     <id>org.wso2.carbon.deployment.synchronizer.server.feature.group</id>
-                                    <version>${chunk02.4.2.1}</version>
+                                    <version>${carbon.platform.version}</version>
                                 </feature>
 
                                 <feature>
@@ -752,22 +680,22 @@
 
                                 <feature>
                                     <id>org.wso2.carbon.reporting.server.feature.group</id>
-                                    <version>${chunk02.4.2.1}</version>
+                                    <version>${carbon.platform.version}</version>
                                 </feature>
 
-                                <feature>
-                                    <id>org.wso2.carbon.stratos.usage.agent.feature.group</id>
-                                    <version>${stratos.version}</version>
-                                </feature>
+                                <!--<feature>-->
+                                    <!--<id>org.wso2.carbon.stratos.usage.agent.feature.group</id>-->
+                                    <!--<version>${stratos.version}</version>-->
+                                <!--</feature>-->
 
-                                <feature>
-                                    <id>org.wso2.carbon.stratos.throttling.agent.feature.group</id>
-                                    <version>${stratos.version}</version>
-                                </feature>
+                                <!--<feature>-->
+                                    <!--<id>org.wso2.carbon.stratos.throttling.agent.feature.group</id>-->
+                                    <!--<version>${stratos.version}</version>-->
+                                <!--</feature>-->
 
                                 <feature>
                                     <id>org.wso2.carbon.transaction.manager.feature.group</id>
-                                    <version>${chunk02.4.2.1}</version>
+                                    <version>${carbon.platform.version}</version>
                                 </feature>
 
                                 <feature>
@@ -777,17 +705,17 @@
 
                                 <feature>
                                     <id>org.wso2.carbon.identity.authenticator.saml2.sso.ui.feature.group</id>
-                                    <version>${chunk02.4.2.2}</version>
+                                    <version>${carbon.platform.version}</version>
                                 </feature>
 
                                 <feature>
                                     <id>org.wso2.carbon.identity.authenticator.saml2.sso.server.feature.group</id>
-                                    <version>${chunk02.4.2.1}</version>
+                                    <version>${carbon.platform.version}</version>
                                 </feature>
 
                                 <feature>
                                     <id>org.wso2.carbon.user.mgt.server.feature.group</id>
-                                    <version>${chunk02.4.2.1}</version>
+                                    <version>${carbon.platform.version}</version>
                                 </feature>
 
                             </features>
@@ -819,11 +747,5 @@
         </plugins>
     </build>
     <properties>
-        <chunk02.4.2.1>4.2.1</chunk02.4.2.1>
-        <chunk02.4.2.2>4.2.2</chunk02.4.2.2>
-        <chunk02.4.2.3>4.2.3</chunk02.4.2.3>
-        <chunk02.4.2.4>4.2.4</chunk02.4.2.4>
-        <chunk02.2.2.1.stratos.version>2.2.1</chunk02.2.2.1.stratos.version>
-        <chunk02.2.2.2.stratos.version>2.2.2</chunk02.2.2.2.stratos.version>
     </properties>
 </project>

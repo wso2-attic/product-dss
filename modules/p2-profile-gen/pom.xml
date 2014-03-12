@@ -114,7 +114,7 @@
                                 <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.transport.mgt.feature:${carbon.platform.version}</featureArtifactDef>
                                 <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.transport.jms.feature:${carbon.platform.version}</featureArtifactDef>
                                 <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.transport.mail.feature:${carbon.platform.version}</featureArtifactDef>
-                                <!--<featureArtifactDef>org.wso2.carbon:org.wso2.carbon.message.flows.feature:${previous.version}</featureArtifactDef>-->
+                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.message.flows.feature:${carbon.platform.version}</featureArtifactDef>
                                 <!--<featureArtifactDef>org.wso2.carbon:org.wso2.carbon.sts.feature:${carbon.platform.version}</featureArtifactDef>-->
                                 <!--<featureArtifactDef>org.wso2.carbon:org.wso2.carbon.xfer.feature:${carbon.platform.version}</featureArtifactDef>-->
                                 <!--<featureArtifactDef>org.wso2.carbon:org.wso2.carbon.mex.feature:${carbon.platform.version}</featureArtifactDef>-->
@@ -306,10 +306,10 @@
                                     <version>${carbon.platform.version}</version>
                                 </feature>
                                 
-                                <!--<feature>-->
-                                    <!--<id>org.wso2.carbon.message.flows.feature.group</id>-->
-                                    <!--<version>${previous.version}</version>-->
-                                <!--</feature>-->
+                                <feature>
+                                    <id>org.wso2.carbon.message.flows.feature.group</id>
+                                    <version>${carbon.platform.version}</version>
+                                </feature>
 
                                 <!--feature>
                                     <id>org.wso2.carbon.xkms.mgt.feature.group</id>
@@ -581,10 +581,10 @@
                                     <version>${carbon.platform.version}</version>
                                 </feature>
 
-                                <!--<feature>-->
-                                    <!--<id>org.wso2.carbon.message.flows.server.feature.group</id>-->
-                                    <!--<version>${previous.version}</version>-->
-                                <!--</feature>-->
+                                <feature>
+                                    <id>org.wso2.carbon.message.flows.server.feature.group</id>
+                                    <version>${carbon.platform.version}</version>
+                                </feature>
 
                                 <!--<feature>-->
                                     <!--<id>org.wso2.carbon.sts.feature.group</id>-->

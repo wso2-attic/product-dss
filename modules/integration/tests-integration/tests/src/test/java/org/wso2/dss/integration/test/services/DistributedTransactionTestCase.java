@@ -56,8 +56,6 @@ public class DistributedTransactionTestCase extends DSSIntegrationTest {
     private final OMNamespace omNs = fac.createOMNamespace("http://ws.wso2.org/dataservice/samples/dtp_sample", "ns1");
 
     private String databaseNameNew = "testDatabase2";
-    private String databaseUserNew = "tstAto4";
-    private String databasePasswordNew = "test123";
 
     private final String serviceName = "DTPServiceTest";
     private final int userId = 2;
@@ -372,8 +370,7 @@ public class DistributedTransactionTestCase extends DSSIntegrationTest {
         dataSource1 = new SqlDataSourceUtil(sessionCookie, dssContext.getContextUrls().getBackEndUrl());
         dataSource2 = new SqlDataSourceUtil(sessionCookie, dssContext.getContextUrls().getBackEndUrl());
         dataSource1.createDataSource(getSqlScript());
-        //todo
-//        dataSource2.createDataSource(databaseNameNew, databaseUserNew, databasePasswordNew, getSqlScript());
+        dataSource2.createDataSource(databaseNameNew, getSqlScript());
 
         //this should be set according to tha database server
         if (dataSource1.getDriver().contains("h2")) {

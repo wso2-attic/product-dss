@@ -185,6 +185,38 @@ public class SqlDataSourceUtil {
         executeUpdate(sqlFileList);
     }
 
+    public void createDataSource(String dbName, List<File> sqlFileList) throws Exception {
+        if (automationContext == null) {
+            init();
+        }
+
+//        databaseName = automationContext.getConfigurationValue(XPathConstants.DATA_SOURCE_NAME);
+        databaseName = dbName;
+        databasePassword = automationContext.getConfigurationValue(XPathConstants.DATA_SOURCE_DB_PASSWORD);
+        jdbcUrl = automationContext.getConfigurationValue(XPathConstants.DATA_SOURCE_URL);
+        jdbcDriver = automationContext.getConfigurationValue(XPathConstants.DATA_SOURCE_DRIVER_CLASS_NAME);
+        databaseUser = automationContext.getConfigurationValue(XPathConstants.DATA_SOURCE_DB_USER_NAME);
+
+        if (jdbcUrl.contains("h2") && jdbcDriver.contains("h2")) {
+            //Random number appends to a database name to create new database for H2*//*
+            databaseName = System.getProperty("basedir")+ File.separator + "target" + File.separator+ databaseName + new Random().nextInt();
+            jdbcUrl = jdbcUrl + databaseName;
+            //create database on in-memory
+            H2DataBaseManager h2 = null;
+            try {
+                h2 = new H2DataBaseManager(jdbcUrl, databaseUser, databasePassword);
+                h2.executeUpdate("DROP ALL OBJECTS");
+            } finally {
+                if (h2 != null) {
+                    h2.disconnect();
+                }
+            }
+        } else {
+            createDataBase(jdbcDriver, jdbcUrl, databaseUser, databasePassword);
+        }
+        executeUpdate(sqlFileList);
+    }
+
 
 
     private void executeUpdate(List<File> sqlFileList)

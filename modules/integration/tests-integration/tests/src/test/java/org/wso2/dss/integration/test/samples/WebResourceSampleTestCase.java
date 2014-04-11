@@ -64,9 +64,9 @@ public class WebResourceSampleTestCase extends DSSIntegrationTest {
          assertTrue(isServiceDeployed(serviceName));
         log.info(serviceName + " is deployed");
     }
-
+    //disabled the test since the service refering external api
     @Test(groups = {"wso2.dss"}, invocationCount = 5, dependsOnMethods = "testServiceDeployment",
-          description = "invoke the service five times")
+          description = "invoke the service five times", enabled = false)
     public void selectOperation() throws AxisFault, InterruptedException, XPathExpressionException {
         OMFactory fac = OMAbstractFactory.getOMFactory();
         OMNamespace omNs = fac.createOMNamespace("http://www.w3.org/2005/08/addressing", "ns1");

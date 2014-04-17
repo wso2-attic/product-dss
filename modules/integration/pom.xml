@@ -17,7 +17,8 @@
 
     <modules>
         <!--<module>samples</module>-->
-        <module>tests</module>
+        <module>tests-common</module>
+        <module>tests-integration</module>
     </modules>
 
   <build>

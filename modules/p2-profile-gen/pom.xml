@@ -133,6 +133,10 @@
 
                                 <!--<featureArtifactDef>org.wso2.carbon:org.wso2.carbon.stratos.common.feature:${stratos.version}</featureArtifactDef>-->
 				                <!--<featureArtifactDef>org.wso2.carbon:org.wso2.carbon.stratos.deployment.feature:${stratos.version}</featureArtifactDef>-->
+                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.tenant.common.feature:${carbon.platform.version}</featureArtifactDef>
+                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.tenant.usage.agent.feature:${carbon.platform.version}</featureArtifactDef>
+                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.tenant.throttling.agent.feature:${carbon.platform.version}</featureArtifactDef>
+                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.tenant.deployment.feature:${carbon.platform.version}</featureArtifactDef>
                                 <featureArtifactDef>org.wso2.dss:org.wso2.stratos.dss.styles.feature:${stratos.version}</featureArtifactDef>
                                 <!--<featureArtifactDef>org.wso2.carbon:org.wso2.carbon.stratos.usage.agent.feature:${stratos.version}</featureArtifactDef>-->
 								<!--<featureArtifactDef>org.wso2.carbon:org.wso2.carbon.stratos.throttling.agent.feature:${stratos.version}</featureArtifactDef>-->
@@ -368,11 +372,31 @@
                                     <id>org.wso2.carbon.dashboard.feature.group</id>
                                     <version>${carbon.version}</version>
                                 </feature>
-                                
+
                                 <feature>
                                     <id>org.wso2.carbon.dashboard.dashboardpopulator.server.feature.group</id>
                                     <version>${carbon.version}</version>
                                 </feature-->
+
+                                <feature>
+                                    <id>org.wso2.carbon.tenant.common.feature.group</id>
+                                    <version>${carbon.platform.version}</version>
+                                </feature>
+
+                                <feature>
+                                    <id>org.wso2.carbon.tenant.usage.agent.feature.group</id>
+                                    <version>${carbon.platform.version}</version>
+                                </feature>
+
+                                <feature>
+                                    <id>org.wso2.carbon.tenant.throttling.agent.feature.group</id>
+                                    <version>${carbon.platform.version}</version>
+                                </feature>
+
+                                <feature>
+                                    <id>org.wso2.carbon.tenant.deployment.feature.group</id>
+                                    <version>${carbon.platform.version}</version>
+                                </feature>
 
                                 <feature>
                                     <id>org.wso2.stratos.dss.styles.feature.group</id>
@@ -625,6 +649,26 @@
 
                                 <feature>
                                     <id>org.wso2.carbon.registry.resource.properties.server.feature.group</id>
+                                    <version>${carbon.platform.version}</version>
+                                </feature>
+
+                                <feature>
+                                    <id>org.wso2.carbon.tenant.common.feature.group</id>
+                                    <version>${carbon.platform.version}</version>
+                                </feature>
+
+                                <feature>
+                                    <id>org.wso2.carbon.tenant.usage.agent.feature.group</id>
+                                    <version>${carbon.platform.version}</version>
+                                </feature>
+
+                                <feature>
+                                    <id>org.wso2.carbon.tenant.throttling.agent.feature.group</id>
+                                    <version>${carbon.platform.version}</version>
+                                </feature>
+
+                                <feature>
+                                    <id>org.wso2.carbon.tenant.deployment.feature.group</id>
                                     <version>${carbon.platform.version}</version>
                                 </feature>
 

@@ -16,7 +16,7 @@
 *under the License.
 */
 
-package org.wso2.carbon.dss.datasource.test;
+package org.wso2.dss.integration.test.datasource;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

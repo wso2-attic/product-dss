@@ -16,7 +16,7 @@
 *under the License.
 */
 
-package org.wso2.carbon.dss.integration.common.clients;
+package org.wso2.dss.integration.common.clients;
 
 import org.apache.axis2.AxisFault;
 import org.apache.commons.logging.Log;
@@ -24,6 +24,7 @@ import org.apache.commons.logging.LogFactory;
 import org.wso2.carbon.dataservices.task.ui.stub.DSTaskAdminStub;
 import org.wso2.carbon.dataservices.task.ui.stub.xsd.DSTaskInfo;
 import org.wso2.carbon.integration.common.admin.client.utils.AuthenticateStubUtil;
+import org.wso2.dss.integration.common.clients.DataServiceAdminClient;
 
 import java.rmi.RemoteException;
 

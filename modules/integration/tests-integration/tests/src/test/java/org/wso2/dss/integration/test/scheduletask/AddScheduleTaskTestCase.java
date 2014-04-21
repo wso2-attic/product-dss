@@ -31,7 +31,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.wso2.carbon.automation.test.utils.axis2client.AxisServiceClient;
 import org.wso2.carbon.dataservices.task.ui.stub.xsd.DSTaskInfo;
-import org.wso2.carbon.dss.integration.common.clients.DataServiceTaskClient;
+import org.wso2.dss.integration.common.clients.DataServiceTaskClient;
 import org.wso2.dss.integration.test.DSSIntegrationTest;
 
 import java.io.File;

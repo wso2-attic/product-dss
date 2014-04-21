@@ -33,7 +33,7 @@ import org.testng.annotations.Test;
 import org.wso2.carbon.automation.test.utils.common.FileManager;
 import org.wso2.carbon.automation.test.utils.concurrency.test.ConcurrencyTest;
 import org.wso2.carbon.automation.test.utils.concurrency.test.exception.ConcurrencyTestFailedError;
-import org.wso2.carbon.dss.integration.common.clients.DataServiceAdminClient;
+import org.wso2.dss.integration.common.clients.DataServiceAdminClient;
 import org.wso2.carbon.integration.common.admin.client.NDataSourceAdminServiceClient;
 import org.wso2.carbon.ndatasource.ui.stub.core.services.xsd.WSDataSourceMetaInfo;
 import org.wso2.carbon.ndatasource.ui.stub.core.services.xsd.WSDataSourceMetaInfo_WSDataSourceDefinition;

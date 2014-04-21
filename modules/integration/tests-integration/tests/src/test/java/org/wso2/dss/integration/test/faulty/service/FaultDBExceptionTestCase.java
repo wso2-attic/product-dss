@@ -25,7 +25,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.wso2.carbon.dataservices.samples.fault_dataservice.DataServiceFaultException;
 import org.wso2.carbon.dataservices.samples.fault_dataservice.FaultDBServiceStub;
-import org.wso2.carbon.dss.integration.common.clients.DataServiceFileUploaderClient;
+import org.wso2.dss.integration.common.clients.DataServiceFileUploaderClient;
 import org.wso2.dss.integration.test.DSSIntegrationTest;
 
 import javax.activation.DataHandler;

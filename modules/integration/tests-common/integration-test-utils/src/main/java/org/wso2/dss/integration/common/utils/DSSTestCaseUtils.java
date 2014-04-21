@@ -24,8 +24,8 @@ import org.apache.commons.logging.LogFactory;
 import org.wso2.carbon.automation.test.utils.common.FileManager;
 import org.wso2.carbon.automation.test.utils.common.TestConfigurationProvider;
 import org.wso2.carbon.dataservices.ui.fileupload.stub.ExceptionException;
-import org.wso2.carbon.dss.integration.common.clients.DataServiceFileUploaderClient;
-import org.wso2.carbon.dss.integration.common.clients.ServiceAdminClient;
+import org.wso2.dss.integration.common.clients.DataServiceFileUploaderClient;
+import org.wso2.dss.integration.common.clients.ServiceAdminClient;
 
 import javax.activation.DataHandler;
 import javax.xml.stream.XMLInputFactory;

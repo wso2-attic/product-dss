@@ -33,7 +33,7 @@ import org.wso2.carbon.automation.test.utils.axis2client.AxisServiceClient;
 import org.wso2.carbon.automation.test.utils.common.FileManager;
 import org.wso2.carbon.automation.test.utils.concurrency.test.ConcurrencyTest;
 import org.wso2.carbon.automation.test.utils.concurrency.test.exception.ConcurrencyTestFailedError;
-import org.wso2.carbon.dss.integration.common.clients.ResourceAdminServiceClient;
+import org.wso2.dss.integration.common.clients.ResourceAdminServiceClient;
 import org.wso2.carbon.registry.resource.stub.ResourceAdminServiceExceptionException;
 import org.wso2.dss.integration.common.utils.DSSTestCaseUtils;
 import org.wso2.dss.integration.test.DSSIntegrationTest;

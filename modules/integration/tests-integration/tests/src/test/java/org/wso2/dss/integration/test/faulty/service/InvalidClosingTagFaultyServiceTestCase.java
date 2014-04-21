@@ -28,7 +28,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.wso2.carbon.automation.test.utils.common.FileManager;
 import org.wso2.carbon.dataservices.ui.fileupload.stub.ExceptionException;
-import org.wso2.carbon.dss.integration.common.clients.DataServiceFileUploaderClient;
+import org.wso2.dss.integration.common.clients.DataServiceFileUploaderClient;
 import org.wso2.dss.integration.test.DSSIntegrationTest;
 
 import javax.activation.DataHandler;

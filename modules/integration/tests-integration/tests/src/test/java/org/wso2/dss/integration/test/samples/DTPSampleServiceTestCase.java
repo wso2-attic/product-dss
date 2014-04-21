@@ -22,7 +22,9 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Factory;
 import org.testng.annotations.Test;
+import org.wso2.carbon.automation.engine.context.TestUserMode;
 import org.wso2.carbon.dataservices.samples.dtp_sample.DTPSampleServiceStub;
 import org.wso2.carbon.dataservices.samples.dtp_sample.DataServiceFault;
 import org.wso2.dss.integration.test.DSSIntegrationTest;
@@ -42,11 +44,17 @@ public class DTPSampleServiceTestCase extends DSSIntegrationTest {
     private static final Log log = LogFactory.getLog(DTPSampleServiceTestCase.class);
     private String serverEpr;
 
+
+    @Factory(dataProvider = "userModeDataProvider")
+    public DTPSampleServiceTestCase(TestUserMode userMode) {
+        this.userMode = userMode;
+    }
+
     @BeforeClass(alwaysRun = true)
     public void initialize() throws Exception {
-        super.init();
+        super.init(userMode);
         serverEpr = getServiceUrlHttp(serviceName);
-        String resourceFileLocation = null;
+        String resourceFileLocation;
         resourceFileLocation = getResourceLocation();
         deployService(serviceName,
                       new DataHandler(new URL("file:///" + resourceFileLocation +

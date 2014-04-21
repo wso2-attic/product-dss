@@ -28,6 +28,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Factory;
 import org.testng.annotations.Test;
 import org.wso2.carbon.automation.engine.context.TestUserMode;
 import org.wso2.carbon.automation.test.utils.axis2client.AxisServiceClient;
@@ -59,7 +60,7 @@ import static org.testng.Assert.assertTrue;
 public abstract class EventingSampleTestCase extends DSSIntegrationTest {
     private static final Log log = LogFactory.getLog(GSpreadSampleTestCase.class);
 
-    private String serviceName = "EventingSample";
+    private final String serviceName = "EventingSample";
     private final String GMAIL_USER_NAME = "test.automation.dummy";
     private final String GMAIL_PASSWORD = "automation.test";
     private String serverEpr;
@@ -70,9 +71,14 @@ public abstract class EventingSampleTestCase extends DSSIntegrationTest {
     private String feedURL;
 
 
+    @Factory(dataProvider = "userModeDataProvider")
+    public EventingSampleTestCase(TestUserMode userMode) {
+        this.userMode = userMode;
+    }
+
     @BeforeClass(alwaysRun = true, enabled = false)
     public void initialize() throws Exception {
-        super.init();
+        super.init(userMode);
         String resourceFileLocation;
         feedURL = "https://mail.google.com/mail/feed/atom";
         mailCountBeforeTestStart = getMailCount(feedURL);

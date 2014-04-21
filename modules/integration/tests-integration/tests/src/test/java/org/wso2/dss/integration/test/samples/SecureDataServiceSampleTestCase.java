@@ -26,7 +26,9 @@ import org.apache.commons.logging.LogFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Factory;
 import org.testng.annotations.Test;
+import org.wso2.carbon.automation.engine.context.TestUserMode;
 import org.wso2.carbon.automation.test.utils.axis2client.SecureAxisServiceClient;
 import org.wso2.carbon.automation.test.utils.common.TestConfigurationProvider;
 import org.wso2.carbon.dataservices.samples.secure_dataservice.DataServiceFault;
@@ -50,10 +52,16 @@ public class SecureDataServiceSampleTestCase extends DSSIntegrationTest {
 
     private final String serviceName = "SecureDataService";
 
+
+    @Factory(dataProvider = "userModeDataProvider")
+    public SecureDataServiceSampleTestCase(TestUserMode userMode) {
+        this.userMode = userMode;
+    }
+
     @BeforeClass(alwaysRun = true)
     public void serviceDeployment() throws Exception {
 
-        super.init();
+        super.init(userMode);
         deployService(serviceName,
                       new DataHandler(new URL("file:///" + getResourceLocation() + File.separator + "samples"
                                               + File.separator + "dbs" + File.separator
@@ -68,15 +76,10 @@ public class SecureDataServiceSampleTestCase extends DSSIntegrationTest {
                                                       serviceName));
     }
 
-    @AfterClass(alwaysRun = true)
-    public void destroy() throws Exception {
-        deleteService(serviceName);
-        cleanup();
-    }
 
     @Test(groups = {"wso2.dss"}, dependsOnMethods = "testServiceDeployment")
     public void listOffices() throws DataServiceFault, RemoteException, XPathExpressionException {
-        SecureDataServiceStub stub = new SecureDataServiceStub(dssContext.getContextUrls().getBackEndUrl()+serviceName);
+        SecureDataServiceStub stub = new SecureDataServiceStub(getServiceUrlHttps(serviceName));
         for (int i = 0; i < 5; i++) {
             Office[] offices = stub.showAllOffices();
             Assert.assertNotNull(offices, "Office List null");
@@ -89,14 +92,13 @@ public class SecureDataServiceSampleTestCase extends DSSIntegrationTest {
           description = "Service invocation after security engaged." +
                         "Provides Authentication. Clients have Username Tokens")
     public void securedListOffices() throws Exception {
-        final int policyId = 1;
 
-        secureService(policyId);
+        secureServiceWithUT();
         SecureAxisServiceClient secureAxisServiceClient = new SecureAxisServiceClient();
+        String serviceUrl = getServiceUrlHttps(serviceName);
         for (int i = 0; i < 5; i++) {
-            OMElement response = secureAxisServiceClient.sendReceive(userInfo.getUserName(), userInfo.getPassword(),
-                                                                     getServiceUrlHttps(serviceName), "showAllOffices",
-                                                                     getPayload(), policyId);
+            OMElement response = secureAxisServiceClient.sendReceive(userInfo.getUserName(), userInfo.getPassword()
+                    , serviceUrl, "showAllOffices", getPayload(), 1);
 
             Assert.assertTrue(response.toString().contains("<Office>"), "Expected Result not Found");
             Assert.assertTrue(response.toString().contains("<officeCode>"), "Expected Result not Found");
@@ -107,26 +109,24 @@ public class SecureDataServiceSampleTestCase extends DSSIntegrationTest {
         log.info("Select Operation Success");
     }
 
-    private void secureService(int policyId)
-            throws SecurityAdminServiceSecurityConfigExceptionException, RemoteException,
-                   XPathExpressionException {
-        SecurityAdminServiceClient securityAdminServiceClient = new SecurityAdminServiceClient(dssContext.getContextUrls().getBackEndUrl(), sessionCookie);
-        if (TestConfigurationProvider.isPlatform()) {
+    @AfterClass(alwaysRun = true)
+    public void destroy() throws Exception {
+        deleteService(serviceName);
+        cleanup();
+    }
 
-            /*securityAdminServiceClient.applySecurity(serviceName, policyId + "", new String[]{userInfo.getUserName()},
-                                                     new String[]{userInfo.getDomain().replace('.', '-') + ".jks"},
-                                                     userInfo.getDomain().replace('.', '-') + ".jks");*/
+    private void secureServiceWithUT() throws Exception {
+        SecurityAdminServiceClient securityAdminServiceClient = new SecurityAdminServiceClient(dssContext.getContextUrls().getBackEndUrl(), sessionCookie);
+        if (isTenant()) {
+            securityAdminServiceClient.applySecurity(serviceName, "1", new String[]{userInfo.getUserName()},
+                                                     null, null);
         } else {
-            securityAdminServiceClient.applySecurity(serviceName, Integer.toString(policyId) ,new String[] {"admin"},
+            securityAdminServiceClient.applySecurity(serviceName, "1", new String[]{userInfo.getUserName()},
                                                      new String[]{"wso2carbon.jks"}, "wso2carbon.jks");
         }
-        log.info("Security Scenario " + policyId + " Applied");
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            Assert.fail("InterruptedException :" + e);
+        log.info("Security Scenario " + "1" + " Applied");
+        Thread.sleep(2000);
 
-        }
     }
 
     private OMElement getPayload() {

@@ -22,7 +22,9 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Factory;
 import org.testng.annotations.Test;
+import org.wso2.carbon.automation.engine.context.TestUserMode;
 import org.wso2.carbon.dataservices.samples.gspread_sample_service.DataServiceFault;
 import org.wso2.carbon.dataservices.samples.gspread_sample_service.GSpreadSample;
 import org.wso2.carbon.dataservices.samples.gspread_sample_service.GSpreadSampleStub;
@@ -39,14 +41,20 @@ public class GSpreadSampleTestCase extends DSSIntegrationTest {
 
     private static final Log log = LogFactory.getLog(GSpreadSampleTestCase.class);
 
-    private String serviceName = "GSpreadSample";
+    private final String serviceName = "GSpreadSample";
     private String serverEpr;
+
+
+    @Factory(dataProvider = "userModeDataProvider")
+    public GSpreadSampleTestCase(TestUserMode userMode) {
+        this.userMode = userMode;
+    }
 
 
     @BeforeClass(alwaysRun = true)
     public void initialize() throws Exception {
-        super.init();
-        String resourceFileLocation = null;
+        super.init(userMode);
+        String resourceFileLocation;
         serverEpr = getServiceUrlHttp(serviceName);
         resourceFileLocation = getResourceLocation();
         deployService(serviceName,

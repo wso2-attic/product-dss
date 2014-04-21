@@ -28,7 +28,9 @@ import org.apache.commons.logging.LogFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Factory;
 import org.testng.annotations.Test;
+import org.wso2.carbon.automation.engine.context.TestUserMode;
 import org.wso2.carbon.automation.test.utils.axis2client.AxisServiceClient;
 import org.wso2.dss.integration.test.DSSIntegrationTest;
 
@@ -43,12 +45,18 @@ import static org.testng.Assert.assertTrue;
 public class WebResourceSampleTestCase extends DSSIntegrationTest {
     private static final Log log = LogFactory.getLog(WebResourceSampleTestCase.class);
 
-    private String serviceName = "WebResourceSample";
+    private final String serviceName = "WebResourceSample";
+
+
+/*    @Factory(dataProvider = "userModeDataProvider")
+    public WebResourceSampleTestCase(TestUserMode userMode) {
+        this.userMode = userMode;
+    }*/
 
     @BeforeClass(alwaysRun = true)
     public void initialize() throws Exception {
         super.init();
-        String resourceFileLocation = null;
+        String resourceFileLocation;
         resourceFileLocation = getResourceLocation();
         deployService(serviceName,
                       new DataHandler(new URL("file:///" + resourceFileLocation +
@@ -64,7 +72,7 @@ public class WebResourceSampleTestCase extends DSSIntegrationTest {
          assertTrue(isServiceDeployed(serviceName));
         log.info(serviceName + " is deployed");
     }
-    //disabled the test since the service refering external api
+    //disabled the test since the service referring external api
     @Test(groups = {"wso2.dss"}, invocationCount = 5, dependsOnMethods = "testServiceDeployment",
           description = "invoke the service five times", enabled = false)
     public void selectOperation() throws AxisFault, InterruptedException, XPathExpressionException {

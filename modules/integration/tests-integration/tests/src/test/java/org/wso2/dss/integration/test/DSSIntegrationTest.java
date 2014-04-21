@@ -20,8 +20,10 @@ package org.wso2.dss.integration.test;
 import org.apache.axiom.attachments.ByteArrayDataSource;
 import org.apache.axiom.om.OMElement;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.wso2.carbon.automation.engine.context.AutomationContext;
 import org.wso2.carbon.automation.engine.context.TestUserMode;
+import org.wso2.carbon.automation.engine.context.beans.Tenant;
 import org.wso2.carbon.automation.engine.context.beans.User;
 import org.wso2.carbon.automation.extensions.XPathConstants;
 import org.wso2.carbon.automation.test.utils.common.TestConfigurationProvider;
@@ -35,20 +37,25 @@ import java.util.List;
 
 public abstract class DSSIntegrationTest {
     //    protected Log log = LogFactory.getLog(getClass());
+    protected final static String PRODUCT_NAME = "DSS";
     protected AutomationContext dssContext = null;
+    protected Tenant tenantInfo;
     protected User userInfo;
     protected String sessionCookie;
+    protected TestUserMode userMode;
 
     protected void init() throws Exception {
-        init(TestUserMode.SUPER_TENANT_ADMIN);
+        userMode =  TestUserMode.SUPER_TENANT_ADMIN;
+        init(userMode);
 
     }
 
     protected void init(TestUserMode userType) throws Exception {
 //        dssContext = new AutomationContext("DSS", "dss01", "carbon.supper", "admin");
-        dssContext = new AutomationContext("DSS", userType);
+        dssContext = new AutomationContext(PRODUCT_NAME, userType);
         sessionCookie = dssContext.login();
-        userInfo = dssContext.getUser();
+        tenantInfo = dssContext.getTenant();
+        userInfo = tenantInfo.getTenantAdmin();
 
     }
 
@@ -58,15 +65,19 @@ public abstract class DSSIntegrationTest {
     }
 
     protected String getServiceUrlHttp(String serviceName) throws XPathExpressionException {
-        return dssContext.getContextUrls().getServiceUrl() + "/" + serviceName;
+        String serviceUrl = dssContext.getContextUrls().getServiceUrl() + "/" + serviceName;
+        validateServiceUrl(serviceUrl, tenantInfo);
+        return serviceUrl;
     }
 
     protected String getServiceUrlHttps(String serviceName) throws XPathExpressionException {
-        return dssContext.getContextUrls().getSecureServiceUrl() + "/" + serviceName;
+        String serviceUrl = dssContext.getContextUrls().getSecureServiceUrl() + "/" + serviceName;
+        validateServiceUrl(serviceUrl, tenantInfo);
+        return serviceUrl;
     }
 
     protected String getResourceLocation() throws XPathExpressionException {
-        return TestConfigurationProvider.getResourceLocation("DSS");
+        return TestConfigurationProvider.getResourceLocation(PRODUCT_NAME);
     }
 
     protected void deployService(String serviceName, OMElement dssConfiguration) throws Exception {
@@ -113,9 +124,16 @@ public abstract class DSSIntegrationTest {
         return dssTest.isServiceFaulty(dssContext.getContextUrls().getBackEndUrl(), sessionCookie, serviceName);
     }
 
+    protected boolean isTenant() throws Exception {
+        if(userMode == null){
+            throw new Exception("UserMode Not Initialized. Can not identify user type");
+        }
+        return (userMode == TestUserMode.TENANT_ADMIN || userMode == TestUserMode.TENANT_USER);
+    }
+
     protected File selectSqlFile(String fileName) throws XPathExpressionException {
 
-        String driver = dssContext.getConfigurationValue(XPathConstants.DATA_SOURCE_DRIVER_CLASS_NAME);;
+        String driver = dssContext.getConfigurationValue(XPathConstants.DATA_SOURCE_DRIVER_CLASS_NAME);
         String type = "";
         if (driver.contains("h2")) {
             type = "h2";
@@ -130,4 +148,22 @@ public abstract class DSSIntegrationTest {
                         + type + File.separator + fileName);
     }
 
+    private void validateServiceUrl(String serviceUrl, Tenant tenant) {
+        //if user mode is null can not validate the service url
+        if (userMode != null) {
+            if ((userMode == TestUserMode.TENANT_ADMIN || userMode == TestUserMode.TENANT_USER)) {
+                Assert.assertTrue(serviceUrl.contains("/t/" + tenant.getDomain() + "/"), "invalid service url for tenant. " + serviceUrl);
+            } else {
+                Assert.assertFalse(serviceUrl.contains("/t/"), "Invalid service url for user. " + serviceUrl);
+            }
+        }
+    }
+
+    @DataProvider
+    public static Object[][] userModeDataProvider() {
+        return new Object[][]{
+                new Object[]{TestUserMode.SUPER_TENANT_ADMIN},
+                new Object[]{TestUserMode.TENANT_ADMIN},
+        };
+    }
 }

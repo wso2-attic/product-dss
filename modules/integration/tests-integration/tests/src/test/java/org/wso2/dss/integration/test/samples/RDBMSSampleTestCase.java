@@ -58,7 +58,7 @@ public class RDBMSSampleTestCase extends DSSIntegrationTest {
                       new DataHandler(new URL("file:///" + getResourceLocation() + File.separator + "samples"
                                               + File.separator + "dbs" + File.separator
                                               + "rdbms" + File.separator + "RDBMSSample.dbs")));
-        randomNumber = new Random().nextInt(1000);
+        randomNumber = new Random().nextInt(2000);
     }
 
 
@@ -79,6 +79,27 @@ public class RDBMSSampleTestCase extends DSSIntegrationTest {
             stub.addEmployee(randomNumber + i, "FirstName", "LastName", "testmail@test.com", 50000.00);
         }
         log.info("Insert Operation Success");
+    }
+
+
+    @Test(groups = {"wso2.dss"}, dependsOnMethods = "selectOperation")
+    public void testLengthValidator() throws RemoteException, DataServiceFault {
+        try {
+            stub.addEmployee(1, "FN", "LN", "testmail@test.com", 50000.00);
+        } catch (DataServiceFault e){
+            assert "VALIDATION_ERROR".equals(e.getFaultMessage().getDs_code().trim());
+            assert "addEmployee".equals(e.getFaultMessage().getCurrent_request_name().trim());
+        }
+    }
+
+    @Test(groups = {"wso2.dss"}, dependsOnMethods = "selectOperation")
+    public void testPatternValidator() throws RemoteException, DataServiceFault {
+        try {
+            stub.addEmployee(1, "FirstName", "LastName", "wrong_email_pattern", 50000.00);
+        } catch (DataServiceFault e){
+            assert "VALIDATION_ERROR".equals(e.getFaultMessage().getDs_code().trim());
+            assert "addEmployee".equals(e.getFaultMessage().getCurrent_request_name().trim());
+        }
     }
 
     @Test(groups = {"wso2.dss"}, dependsOnMethods = {"insertOperation"})

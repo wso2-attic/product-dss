@@ -75,17 +75,8 @@ public class FaultDBExceptionTestCase extends DSSIntegrationTest {
         try {
             faultDBServiceStub.select_op_all_fields();
         } catch (DataServiceFaultException e) {
-            StringTokenizer tokenizer = new StringTokenizer(e.getFaultMessage().getDataServiceFault(), "\n");
-            while (tokenizer.hasMoreTokens()) {
-                String token = tokenizer.nextToken();
-                log.info("token:" + token);
-                if (token.contains("DS Code")) {
-                    String[] splittedStrings = token.split(":");
-                    assert "DATABASE_ERROR".equals(splittedStrings[1].trim());
-                    return;
-                }
-            }
-            fail("No DS CODE found in exception");
+            String code = e.getFaultMessage().getDs_code();
+            assert "DATABASE_ERROR".equals(code.trim());
         }
     }
 

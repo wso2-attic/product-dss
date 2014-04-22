@@ -96,7 +96,7 @@ public class DTPSampleServiceTestCase extends DSSIntegrationTest {
 
         try {
             stub.end_boxcar();
-        } catch (DataServiceFault dssFault) {
+        } catch (Exception dssFault) {
             log.error("DSS fault ignored");
         }
 

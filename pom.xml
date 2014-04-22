@@ -89,6 +89,11 @@
                 <version>${carbon.platform.version}</version>
             </dependency>
             <dependency>
+                <groupId>org.wso2.carbon</groupId>
+                <artifactId>org.wso2.carbon.statistics.ui</artifactId>
+                <version>${carbon.platform.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>org.apache.felix.framework</artifactId>
                 <version>1.0.3</version>
@@ -183,6 +188,11 @@
                 <groupId>org.apache.rampart.wso2</groupId>
                 <artifactId>rampart-core</artifactId>
                 <version>${rampart.osgi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.neethi.wso2</groupId>
+                <artifactId>neethi</artifactId>
+                <version>${neethi.osgi.version}</version>
             </dependency>
       	    <dependency>
                 <groupId>org.wso2.carbon</groupId>
@@ -544,7 +554,6 @@
         <eclipse.version>3.2.0</eclipse.version>
         <servlet-api.version>2.4</servlet-api.version>
         <wss4j.version>1.5.11.wso2v5</wss4j.version>
-        <neethi.version>${neethi.osgi.version}</neethi.version>
         <neethi.osgi.version>2.0.4.wso2v4</neethi.osgi.version>
         <rampart.osgi.version>1.6.1.wso2v12</rampart.osgi.version>
         <carbon.p2.plugin.version>1.5.3</carbon.p2.plugin.version>

@@ -28,12 +28,31 @@
             </xs:complexType>
         </xs:schema>
         <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ws.wso2.org/dataservice">
-            <xs:element name="DataServiceFault" type="xs:string" />
-            <xs:element name="REQUEST_STATUS" type="xs:string" />
+            <xs:element name="DataServiceFault">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="current_params" type="xs:string"/>
+                        <xs:element name="current_request_name" type="xs:string"/>
+                        <xs:element name="nested_exception" type="xs:string"/>
+                        <xs:element name="source_data_service">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="location" type="xs:string"/>
+                                    <xs:element name="default_namespace" type="xs:string"/>
+                                    <xs:element name="description" type="xs:string"/>
+                                    <xs:element name="data_service_name" type="xs:string"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="ds_code" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="REQUEST_STATUS" type="xs:string"/>
             <xs:element name="DATA_SERVICE_RESPONSE">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:any minOccurs="0" />
+                        <xs:any minOccurs="0"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>

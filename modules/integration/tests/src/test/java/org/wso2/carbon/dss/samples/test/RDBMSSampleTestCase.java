@@ -76,6 +76,26 @@ public class RDBMSSampleTestCase extends DSSIntegrationTest {
         log.info("Insert Operation Success");
     }
 
+    @Test(groups = {"wso2.dss"}, dependsOnMethods = "selectOperation")
+    public void testLengthValidator() throws RemoteException, DataServiceFault {
+        try {
+            stub.addEmployee(1, "FN", "LN", "testmail@test.com", 50000.00);
+        } catch (DataServiceFault e){
+            assert "VALIDATION_ERROR".equals(e.getFaultMessage().getDs_code().trim());
+            assert "addEmployee".equals(e.getFaultMessage().getCurrent_request_name().trim());
+        }
+    }
+
+    @Test(groups = {"wso2.dss"}, dependsOnMethods = "selectOperation")
+    public void testPatternValidator() throws RemoteException, DataServiceFault {
+        try {
+            stub.addEmployee(1, "FirstName", "LastName", "wrong_email_pattern", 50000.00);
+        } catch (DataServiceFault e){
+            assert "VALIDATION_ERROR".equals(e.getFaultMessage().getDs_code().trim());
+            assert "addEmployee".equals(e.getFaultMessage().getCurrent_request_name().trim());
+        }
+    }
+
     @Test(groups = {"wso2.dss"}, dependsOnMethods = {"insertOperation"})
     public void selectByNumber() throws RemoteException, DataServiceFault {
         for (int i = 0; i < 5; i++) {

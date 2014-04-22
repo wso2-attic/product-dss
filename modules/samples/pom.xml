@@ -66,7 +66,6 @@
         <dependency>
             <groupId>org.apache.neethi.wso2</groupId>
             <artifactId>neethi</artifactId>
-            <version>${neethi.version}</version>
         </dependency>
     	<!--<dependency>
             <groupId>org.wso2.carbon</groupId>
@@ -79,17 +78,14 @@
         <dependency>
             <groupId>org.apache.rampart.wso2</groupId>
             <artifactId>rampart-policy</artifactId>
-	    <version>${rampart.osgi.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.rampart.wso2</groupId>
             <artifactId>rampart-trust</artifactId>
-            <version>${rampart.osgi.version}</version>
         </dependency>
-	<dependency>
+	    <dependency>
             <groupId>org.apache.rampart.wso2</groupId>
             <artifactId>rampart-core</artifactId>
-	    <version>${rampart.osgi.version}</version>
         </dependency>
     </dependencies>
 

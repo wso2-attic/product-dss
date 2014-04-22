@@ -25,6 +25,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.wso2.carbon.automation.api.clients.dataservices.DataServiceFileUploaderClient;
 import org.wso2.carbon.automation.core.ProductConstant;
+import org.wso2.ws.dataservice.DataServiceFault;
 import org.wso2.carbon.dataservices.samples.fault_dataservice.DataServiceFaultException;
 import org.wso2.carbon.dataservices.samples.fault_dataservice.FaultDBServiceStub;
 import org.wso2.carbon.dss.DSSIntegrationTest;
@@ -77,17 +78,8 @@ public class FaultDBExceptionTestCase extends DSSIntegrationTest {
         try {
             faultDBServiceStub.select_op_all_fields();
         } catch (DataServiceFaultException e) {
-            StringTokenizer tokenizer = new StringTokenizer(e.getFaultMessage().getDataServiceFault(), "\n");
-            while (tokenizer.hasMoreTokens()) {
-                String token = tokenizer.nextToken();
-                log.info("token:" + token);
-                if (token.contains("DS Code")) {
-                    String[] splittedStrings = token.split(":");
-                    assert "DATABASE_ERROR".equals(splittedStrings[1].trim());
-                    return;
-                }
-            }
-            fail("No DS CODE found in exception");
+            String code = e.getFaultMessage().getDs_code();
+            assert "DATABASE_ERROR".equals(code.trim());
         }
     }
 

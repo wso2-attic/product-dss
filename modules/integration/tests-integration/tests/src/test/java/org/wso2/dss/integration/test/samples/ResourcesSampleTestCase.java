@@ -23,7 +23,9 @@ import org.apache.commons.logging.LogFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Factory;
 import org.testng.annotations.Test;
+import org.wso2.carbon.automation.engine.context.TestUserMode;
 import org.wso2.carbon.automation.test.utils.http.client.HttpClientUtil;
 import org.wso2.dss.integration.test.DSSIntegrationTest;
 
@@ -36,16 +38,31 @@ public class ResourcesSampleTestCase extends DSSIntegrationTest {
 
     private final String serviceName = "ResourcesSample";
     private String serviceEndPoint;
+    private int productId;
+
+
+    @Factory(dataProvider = "userModeDataProvider")
+    public ResourcesSampleTestCase(TestUserMode userMode) {
+        this.userMode = userMode;
+    }
 
     @BeforeClass(alwaysRun = true)
     public void serviceDeployment() throws Exception {
 
-        super.init();
+        super.init(userMode);
         deployService(serviceName,
                       new DataHandler(new URL("file:///" + getResourceLocation() + File.separator + "samples"
                                               + File.separator + "dbs" + File.separator
                                               + "rdbms" + File.separator + "ResourcesSample.dbs")));
         serviceEndPoint = getServiceUrlHttp(serviceName) + "/";
+        //to avoid conflict of primary key violation in the database when running user and tenant modes
+        if (isTenant()) {
+            //add product form 50
+            productId = 50;
+        } else {
+            //add product form 30
+            productId = 30;
+        }
     }
 
     @AfterClass(alwaysRun = true)
@@ -69,7 +86,7 @@ public class ResourcesSampleTestCase extends DSSIntegrationTest {
     @Test(groups = {"wso2.dss"}, dependsOnMethods = {"getRequest"})
     public void getRequestWithParam() throws Exception {
         OMElement response;
-        for (int i = 30; i < 40; i++) {
+        for (int i = productId; i < productId + 10; i++) {
             response = getProductByCode(i + "");
             Assert.assertTrue(response.toString().contains("<productName>product" + i + "</productName>"), "Expected result not found");
             Assert.assertTrue(response.toString().contains("<productLine>2</productLine>"), "Expected result not found");
@@ -81,7 +98,7 @@ public class ResourcesSampleTestCase extends DSSIntegrationTest {
     public void putRequest() throws Exception {
         editProduct();
         OMElement response;
-        for (int i = 30; i < 40; i++) {
+        for (int i = productId; i < productId + 10; i++) {
             response = getProductByCode(i + "");
             Assert.assertTrue(response.toString().contains("<productName>product" + i + " edited</productName>"), "Expected result not found");
             Assert.assertTrue(response.toString().contains("<buyPrice>15.0</buyPrice>"), "Expected result not found");
@@ -98,7 +115,7 @@ public class ResourcesSampleTestCase extends DSSIntegrationTest {
     private void deleteProduct() throws Exception {
 
         HttpClientUtil httpClient = new HttpClientUtil();
-        for (int i = 30; i < 40; i++) {
+        for (int i = productId; i < productId + 10; i++) {
             httpClient.delete(serviceEndPoint + "product/", "" + i);
         }
     }
@@ -108,7 +125,7 @@ public class ResourcesSampleTestCase extends DSSIntegrationTest {
         HttpClientUtil httpClient = new HttpClientUtil();
         OMElement result = httpClient.get(serviceEndPoint + "_getproducts");
         Assert.assertNotNull(result, "Response null");
-        for (int i = 30; i < 40; i++) {
+        for (int i = productId; i < productId + 10; i++) {
             Assert.assertTrue(result.toString().contains("<productCode>" + i + "</productCode>"), "Expected result not found");
         }
     }
@@ -116,7 +133,7 @@ public class ResourcesSampleTestCase extends DSSIntegrationTest {
     private void editProduct() throws Exception {
 
         HttpClientUtil httpClient = new HttpClientUtil();
-        for (int i = 30; i < 40; i++) {
+        for (int i = productId; i < productId + 10; i++) {
 
             String para = "productCode=" + i
                           + "&" + "productName=" + "product" + i + " edited"
@@ -137,7 +154,7 @@ public class ResourcesSampleTestCase extends DSSIntegrationTest {
     private void addProduct() throws Exception {
 
         HttpClientUtil httpClient = new HttpClientUtil();
-        for (int i = 30; i < 40; i++) {
+        for (int i = productId; i < productId + 10; i++) {
 
             String para = "productCode=" + i
                           + "&" + "productName=" + "product" + i

@@ -174,24 +174,6 @@
                     </user>
                 </users>
             </tenant>
-            <tenant domain="malintha.com" key="malintha">
-                <admin>
-                    <user key="admin">
-                        <userName>admin</userName>
-                        <password>admin</password>
-                    </user>
-                </admin>
-                <users>
-                    <user key="userm1">
-                        <userName>testuse11</userName>
-                        <password>testuse11</password>
-                    </user>
-                    <user key="userm2">
-                        <userName>testuse21</userName>
-                        <password>testuse21</password>
-                    </user>
-                </users>
-            </tenant>
         </tenants>
     </userManagement>
     <!--
@@ -263,7 +245,7 @@
                 <!--<className>org.wso2.carbon.automation.extensions.servers.carbonserver.CarbonServerExtension</className>-->
                 <className>org.wso2.carbon.integration.common.extensions.carbonserver.CarbonServerExtension</className>
                 <!--<className>org.wso2.carbon.automation.extensions.servers.carbonserver.CarbonServerExtension</className>-->
-                <!--<className>org.wso2.carbon.integration.common.extensions.usermgt.UserPopulateExtension</className>-->
+                <className>org.wso2.carbon.integration.common.extensions.usermgt.UserPopulateExtension</className>
             </extentionClasses>
         </platformExecutionManager>
 

@@ -22,7 +22,9 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Factory;
 import org.testng.annotations.Test;
+import org.wso2.carbon.automation.engine.context.TestUserMode;
 import org.wso2.carbon.dataservices.samples.excel_sample_service.DataServiceFault;
 import org.wso2.carbon.dataservices.samples.excel_sample_service.ExcelSampleService;
 import org.wso2.carbon.dataservices.samples.excel_sample_service.ExcelSampleServiceStub;
@@ -36,16 +38,21 @@ import java.rmi.RemoteException;
 import static org.testng.Assert.assertTrue;
 
 public class ExcelSampleTestCase extends DSSIntegrationTest {
+    private static final Log log = LogFactory.getLog(ExcelSampleTestCase.class);
 
-    private String serviceName = "ExcelSampleService";
+    private final String serviceName = "ExcelSampleService";
     private String serverEpr;
 
-    private static final Log log = LogFactory.getLog(ExcelSampleTestCase.class);
+
+    @Factory(dataProvider = "userModeDataProvider")
+    public ExcelSampleTestCase(TestUserMode userMode) {
+        this.userMode = userMode;
+    }
 
     @BeforeClass(alwaysRun = true)
     public void initialize() throws Exception {
-        super.init();
-        String resourceFileLocation = null;
+        super.init(userMode);
+        String resourceFileLocation;
         serverEpr = getServiceUrlHttp(serviceName);
         resourceFileLocation = getResourceLocation();
         deployService(serviceName,

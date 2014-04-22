@@ -26,7 +26,9 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Factory;
 import org.testng.annotations.Test;
+import org.wso2.carbon.automation.engine.context.TestUserMode;
 import org.wso2.carbon.automation.test.utils.axis2client.AxisServiceClient;
 import org.wso2.dss.integration.test.DSSIntegrationTest;
 
@@ -41,15 +43,21 @@ import static org.testng.Assert.assertTrue;
 public class GSpreadSQLDriverSampleTestCase extends DSSIntegrationTest {
     private static final Log log = LogFactory.getLog(GSpreadSQLDriverSampleTestCase.class);
 
-    private String serviceName = "GSpreadSQLDriverSample";
+    private final String serviceName = "GSpreadSQLDriverSample";
     private String serverEpr;
     private String inputValue = String.valueOf(System.currentTimeMillis());
 
 
+    @Factory(dataProvider = "userModeDataProvider")
+    public GSpreadSQLDriverSampleTestCase(TestUserMode userMode) {
+        this.userMode = userMode;
+    }
+
+
     @BeforeClass(alwaysRun = true)
     public void initialize() throws Exception {
-        super.init();
-        String resourceFileLocation = null;
+        super.init(userMode);
+        String resourceFileLocation;
         serverEpr = getServiceUrlHttp(serviceName);
         resourceFileLocation = getResourceLocation();
         deployService(serviceName,

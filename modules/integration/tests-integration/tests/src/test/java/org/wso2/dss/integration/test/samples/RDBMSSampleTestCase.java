@@ -22,7 +22,9 @@ import org.apache.commons.logging.LogFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Factory;
 import org.testng.annotations.Test;
+import org.wso2.carbon.automation.engine.context.TestUserMode;
 import org.wso2.carbon.dataservices.samples.rdbms_sample.DataServiceFault;
 import org.wso2.carbon.dataservices.samples.rdbms_sample.RDBMSSampleStub;
 import org.wso2.dss.integration.test.DSSIntegrationTest;
@@ -42,9 +44,14 @@ public class RDBMSSampleTestCase extends DSSIntegrationTest {
     private RDBMSSampleStub stub;
     private int randomNumber;
 
+    @Factory(dataProvider = "userModeDataProvider")
+    public RDBMSSampleTestCase(TestUserMode userMode) {
+        this.userMode = userMode;
+    }
+
     @BeforeClass(alwaysRun = true)
     public void serviceDeployment() throws Exception {
-        super.init();
+        super.init(userMode);
         String serviceEndPoint = getServiceUrlHttp(serviceName);
         stub = new RDBMSSampleStub(serviceEndPoint);
         deployService(serviceName,

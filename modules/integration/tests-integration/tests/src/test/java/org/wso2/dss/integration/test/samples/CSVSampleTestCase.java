@@ -22,7 +22,9 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Factory;
 import org.testng.annotations.Test;
+import org.wso2.carbon.automation.engine.context.TestUserMode;
 import org.wso2.carbon.dataservices.samples.csv_sample_service.CSVSampleService;
 import org.wso2.carbon.dataservices.samples.csv_sample_service.CSVSampleServiceStub;
 import org.wso2.carbon.dataservices.samples.csv_sample_service.DataServiceFault;
@@ -36,15 +38,20 @@ import java.rmi.RemoteException;
 import static org.testng.Assert.assertTrue;
 
 public class CSVSampleTestCase extends DSSIntegrationTest {
-    private String serviceName = "CSVSampleService";
+    private static final Log log = LogFactory.getLog(CSVSampleTestCase.class);
+    private final String serviceName = "CSVSampleService";
     private String serverEpr;
 
-    private static final Log log = LogFactory.getLog(CSVSampleTestCase.class);
+
+    @Factory(dataProvider = "userModeDataProvider")
+    public CSVSampleTestCase(TestUserMode userMode) {
+        this.userMode = userMode;
+    }
 
     @BeforeClass(alwaysRun = true)
     public void initialize() throws Exception {
-        super.init();
-        String resourceFileLocation = null;
+        super.init(userMode);
+        String resourceFileLocation;
         serverEpr = getServiceUrlHttp(serviceName);
         resourceFileLocation = getResourceLocation();
         deployService(serviceName,

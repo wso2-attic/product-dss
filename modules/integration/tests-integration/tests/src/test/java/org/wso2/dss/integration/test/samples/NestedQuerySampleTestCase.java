@@ -22,7 +22,9 @@ import org.apache.commons.logging.LogFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Factory;
 import org.testng.annotations.Test;
+import org.wso2.carbon.automation.engine.context.TestUserMode;
 import org.wso2.carbon.dataservices.samples.nested_query_sample.DataServiceFault;
 import org.wso2.carbon.dataservices.samples.nested_query_sample.NestedQuerySampleStub;
 import org.wso2.dss.integration.test.DSSIntegrationTest;
@@ -39,10 +41,16 @@ public class NestedQuerySampleTestCase extends DSSIntegrationTest {
     private final String serviceName = "NestedQuerySample";
     private NestedQuerySampleStub stub;
 
+
+    @Factory(dataProvider = "userModeDataProvider")
+    public NestedQuerySampleTestCase(TestUserMode userMode) {
+        this.userMode = userMode;
+    }
+
     @BeforeClass(alwaysRun = true)
     public void serviceDeployment() throws Exception {
 
-        super.init();
+        super.init(userMode);
         deployService(serviceName,
                       new DataHandler(new URL("file:///" + getResourceLocation() + File.separator + "samples"
                                               + File.separator + "dbs" + File.separator

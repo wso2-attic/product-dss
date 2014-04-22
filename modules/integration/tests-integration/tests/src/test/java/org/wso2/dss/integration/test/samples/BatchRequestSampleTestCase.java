@@ -22,7 +22,9 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Factory;
 import org.testng.annotations.Test;
+import org.wso2.carbon.automation.engine.context.TestUserMode;
 import org.wso2.carbon.dataservices.samples.batch_request_sample.BatchRequestSampleStub;
 import org.wso2.carbon.dataservices.samples.batch_request_sample.DataServiceFault;
 import org.wso2.dss.integration.test.DSSIntegrationTest;
@@ -45,15 +47,22 @@ import static org.testng.AssertJUnit.assertNotSame;
 
 
 public class BatchRequestSampleTestCase extends DSSIntegrationTest {
-    private String serviceName = "BatchRequestSample";
-    private String serverEpr;
-
     private static final Log log = LogFactory.getLog(CSVSampleTestCase.class);
+    private final String serviceName = "BatchRequestSample";
+    private String serverEpr;
+    private int empId;
+
+
+    @Factory(dataProvider = "userModeDataProvider")
+    public BatchRequestSampleTestCase(TestUserMode userMode) {
+        this.userMode = userMode;
+    }
+
 
     @BeforeClass(alwaysRun = true)
     public void initialize() throws Exception {
-        super.init();
-        String resourceFileLocation = null;
+        super.init(userMode);
+        String resourceFileLocation;
         serverEpr = getServiceUrlHttp(serviceName);
         resourceFileLocation = getResourceLocation();
         deployService(serviceName,
@@ -62,6 +71,14 @@ public class BatchRequestSampleTestCase extends DSSIntegrationTest {
                                               "dbs" + File.separator + "rdbms" + File.separator +
                                               "BatchRequestSample.dbs")));
         log.info(serviceName + " uploaded");
+        //to avoid primary key violation when adding employees
+        if (isTenant()) {
+            //for tenants
+            empId = 26;
+        } else {
+            //for users
+            empId = 16;
+        }
     }
 
     @Test(groups = "wso2.dss", description = "Check whether fault service deployed or not")
@@ -76,7 +93,7 @@ public class BatchRequestSampleTestCase extends DSSIntegrationTest {
         AddEmployee addEmployee = new AddEmployee();
         AddEmployee_type0 type0 = new AddEmployee_type0();
 
-        type0.setEmployeeNumber(20);
+        type0.setEmployeeNumber(empId);
         type0.setEmail("wso2.test.automation@wso2.org");
 
         addEmployee.setAddEmployee(type0);
@@ -85,12 +102,12 @@ public class BatchRequestSampleTestCase extends DSSIntegrationTest {
         Thread.sleep(1000);
         EmployeeExists employeeExists = new EmployeeExists();
 
-        employeeExists.setEmployeeNumber(20);
+        employeeExists.setEmployeeNumber(empId);
         assertEquals("1", stub.employeeExists(employeeExists).getEmployees().getEmployee()[0].getExists());
 
         DeleteEmployee deleteEmployee = new DeleteEmployee();
         DeleteEmployee_type0 deleteEmployee_type0 = new DeleteEmployee_type0();
-        deleteEmployee_type0.setEmployeeNumber(20);
+        deleteEmployee_type0.setEmployeeNumber(empId);
         deleteEmployee.setDeleteEmployee(deleteEmployee_type0);
         stub.deleteEmployee(deleteEmployee);
 
@@ -103,11 +120,11 @@ public class BatchRequestSampleTestCase extends DSSIntegrationTest {
         AddEmployee_batch_req addEmployee_batch_req = new AddEmployee_batch_req();
 
         AddEmployee_type0 type0 = new AddEmployee_type0();
-        type0.setEmployeeNumber(15);
+        type0.setEmployeeNumber(empId + 1);
         type0.setEmail("wso2.test.automation1@wso2.org");
 
         AddEmployee_type0 type1 = new AddEmployee_type0();
-        type1.setEmployeeNumber(16);
+        type1.setEmployeeNumber(empId + 2);
         type1.setEmail("wso2.test.automation2@wso2.org");
 
         addEmployee_batch_req.addAddEmployee(type0);
@@ -116,10 +133,10 @@ public class BatchRequestSampleTestCase extends DSSIntegrationTest {
 
         EmployeeExists employeeExists = new EmployeeExists();
 
-        employeeExists.setEmployeeNumber(15);
+        employeeExists.setEmployeeNumber(empId + 1);
         assertEquals(stub.employeeExists(employeeExists).getEmployees().getEmployee()[0].getExists(), "1", "Employee not found");
 
-        employeeExists.setEmployeeNumber(16);
+        employeeExists.setEmployeeNumber(empId + 2);
         assertEquals(stub.employeeExists(employeeExists).getEmployees().getEmployee()[0].getExists(), "1", "Employee not found");
 
     }
@@ -131,20 +148,20 @@ public class BatchRequestSampleTestCase extends DSSIntegrationTest {
         DeleteEmployee_batch_req deleteEmployee_batch_req = new DeleteEmployee_batch_req();
 
         DeleteEmployee_type0 deleteEmployee_type0 = new DeleteEmployee_type0();
-        deleteEmployee_type0.setEmployeeNumber(15);
+        deleteEmployee_type0.setEmployeeNumber(empId + 1);
 
         DeleteEmployee_type0 deleteEmployee_type1 = new DeleteEmployee_type0();
-        deleteEmployee_type1.setEmployeeNumber(16);
+        deleteEmployee_type1.setEmployeeNumber(empId + 2);
 
         deleteEmployee_batch_req.addDeleteEmployee(deleteEmployee_type0);
         deleteEmployee_batch_req.addDeleteEmployee(deleteEmployee_type1);
         stub.deleteEmployee_batch_req(deleteEmployee_batch_req);
 
         EmployeeExists employeeExists = new EmployeeExists();
-        employeeExists.setEmployeeNumber(15);
+        employeeExists.setEmployeeNumber(empId + 1);
         assertNotSame("Employee was not deleted", stub.employeeExists(employeeExists).getEmployees().getEmployee()[0].getExists(), "1");
 
-        employeeExists.setEmployeeNumber(16);
+        employeeExists.setEmployeeNumber(empId + 2);
         assertNotSame("Employee was not deleted", stub.employeeExists(employeeExists).getEmployees().getEmployee()[0].getExists(), "1");
     }
 

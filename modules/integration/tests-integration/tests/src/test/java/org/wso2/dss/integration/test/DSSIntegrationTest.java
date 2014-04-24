@@ -56,8 +56,10 @@ public abstract class DSSIntegrationTest {
         dssContext = new AutomationContext(PRODUCT_NAME, userType);
         LoginLogoutClient loginLogoutClient = new LoginLogoutClient(dssContext);
         sessionCookie = loginLogoutClient.login();
-        tenantInfo = dssContext.getTenant();
-        userInfo = tenantInfo.getTenantAdmin();
+        //return the current tenant as the userType(TestUserMode)
+        tenantInfo = dssContext.getContextTenant();
+        //return the user information initialized with the system
+        userInfo = tenantInfo.getContextUser();
 
     }
 
@@ -165,7 +167,7 @@ public abstract class DSSIntegrationTest {
     public static Object[][] userModeDataProvider() {
         return new Object[][]{
                 new Object[]{TestUserMode.SUPER_TENANT_ADMIN},
-                new Object[]{TestUserMode.TENANT_ADMIN},
+//                new Object[]{TestUserMode.TENANT_ADMIN},
         };
     }
 }

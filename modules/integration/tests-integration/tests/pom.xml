@@ -252,20 +252,14 @@
         <dependency>
             <groupId>org.wso2.dss</groupId>
             <artifactId>org.wso2.dss.integration.common.clients</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.dss</groupId>
             <artifactId>org.wso2.dss.integration.common.utils</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.dss</groupId>
             <artifactId>dataservice-client-samples</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
         </dependency>
         <dependency>
             <groupId>com.h2database.wso2</groupId>

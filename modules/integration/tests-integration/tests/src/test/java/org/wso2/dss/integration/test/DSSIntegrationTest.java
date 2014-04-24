@@ -27,6 +27,7 @@ import org.wso2.carbon.automation.engine.context.beans.Tenant;
 import org.wso2.carbon.automation.engine.context.beans.User;
 import org.wso2.carbon.automation.extensions.XPathConstants;
 import org.wso2.carbon.automation.test.utils.common.TestConfigurationProvider;
+import org.wso2.carbon.integration.common.utils.LoginLogoutClient;
 import org.wso2.dss.integration.common.utils.DSSTestCaseUtils;
 import org.wso2.dss.integration.common.utils.SqlDataSourceUtil;
 
@@ -53,7 +54,8 @@ public abstract class DSSIntegrationTest {
     protected void init(TestUserMode userType) throws Exception {
 //        dssContext = new AutomationContext("DSS", "dss01", "carbon.supper", "admin");
         dssContext = new AutomationContext(PRODUCT_NAME, userType);
-        sessionCookie = dssContext.login();
+        LoginLogoutClient loginLogoutClient = new LoginLogoutClient(dssContext);
+        sessionCookie = loginLogoutClient.login();
         tenantInfo = dssContext.getTenant();
         userInfo = tenantInfo.getTenantAdmin();
 

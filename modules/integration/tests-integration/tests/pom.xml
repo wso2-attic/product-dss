@@ -254,6 +254,10 @@
             <artifactId>org.wso2.dss.integration.common.clients</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.integration.common.tests</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.wso2.dss</groupId>
             <artifactId>org.wso2.dss.integration.common.utils</artifactId>
         </dependency>

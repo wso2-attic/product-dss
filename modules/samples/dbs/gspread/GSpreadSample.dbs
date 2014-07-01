@@ -2,7 +2,7 @@
    <config id="xx">
       <property name="gspread_datasource">https://spreadsheets.google.com/ccc?key=0Av5bU8aVtFjPdElrUVN3VmZlRkoyM1ZzVlE1MzdtbXc&amp;hl=en</property>
       <property name="gspread_visibility">private</property>
-      <property name="gspread_username">zaqxsw987592</property>
+      <property name="gspread_username">zaqxsw987594</property>
       <property name="gspread_password">oijoacxe42</property>
    </config>
    <query id="aa" useConfig="xx">
@@ -11,6 +11,7 @@
          <startingrow>2</startingrow>
          <maxrowcount>5</maxrowcount>
          <hasheader>true</hasheader>
+         <headerrow>1</headerrow>
       </gspread>
       <result element="Customers" rowName="Customer">
          <element column="customerNumber" name="customerNumber"/>

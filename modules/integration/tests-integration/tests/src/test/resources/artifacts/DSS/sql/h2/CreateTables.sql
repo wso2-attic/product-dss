@@ -45,6 +45,16 @@ CREATE TABLE IF NOT EXISTS Offices(
 
 CREATE UNIQUE INDEX offices_pk ON Offices ( officeCode );
 
+CREATE TABLE IF NOT EXISTS Students(
+	studentNumber INTEGER,
+	name VARCHAR(50),
+	phone VARCHAR(50),
+	state VARCHAR(50),
+	country VARCHAR(50),
+);
+
+CREATE UNIQUE INDEX students_pk ON Students ( studentNumber );
+
 CREATE TABLE IF NOT EXISTS Products(
 	productCode VARCHAR(15),
 	productName VARCHAR(70),

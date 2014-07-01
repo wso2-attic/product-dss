@@ -68,6 +68,9 @@
 		<delete file="${ds.repository}/samples/ResourcesSample.dbs"/>
 		<delete file="${ds.repository}/samples/WebResourceSample.dbs"/>
 		<delete file="${ds.repository}/samples/InMemoryDSSample.dbs"/>
+		<delete file="${ds.repository}/samples/JSONSample.dbs"/>
+		<delete file="${ds.repository}/samples/CassandraSample.dbs"/>
+        <delete file="${ds.repository}/samples/MongoDBSampleService.dbs"/>
 	</target>
 	
 	<target name="init">
@@ -145,10 +148,19 @@
                 <copy file="./dbs/rdbms/ResourcesSample.dbs"
 		      toDir="${ds.repository}/samples">
                 </copy>
+                <copy file="./dbs/rdbms/JSONSample.dbs"
+		      toDir="${ds.repository}/samples">
+                </copy>
+                <copy file="./dbs/cassandra/CassandraSample.dbs"
+		      toDir="${ds.repository}/samples">
+                </copy>
+                <copy file="./dbs/mongoDB/MongoDBSampleService.dbs"
+                      toDir="${ds.repository}/samples">
+                </copy>
 		 <copy file="./dbs/web/WebResourceSample.dbs"
 		      toDir="${ds.repository}/samples">
                 </copy>
-		<copy file="./dbs/inmemory/InMemoryDSSample.dbs"
+		 <copy file="./dbs/inmemory/InMemoryDSSample.dbs"
 		      toDir="${ds.repository}/samples">
                 </copy>
 	</target>

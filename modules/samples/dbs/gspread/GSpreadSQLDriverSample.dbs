@@ -2,7 +2,7 @@
    <config id="gspreadConfig">
       <property name="driverClassName">org.wso2.carbon.dataservices.sql.driver.TDriver</property>
       <property name="url">jdbc:wso2:gspread:filePath=https://docs.google.com/spreadsheet/ccc?key=0AmQij-FfB5wYdEJfRVViUlpaN0MzQ01XbUxGUzZKS0E;sheetName=customers;visibility=private</property>
-      <property name="username">zaqxsw987592</property>
+      <property name="username">zaqxsw987594</property>
       <property name="password">oijoacxe42</property>
    </config>
    <query id="getCustomersSQL" useConfig="gspreadConfig">

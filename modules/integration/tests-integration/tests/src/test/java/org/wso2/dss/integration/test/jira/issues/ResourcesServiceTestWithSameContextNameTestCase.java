@@ -69,19 +69,19 @@ public class ResourcesServiceTestWithSameContextNameTestCase extends DSSIntegrat
 
         }
     }
-    @Test(groups = {"wso2.dss"})
+    @Test(groups = {"wso2.dss"}, enabled = false)
     public void addRequest() throws Exception {
     addProduct();
     log.info("Verified POST successfully");
     }
 
-    @Test(groups = {"wso2.dss"},dependsOnMethods = {"addRequest"})
+    @Test(groups = {"wso2.dss"},dependsOnMethods = {"addRequest"}, enabled = false)
     public void getRequest() throws Exception {
          getProduct("1");
         log.info("Verified GET /product/{id} successfully");
 
     }
-    @Test(groups = {"wso2.dss"},dependsOnMethods = {"addRequest"})
+    @Test(groups = {"wso2.dss"},dependsOnMethods = {"addRequest"}, enabled = false)
     public void getAllRequest() throws Exception {
         getProducts();
         log.info("Verified GET /product successfully");

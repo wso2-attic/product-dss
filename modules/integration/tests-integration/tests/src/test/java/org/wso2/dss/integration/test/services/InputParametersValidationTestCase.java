@@ -63,26 +63,26 @@ public class InputParametersValidationTestCase extends DSSIntegrationTest {
         cleanup();
     }
 
-    @Test(groups = {"wso2.dss"})
+    @Test(groups = {"wso2.dss"}, enabled = false)
     public void validateFieldLengthMin() throws XPathExpressionException {
         validateLastName("BB");
         log.info("Field minimum length verified");
     }
 
-    @Test(groups = {"wso2.dss"})
+    @Test(groups = {"wso2.dss"}, enabled = false)
     public void validateFieldLengthMax() throws XPathExpressionException {
         validateLastName("BBBBBBBBBBBB CCCCCCCC");
         log.info("Field maximum length verified");
     }
 
-    @Test(groups = {"wso2.dss"})
+    @Test(groups = {"wso2.dss"}, enabled = false)
     public void validateEmail() throws XPathExpressionException {
         validateEmail("aaabbb.com");
         validateEmail("aaa@bbb");
         log.info("Email address pattern verified");
     }
 
-    @Test(groups = {"wso2.dss"})
+    @Test(groups = {"wso2.dss"}, enabled = false)
     public void validatePrimaryKey() throws AxisFault, XPathExpressionException {
         addEmployee("1");
         boolean validatePrimaryKey = false;

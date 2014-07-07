@@ -51,14 +51,14 @@ public class JSONContentTypeHandlerTestCase extends DSSIntegrationTest {
         serviceEndPoint = getServiceUrlHttp(serviceName) + "/";
     }
 
-    @Test(groups = {"wso2.dss"})
+    @Test(groups = {"wso2.dss"}, enabled = false)
     public void postRequest() throws Exception {
         this.addProducts();
         log.info("POST Request verified");
     }
 
 
-    @Test(groups = {"wso2.dss"}, dependsOnMethods = {"postRequest"})
+    @Test(groups = {"wso2.dss"}, dependsOnMethods = {"postRequest"}, enabled = false)
     public void getAllProductsWithMappedXMLNotation() throws Exception {
         this.listProducts("application/json");
         log.info("GET Request verified");

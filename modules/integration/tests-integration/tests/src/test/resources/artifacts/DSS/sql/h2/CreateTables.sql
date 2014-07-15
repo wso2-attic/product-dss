@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS Students(
 	name VARCHAR(50),
 	phone VARCHAR(50),
 	state VARCHAR(50),
-	country VARCHAR(50),
+	country VARCHAR(50)
 );
 
 CREATE UNIQUE INDEX students_pk ON Students ( studentNumber );

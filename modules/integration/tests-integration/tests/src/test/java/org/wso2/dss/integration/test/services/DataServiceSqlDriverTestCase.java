@@ -74,7 +74,7 @@ public class DataServiceSqlDriverTestCase extends DSSIntegrationTest {
         serviceEPR = getServiceUrlHttp(serviceName);
     }
 
-    @Test(groups = "wso2.dss", description = "Check whether the service is deployed or not")
+    @Test(groups = "wso2.dss", description = "Check whether the service is deployed or not", enabled = false)
     public void testServiceDeployment() throws RemoteException, XPathExpressionException {
         assertTrue(dssTestCaseUtils.isServiceDeployed(dssContext.getContextUrls().getBackEndUrl(),
                                                       sessionCookie, serviceName));
@@ -83,7 +83,7 @@ public class DataServiceSqlDriverTestCase extends DSSIntegrationTest {
 
 
 
-    @Test(groups = "wso2.dss", description = "insert and retrieve records", dependsOnMethods = "testServiceDeployment")
+    @Test(groups = "wso2.dss", description = "insert and retrieve records", dependsOnMethods = "testServiceDeployment", enabled = false)
     public void testInsertRecordsAndGetBack() throws RemoteException {
 
         OMElement result = new AxisServiceClient().sendReceive(insertNewRecord(String.valueOf(randomId)), serviceEPR, "insertop");
@@ -93,7 +93,7 @@ public class DataServiceSqlDriverTestCase extends DSSIntegrationTest {
         assertTrue(resultDetails.toString().contains(String.valueOf(randomId)));
     }
 
-    @Test(groups = "wso2.dss", description = "update and delete record", dependsOnMethods = "testInsertRecordsAndGetBack")
+    @Test(groups = "wso2.dss", description = "update and delete record", dependsOnMethods = "testInsertRecordsAndGetBack", enabled = false)
     public void testUpdateAndDelete() throws RemoteException {
 
         OMElement result = new AxisServiceClient().sendReceive(updateRecord(String.valueOf(randomId)), serviceEPR, "Update");

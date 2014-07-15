@@ -66,13 +66,13 @@ public class BatchRequestSampleTestCase extends DSSIntegrationTest {
         log.info(serviceName + " uploaded");
     }
 
-    @Test(groups = "wso2.dss", description = "Check whether fault service deployed or not")
+    @Test(groups = "wso2.dss", description = "Check whether fault service deployed or not", enabled=false)
     public void testServiceDeployment() throws RemoteException {
         assertTrue(isServiceDeployed(serviceName));
         log.info(serviceName + " is deployed");
     }
 
-    @Test(groups = {"wso2.dss"}, dependsOnMethods = "testServiceDeployment")
+    @Test(groups = {"wso2.dss"}, dependsOnMethods = "testServiceDeployment", enabled=false)
     public void testAddEmployee() throws RemoteException, DataServiceFault, InterruptedException {
         BatchRequestSampleStub stub = new BatchRequestSampleStub(serverEpr);
         AddEmployee addEmployee = new AddEmployee();
@@ -99,7 +99,7 @@ public class BatchRequestSampleTestCase extends DSSIntegrationTest {
         assertNotSame("Employee was not deleted", stub.employeeExists(employeeExists).getEmployees().getEmployee()[0].getExists(), 1);
     }
 
-    @Test(groups = {"wso2.dss"}, dependsOnMethods = "testAddEmployee")
+    @Test(groups = {"wso2.dss"}, dependsOnMethods = "testAddEmployee", enabled=false)
     public void testAddEmployee_batch() throws RemoteException, DataServiceFault {
         BatchRequestSampleStub stub = new BatchRequestSampleStub(serverEpr);
         AddEmployee_batch_req addEmployee_batch_req = new AddEmployee_batch_req();
@@ -127,7 +127,7 @@ public class BatchRequestSampleTestCase extends DSSIntegrationTest {
     }
 
 
-    @Test(groups = {"wso2.dss"}, dependsOnMethods = "testAddEmployee_batch")
+    @Test(groups = {"wso2.dss"}, dependsOnMethods = "testAddEmployee_batch", enabled=false)
     public void testDeleteEmployee_batch() throws RemoteException, DataServiceFault {
         BatchRequestSampleStub stub = new BatchRequestSampleStub(serverEpr);
         DeleteEmployee_batch_req deleteEmployee_batch_req = new DeleteEmployee_batch_req();

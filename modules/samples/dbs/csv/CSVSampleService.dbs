@@ -4,17 +4,18 @@
       <property name="csv_columnseperator">,</property>
       <property name="csv_startingrow">2</property>
       <property name="csv_maxrowcount">-1</property>
-      <property name="csv_hasheader">false</property>
+      <property name="csv_hasheader">true</property>
+      <property name="csv_headerrow">1</property>
    </config>
+   <query id="productsQuery" useConfig="default">
+      <result element="Products" rowName="Product">
+         <element column="ID" name="ID" xsdType="string"/>
+         <element column="Classification" name="Category" xsdType="string"/>
+         <element column="Price" name="Price" xsdType="double"/>
+         <element column="Name" name="Name" xsdType="string"/>
+      </result>
+   </query>
    <operation name="getProducts">
       <call-query href="productsQuery"/>
    </operation>
-   <query id="productsQuery" useConfig="default">
-      <result element="Products" rowName="Product">
-         <element column="1" name="ID"/>
-         <element column="3" name="Category"/>
-         <element column="4" name="Price" xsdType="double"/>
-         <element column="2" name="Name"/>
-      </result>
-   </query>
 </data>

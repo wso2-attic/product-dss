@@ -77,7 +77,7 @@ public class SecureDataServiceSampleTestCase extends DSSIntegrationTest {
     }
 
 
-    @Test(groups = {"wso2.dss"}, dependsOnMethods = "testServiceDeployment")
+    @Test(groups = {"wso2.dss"}, dependsOnMethods = "testServiceDeployment", enabled = false)
     public void listOffices() throws DataServiceFault, RemoteException, XPathExpressionException {
         SecureDataServiceStub stub = new SecureDataServiceStub(getServiceUrlHttps(serviceName));
         for (int i = 0; i < 5; i++) {

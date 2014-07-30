@@ -77,7 +77,7 @@ public class SecureDataServiceSampleTestCase extends DSSIntegrationTest {
     }
 
 
-    @Test(groups = {"wso2.dss"}, dependsOnMethods = "testServiceDeployment")
+    @Test(groups = {"wso2.dss"}, dependsOnMethods = "testServiceDeployment", enabled = false)
     public void listOffices() throws DataServiceFault, RemoteException, XPathExpressionException {
         SecureDataServiceStub stub = new SecureDataServiceStub(getServiceUrlHttps(serviceName));
         for (int i = 0; i < 5; i++) {
@@ -90,7 +90,7 @@ public class SecureDataServiceSampleTestCase extends DSSIntegrationTest {
 
     @Test(groups = {"wso2.dss"}, dependsOnMethods = {"listOffices"},
           description = "Service invocation after security engaged." +
-                        "Provides Authentication. Clients have Username Tokens")
+                        "Provides Authentication. Clients have Username Tokens", enabled = false)
     public void securedListOffices() throws Exception {
 
         secureServiceWithUT();

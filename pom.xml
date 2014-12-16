@@ -341,6 +341,12 @@
                 <scope>test</scope>
             </dependency>
             <dependency>
+                <groupId>org.wso2.dss</groupId>
+                <artifactId>org.wso2.dss.integration.ui.pages</artifactId>
+                <version>${version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
                 <groupId>org.codehaus.jettison.wso2</groupId>
                 <artifactId>jettison</artifactId>
                 <version>${orbit.version.jettison}</version>
@@ -417,6 +423,17 @@
                 <groupId>org.wso2.carbon.automation</groupId>
                 <artifactId>org.wso2.carbon.automation.test.utils</artifactId>
                 <version>${test.framework.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.testng</groupId>
+                <artifactId>testng</artifactId>
+                <version>${testng.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wso2.carbon</groupId>
+                <artifactId>org.wso2.carbon.utils</artifactId>
+                <version>${carbon.kernel.version}</version>
                 <scope>test</scope>
             </dependency>
 
@@ -611,6 +628,7 @@
         <test.framework.version>4.3.1</test.framework.version>
         <test.framework.util.version>4.3.0-SNAPSHOT</test.framework.util.version>
         <json.version>2.0.0.wso2v1</json.version>
+        <testng.version>6.8</testng.version>
     </properties>
 
     <mailingLists>

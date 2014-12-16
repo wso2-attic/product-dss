@@ -19,6 +19,7 @@
         <!--<module>samples</module>-->
         <module>tests-common</module>
         <module>tests-integration</module>
+        <module>tests-ui-integration</module>
     </modules>
 
   <build>

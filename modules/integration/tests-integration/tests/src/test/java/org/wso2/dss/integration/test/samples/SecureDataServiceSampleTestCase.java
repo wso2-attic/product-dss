@@ -29,11 +29,11 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Factory;
 import org.testng.annotations.Test;
 import org.wso2.carbon.automation.engine.context.TestUserMode;
-import org.wso2.carbon.automation.test.utils.axis2client.SecureAxisServiceClient;
 import org.wso2.carbon.automation.test.utils.common.TestConfigurationProvider;
 import org.wso2.carbon.dataservices.samples.secure_dataservice.DataServiceFault;
 import org.wso2.carbon.dataservices.samples.secure_dataservice.SecureDataServiceStub;
 import org.wso2.carbon.integration.common.admin.client.SecurityAdminServiceClient;
+import org.wso2.carbon.integration.common.utils.clients.SecureAxisServiceClient;
 import org.wso2.carbon.security.mgt.stub.config.SecurityAdminServiceSecurityConfigExceptionException;
 import org.wso2.dss.integration.common.utils.DSSTestCaseUtils;
 import org.wso2.dss.integration.test.DSSIntegrationTest;
@@ -117,13 +117,8 @@ public class SecureDataServiceSampleTestCase extends DSSIntegrationTest {
 
     private void secureServiceWithUT() throws Exception {
         SecurityAdminServiceClient securityAdminServiceClient = new SecurityAdminServiceClient(dssContext.getContextUrls().getBackEndUrl(), sessionCookie);
-        if (isTenant()) {
-            securityAdminServiceClient.applySecurity(serviceName, "1", new String[]{userInfo.getUserName()},
-                                                     null, null);
-        } else {
-            securityAdminServiceClient.applySecurity(serviceName, "1", new String[]{userInfo.getUserName()},
+        securityAdminServiceClient.applySecurity(serviceName, "1", new String[]{userInfo.getUserName()},
                                                      new String[]{"wso2carbon.jks"}, "wso2carbon.jks");
-        }
         log.info("Security Scenario " + "1" + " Applied");
         Thread.sleep(2000);
 

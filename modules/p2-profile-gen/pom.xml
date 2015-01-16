@@ -230,7 +230,7 @@
 
                                 <feature>
                                     <id>org.wso2.carbon.core.feature.group</id>
-                                    <version>${carbon.platform.version}</version>
+                                    <version>${carbon.kernel.version}</version>
                                 </feature>
 
                                 <!--<feature>-->

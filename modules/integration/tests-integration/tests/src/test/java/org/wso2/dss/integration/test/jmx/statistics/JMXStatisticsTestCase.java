@@ -61,14 +61,14 @@ public class JMXStatisticsTestCase extends DSSIntegrationTest {
 
     }
 
-    @Test(groups = "wso2.dss", description = "Check whether fault service deployed or not")
+    @Test(groups = "wso2.dss", description = "Check whether fault service deployed or not", enabled = false)
     public void testServiceDeployment() throws Exception {
         assertTrue(isServiceDeployed(serviceName));
         log.info(serviceName + " is deployed");
     }
 
     @Test(groups = {"wso2.dss"}, invocationCount = 5, description = "invoke service",
-          dependsOnMethods = "testServiceDeployment")
+          dependsOnMethods = "testServiceDeployment", enabled = false)
     public void selectOperation() throws AxisFault, XPathExpressionException {
         OMFactory fac = OMAbstractFactory.getOMFactory();
         OMNamespace omNs = fac.createOMNamespace("http://ws.wso2.org/dataservice/samples/gspread_sample_service", "ns1");
@@ -88,7 +88,7 @@ public class JMXStatisticsTestCase extends DSSIntegrationTest {
     }
 
     @Test(groups = "wso2.dss", description = "Verify service attributes exposed via jmx interface",
-          dependsOnMethods = "selectOperation")
+          dependsOnMethods = "selectOperation", enabled = false)
     public void testVerifyServiceAttributesViaJMX() throws Exception {
         assertEquals(jmxClient.getAttribute("ServiceName"), serviceName);
         assertTrue(((String[]) jmxClient.getAttribute("ResourcePaths"))[0].equals("customers"));
@@ -102,7 +102,7 @@ public class JMXStatisticsTestCase extends DSSIntegrationTest {
     }
 
     @Test(groups = "wso2.dss", description = "Verify service operations exposed via jmx interface",
-          dependsOnMethods = "testVerifyServiceAttributesViaJMX")
+          dependsOnMethods = "testVerifyServiceAttributesViaJMX", enabled = false)
     public void testVerifyServiceOperationsViaJMX() throws Exception {
         assertTrue(jmxClient.invoke("getQueryIdFromOperationName", new Object[]{"getCustomers"}).equals("aa"));
         assertTrue(jmxClient.invoke("getConfigIdFromQueryId", new Object[]{"aa"}).equals("GSpreadDataSource"));

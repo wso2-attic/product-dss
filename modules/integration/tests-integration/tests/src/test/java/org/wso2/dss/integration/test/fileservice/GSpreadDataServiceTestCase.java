@@ -60,7 +60,7 @@ public class GSpreadDataServiceTestCase extends DSSIntegrationTest {
         cleanup();
     }
 
-    @Test(groups = {"wso2.dss"}, invocationCount = 5)
+    @Test(groups = {"wso2.dss"}, invocationCount = 5, enabled = false)
     public void selectOperation() throws AxisFault, XPathExpressionException {
         OMFactory fac = OMAbstractFactory.getOMFactory();
         OMNamespace omNs = fac.createOMNamespace("http://ws.wso2.org/dataservice/samples/gspread_sample_service", "ns1");
@@ -76,7 +76,7 @@ public class GSpreadDataServiceTestCase extends DSSIntegrationTest {
         log.info("Service Invocation success");
     }
 
-    @Test(groups = {"wso2.dss"}, dependsOnMethods = {"selectOperation"}, timeOut = 1000 * 60 * 2)
+    @Test(groups = {"wso2.dss"}, dependsOnMethods = {"selectOperation"}, timeOut = 1000 * 60 * 2, enabled = false)
     public void concurrencyTest()
             throws ConcurrencyTestFailedError, InterruptedException, XPathExpressionException {
         OMFactory fac = OMAbstractFactory.getOMFactory();

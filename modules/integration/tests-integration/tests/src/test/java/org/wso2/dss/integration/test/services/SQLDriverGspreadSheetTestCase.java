@@ -47,7 +47,7 @@ public class SQLDriverGspreadSheetTestCase extends DSSIntegrationTest {
     private String inputValue = String.valueOf(System.currentTimeMillis());
 
 
-    @BeforeClass(alwaysRun = true)
+    @BeforeClass(alwaysRun = true, enabled = false)
     public void initialize() throws Exception {
         super.init();
         serverEpr = getServiceUrlHttp(serviceName);
@@ -58,13 +58,13 @@ public class SQLDriverGspreadSheetTestCase extends DSSIntegrationTest {
         log.info(serviceName + " uploaded");
     }
 
-    @Test(groups = "wso2.dss", description = "Check whether fault service deployed or not")
+    @Test(groups = "wso2.dss", description = "Check whether fault service deployed or not", enabled = false)
     public void testServiceDeployment() throws Exception {
         assertTrue(isServiceDeployed(serviceName));
         log.info(serviceName + " is deployed");
     }
 
-    @Test(groups = "wso2.dss", description = "Drop sheet", dependsOnMethods = "testServiceDeployment")
+    @Test(groups = "wso2.dss", description = "Drop sheet", dependsOnMethods = "testServiceDeployment", enabled = false)
     public void testDropTheSheetIfExists() {
         try {
             new AxisServiceClient().sendRobust(dropSheetSQLPayload(), serverEpr, "dropSheetSQL");
@@ -73,26 +73,26 @@ public class SQLDriverGspreadSheetTestCase extends DSSIntegrationTest {
         }
     }
 
-    @Test(groups = "wso2.dss", description = "Add new sheet", dependsOnMethods = "testDropTheSheetIfExists")
+    @Test(groups = "wso2.dss", description = "Add new sheet", dependsOnMethods = "testDropTheSheetIfExists", enabled = false)
     public void testNewSheetPayload() throws RemoteException, InterruptedException {
         Thread.sleep(3000);
         new AxisServiceClient().sendRobust(createNewSheetPayload(), serverEpr, "createNewSheetSQL");
     }
 
-    @Test(groups = "wso2.dss", description = "Drop sheet", dependsOnMethods = "testNewSheetPayload")
+    @Test(groups = "wso2.dss", description = "Drop sheet", dependsOnMethods = "testNewSheetPayload", enabled = false)
     public void testDropSheet() throws RemoteException, InterruptedException {
         Thread.sleep(5000);
         new AxisServiceClient().sendRobust(dropSheetSQLPayload(), serverEpr, "dropSheetSQL");
     }
 
-    @Test(groups = "wso2.dss", description = "add customer", dependsOnMethods = "testDropSheet")
+    @Test(groups = "wso2.dss", description = "add customer", dependsOnMethods = "testDropSheet", enabled = false)
     public void testAddEmployee() throws RemoteException {
         new AxisServiceClient().sendRobust(addEmployeePayload(), serverEpr, "addCustomerSQL");
         OMElement result = new AxisServiceClient().sendReceive(getPayload(), serverEpr, "getCustomersSQL");
         assertTrue(result.toString().contains("<customerName>" + inputValue + "</customerName>"));
     }
 
-    @Test(groups = "wso2.dss", description = "Update customer", dependsOnMethods = "testAddEmployee")
+    @Test(groups = "wso2.dss", description = "Update customer", dependsOnMethods = "testAddEmployee", enabled = false)
     public void testUpdateCustomer() throws RemoteException, InterruptedException {
         new AxisServiceClient().sendRobust(updateCustomer(), serverEpr, "updateCustomerSQL");
         Thread.sleep(5000);
@@ -100,7 +100,7 @@ public class SQLDriverGspreadSheetTestCase extends DSSIntegrationTest {
         assertTrue(result.toString().contains("<contactLastName>" + inputValue + "updated" + "</contactLastName>"));
     }
 
-    @Test(groups = "wso2.dss", description = "Delete customer", dependsOnMethods = "testUpdateCustomer")
+    @Test(groups = "wso2.dss", description = "Delete customer", dependsOnMethods = "testUpdateCustomer", enabled = false)
     public void testDeleteCustomer() throws RemoteException {
         new AxisServiceClient().sendRobust(deleteCustomer(), serverEpr, "deleteCustomerSQL");
 
@@ -214,7 +214,7 @@ public class SQLDriverGspreadSheetTestCase extends DSSIntegrationTest {
     }
 
 
-    @AfterClass(alwaysRun = true)
+    @AfterClass(alwaysRun = true, enabled = false)
     public void deleteService() throws Exception {
         deleteService(serviceName);
         cleanup();

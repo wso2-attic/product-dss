@@ -20,15 +20,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <parent>
-	<groupId>org.wso2.dss</groupId>
-    	<artifactId>dataservices-styles-parent</artifactId>
+        <groupId>org.wso2.dss</groupId>
+        <artifactId>dataservices-styles-parent</artifactId>
         <version>3.3.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.wso2.stratos.dss.styles</artifactId>
-    <version>${stratos.version}</version>
+    <!--<version>${stratos.version}</version>-->
     <packaging>bundle</packaging>
     <name>WSO2 Stratos DSS - UI styles</name>
     <url>http://wso2.org</url>
@@ -53,7 +53,7 @@
                     <instructions>
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Bundle-Name>${project.artifactId}</Bundle-Name>
-                        <Bundle-Version>${project.version}</Bundle-Version>
+                        <Bundle-Version>${product.dss.version}</Bundle-Version>
                         <Import-Package>
                             org.osgi.framework,
                             org.osgi.service.http,

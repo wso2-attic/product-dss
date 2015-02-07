@@ -4,13 +4,12 @@
 
     <parent>
         <groupId>org.wso2.dss</groupId>
-        <artifactId>integration</artifactId>
+        <artifactId>dss-integration-tests</artifactId>
         <version>3.3.0-SNAPSHOT</version>
-        <relativePath>../../pom.xml</relativePath>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.wso2.dss</groupId>
     <artifactId>org.wso2.dss.integration.test</artifactId>
     <packaging>jar</packaging>
     <name>org.wso2.dss.integration.test</name>
@@ -39,7 +38,7 @@
                         <property>
                             <name>carbon.zip</name>
                             <value>
-                                ${basedir}/../../../distribution/target/wso2dss-${project.version}.zip
+                                ${basedir}/../../../distribution/target/wso2dss-${product.dss.version}.zip
                             </value>
                         </property>
                         <property>
@@ -149,7 +148,7 @@
                                 <artifactItem>
                                     <groupId>org.wso2.dss</groupId>
                                     <artifactId>wso2dss</artifactId>
-                                    <version>${project.version}</version>
+                                    <version>${product.dss.version}</version>
                                     <type>zip</type>
                                     <overWrite>true</overWrite>
                                     <outputDirectory>${basedir}/target/tobeCopied/</outputDirectory>
@@ -189,7 +188,7 @@
                             <resources>
                                 <resource>
                                     <directory>
-                                        ${basedir}/target/tobeCopied/wso2dss-${project.version}/repository/resources/security/
+                                        ${basedir}/target/tobeCopied/wso2dss-${product.dss.version}/repository/resources/security/
                                     </directory>
                                     <includes>
                                         <include>**/*.jks</include>
@@ -210,7 +209,7 @@
                             <resources>
                                 <resource>
                                     <directory>
-                                        ${basedir}/target/tobeCopied/wso2dss-${project.version}/repository/deployment/client/modules
+                                        ${basedir}/target/tobeCopied/wso2dss-${product.dss.version}/repository/deployment/client/modules
                                     </directory>
                                     <includes>
                                         <include>**/*.mar</include>
@@ -238,15 +237,15 @@
             <artifactId>org.wso2.carbon.automation.test.utils</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.wso2.carbon</groupId>
+            <groupId>org.wso2.carbon.automationutils</groupId>
             <artifactId>org.wso2.carbon.integration.common.admin.client</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.wso2.carbon</groupId>
+            <groupId>org.wso2.carbon.automationutils</groupId>
             <artifactId>org.wso2.carbon.integration.common.utils</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.wso2.carbon</groupId>
+            <groupId>org.wso2.carbon.automationutils</groupId>
             <artifactId>org.wso2.carbon.integration.common.extensions</artifactId>
         </dependency>
         <dependency>
@@ -254,7 +253,7 @@
             <artifactId>org.wso2.dss.integration.common.clients</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.wso2.carbon</groupId>
+            <groupId>org.wso2.carbon.automationutils</groupId>
             <artifactId>org.wso2.carbon.integration.common.tests</artifactId>
         </dependency>
         <dependency>

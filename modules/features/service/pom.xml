@@ -28,7 +28,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>wso2stratos-dss-features</artifactId>
-    <version>${stratos.version}</version>
+    <!--<version>${stratos.version}</version>-->
     <packaging>pom</packaging>
     <name>WSO2 Stratos DSS - Features Aggregator Module</name>
     <url>http://wso2.org</url>

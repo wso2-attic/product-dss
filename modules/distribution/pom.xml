@@ -20,8 +20,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <parent>
-	<groupId>org.wso2.dss</groupId>
-    	<artifactId>dataservices-parent</artifactId>
+        <groupId>org.wso2.dss</groupId>
+        <artifactId>dataservices-parent</artifactId>
         <version>3.3.0-SNAPSHOT</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
@@ -35,7 +35,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.wso2.carbon</groupId>
+            <groupId>org.wso2.carbon.data</groupId>
             <artifactId>org.wso2.carbon.dataservices.core</artifactId>
         </dependency>
 	    <dependency>
@@ -250,18 +250,18 @@
                                 <mkdir dir="${tempdir}"/>
                                 <unzip dest="${tempdir}">
                                     <fileset dir="target">
-                                        <include name="${pom.artifactId}-${project.version}.zip"/>
+                                        <include name="${pom.artifactId}-${product.dss.version}.zip"/>
                                     </fileset>
                                 </unzip>
                                 <copy todir="target/wso2carbon-core-${carbon.kernel.version}/repository/components/" overwrite="false">
-                                    <fileset dir="${tempdir}/${pom.artifactId}-${project.version}/repository/components/">
+                                    <fileset dir="${tempdir}/${pom.artifactId}-${product.dss.version}/repository/components/">
                                     </fileset>
                                 </copy>
                                 <copy todir="target/wso2carbon-core-${carbon.kernel.version}/bin"
                                       overwrite="true">
                                     <fileset dir="bin"/>
                                 </copy>
-                                <delete file="target/${pom.artifactId}-${project.version}.zip"/>
+                                <delete file="target/${pom.artifactId}-${product.dss.version}.zip"/>
                                 <delete dir="${tempdir}"/>
                                 <mkdir dir="${tempdir}"/>
                                 <!--<unzip dest="${tempdir}">
@@ -349,7 +349,7 @@
                                 <delete dir="target/dependency-maven-plugin-markers"/>
                                 <delete dir="target/maven-archiver"/>
                                 <delete dir="target/wso2carbon-core-${carbon.kernel.version}"/>
-                                <delete file="target/wso2dss-${project.version}.jar"/>
+                                <delete file="target/wso2dss-${product.dss.version}.jar"/>
                                 <delete dir="target/sources"/>
                                 <delete dir="target/site"/>
                                 <!--<delete dir="target/samples/database"/>-->
@@ -400,6 +400,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.2-beta-2</version>
                 <executions>
                     <execution>
                         <id>1-pre_dist</id>

@@ -72,7 +72,7 @@ public class CARBON15046JsonGsonNUllValueTest extends DSSIntegrationTest {
         cleanup();
     }
 
-    @Test(groups = { "wso2.dss" }, description = "Check whether the null received successfully",alwaysRun = true)
+    @Test(groups = { "wso2.dss" }, description = "Check whether the null received successfully", alwaysRun = true)
     public void returnNullValueInJsonObjectsOnGETTestCase() throws Exception {
         HttpResponse response = this.getHttpResponse(serviceEndPoint + "_getbird", "application/json");
         JSONObject result = new JSONObject(response.getData());

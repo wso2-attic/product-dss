@@ -42,14 +42,17 @@ import org.wso2.dss.integration.common.utils.SqlDataSourceUtil;
 import org.wso2.dss.integration.test.DSSIntegrationTest;
 
 import javax.activation.DataHandler;
+import javax.management.*;
+import javax.management.remote.JMXConnector;
+import javax.management.remote.JMXConnectorFactory;
+import javax.management.remote.JMXServiceURL;
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.xpath.XPathExpressionException;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.net.MalformedURLException;
+import java.util.*;
 
 //https://wso2.org/jira/browse/STRATOS-1631
 public class DataSourceInitializationAtStartUpTestCase extends DSSIntegrationTest {
@@ -61,6 +64,7 @@ public class DataSourceInitializationAtStartUpTestCase extends DSSIntegrationTes
     private String carbonDataSourceName;
     private SqlDataSourceUtil sqlDataSource;
     private SampleDataServiceClient client;
+    private String dataSourceName = "";
 
     @BeforeClass(alwaysRun = true)
     public void serviceDeployment() throws Exception {
@@ -113,6 +117,36 @@ public class DataSourceInitializationAtStartUpTestCase extends DSSIntegrationTes
         log.info("Service Invocation Success");
     }
 
+    //TestCase for https://wso2.org/jira/browse/CARBON-15172
+    @Test(dependsOnMethods = {"isServiceExistAfterRestarting"}, enabled = false)
+    @SetEnvironment(executionEnvironments = {ExecutionEnvironment.STANDALONE})
+    public void testMBeanForDatasource() throws AxisFault {
+        Map<String, String[]> env = new HashMap<String, String[]>();
+        String[] credentials = {"admin", "admin"};
+        env.put(JMXConnector.CREDENTIALS, credentials);
+        try {
+            String url = "service:jmx:rmi://localhost:11111/jndi/rmi://localhost:9999/jmxrmi";
+            JMXServiceURL jmxUrl = new JMXServiceURL(url);
+            JMXConnector jmxConnector = JMXConnectorFactory.connect(jmxUrl, env);
+            MBeanServerConnection mBeanServer = jmxConnector.getMBeanServerConnection();
+            ObjectName mbeanObject = new ObjectName(dataSourceName + ",-1234:type=DataSource");
+            MBeanInfo mBeanInfo = mBeanServer.getMBeanInfo(mbeanObject);
+            Assert.assertNotNull(mBeanInfo, "Data Source is registered in the MBean server");
+        } catch (MalformedURLException e) {
+            throw new AxisFault("Error while connecting to MBean Server " + e.getMessage(),e);
+        } catch (IOException e) {
+            throw new AxisFault("Error while connecting to MBean Server " + e.getMessage(),e);
+        } catch (MalformedObjectNameException e) {
+            throw new AxisFault("Error while connecting to MBean Server " + e.getMessage(),e);
+        } catch (IntrospectionException e) {
+            throw new AxisFault("Error while connecting to MBean Server " + e.getMessage(),e);
+        } catch (ReflectionException e) {
+            throw new AxisFault("Error while connecting to MBean Server " + e.getMessage(),e);
+        } catch (InstanceNotFoundException e) {
+            throw new AxisFault("Error while connecting to MBean Server " + e.getMessage(),e);
+        }
+
+    }
 
     private String createDataSource() throws Exception {
 
@@ -132,7 +166,7 @@ public class DataSourceInitializationAtStartUpTestCase extends DSSIntegrationTes
 
         sqlDataSource.createDataSource(getSqlScript());
         String databaseName = sqlDataSource.getDatabaseName();
-        String dataSourceName = databaseName + "DataSource";
+        dataSourceName = databaseName + "DataSource";
 
 
             if (list != null) {

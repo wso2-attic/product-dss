@@ -61,12 +61,18 @@
         </packages>
     </test>
 
-    <test name="DSS-jira-issues-tests" parallel="false" verbose="2">
-        <packages>
-            <package name="org.wso2.dss.integration.test.jira.issues"/>
-        </packages>
-    </test>
+    <!--<test name="DSS-jira-issues-tests" parallel="false" verbose="2">-->
+        <!--<packages>-->
+            <!--<package name="org.wso2.dss.integration.test.jira.issues"/>-->
+        <!--</packages>-->
+    <!--</test>-->
 
+
+    <!--<test name="DSS-jira-issues-tests" parallel="false" verbose="2">-->
+        <!--<classes>-->
+            <!--<class name="org.wso2.dss.integration.test.jira.issues.CARBON15235JsonValueTypeMissMatchTest"/>-->
+        <!--</classes>-->
+    <!--</test>-->
 
     <test name="DSS-samples-tests" parallel="false" verbose="2">
         <packages>

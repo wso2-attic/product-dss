@@ -46,6 +46,10 @@
             <artifactId>org.wso2.carbon.automation.test.utils</artifactId>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>org.jacoco</groupId>
+            <artifactId>org.jacoco.agent</artifactId>
+        </dependency>
     </dependencies>
     
 </project>

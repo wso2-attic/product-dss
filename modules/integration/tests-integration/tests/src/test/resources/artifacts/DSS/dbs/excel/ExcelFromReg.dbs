@@ -1,0 +1,16 @@
+<data name="ExcelFromReg">
+   <config id="datasource">
+      <property name="driverClassName">org.wso2.carbon.dataservices.sql.driver.TDriver</property>
+      <property name="url">jdbc:wso2:excel:filePath=gov:/excel/Products.xls</property>
+   </config>
+   <query id="query" useConfig="datasource">
+      <sql>select * from product</sql>
+      <result defaultNamespace="http://www.w3.org/TR/html4/" element="products" rowName="product">
+         <element column="ID" name="id" xsdType="string"/>
+         <element column="Model" name="Model" xsdType="string"/>
+      </result>
+   </query>
+   <operation name="products">
+      <call-query href="query"/>
+   </operation>
+</data>

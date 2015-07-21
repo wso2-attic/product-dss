@@ -106,7 +106,7 @@ public class InMemoryDSSampleTestCase extends DSSIntegrationTest {
         //Adding IN_MEMORY_SAMPLE_DS data source
         WSDataSourceMetaInfo sampleDSSourceMetaInfo = new WSDataSourceMetaInfo();
         sampleDSSourceMetaInfo.setName("IN_MEMORY_SAMPLE_DS");
-        sampleDSSourceMetaInfo.setDescription("A sample in-memory data source");
+        sampleDSSourceMetaInfo.setDescription("A sample in-memory datasource");
         WSDataSourceMetaInfo_WSDataSourceDefinition dataSourceDefinition = new WSDataSourceMetaInfo_WSDataSourceDefinition();
 
         dataSourceDefinition.setType("DS_CUSTOM_TABULAR");
@@ -135,7 +135,7 @@ public class InMemoryDSSampleTestCase extends DSSIntegrationTest {
         //Adding  ECHO_SAMPLE_DS data source
         WSDataSourceMetaInfo echoSampleSourceMetaInfo = new WSDataSourceMetaInfo();
         echoSampleSourceMetaInfo.setName("ECHO_SAMPLE_DS");
-        echoSampleSourceMetaInfo.setDescription("A sample in-memory data source");
+        echoSampleSourceMetaInfo.setDescription("A sample in-memory datasource");
         WSDataSourceMetaInfo_WSDataSourceDefinition echoSampleDSDefinition = new WSDataSourceMetaInfo_WSDataSourceDefinition();
 
         echoSampleDSDefinition.setType("DS_CUSTOM_TABULAR");

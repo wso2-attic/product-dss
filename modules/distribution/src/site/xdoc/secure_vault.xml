@@ -31,7 +31,7 @@ Services Server</a> provides the feature to securely store sensitive data such a
 using the Secure Vault functionality. Users can encript their
 passwords using tokens instead of the actual password inside the data
 service configuration file. This guide will explain you how to secure
-your password in data-source configuration. 
+your password in datasource configuration.
 </p>
 <p><b>Step 1 - Run ciphertool script from bin directory</b> 
    <br/>Linux: sh ciphertool.sh -Dconfigure
@@ -51,7 +51,7 @@ The default value of the KeyStore password is 'wso2carbon'. Then provide the pla
 </p>
 
 <p><b>Step 4 - Use alias inside .dbs file</b></p>
-<p>In 'Add Data Source' page, you need to enable the flag 'Use as Scret Alias' and provide the alias name instead of actual password in 'Password' filed.</p>
+<p>In 'Add Datasource' page, you need to enable the flag 'Use as Scret Alias' and provide the alias name instead of actual password in 'Password' filed.</p>
 <p><img alt="DS" src="images/user-guide/secure-vault/step2.a.png" /></p>
 <p>Figure 2: Enabling 'Scret Alias' flag and providing Alias name</p>
 <p>This will add the namespace and alias to the .dbs file as follows.</p>

@@ -26,10 +26,10 @@
         <h1>WSO2 Data Services Server</h1>
 
         <p>WSO2 Data Services Server is a convenient mechanism to provide a Web service
-            interface for data stored in some data sources.
+            interface for data stored in some datasources.
         </p>
 
-        <p>Data sources such as relational databases, CSV files, Microsoft Excel files &amp; Google
+        <p>Datasources such as relational databases, CSV files, Microsoft Excel files &amp; Google
            spreadsheets can be easily service enabled using Data Services Server. Now, the data can
            be exposed and accessed in a secure(using WS-Security) and reliable(using WS-ReliableMessaging)
            manner, and is also available for mashing-up with other Web services.</p>
@@ -52,7 +52,7 @@
             <li>Customizable XML output</li>
             <li>Both REST &amp; WS-* support</li>
             <li>Built-in Connection pooling support</li>
-            <li>Aggregate data from multiple data sources</li>
+            <li>Aggregate data from multiple datasources</li>
             <li>Support for exposing Stored procedures &amp; functions</li>
             <li>Built-in caching to enhace performance</li>
             <li>Throttling to ensure that your database is never overloaded</li>

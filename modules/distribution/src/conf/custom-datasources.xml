@@ -9,7 +9,7 @@
       
         <datasource>
             <name>IN_MEMORY_SAMPLE_DS</name>
-            <description>A sample in-memory data source</description>
+            <description>A sample in-memory datasource</description>
             <definition type="DS_CUSTOM_TABULAR">
                 <configuration>
                     <customDataSourceClass>org.wso2.carbon.dataservices.core.custom.datasource.InMemoryDataSource</customDataSourceClass>
@@ -32,7 +32,7 @@
 
         <datasource>
             <name>ECHO_SAMPLE_DS</name>
-            <description>A sample in-memory data source</description>
+            <description>A sample in-memory datasource</description>
             <definition type="DS_CUSTOM_QUERY">
                 <configuration>
                     <customDataSourceClass>org.wso2.carbon.dataservices.core.custom.datasource.EchoDataSource</customDataSourceClass>

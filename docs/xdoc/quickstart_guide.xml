@@ -62,7 +62,7 @@
         <p>WSO2 Data Services Server is a convenient mechanism to provide a web service interface
             for data stored in some data
             sources.
-            Data sources such as relational databases, CSV files, Microsoft Excel files and google
+            Datasources such as relational databases, CSV files, Microsoft Excel files and google
             spread sheets can be easily service enabled
             using Data Services Server. Now, the data can be exposed and accessed in a secured(using
             WS-Security) and
@@ -172,10 +172,10 @@
         </p>
 
 
-        <p>Now we can enter the data source details in this step. Let's start with giving a name for
-            the data source as 'DataSourceEmp'.
+        <p>Now we can enter the datasource details in this step. Let's start with giving a name for
+            the datasource as 'DataSourceEmp'.
         </p>
-        <p>Select the data source type as 'RDBMS' and enter the following values.</p>
+        <p>Select the datasource type as 'RDBMS' and enter the following values.</p>
         <p>Database Engine = MySQL</p>
         <p>Driver Class = com.mysql.jdbc.Driver</p>
         <p>JDBC URL = jdbc:mysql://localhost:3306/employeedb</p>
@@ -193,26 +193,26 @@
             <br/>
             <img src="images/quick-start/add_data_source.png" alt="Create Data source"/>
             <br/>
-            <p>Figure 3: Create Data source</p>
+            <p>Figure 3: Create Datasource</p>
             <br/>
             
         </p>
 
 
-        <p>Click on 'Save' button. You will see the created data source as follows.</p>
+        <p>Click on 'Save' button. You will see the created datasource as follows.</p>
 
         <p>
             <br/>
             <img src="images/quick-start/added_data_sources.png"
-                 alt="Preview of added data sources"/>
+                 alt="Preview of added datasources"/>
             <br/>
-            <p>Figure 4: Created data sources list</p>
+            <p>Figure 4: Created datasources list</p>
             <br/>
      
         </p>
 
         <ul>
-            <li>Next, click on 'Next' button at the Data Sources. Initially your service does not
+            <li>Next, click on 'Next' button at the Datasources. Initially your service does not
                 include any queries.
             </li>
             <li>Click on 'Add New Query' to add a new query to our service. 'Add New Query' window
@@ -235,19 +235,19 @@
             <li>
                 <p>Mapping Type = Element</p>
                 <p>Output field name = id</p>
-                <p>Data source column Name = id</p>
+                <p>Datasource column Name = id</p>
                 <p>Schema Type = xs:string</p>
             </li>
             <li>
                 <p>Mapping Type = Element</p>
                 <p>Output field name = name</p>
-                <p>Data source column Name = name</p>
+                <p>Datasource column Name = name</p>
                 <p>Schema Type = xs:string</p>
             </li>
             <li>
                 <p>Mapping Type = Attribute</p>
                 <p>Output field name = address</p>
-                <p>Data source column Name = address</p>
+                <p>Datasource column Name = address</p>
                 <p>Schema Type = xs:string</p>
             </li>
         </ol>

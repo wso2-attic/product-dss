@@ -23,9 +23,9 @@
             | [<a href="index_docs.html">Documentation Home</a>] | [<a
                     href="release_notes.html">Release Note</a>]
         </p>
-    <h1>Step-by-Step Guide on Creating a Data Service Using Cassandra Data Source</h1>
+    <h1>Step-by-Step Guide on Creating a Data Service Using Cassandra Datasource</h1>
     <p><b>Introduction</b></p>
-    <p>WSO2 Data Services Server provides the capability of exposing data from a Cassandra data-source as a service. This guide will explain how a Data Service can be created using a Cassandra data-source.
+    <p>WSO2 Data Services Server provides the capability of exposing data from a Cassandra datasource as a service. This guide will explain how a Data Service can be created using a Cassandra datasource.
     </p>
     <p>NOTE: WSO2DSS-3.2.0 has inbuilt support for Cassandra server versions 1.2.5 or later. If you need to use Cassandra server versions older than 1.2.5, then you need to uninstall the cassandra-jdbc-1.2.5 feature using 'Feature Management' and install the cassandra-jdbc-1.1.1/cassandra-jdbc-1.0.5 feature.
     </p>
@@ -52,21 +52,21 @@
     <p> <img alt="DS" src="images/ds-wizard/cassandra/step1.png"/>
     </p>
     <p>Figure 1: Create Data Service</p>
-    <p><b>Step 3: Enter details about your Cassandra data-source</b>
+    <p><b>Step 3: Enter details about your Cassandra datasource</b>
     </p><hr/>
-    <p>Next step is to enter details about the data-source which we are
-    using to create the service. Select the Data Source Type as "Cassandra" from the drop down list after you giving a name to the data source.
+    <p>Next step is to enter details about the datasource which we are
+    using to create the service. Select the Datasource Type as "Cassandra" from the drop down list after you giving a name to the datasource.
     </p>
     <p> <img alt="DS" src="images/ds-wizard/cassandra/step2.png"/></p>
-    <p>Figure 2: Configure Cassandra data-source</p>
-    <p>Created data source will list and click on "Next" to create the query.</p>
+    <p>Figure 2: Configure Cassandra datasource</p>
+    <p>Created datasource will list and click on "Next" to create the query.</p>
            
     <p><b>Step 4: Create Query</b>
     </p><hr/>
     <p>To extract information you need to create a query along with the
     structure of the response.
     </p>
-    <p>Give a name to the query, and select the data source name from the
+    <p>Give a name to the query, and select the datasource name from the
     drop down, which is created in previous step. Specify the CQL query and parameters. Save the query once you enter the details.
     </p>
 

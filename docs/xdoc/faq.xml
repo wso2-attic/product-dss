@@ -26,7 +26,7 @@
                     <a href="#missing-params">When invoking the data service through Try-it 'INCOMPATIBLE_PARAMETERS_ERROR' is returned ?</a>
                 </li>
                 <li>
-                    <a href="#driver-class-not-found">Why am I getting 'Cannot load JDBC driver class com.mysql.jdbc.Driver' exception when i try to create a Data Source in WSO2 DSS ?</a>
+                    <a href="#driver-class-not-found">Why am I getting 'Cannot load JDBC driver class com.mysql.jdbc.Driver' exception when i try to create a Datasource in WSO2 DSS ?</a>
                 </li>
                 <li>
                     <a href="#response-for-inonly">How to get a SOAP response when invoking an IN-ONLY operation in DSS ?</a>
@@ -51,7 +51,7 @@
 		        </p>
                 
                     <h3 id ="driver-class-not-found">
-                    2. Why am I getting 'Cannot load JDBC driver class com.mysql.jdbc.Driver' exception when i try to create a Data Source in WSO2 DSS ?
+                    2. Why am I getting 'Cannot load JDBC driver class com.mysql.jdbc.Driver' exception when i try to create a Datasource in WSO2 DSS ?
                    </h3>
 		        <p>
 			   You need to add your MySQL driver to /repository/components/lib and restart the server.

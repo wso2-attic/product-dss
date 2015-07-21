@@ -38,7 +38,7 @@
             <li>Content Filtering Support</li>
             <li>Distributed transaction support</li>
             <li>Oracle Ref Cursor support</li>
-            <li>Support for multiple data source types</li>
+            <li>Support for multiple datasource types</li>
             <li>Clustering support for High Availability and High Scalability</li>
             <li>Oracle Ref Cursor support</li>
             <li>WS-* and REST support</li>
@@ -61,8 +61,8 @@
             <li>Datasource Component</li>
             <ul>
                 <li>Use of Tomcat JDBC Pool Connection Pooling</li>
-                <li>Support for External Data Source Implementations</li>
-                <li>Extensible Global Data Source Configurations</li>
+                <li>Support for External Datasource Implementations</li>
+                <li>Extensible Global Datasource Configurations</li>
             </ul>
             <li>SQL Parser for Spreadsheets</li>
             <ul>

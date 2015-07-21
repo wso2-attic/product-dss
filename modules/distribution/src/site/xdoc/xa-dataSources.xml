@@ -33,7 +33,7 @@
             to be done across multiple XA resources in a Java environment. We facilitate to override
             this transaction manager by your own transaction manager as well.
         </p>
-        <h2>Distributed Transactions with Multiple Data Sources</h2>
+        <h2>Distributed Transactions with Multiple Datasources</h2>
         <p>
             By default, Distributed Transaction is disabled in a data service, and can be explicitly
             enabled in a data service. When using the wizard, at the initial "Service Details" page,
@@ -45,17 +45,17 @@
             </p>
             <p>
                 Second step is to enter details about the XA-DataSources which we are using to create
-                the service. You need to select the data source type as "RDBMS" and select
+                the service. You need to select the datasource type as "RDBMS" and select
                 "XA-DataSource". Then select the required "Database Engine". This will provide you
                 the required XA-Datasource class.
                 <p>
                 <img src="./images/user-guide/xa-datasources/figure02.png"/>
                 <br/>
-                Figure 2: Configure XA Data Source.
+                Figure 2: Configure XA Datasource.
                 </p>
             </p>
             <p>
-                After all the XA-DataSources has been created, these can be used as usual data sources in queries. And you would simply use the "boxcarring" fascility to create and execute a distributed transaction. So when boxcarring is taking place, it automatically knows that we are dealing with XADataSources and also since distributed transactions are enabled in the service, the necessory steps will executed to run this in JTA mode.
+                After all the XA-DataSources has been created, these can be used as usual datasources in queries. And you would simply use the "boxcarring" fascility to create and execute a distributed transaction. So when boxcarring is taking place, it automatically knows that we are dealing with XADataSources and also since distributed transactions are enabled in the service, the necessory steps will executed to run this in JTA mode.
             </p>
         </p>
 

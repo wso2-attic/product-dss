@@ -66,7 +66,7 @@ public class CarbonDataSourceTestCase extends DSSIntegrationTest {
 
         super.init();
         carbonDataSourceName = createDataSource();
-        log.info(carbonDataSourceName + " carbon Data Source Created");
+        log.info(carbonDataSourceName + " carbon Datasource Created");
         DataHandler dhArtifact = createArtifactWithDataSource(serviceFile);
         deployService(serviceName, dhArtifact);
         client = new SampleDataServiceClient(getServiceUrlHttp(serviceName));
@@ -174,7 +174,7 @@ public class CarbonDataSourceTestCase extends DSSIntegrationTest {
 
 
         list = dataServiceAdminService.getCarbonDataSources();
-        Assert.assertNotNull(list, "Data Source list null");
+        Assert.assertNotNull(list, "Datasource list null");
         for (String ds : list) {
             if (ds.equals(createDataSourceResponse)) {
                 carbonDataSourceName = ds;
@@ -195,7 +195,7 @@ public class CarbonDataSourceTestCase extends DSSIntegrationTest {
 
     private DataHandler createArtifactWithDataSource(String serviceFileName)
             throws XMLStreamException, IOException, XPathExpressionException {
-        Assert.assertNotNull("Carbon data source name null. create carbon data source first", carbonDataSourceName);
+        Assert.assertNotNull("Carbon datasource name null. create carbon datasource first", carbonDataSourceName);
         try {
 
             OMElement dbsFile = AXIOMUtil.stringToOM(FileManager.readFile(getResourceLocation() + File.separator + "dbs" + File.separator

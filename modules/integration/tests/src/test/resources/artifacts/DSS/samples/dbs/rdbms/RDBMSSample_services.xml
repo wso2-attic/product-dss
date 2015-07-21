@@ -17,6 +17,6 @@
  -->
 <serviceGroup>
     <service name="RDBMSSample">
-        <Description>This sample demonstrates some of the main functionalities of a dataservice using an RDBMS data source</Description>
+        <Description>This sample demonstrates some of the main functionalities of a dataservice using an RDBMS datasource</Description>
     </service>
 </serviceGroup>

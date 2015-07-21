@@ -29,7 +29,7 @@
         <hr/>
         <p>WSO2 Data Services Server provides the capability of exposing data from Google spread
             sheets.
-            You can use either private or public google spread sheets as the data source. 
+            You can use either private or public google spread sheets as the datasource.
 	   We can create google spread sheet datasources in two different modes.
         </p>
 	<ul>
@@ -50,7 +50,7 @@
         <img alt="DS" src="images/ds-wizard/google/step0.png"/>
         <p>Figure 1: Sample google spread sheet</p>
         <br/>
-	<h2 id="non_qmode">Google SpreadSheet Data Sources in non-query Mode</h2>
+	<h2 id="non_qmode">Google SpreadSheet Datasources in non-query Mode</h2>
         <p>
             <b>Step 1: Start by giving a name</b>
         </p>
@@ -58,7 +58,7 @@
         <p>Lets begin to create the data service by clicking on "Create" link in left menu under
             Services/Add/Data Service. We will name the data service as "GoogleSpreadSheet" and
             click
-            on "Next" to enter the details for the data source.
+            on "Next" to enter the details for the datasource.
         </p>
         <br/>
         <img alt="DS" src="images/ds-wizard/google/step1.png"/>
@@ -68,7 +68,7 @@
             <b>Step 2: Enter details about your Google Spread Sheet</b>
         </p>
         <hr/>
-        <p>After giving a data source id select the data source type as Google Spread Sheet and
+        <p>After giving a datasource id select the datasource type as Google Spread Sheet and
             enter
             the url for the sheet. Note that public visibility is supported when 
 	    Google Spread Sheet is published on the web. To start publishing a spreadsheet to
@@ -90,7 +90,7 @@
         </p>
         <hr/>
         <p>Click on "Add New Query" to enter a new query. Lets name the query as "getCustomers" and
-            select the data source which we created in the previous step. Enter the worksheet
+            select the datasource which we created in the previous step. Enter the worksheet
             details
             and configure how the response look like.
         </p>
@@ -153,7 +153,7 @@
         <p>Figure 9: Invoke service using Try-it</p>
         <br/>
 
-	<h2 id="qmode">Google SpreadSheet Data Sources in Query Mode</h2>
+	<h2 id="qmode">Google SpreadSheet Datasources in Query Mode</h2>
 	<p>This functionality allows users to query an Google Spreadsheet in a much familiar SQL-like manner, and expose it as a service.
 	Internally org.wso2.carbon.dataservices.sql.driver.TDriver class will be used as the SQL Driver. It is a JDBC driver implemenation
 	 to be used with tabular data models such as Google SpreadSheets, Excel sheets.
@@ -172,7 +172,7 @@
             <b>Step 2: Enter details about your Google Spread Sheet</b>
         </p>
         <hr/>
-        <p>After giving a data source id select the data source type as 'Google Spreadsheet' and
+        <p>After giving a datasource id select the datasource type as 'Google Spreadsheet' and
 	   select "Use Query Mode" check box. Then enter the Google Spreadsheet name for 'SpreadSheet Name' and
 	    url for the sheet. 
 
@@ -196,7 +196,7 @@
             </b>
         </p>
         <hr/>
-        <p>Lets name the Query Id as googleQuery and select the data source which created in
+        <p>Lets name the Query Id as googleQuery and select the datasource which created in
             previous step. You can see that UI will allow you to define the query, which was 
 	   not supported earlier. Enter the query as given in the below UI and click
 	  on 'Generate Input Mappings' to auto generate the input mapping parameters. 

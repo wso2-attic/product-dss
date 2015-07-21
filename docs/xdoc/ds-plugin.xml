@@ -128,7 +128,7 @@
         </ol>
 
         <h3 id="Intro_data">Datasources</h3>
-        <p>This is the data source which our data service will request data from. This release of
+        <p>This is the datasource which our data service will request data from. This release of
             the plugin supports 4 major types of datasources.
         </p>
         <ul>

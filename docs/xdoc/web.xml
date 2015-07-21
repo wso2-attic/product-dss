@@ -83,12 +83,12 @@ and click on Next.
 </p>
 <p> <img alt="DS" src="images/ds-wizard/web/step1.png"/></p>
 <p>Figure 2: Create Data Service</p>
-<p><b>Step 2: Enter details about your web data source</b> 
+<p><b>Step 2: Enter details about your web datasource</b>
 </p><hr/>
-<p>Second step is to enter details about the data source which we are
+<p>Second step is to enter details about the datasource which we are
 using to create the service. There are two options where you can provide the configuration details. You can either save
 configuration into a configuration.xml and provide the file path, or can enter as a inline configuration. Give suitable
-DataSource name and select web data source as the data source type. For the following sample we will give the above
+DataSource name and select web datasource as the datasource type. For the following sample we will give the above
 configuration using a file path as shown below.
 </p>
 <p> <img alt="DS" src="images/ds-wizard/web/step2.png"/></p>
@@ -101,7 +101,7 @@ configuration using a file path as shown below.
 <p>To extract information you need to create a query along with the
 structure of the response. 
 </p>
-<p>Give a name to the query, and select the data source name from the
+<p>Give a name to the query, and select the datasource name from the
 drop down, which is created in previous step. Scraper Variable should be given as same as the output name in the configuration,
 which actually returns the output from the configuration. Eg: It should be 'weatherInfo' which is the var-def name in the
 configuration.

@@ -42,7 +42,7 @@ our <a href="mail-lists.html">mailing lists</a>.</p>
 <ul>
   <li><a href="index_docs.html">Home</a></li>
   <li><a href="sign_in.html">Signing In</a></li>
-  <li><a href="rdbms.html">Data Source Support</a>
+  <li><a href="rdbms.html">Datasource Support</a>
     <ul>      
 	    <li><a href="rdbms.html">RDBMS</a></li>
             <li><a href="cassandra.html">Cassandra</a></li>
@@ -68,10 +68,10 @@ our <a href="mail-lists.html">mailing lists</a>.</p>
   <!--li><a href="secureVault.html">Secure Vault Support</a></li-->
   <li><a href="boxcarring.html">Boxcarring Support</a></li>
   <li><a href="xa-dataSources.html">Distributed Transactions Support</a></li>
-  <li><a href="custom_datasources.html">Custom Data Source Support</a></li>
+  <li><a href="custom_datasources.html">Custom Datasource Support</a></li>
   <li><a href="binary_data.html">Binary Data Support</a></li>
   <li><a href="array_data_type.html">Array Data Type Support</a></li>
-  <li><a href="advanced_datasource_prop.html">Advanced Data Source Properties in RDBMS Data Sources</a></li>
+  <li><a href="advanced_datasource_prop.html">Advanced Datasource Properties in RDBMS Datasources</a></li>
   <li><a href="dynamic_user_auth.html">Dynamic User Authentication</a></li>
   <li><a href="advanced_query_prop.html">Advanced Query Properties</a></li>
   <li><a href="export.html">Query Result Export</a></li>

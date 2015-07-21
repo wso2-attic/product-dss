@@ -37,17 +37,17 @@
 
 
         <p>
-            <b>Step 1 - Create a Carbon Data Source</b>
+            <b>Step 1 - Create a Carbon Datasource</b>
         </p>
         <hr/>
-        <p> Before generating the data services Carbon data source should be created according to the database properties.
+        <p> Before generating the data services Carbon datasource should be created according to the database properties.
         </p>
          <br/>
         <img alt="DS" src="images/user-guide/ds-generation/step1.png"/>
-        <p>Figure 1: Create Carbon Data Source</p>
+        <p>Figure 1: Create Carbon Datasource</p>
         <br/>
         <p>
-            <b>Step 2 - Select Data Source</b>
+            <b>Step 2 - Select Datasource</b>
         </p>
         <hr/>
         <p>To start the ds generation click on 'Generate' link on your left hand menu.  
@@ -56,17 +56,17 @@
         <img alt="DS" src="images/user-guide/ds-generation/step2.png"/>
         <p>Figure 2: Generate Data Service</p>
         <br/>
-        <p> In the first screen that appears select the Carbon Data Source and the Database Name as shown below.
+        <p> In the first screen that appears select the Carbon Datasource and the Database Name as shown below.
         </p>
 
         <br/>
         <img alt="DS" src="images/user-guide/ds-generation/step3.png"/>
-        <p>Figure 2: Select Data Source</p>
+        <p>Figure 2: Select Datasource</p>
         <br/>
         <p>
             <b>Step 3 - Select Database Schema</b>
         </p>   <hr/>
-        <p>After Data Source is selected, DB Schema needs to be selected to identify the needed tables.
+        <p>After Datasource is selected, DB Schema needs to be selected to identify the needed tables.
         </p>
         <img alt="DS" src="images/user-guide/ds-generation/step4.png"/>
         <p>Figure 3: Select DB Schema</p>

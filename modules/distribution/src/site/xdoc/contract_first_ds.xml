@@ -56,7 +56,7 @@
             <br/>
         </p>
         <p>Created data service will be list in the services listing page, as a work in progress
-            service. Since we cannot specify the data source configuration and the sql query in the
+            service. Since we cannot specify the datasource configuration and the sql query in the
             wsdl, the created
             service will be deployed as a WIP service. Therefore the wsdls, and the tryit links will
             not be provided in the service list page.
@@ -72,7 +72,7 @@
             data
             service.
         </p>
-        <p>Following image shows the dummy data which has filled in the add data source page. Change
+        <p>Following image shows the dummy data which has filled in the add datasource page. Change
             them according to the required information. Same steps has to be followed for the query
             page
             as well to change the dummy sql query.

@@ -50,7 +50,7 @@
         <p>Figure 1: Create batch request support data service</p>
         <br/>
 
-        <p>Then you can define data sources, queries and operations for the data service.
+        <p>Then you can define datasources, queries and operations for the data service.
         Figure 2 and Figure 3 show you the sample insert query and the operation created for that.</p>
         <br/>
         <img alt="DS" src="images/user-guide/batch-requests/step2.png"/>

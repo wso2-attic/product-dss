@@ -23,18 +23,18 @@
             | [<a href="index_docs.html">Documentation Home</a>] | [<a
                     href="release_notes.html">Release Note</a>]
         </p>
-        <h1>Advanced Data Source Properties in RDBMS Data Sources</h1>
+        <h1>Advanced Datasource Properties in RDBMS Datasources</h1>
         <p>
             <b>Introduction</b>
         </p>
         <hr/>
-        <p>The Tomcat JDBC Connection Pool(org.apache.tomcat.jdbc.pool) has been used by the RDBMS data-sources and advanced data-source properties helps users to define additional properties when creating data-source from a database.</p>
-        <p>These advanced data-source properties comes under add data-source page. </p>
+        <p>The Tomcat JDBC Connection Pool(org.apache.tomcat.jdbc.pool) has been used by the RDBMS datasources and advanced datasource properties helps users to define additional properties when creating datasource from a database.</p>
+        <p>These advanced datasource properties comes under add datasource page. </p>
         <p>
-            <img alt="Advanced Data Source Properties" src="./images/user-guide/advanced-datasource-prop/advanced_datasource_prop.png"/>
+            <img alt="Advanced Datasource Properties" src="./images/user-guide/advanced-datasource-prop/advanced_datasource_prop.png"/>
             <br/>
         </p>
-        <p>Available advanced data-source property details are described below.</p>
+        <p>Available advanced datasource property details are described below.</p>
 
         <table class="bodyTable">
             <thead>
@@ -184,7 +184,7 @@ The default value is false.</td>
             </tbody>
             </table>
            
-            <p>To find more details about data source configuration parameters refer to
+            <p>To find more details about datasource configuration parameters refer to
             <a href="http://tomcat.apache.org/tomcat-7.0-doc/jdbc-pool.html">http://tomcat.apache.org/tomcat-7.0-doc/jdbc-pool.html</a>.</p>
     </body>
 </html>

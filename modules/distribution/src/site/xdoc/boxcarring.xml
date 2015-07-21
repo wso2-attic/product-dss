@@ -26,7 +26,7 @@
         <p>
             Boxcarring is a method of grouping a set of service calls together and executing them at
             once. And also, when applicable, a boxcarring session would work in a transactional
-            manner, for example, when using with an RDBMS data source.
+            manner, for example, when using with an RDBMS datasource.
             <a href="http://wso2.org/projects/data-services-server/java">WSO2 Data Services Server
             </a>
             fascilitates boxcarring by grouping service calls in the server side, so with this,

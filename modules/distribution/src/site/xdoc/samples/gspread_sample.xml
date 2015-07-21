@@ -24,7 +24,7 @@
         <h1>Google Spreadsheet Sample</h1>
         <h2>Introduction</h2>
         <p>
-            An often used data sharing format in the internet is using Google Spreadsheet. <a href="http://wso2.org/projects/data-services-server/java">WSO2 Data Services Server</a> contains support for using a Google Spreadsheet as a data source.
+            An often used data sharing format in the internet is using Google Spreadsheet. <a href="http://wso2.org/projects/data-services-server/java">WSO2 Data Services Server</a> contains support for using a Google Spreadsheet as a datasource.
         </p>
         <h2>Prerequisites</h2>
         <p>
@@ -47,7 +47,7 @@
             A sample run of the service using the "tryit" tool is shown below. <br />
             <p>
             <img src="../images/samples/gspread_sample_img1.png" /> <br />
-            Figure 1: Google Spreadsheet data source based service invocation.
+            Figure 1: Google Spreadsheet datasource based service invocation.
             </p>
             <br />
         </p>

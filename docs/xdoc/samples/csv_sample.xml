@@ -24,7 +24,7 @@
         <h1>CSV Sample</h1>
         <h2>Introduction</h2>
         <p>
-            Usage of CSV files is an easy and a common way of storing simple tabular data. In this sample, it demonstrates the usage of a CSV file as a data source
+            Usage of CSV files is an easy and a common way of storing simple tabular data. In this sample, it demonstrates the usage of a CSV file as a datasource
 in <a href="http://wso2.org/projects/data-services-server/java">WSO2 Data Services Server</a>.
         </p>
         <h2>Prerequisites</h2>
@@ -40,14 +40,14 @@ in <a href="http://wso2.org/projects/data-services-server/java">WSO2 Data Servic
         </p>
         <h2>Service Definition</h2>
         <p>
-            The CSV data source based data service contains a single operation "getProducts" to list all the products that are manufactured in the company.
+            The CSV datasource based data service contains a single operation "getProducts" to list all the products that are manufactured in the company.
         </p>
         <h2>Sample Run</h2>
         <p>
             A sample run of the service using the "tryit" tool is shown below. <br />
             <p>
             <img src="../images/samples/csv_sample_img1.png" /> <br />
-            Figure 1: CSV data source based service invocation.
+            Figure 1: CSV datasource based service invocation.
             </p>
             <br />
         </p>

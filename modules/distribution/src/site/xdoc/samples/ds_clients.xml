@@ -37,16 +37,16 @@ using the "WSDL2Java" tool, which are used by the data service clients.
             There are separate ant tasks for all the samples. The ant tasks are as follows.
             <ul>
               <li>
-                rdbms - This represents simple RDBMS data source based data service client.
+                rdbms - This represents simple RDBMS datasource based data service client.
               </li>
               <li>
-                csv - This represents a CSV data source based data service client.
+                csv - This represents a CSV datasource based data service client.
               </li>
               <li>
-                excel - This represents a Excel data source based data service client.
+                excel - This represents a Excel datasource based data service client.
               </li>
               <li>
-                gspread - This represents a Google Spreadsheet data source based data service client.
+                gspread - This represents a Google Spreadsheet datasource based data service client.
               </li>
               <li>
                 batch_request - This represents a data service client, which executes a batch request in a data service.

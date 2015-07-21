@@ -28,7 +28,7 @@
             <b>Introduction</b>
         </p> 	 
         <hr/>
-        <p>WSO2 Data Services Server supports to expose relational data in RDF (Resource Description Framework)format as a service. This guide will demonstrate how CSV data source can be exposed as a RDF resource. To create CSV datasource
+        <p>WSO2 Data Services Server supports to expose relational data in RDF (Resource Description Framework)format as a service. This guide will demonstrate how CSV datasource can be exposed as a RDF resource. To create CSV datasource
         please refer <a href="csv.html">Create CSV DataServices User Guide.</a> 
         </p>
         <p>

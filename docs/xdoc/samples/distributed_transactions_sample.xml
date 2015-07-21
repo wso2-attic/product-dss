@@ -39,7 +39,7 @@ in <a href="http://wso2.org/projects/data-services-server/java">WSO2 Data Servic
             The scenario is based on a two separate banks which use two separate databases where distributed transactions get involves when doing bank transactions(transfer of money) between two accounts of different banks.
         </p>
         <p>
-            This service has used "distributed transactions with multiple data source" support. The
+            This service has used "distributed transactions with multiple datasource" support. The
             usage of distributed transactions can be demonstrated by executing the following
             operations using the "tryit" tool.
             <ol>

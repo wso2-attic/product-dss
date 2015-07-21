@@ -24,8 +24,8 @@
         <h1>RDBMS Sample</h1>
         <h2>Introduction</h2>
         <p>
-            Relational Databases are one of the mainly used data sources in data services. Here in this sample, we would be using an embedded H2 database
-in demonstrating the use of an RDBMS data source with <a href="http://wso2.org/projects/data-services-server/java">WSO2 Data Services Server</a>.
+            Relational Databases are one of the mainly used datasources in data services. Here in this sample, we would be using an embedded H2 database
+in demonstrating the use of an RDBMS datasource with <a href="http://wso2.org/projects/data-services-server/java">WSO2 Data Services Server</a>.
         </p>
         <h2>Prerequisites</h2>
         <p>

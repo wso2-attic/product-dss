@@ -29,7 +29,7 @@
             <b>Introduction</b>
         </p>
         <hr/>
-        <p>WSO2 Data Services Server supports to expose data in Excel 97-2007 as a service. We can create Excel data sources in two different modes.</p>
+        <p>WSO2 Data Services Server supports to expose data in Excel 97-2007 as a service. We can create Excel datasources in two different modes.</p>
 	<ul>
 	    <li><a href="#non_qmode">Non-Query mode</a></li>
 	    <li><a href="#qmode">Query-mode</a></li>
@@ -47,7 +47,7 @@
         <img alt="DS" src="images/ds-wizard/excel/step0.png"/>
         <p>Figure 1: Sample excel data sheet</p>
         <br/>
-	<h2 id="non_qmode">Excel Data Sources in non-query Mode</h2>
+	<h2 id="non_qmode">Excel Datasources in non-query Mode</h2>
 	<p>
 	This functionality allows to expose the content of an Excel sheet as a service. 
 	</p>
@@ -68,18 +68,18 @@
             <b>Step 2: Enter details about your Excel file.</b>
         </p>
         <hr/>
-        <p>Next step is to provide the details about the excel file. Select the Data Source Type as
-            "EXCEL" from the drop down list after you giving a name to the data source. Then enter
+        <p>Next step is to provide the details about the excel file. Select the Datasource Type as
+            "EXCEL" from the drop down list after you giving a name to the datasource. Then enter
             the location of the excel file and save.
         </p>
         <br/>
         <img alt="DS" src="images/ds-wizard/excel/step2.png"/>
-        <p>Figure 3: Configure data source</p>
+        <p>Figure 3: Configure datasource</p>
         <br/>
-        <p>Created data source will list as below. Click on "Next" to create the query.</p>
+        <p>Created datasource will list as below. Click on "Next" to create the query.</p>
         <br/>
         <img alt="DS" src="images/ds-wizard/excel/step2.1.png"/>
-        <p>Figure 4: View data source</p>
+        <p>Figure 4: View datasource</p>
         <br/>
         <p>
             <b>Step 3: Enter excel and query details using which values will be extracted, and
@@ -87,7 +87,7 @@
             </b>
         </p>
         <hr/>
-        <p>Lets name the Query Id as sheet1Query and select the data source which created in
+        <p>Lets name the Query Id as sheet1Query and select the datasource which created in
             previous
             step amd fill the excel sheet details. Enter a name for Grouped By Element and Row Name.
             You can also give a namespace if you wish.
@@ -156,7 +156,7 @@
         <img alt="DS" src="images/ds-wizard/excel/step7.png"/>
         <p>Figure 11: Edit data service</p>
         <br/>
-	<h2 id="qmode">Excel Data Sources in Query Mode</h2>
+	<h2 id="qmode">Excel Datasources in Query Mode</h2>
 	<p>This functionality allows users to query an Excel sheet in a much familiar SQL-like manner, and expose it as a service.
 	Internally org.wso2.carbon.dataservices.sql.driver.TDriver class will be used as the SQL Driver. It is a JDBC driver implemenation
 	 to be used with tabular data models such as Google SpreadSheets, Excel sheets.
@@ -175,14 +175,14 @@
             <b>Step 2: Enter details about your Excel file.</b>
         </p>
         <hr/>
-        <p>Now let's provide the details about the excel file. Select the Data Source Type as
-            "EXCEL" from the drop down list after you giving a name to the data source. 
+        <p>Now let's provide the details about the excel file. Select the Datasource Type as
+            "EXCEL" from the drop down list after you giving a name to the datasource.
 	  Then select "Use Query Mode" check box.
 	  Then enter the location of the excel file and Save.
         </p>
         <br/>
         <img alt="DS" src="images/ds-wizard/excel/step2_qmode.png"/>
-        <p>Figure 13: Configure data source</p>
+        <p>Figure 13: Configure datasource</p>
         <br/>
 	<p>As we did earlier click on "Next" to create the query.</p>
 
@@ -191,7 +191,7 @@
             </b>
         </p>
         <hr/>
-        <p>Lets name the Query Id as excelQuery and select the data source which created in
+        <p>Lets name the Query Id as excelQuery and select the datasource which created in
             previous step. You can see that UI will allow you to define the query, which was 
 	   not supported earlier. Enter the query as given in the below UI and click
 	  on 'Generate Input Mappings' to auto generate the input mapping parameters. 

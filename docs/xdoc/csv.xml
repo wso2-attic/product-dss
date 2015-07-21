@@ -68,13 +68,13 @@
             <b>Step 2: Enter details about your CSV file</b>
         </p>
         <hr/>
-        <p>Second step is to enter details about the data source which we are using to create the
+        <p>Second step is to enter details about the datasource which we are using to create the
             service. Not only from an online hosted file, you can also use a CSV file which is in
             your local machine.
         </p>
         <br/>
         <img alt="DS" src="images/ds-wizard/csv/step2.png"/>
-        <p>Figure 2: Configure csv data source</p>
+        <p>Figure 2: Configure csv datasource</p>
 
         <p><h3>Column Separator Values</h3>
           <ul>
@@ -85,12 +85,12 @@
           </ul>
         </p>
 
-        <p>Click on "Save" once you have entered the details about the data source. Created data
+        <p>Click on "Save" once you have entered the details about the datasource. Created data
             source will be listed as below. Click on "Next" to add queries.
         </p>
         <br/>
         <img alt="DS" src="images/ds-wizard/csv/step3.png"/>
-        <p>Figure 3: View data source</p>
+        <p>Figure 3: View datasource</p>
         <br/>
         <p>
             <b>Step 3: Configure how the response should look like</b>
@@ -99,7 +99,7 @@
         <p>You can enter the details of the query to create the structure of the response you
             wish.
         </p>
-        <p>Enter a name to the query, and select the data source name from the drop down, which is
+        <p>Enter a name to the query, and select the datasource name from the drop down, which is
             created in previous step. Enter a name for Grouped By Element and Row Name. You can also
             give a namespace if you wish. Click on "Add Output Mapping" button to create how the
             output should look like.

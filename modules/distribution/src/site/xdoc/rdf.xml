@@ -30,7 +30,7 @@
 Description Framework) as a service. This guide will use an online
 RDF resource hosted by NASA, to demonstrate RDF data extraction
 feature supported by wso2 data services server. The guide will be
-using the RDF data source available @
+using the RDF datasource available @
 (<a href="http://nasa.dataincubator.org/~search.rdf?query=all">http://nasa.dataincubator.org/</a>)
 which contains all the aircraft information for the past years. 
 </P>
@@ -47,23 +47,23 @@ and click on &quot;Next&quot;.
 <P> <img alt="DS" src="images/ds-wizard/rdf/step1.png"/>
 </P>
 <P>Figure 2: Create Data Service</P>
-<P><b>Step 2: Enter details about your RDF data source</b> 
+<P><b>Step 2: Enter details about your RDF datasource</b>
 </P><hr/>
-<P>Second step is to enter details about the data source which we are
+<P>Second step is to enter details about the datasource which we are
 using to create the service. Not only from an online hosted file, you
 can also use a RDF file which is in your local machine or the
 registry. 
 </P>
 <P> <img alt="DS" src="images/ds-wizard/rdf/step2.png"/>
 </P>
-<P>Figure 2: Configure RDF Data Source</P>
+<P>Figure 2: Configure RDF Datasource</P>
 <P><b>Step 3: Configure how the response should look like</b> 
 </P><hr/>
 <P>To extract information you need to create a query along with the
 structure of the response. 
-<br />Give a name to the query, and select the data source name from the
+<br />Give a name to the query, and select the datasource name from the
 drop down, which is created in previous step. Give the SPARQL query
-to extract the specific aircraft information from the data source.</P>
+to extract the specific aircraft information from the datasource.</P>
 
 <P>The following SPARQL query is used to extract aircraft information</P>
 <P><pre >PREFIX space: &lt;http://purl.org/net/schemas/space/&gt; 

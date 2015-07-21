@@ -24,7 +24,7 @@
         <h1>Excel Sample</h1>
         <h2>Introduction</h2>
         <p>
-            One of the most often used spreadsheet format is Microsoft Excel, here with <a href="http://wso2.org/projects/data-services-server/java">WSO2 Data Services Server</a>, an Excel file can be given as a data source in creating data services.
+            One of the most often used spreadsheet format is Microsoft Excel, here with <a href="http://wso2.org/projects/data-services-server/java">WSO2 Data Services Server</a>, an Excel file can be given as a datasource in creating data services.
         </p>
         <h2>Prerequisites</h2>
         <p>
@@ -47,7 +47,7 @@
             A sample run of the service using the "tryit" tool is shown below. <br />
             <p>
             <img src="../images/samples/excel_sample_img1.png" /> <br />
-            Figure 1: Excel data source based service invocation.
+            Figure 1: Excel datasource based service invocation.
             </p>
             <br />
         </p>

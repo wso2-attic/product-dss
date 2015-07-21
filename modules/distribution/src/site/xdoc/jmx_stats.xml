@@ -29,7 +29,7 @@
         <h2>Accessing the Registered Data Services MBeans</h2>
         <p>
             A JMX MBean is registered per data service that is deployed. The Object Name of an MBean has the following format,
-"org.wso2.carbon.dataservices.jmx:section=Services,service=$SERVICE_NAME", where $SERVICE_NAME is the name of the data service. The MBeans contains information regarding the data service's data sources, queries etc.. A sample session using the "jconsole" tool is shown below in Figure 1.
+"org.wso2.carbon.dataservices.jmx:section=Services,service=$SERVICE_NAME", where $SERVICE_NAME is the name of the data service. The MBeans contains information regarding the data service's datasources, queries etc.. A sample session using the "jconsole" tool is shown below in Figure 1.
             <p>
                 <img src="./images/user-guide/jmx-stats/figure01.png"/>
                 <br/>

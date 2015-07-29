@@ -80,7 +80,7 @@
         </packages>
     </test>
 
-    <test name="DSS-jira-issues-tests" parallel="false" verbose="2">
+    <test name="DSS-jira-issues-tests-email" parallel="false" verbose="2">
         <classes>
             <class name="org.wso2.dss.integration.test.jira.issues.DS1063EmailUsernameTestCase"/>
         </classes>
@@ -92,7 +92,7 @@
     <!--</classes>-->
     <!--</test>--> <!-- todo enable this test once sql component activate method doesn't get hit issue is fixed - rajith (fix the test case as well)-->
 
-    <test name="DSS-jira-issues-tests" parallel="false" verbose="2">
+    <test name="DSS-jira-issues-tests-time" parallel="false" verbose="2">
         <classes>
             <class name="org.wso2.dss.integration.test.jira.issues.DS1069DifferentTimeStampStoreIssueTestCase"/>
         </classes>

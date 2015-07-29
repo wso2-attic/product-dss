@@ -11,7 +11,7 @@
         <listener class-name="org.wso2.carbon.automation.engine.testlisteners.TestTransformerListener"/>
     </listeners>
 
-   <test name="InitializeAndSetupServer" preserve-order="true">
+    <test name="InitializeAndSetupServer" preserve-order="true">
         <classes>
             <class name="org.wso2.dss.integration.test.server.mgt.DSSServerStartupTestCase"/>
             <!--disabled due to test failure-->
@@ -62,16 +62,16 @@
     </test>
 
     <!--<test name="DSS-jira-issues-tests" parallel="false" verbose="2">-->
-        <!--<packages>-->
-            <!--<package name="org.wso2.dss.integration.test.jira.issues"/>-->
-        <!--</packages>-->
+    <!--<packages>-->
+    <!--<package name="org.wso2.dss.integration.test.jira.issues"/>-->
+    <!--</packages>-->
     <!--</test>-->
 
 
     <!--<test name="DSS-jira-issues-tests" parallel="false" verbose="2">-->
-        <!--<classes>-->
-            <!--<class name="org.wso2.dss.integration.test.jira.issues.CARBON15235JsonValueTypeMissMatchTest"/>-->
-        <!--</classes>-->
+    <!--<classes>-->
+    <!--<class name="org.wso2.dss.integration.test.jira.issues.CARBON15235JsonValueTypeMissMatchTest"/>-->
+    <!--</classes>-->
     <!--</test>-->
 
     <test name="DSS-samples-tests" parallel="false" verbose="2">
@@ -87,9 +87,15 @@
     </test>
 
     <!--<test name="DSS-jira-issues-tests" parallel="false" verbose="2">-->
-        <!--<classes>-->
-            <!--<class name="org.wso2.dss.integration.test.jira.issues.DS954UseExcelFromRegistryTestCase"/>-->
-        <!--</classes>-->
+    <!--<classes>-->
+    <!--<class name="org.wso2.dss.integration.test.jira.issues.DS954UseExcelFromRegistryTestCase"/>-->
+    <!--</classes>-->
     <!--</test>--> <!-- todo enable this test once sql component activate method doesn't get hit issue is fixed - rajith (fix the test case as well)-->
+
+    <test name="DSS-jira-issues-tests" parallel="false" verbose="2">
+        <classes>
+            <class name="org.wso2.dss.integration.test.jira.issues.DS1069DifferentTimeStampStoreIssueTestCase"/>
+        </classes>
+    </test>
 
 </suite>

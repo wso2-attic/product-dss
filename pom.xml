@@ -623,7 +623,7 @@
         <jibx.orbit.version>1.2.1.wso2v1</jibx.orbit.version>
         <axis2-jaxbri.orbit.version>1.6.1.wso2v11</axis2-jaxbri.orbit.version>
         <jaxb.orbit.version>2.1.6.wso2v1</jaxb.orbit.version>
-        <carbon.platform.integration.version>4.4.1</carbon.platform.integration.version>
+         <carbon.platform.integration.version>4.4.2</carbon.platform.integration.version>
         <carbon.platform.integration.utils.version>4.4.1</carbon.platform.integration.utils.version>
         <jettison.orbit.version>1.3.4.wso2v1</jettison.orbit.version>
         <json.orbit.version>2.0.0.wso2v1</json.orbit.version>

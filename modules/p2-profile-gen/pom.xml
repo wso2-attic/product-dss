@@ -272,7 +272,12 @@
                                 <featureArtifactDef>
                                     org.wso2.carbon.commons:org.wso2.carbon.user.mgt.feature:${carbon.commons.version}
                                 </featureArtifactDef>
-
+                                <featureArtifactDef>
+                                    org.apache.axis2.transport:org.apache.axis2.transport.mail.feature:${axis2.transport.version}
+                                </featureArtifactDef>
+                                <featureArtifactDef>
+                                    org.apache.axis2.transport:org.apache.axis2.transport.jms.feature:${axis2.transport.version}
+                                </featureArtifactDef>
                             </featureArtifacts>
                         </configuration>
                     </execution>
@@ -323,7 +328,7 @@
                             </destination>
                             <deleteOldProfileFiles>true</deleteOldProfileFiles>
                             <features>
-
+                                <!--1 carbon kernel-->
                                 <feature>
                                     <id>org.wso2.carbon.core.feature.group</id>
                                     <version>${carbon.kernel.version}</version>
@@ -603,6 +608,14 @@
                                     <id>org.wso2.carbon.user.mgt.feature.group</id>
                                     <version>${carbon.commons.version}</version>
                                 </feature>
+                                <feature>
+                                    <id>org.apache.axis2.transport.mail.feature.group</id>
+                                    <version>${axis2.transport.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.apache.axis2.transport.jms.feature.group</id>
+                                    <version>${axis2.transport.version}</version>
+                                </feature>
                             </features>
                         </configuration>
                     </execution>
@@ -862,7 +875,14 @@
                                     <id>org.wso2.carbon.user.mgt.server.feature.group</id>
                                     <version>${carbon.commons.version}</version>
                                 </feature>
-
+                                <feature>
+                                    <id>org.apache.axis2.transport.mail.feature.group</id>
+                                    <version>${axis2.transport.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.apache.axis2.transport.jms.feature.group</id>
+                                    <version>${axis2.transport.version}</version>
+                                </feature>
                             </features>
                         </configuration>
                     </execution>

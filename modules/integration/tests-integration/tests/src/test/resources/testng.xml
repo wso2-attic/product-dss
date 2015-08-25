@@ -104,4 +104,11 @@
         </classes>
     </test>
 
+    <!-- todo test and uncomment below test once DSS is upgraded to kernel 4.4.x or 4.5.0 -->
+    <!--<test name="DSS-jira-issues-XML-Entity-Attack-Test" parallel="false" verbose="2">-->
+        <!--<classes>-->
+            <!--<class name="org.wso2.dss.integration.test.jira.issues.CARBON15379XMLExternalEntityAttacksTestCase"/>-->
+        <!--</classes>-->
+    <!--</test>-->
+
 </suite>

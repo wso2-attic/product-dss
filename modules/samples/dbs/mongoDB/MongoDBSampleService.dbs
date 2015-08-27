@@ -2,6 +2,7 @@
    <config id="mongo_ds">
       <property name="mongoDB_servers">localhost</property>
       <property name="mongoDB_database">mydb</property>
+      <property name="mongoDB_authentication_type">NONE</property>
    </config>
    <query id="mongo_find" useConfig="mongo_ds">
       <expression>things.find()</expression>

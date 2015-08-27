@@ -71,6 +71,7 @@
 		<delete file="${ds.repository}/samples/JSONSample.dbs"/>
 		<delete file="${ds.repository}/samples/CassandraSample.dbs"/>
         <delete file="${ds.repository}/samples/MongoDBSampleService.dbs"/>
+		<delete file="${ds.repository}/samples/ODataSampleService.dbs"/>
 	</target>
 	
 	<target name="init">
@@ -157,6 +158,9 @@
                 <copy file="./dbs/mongoDB/MongoDBSampleService.dbs"
                       toDir="${ds.repository}/samples">
                 </copy>
+			<copy file="./dbs/odata/ODataSampleService.dbs"
+				  toDir="${ds.repository}/samples">
+			</copy>
 		 <copy file="./dbs/web/WebResourceSample.dbs"
 		      toDir="${ds.repository}/samples">
                 </copy>

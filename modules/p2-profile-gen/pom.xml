@@ -278,6 +278,11 @@
                                 <featureArtifactDef>
                                     org.apache.axis2.transport:org.apache.axis2.transport.jms.feature:${axis2.transport.version}
                                 </featureArtifactDef>
+                                <!-- ************** START - WebApp Deployment ************ -->
+                                <featureArtifactDef>
+                                    org.wso2.carbon.deployment:org.wso2.carbon.webapp.mgt.server.feature:${carbon.deployment.version}
+                                </featureArtifactDef>
+                                <!-- ************** END - WebApp Deployment ************ -->
                             </featureArtifacts>
                         </configuration>
                     </execution>
@@ -616,6 +621,12 @@
                                     <id>org.apache.axis2.transport.jms.feature.group</id>
                                     <version>${axis2.transport.version}</version>
                                 </feature>
+                                <!-- ************** START - WebApp Deployment ************ -->
+                                <feature>
+                                    <id>org.wso2.carbon.webapp.mgt.server.feature.group</id>
+                                    <version>${carbon.deployment.version}</version>
+                                </feature>
+                                <!-- ************** END - WebApp Deployment ************* -->
                             </features>
                         </configuration>
                     </execution>
@@ -883,6 +894,12 @@
                                     <id>org.apache.axis2.transport.jms.feature.group</id>
                                     <version>${axis2.transport.version}</version>
                                 </feature>
+                                <!-- ************** START - WebApp Deployment ************ -->
+                                <feature>
+                                    <id>org.wso2.carbon.webapp.mgt.server.feature.group</id>
+                                    <version>${carbon.deployment.version}</version>
+                                </feature>
+                                <!-- ************** END - WebApp Deployment ************* -->
                             </features>
                         </configuration>
                     </execution>

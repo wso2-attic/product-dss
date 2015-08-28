@@ -72,6 +72,7 @@
 		<delete file="${ds.repository}/samples/CassandraSample.dbs"/>
         <delete file="${ds.repository}/samples/MongoDBSampleService.dbs"/>
 		<delete file="${ds.repository}/samples/ODataSampleService.dbs"/>
+		<delete file="${ds.repository}/samples/ReturnUpdatedRowCountSample.dbs"/>
 	</target>
 	
 	<target name="init">
@@ -110,6 +111,7 @@
 		<copy file="./dbs/rdbms/RDBMSSample.dbs" toDir="${ds.repository}/samples" />
 		<copy file="./dbs/rdbms/RDBMSSample_services.xml" toDir="${ds.repository}/samples" />
 		<copy file="./dbs/rdbms/DTPSampleService.dbs" toDir="${ds.repository}/samples" />
+		<copy file="./dbs/rdbms/ReturnUpdatedRowCountSample.dbs" toDir="${ds.repository}/samples" />
 		<copy file="./dbs/rdbms/NestedQuerySample.dbs" toDir="${ds.repository}/samples" />
 		<copy file="./dbs/excel/ExcelSampleService.dbs" toDir="${ds.repository}/samples" />
 		<copy file="./dbs/csv/CSVSampleService.dbs" toDir="${ds.repository}/samples" />

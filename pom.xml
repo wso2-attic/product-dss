@@ -29,7 +29,7 @@
     <groupId>org.wso2.dss</groupId>
     <artifactId>dataservices-parent</artifactId>
     <packaging>pom</packaging>
-    <version>3.3.0-SNAPSHOT</version>
+    <version>3.5.0-SNAPSHOT</version>
     <name>WSO2 DataServices Parent</name>
     <url>http://wso2.org/projects/solutions/data-services/java</url>
     <description>WSO2 Data Services Server</description>
@@ -603,7 +603,7 @@
     </issueManagement>
 
     <properties>
-        <product.dss.version>3.3.0-SNAPSHOT</product.dss.version>
+        <product.dss.version>3.5.0-SNAPSHOT</product.dss.version>
         <carbon.commons.version>4.4.3</carbon.commons.version>
         <carbon.commons.ntask.version>4.4.3</carbon.commons.ntask.version>
         <wss4j.orbit.version>1.5.11.wso2v9</wss4j.orbit.version>

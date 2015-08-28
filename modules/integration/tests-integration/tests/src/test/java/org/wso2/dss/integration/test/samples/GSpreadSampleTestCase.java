@@ -65,14 +65,14 @@ public class GSpreadSampleTestCase extends DSSIntegrationTest {
         log.info(serviceName + " uploaded");
     }
 
-    @Test(groups = "wso2.dss", description = "Check whether fault service deployed or not", enabled = false)
+    @Test(groups = "wso2.dss", description = "Check whether fault service deployed or not", enabled = true)
     public void testServiceDeployment() throws Exception {
         assertTrue(isServiceDeployed(serviceName));
         log.info(serviceName + " is deployed");
     }
 
 
-    @Test(groups = {"wso2.dss"}, dependsOnMethods = "testServiceDeployment", description = "invoke GSspread sheet test", enabled = false)
+    @Test(groups = {"wso2.dss"}, dependsOnMethods = "testServiceDeployment", description = "invoke GSspread sheet test", enabled = true)
     public void testGSpreadQuery() throws DataServiceFault, RemoteException {
 
         if (this.isOnlineTestsEnabled()) {

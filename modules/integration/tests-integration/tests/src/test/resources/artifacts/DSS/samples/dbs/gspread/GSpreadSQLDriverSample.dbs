@@ -2,8 +2,9 @@
    <config id="gspreadConfig">
       <property name="driverClassName">org.wso2.carbon.dataservices.sql.driver.TDriver</property>
       <property name="url">jdbc:wso2:gspread:filePath=https://docs.google.com/spreadsheet/ccc?key=0AmQij-FfB5wYdEJfRVViUlpaN0MzQ01XbUxGUzZKS0E;sheetName=customers;visibility=private</property>
-      <property name="username">zaqxsw987592</property>
-      <property name="password">oijoacxe421</property>
+      <property name="gspread_client_id">117152539458-eci53bg8vkjk3601i2h1qna08d4mfg06.apps.googleusercontent.com</property>
+      <property name="gspread_client_secret">TpMOSmeySPDc5Q89HUiF_L-4</property>
+      <property name="gspread_refresh_token">1/BHqGAGToVABXF4T_0HDXeE7-PAO1YT--LduhN5Ax7YpIgOrJDtdun6zK6XiATCKT</property>
    </config>
    <query id="getCustomersSQL" useConfig="gspreadConfig">
       <sql>SELECT customerNumber,customerName,phone,state,country FROM customers</sql>

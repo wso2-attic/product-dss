@@ -604,7 +604,7 @@
 
     <properties>
         <product.dss.version>3.5.0-SNAPSHOT</product.dss.version>
-        <carbon.commons.version>4.4.3</carbon.commons.version>
+        <carbon.commons.version>4.4.4</carbon.commons.version>
         <carbon.commons.ntask.version>4.4.3</carbon.commons.ntask.version>
         <wss4j.orbit.version>1.5.11.wso2v9</wss4j.orbit.version>
         <carbon-data.version>4.3.1-SNAPSHOT</carbon-data.version>
@@ -633,7 +633,7 @@
         <carbon.multitenancy.version>4.4.1</carbon.multitenancy.version>
         <carbon.identity.version>4.5.2</carbon.identity.version>
         <testng.version>6.8</testng.version>
-	    <carbon.kernel.version>4.4.0</carbon.kernel.version>
+	    <carbon.kernel.version>4.4.1</carbon.kernel.version>
         <eclipse.version>3.2.0</eclipse.version>
         <servlet-api.version>2.4</servlet-api.version>
         <carbon.p2.plugin.version>1.5.3</carbon.p2.plugin.version>

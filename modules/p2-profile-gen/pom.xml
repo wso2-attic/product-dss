@@ -349,10 +349,10 @@
                                 <!--<version>${stratos.version}</version>-->
                                 <!--</feature>-->
 
-                                <feature>
-                                    <id>org.wso2.carbon.ntask.feature.group</id>
-                                    <version>${carbon.commons.ntask.version}</version>
-                                </feature>
+                                <!--<feature>-->
+                                    <!--<id>org.wso2.carbon.ntask.feature.group</id>-->
+                                    <!--<version>${carbon.commons.ntask.version}</version>-->
+                                <!--</feature>-->
 
                                 <feature>
                                     <id>org.wso2.carbon.logging.mgt.feature.group</id>
@@ -655,10 +655,10 @@
                                 <!--<version>${stratos.version}</version>-->
                                 <!--</feature>-->
 
-                                <feature>
-                                    <id>org.wso2.carbon.ntask.feature.group</id>
-                                    <version>${carbon.commons.ntask.version}</version>
-                                </feature>
+                                <!--<feature>-->
+                                    <!--<id>org.wso2.carbon.ntask.feature.group</id>-->
+                                    <!--<version>${carbon.commons.ntask.version}</version>-->
+                                <!--</feature>-->
 
                                 <feature>
                                     <id>org.wso2.carbon.logging.mgt.server.feature.group</id>

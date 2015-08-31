@@ -73,12 +73,12 @@ public class EditFaultyDataServiceTest extends DSSIntegrationTest {
 
 
     @Test(groups = "wso2.dss", description = "Check whether fault service deployed or not")
-    public void isServiceFaulty() throws Exception {
+    public void isFaultyService() throws Exception {
         assertTrue(isServiceFaulty(serviceName));
         log.info(serviceName + " is faulty");
     }
 
-    @Test(groups = "wso2.dss", dependsOnMethods = {"isServiceFaulty"}, description = "Fix the fault and redeploy")
+    @Test(groups = "wso2.dss", dependsOnMethods = {"isFaultyService"}, description = "Fix the fault and redeploy")
     public void editFaultyService()
             throws Exception {
         DataServiceAdminClient dataServiceAdminService =

@@ -68,7 +68,7 @@ public class DS1069DifferentTimeStampStoreIssueTestCase extends DSSIntegrationTe
     private String serviceEndPoint;
     private ServerConfigurationManager serverConfigurationManager;
     private UserManagementClient userManagementClient;
-    private String backendUrl = "https://localhost:9453/services/";
+    private String backendUrl = "https://localhost:10653/services/";
     private final OMFactory fac = OMAbstractFactory.getOMFactory();
     private final OMNamespace omNs = fac.createOMNamespace("http://ws.wso2.org/dataservice", "ns1");
     private String carbonHome;
@@ -87,7 +87,7 @@ public class DS1069DifferentTimeStampStoreIssueTestCase extends DSSIntegrationTe
         super.init();
 
         startupParameterMap = new HashMap<String, String>();
-        startupParameterMap.put("-DportOffset", "10");
+        startupParameterMap.put("-DportOffset", "1210");
 
         testServerManager = new DSSTestServerManager(dssContext, null, startupParameterMap) {
 

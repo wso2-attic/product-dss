@@ -45,6 +45,8 @@ import java.util.List;
 public class ODataTenantUserTestCase extends DSSIntegrationTest {
 	private final String serviceName = "ODataSampleService";
 	private final String configId = "default";
+	private String webappURL ;
+
 
 	@BeforeClass(alwaysRun = true)
 	public void serviceDeployment() throws Exception {
@@ -55,22 +57,25 @@ public class ODataTenantUserTestCase extends DSSIntegrationTest {
 		deployService(serviceName,
 		              createArtifact(getResourceLocation() + File.separator + "dbs" + File.separator + "odata" +
 		                             File.separator + "ODataSampleService.dbs", sqlFileLis));
+		webappURL = dssContext.getContextUrls().getWebAppURL();
+		int i = webappURL.indexOf("/t/");
+		webappURL = webappURL.substring(0,i);
 	}
 
 	@Test(groups = { "wso2.dss" }, description = "test the service document retrieval")
 	public void validateServiceDocumentTestCase() throws Exception {
-		String endpoint = "http://localhost:9763/odata/t/wso2.com/" + serviceName + "/" + configId +
+		String endpoint = webappURL +"/odata/t/wso2.com/" + serviceName + "/" + configId +
 		                  "/$metadata";
 		Object[] response = sendGET(endpoint, "Application/xml");
 		Assert.assertEquals(response[0], 200);
-		endpoint = "http://localhost:9763/odata/t/wso2.com/" + serviceName + "/" + configId + "/";
+		endpoint =  webappURL +"/odata/t/wso2.com/" + serviceName + "/" + configId + "/";
 		response = sendGET(endpoint, "Application/json");
 		Assert.assertEquals(response[0], 200);
 	}
 
 	@Test(groups = { "wso2.dss" }, description = "test the entity retrieval")
 	public void validateRetrievingData() throws Exception {
-		String endpoint = "http://localhost:9763/odata/t/wso2.com/" + serviceName + "/" + configId +
+		String endpoint = webappURL +"/odata/t/wso2.com/" + serviceName + "/" + configId +
 		                  "/CUSTOMERS";
 		Object[] response = sendGET(endpoint, "Application/json");
 		Assert.assertEquals(response[0], 200);
@@ -78,32 +83,32 @@ public class ODataTenantUserTestCase extends DSSIntegrationTest {
 
 	@Test(groups = { "wso2.dss" }, description = "test the entity retrieval")
 	public void validatePostingData() throws Exception {
-		String endpoint = "http://localhost:9763/odata/t/wso2.com/" + serviceName + "/" + configId + "/FILES";
+		String endpoint = webappURL + "/odata/t/wso2.com/" + serviceName + "/" + configId + "/FILES";
 		String content = "{\"FILENAME\": \"M.K.H.Gunasekara\" ,\"TYPE\" : \"dss\"}";
 		int responseCode = sendPOST(endpoint, content, "application/json");
 		Assert.assertEquals(responseCode, 204);
-		endpoint = "http://localhost:9763/odata/t/wso2.com/" + serviceName + "/" + configId +
+		endpoint = webappURL + "/odata/t/wso2.com/" + serviceName + "/" + configId +
 		           "/FILES(\'M.K.H.Gunasekara\')";
 		Object[] response = sendGET(endpoint, "Application/json");
 		Assert.assertEquals(response[0], 200);
-		endpoint = "http://localhost:9763/odata/t/wso2.com/"+ serviceName + "/" + configId +"/STUDENT";
+		endpoint = webappURL + "/odata/t/wso2.com/" + serviceName + "/" + configId + "/STUDENT";
 		content = "{\"STUDENTID\" : 3 , \"FIRSTNAME\" : \"Madhawa\" , \"LASTNAME\" : \"Kasun\"}";
 		responseCode = sendPOST(endpoint, content, "application/json");
 		Assert.assertEquals(responseCode, 204);
-		endpoint = "http://localhost:9763/odata/t/wso2.com/"+ serviceName + "/" + configId +"/STUDENT(3)";
+		endpoint = webappURL + "/odata/t/wso2.com/" + serviceName + "/" + configId + "/STUDENT(3)";
 		response = sendGET(endpoint, "Application/json");
 		Assert.assertEquals(response[0], 200);
 		content = "{\"STUDENTID\" : 4 , \"FIRSTNAME\" : \"Rajith\" , \"LASTNAME\" : \"Vitharana\"}";
 		responseCode = sendPOST(endpoint, content, "application/json");
 		Assert.assertEquals(responseCode, 204);
-		endpoint = "http://localhost:9763/odata/t/wso2.com/"+ serviceName + "/" + configId +"/STUDENT(4)";
+		endpoint = webappURL + "/odata/t/wso2.com/" + serviceName + "/" + configId + "/STUDENT(4)";
 		response = sendGET(endpoint, "Application/json");
 		Assert.assertEquals(response[0], 200);
 	}
 
 	@Test(groups = { "wso2.dss" }, description = "test the entity retrieval", dependsOnMethods = "validatePatchingData")
 	public void validatePuttingData() throws Exception {
-		String endpoint = "http://localhost:9763/odata/t/wso2.com/"+ serviceName + "/" + configId +"/STUDENT(3)";
+		String endpoint = webappURL + "/odata/t/wso2.com/" + serviceName + "/" + configId + "/STUDENT(3)";
 		String content = "{\"LASTNAME\" : \"GUNASEKARA\"}";
 		int responseCode = sendPUT(endpoint, content, "application/json");
 		Assert.assertEquals(responseCode, 204);
@@ -115,7 +120,7 @@ public class ODataTenantUserTestCase extends DSSIntegrationTest {
 
 	@Test(groups = { "wso2.dss" }, description = "test the entity retrieval", dependsOnMethods = "validatePostingData")
 	public void validatePatchingData() throws Exception {
-		String endpoint = "http://localhost:9763/odata/t/wso2.com/"+ serviceName + "/" + configId +"/STUDENT(4)";
+		String endpoint = webappURL + "/odata/t/wso2.com/" + serviceName + "/" + configId + "/STUDENT(4)";
 		String content = "{\"LASTNAME\" : \"Lanka\"}";
 		int responseCode = sendPATCH(endpoint, content, "application/json");
 		Assert.assertEquals(responseCode, 204);
@@ -127,7 +132,7 @@ public class ODataTenantUserTestCase extends DSSIntegrationTest {
 
 	@Test(groups = { "wso2.dss" }, description = "test the entity retrieval", dependsOnMethods = "validatePuttingData")
 	public void validateDeletingData() throws Exception {
-		String endpoint = "http://localhost:9763/odata/t/wso2.com/"+ serviceName + "/" + configId +"/STUDENT(3)";
+		String endpoint = webappURL + "/odata/t/wso2.com/" + serviceName + "/" + configId + "/STUDENT(3)";
 		int responseCode = sendDELETE(endpoint, "application/json");
 		Assert.assertEquals(responseCode, 204);
 		Object[] response = sendGET(endpoint, "Application/json");
@@ -137,8 +142,8 @@ public class ODataTenantUserTestCase extends DSSIntegrationTest {
 
 	@Test(groups = { "wso2.dss" }, description = "test the entity retrieval")
 	public void validateSelectingData() throws Exception {
-		String endpoint =
-				"http://localhost:9763/odata/t/wso2.com/"+ serviceName + "/" + configId +"/CUSTOMERS?$select=PHONE,COUNTRY,POSTALCODE";
+		String endpoint = webappURL + "/odata/t/wso2.com/" + serviceName + "/" + configId +
+		                  "/CUSTOMERS?$select=PHONE,COUNTRY,POSTALCODE";
 		Object[] response = sendGET(endpoint, "Application/json");
 		Assert.assertEquals(response[0], 200);
 		Assert.assertTrue(response[1].toString().contains("$metadata#CUSTOMERS(PHONE,POSTALCODE,COUNTRY)"));

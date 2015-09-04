@@ -44,6 +44,7 @@ import java.util.List;
 public class ODataSuperUserTestCase extends DSSIntegrationTest {
 	private final String serviceName = "ODataSampleService";
 	private final String configId = "default";
+	private String webappURL ;
 
 	@BeforeClass(alwaysRun = true)
 	public void serviceDeployment() throws Exception {
@@ -54,53 +55,54 @@ public class ODataSuperUserTestCase extends DSSIntegrationTest {
 		deployService(serviceName,
 		              createArtifact(getResourceLocation() + File.separator + "dbs" + File.separator + "odata" +
 		                             File.separator + "ODataSampleService.dbs", sqlFileLis));
+		webappURL = dssContext.getContextUrls().getWebAppURL();
 	}
 
 	@Test(groups = { "wso2.dss" }, description = "test the service document retrieval")
 	public void validateServiceDocumentTestCase() throws Exception {
-		String endpoint = "http://localhost:9763/odata/" + serviceName + "/" + configId + "/$metadata";
+		String endpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/$metadata";
 		Object[] response = sendGET(endpoint, "Application/xml");
 		Assert.assertEquals(response[0], 200);
-		endpoint = "http://localhost:9763/odata/ODataSampleService/default/";
+		endpoint = webappURL + "/odata/ODataSampleService/default/";
 		response = sendGET(endpoint, "Application/json");
 		Assert.assertEquals(response[0], 200);
 	}
 
 	@Test(groups = { "wso2.dss" }, description = "test the entity retrieval")
 	public void validateRetrievingData() throws Exception {
-		String endpoint = "http://localhost:9763/odata/" + serviceName + "/" + configId + "/CUSTOMERS";
+		String endpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/CUSTOMERS";
 		Object[] response = sendGET(endpoint, "Application/json");
 		Assert.assertEquals(response[0], 200);
 	}
 
 	@Test(groups = { "wso2.dss" }, description = "test the entity retrieval")
 	public void validatePostingData() throws Exception {
-		String endpoint = "http://localhost:9763/odata/" + serviceName + "/" + configId + "/FILES";
+		String endpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/FILES";
 		String content = "{\"FILENAME\": \"M.K.H.Gunasekara\" ,\"TYPE\" : \"dss\"}";
 		int responseCode = sendPOST(endpoint, content, "application/json");
 		Assert.assertEquals(responseCode, 204);
-		endpoint = "http://localhost:9763/odata/" + serviceName + "/" + configId +
+		endpoint = webappURL + "/odata/" + serviceName + "/" + configId +
 		           "/FILES(\'M.K.H.Gunasekara\')";
 		Object[] response = sendGET(endpoint, "Application/json");
 		Assert.assertEquals(response[0], 200);
-		endpoint = "http://localhost:9763/odata/" + serviceName + "/" + configId + "/STUDENT";
+		endpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/STUDENT";
 		content = "{\"STUDENTID\" : 1 , \"FIRSTNAME\" : \"Madhawa\" , \"LASTNAME\" : \"Kasun\"}";
 		responseCode = sendPOST(endpoint, content, "application/json");
 		Assert.assertEquals(responseCode, 204);
-		endpoint = "http://localhost:9763/odata/" + serviceName + "/" + configId + "/STUDENT(1)";
+		endpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/STUDENT(1)";
 		response = sendGET(endpoint, "Application/json");
 		Assert.assertEquals(response[0], 200);
 		content = "{\"STUDENTID\" : 2 , \"FIRSTNAME\" : \"Rajith\" , \"LASTNAME\" : \"Vitharana\"}";
 		responseCode = sendPOST(endpoint, content, "application/json");
 		Assert.assertEquals(responseCode, 204);
-		endpoint = "http://localhost:9763/odata/" + serviceName + "/" + configId + "/STUDENT(2)";
+		endpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/STUDENT(2)";
 		response = sendGET(endpoint, "Application/json");
 		Assert.assertEquals(response[0], 200);
 	}
 
 	@Test(groups = { "wso2.dss" }, description = "test the entity retrieval", dependsOnMethods = "validatePatchingData")
 	public void validatePuttingData() throws Exception {
-		String endpoint = "http://localhost:9763/odata/" + serviceName + "/" + configId + "/STUDENT(1)";
+		String endpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/STUDENT(1)";
 		String content = "{\"LASTNAME\" : \"GUNASEKARA\"}";
 		int responseCode = sendPUT(endpoint, content, "application/json");
 		Assert.assertEquals(responseCode, 204);
@@ -112,7 +114,7 @@ public class ODataSuperUserTestCase extends DSSIntegrationTest {
 
 	@Test(groups = { "wso2.dss" }, description = "test the entity retrieval", dependsOnMethods = "validatePostingData")
 	public void validatePatchingData() throws Exception {
-		String endpoint = "http://localhost:9763/odata/" + serviceName + "/" + configId + "/STUDENT(2)";
+		String endpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/STUDENT(2)";
 		String content = "{\"LASTNAME\" : \"Lanka\"}";
 		int responseCode = sendPATCH(endpoint, content, "application/json");
 		Assert.assertEquals(responseCode, 204);
@@ -124,7 +126,7 @@ public class ODataSuperUserTestCase extends DSSIntegrationTest {
 
 	@Test(groups = { "wso2.dss" }, description = "test the entity retrieval", dependsOnMethods = "validatePuttingData")
 	public void validateDeletingData() throws Exception {
-		String endpoint = "http://localhost:9763/odata/" + serviceName + "/" + configId + "/STUDENT(1)";
+		String endpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/STUDENT(1)";
 		int responseCode = sendDELETE(endpoint, "application/json");
 		Assert.assertEquals(responseCode, 204);
 		Object[] response = sendGET(endpoint, "Application/json");
@@ -134,7 +136,7 @@ public class ODataSuperUserTestCase extends DSSIntegrationTest {
 
 	@Test(groups = { "wso2.dss" }, description = "test the entity retrieval")
 	public void validateSelectingData() throws Exception {
-		String endpoint = "http://localhost:9763/odata/" + serviceName + "/" + configId +
+		String endpoint = webappURL + "/odata/" + serviceName + "/" + configId +
 		                  "/CUSTOMERS?$select=PHONE,COUNTRY,POSTALCODE";
 		Object[] response = sendGET(endpoint, "Application/json");
 		Assert.assertEquals(response[0], 200);
@@ -145,7 +147,6 @@ public class ODataSuperUserTestCase extends DSSIntegrationTest {
 		HttpClient httpClient = new DefaultHttpClient();
 		HttpPost httpPost = new HttpPost(endpoint);
 		httpPost.setHeader("Accept", acceptType);
-		httpPost.removeHeaders("If-Match");
 		if (null != content) {
 			HttpEntity httpEntity = new ByteArrayEntity(content.getBytes("UTF-8"));
 			httpPost.setHeader("Content-Type", "application/json");
@@ -159,7 +160,6 @@ public class ODataSuperUserTestCase extends DSSIntegrationTest {
 		HttpClient httpClient = new DefaultHttpClient();
 		HttpGet httpGet = new HttpGet(endpoint);
 		httpGet.setHeader("Accept", acceptType);
-		httpGet.removeHeaders("If-Match");
 		HttpResponse httpResponse = httpClient.execute(httpGet);
 		if (httpResponse.getEntity() != null) {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(httpResponse.getEntity().getContent()));
@@ -180,7 +180,6 @@ public class ODataSuperUserTestCase extends DSSIntegrationTest {
 		HttpClient httpClient = new DefaultHttpClient();
 		HttpPut httpPut = new HttpPut(endpoint);
 		httpPut.setHeader("Accept", acceptType);
-		httpPut.removeHeaders("If-Match");
 		if (null != content) {
 			HttpEntity httpEntity = new ByteArrayEntity(content.getBytes("UTF-8"));
 			httpPut.setHeader("Content-Type", "application/json");
@@ -194,7 +193,6 @@ public class ODataSuperUserTestCase extends DSSIntegrationTest {
 		HttpClient httpClient = new DefaultHttpClient();
 		HttpPatch httpPatch = new HttpPatch(endpoint);
 		httpPatch.setHeader("Accept", acceptType);
-		httpPatch.removeHeaders("If-Match");
 		if (null != content) {
 			HttpEntity httpEntity = new ByteArrayEntity(content.getBytes("UTF-8"));
 			httpPatch.setHeader("Content-Type", "application/json");
@@ -208,7 +206,6 @@ public class ODataSuperUserTestCase extends DSSIntegrationTest {
 		HttpClient httpClient = new DefaultHttpClient();
 		HttpDelete httpDelete = new HttpDelete(endpoint);
 		httpDelete.setHeader("Accept", acceptType);
-		httpDelete.removeHeaders("If-Match");
 		HttpResponse httpResponse = httpClient.execute(httpDelete);
 		return httpResponse.getStatusLine().getStatusCode();
 	}

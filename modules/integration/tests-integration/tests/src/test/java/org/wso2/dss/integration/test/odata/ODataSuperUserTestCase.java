@@ -27,6 +27,7 @@ import org.apache.http.client.methods.HttpPut;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.wso2.dss.integration.test.DSSIntegrationTest;
@@ -57,6 +58,12 @@ public class ODataSuperUserTestCase extends DSSIntegrationTest {
 		                             File.separator + "ODataSampleService.dbs", sqlFileLis));
 		webappURL = dssContext.getContextUrls().getWebAppURL();
 	}
+
+    @AfterClass(alwaysRun = true)
+    public void destroy() throws Exception {
+        deleteService(serviceName);
+        cleanup();
+    }
 
 	@Test(groups = { "wso2.dss" }, description = "test the service document retrieval")
 	public void validateServiceDocumentTestCase() throws Exception {

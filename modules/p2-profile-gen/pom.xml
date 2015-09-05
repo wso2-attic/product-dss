@@ -229,12 +229,12 @@
                                 </featureArtifactDef>
 
                                 <!-- reporting features -->
-                                <featureArtifactDef>
-                                    org.wso2.carbon.commons:org.wso2.carbon.reporting.server.feature:${carbon.commons.version}
-                                </featureArtifactDef>
-                                <featureArtifactDef>
-                                    org.wso2.carbon.commons:org.wso2.carbon.reporting.ui.feature:${carbon.commons.version}
-                                </featureArtifactDef>
+                                <!--<featureArtifactDef>-->
+                                    <!--org.wso2.carbon.commons:org.wso2.carbon.reporting.server.feature:${carbon.commons.version}-->
+                                <!--</featureArtifactDef>-->
+                                <!--<featureArtifactDef>-->
+                                    <!--org.wso2.carbon.commons:org.wso2.carbon.reporting.ui.feature:${carbon.commons.version}-->
+                                <!--</featureArtifactDef>-->
                                 <featureArtifactDef>
                                     org.wso2.carbon.commons:org.wso2.carbon.transaction.manager.feature:${carbon.commons.version}
                                 </featureArtifactDef>
@@ -576,14 +576,14 @@
                                     <id>org.wso2.carbon.deployment.synchronizer.subversion.feature.group</id>
                                     <version>${carbon.commons.version}</version>
                                 </feature>
-                                <feature>
-                                    <id>org.wso2.carbon.reporting.server.feature.group</id>
-                                    <version>${carbon.commons.version}</version>
-                                </feature>
-                                <feature>
-                                    <id>org.wso2.carbon.reporting.ui.feature.group</id>
-                                    <version>${carbon.commons.version}</version>
-                                </feature>
+                                <!--<feature>-->
+                                    <!--<id>org.wso2.carbon.reporting.server.feature.group</id>-->
+                                    <!--<version>${carbon.commons.version}</version>-->
+                                <!--</feature>-->
+                                <!--<feature>-->
+                                    <!--<id>org.wso2.carbon.reporting.ui.feature.group</id>-->
+                                    <!--<version>${carbon.commons.version}</version>-->
+                                <!--</feature>-->
                                 <!--<feature>-->
                                 <!--<id>org.wso2.carbon.stratos.usage.agent.feature.group</id>-->
                                 <!--<version>${stratos.version}</version>-->
@@ -847,10 +847,10 @@
                                     <version>${carbon.commons.version}</version>
                                 </feature>
 
-                                <feature>
-                                    <id>org.wso2.carbon.reporting.server.feature.group</id>
-                                    <version>${carbon.commons.version}</version>
-                                </feature>
+                                <!--<feature>-->
+                                    <!--<id>org.wso2.carbon.reporting.server.feature.group</id>-->
+                                    <!--<version>${carbon.commons.version}</version>-->
+                                <!--</feature>-->
 
                                 <!--<feature>-->
                                 <!--<id>org.wso2.carbon.stratos.usage.agent.feature.group</id>-->

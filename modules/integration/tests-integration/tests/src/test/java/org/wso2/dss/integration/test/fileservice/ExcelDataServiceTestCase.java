@@ -33,6 +33,7 @@ import org.wso2.carbon.automation.test.utils.axis2client.AxisServiceClient;
 import org.wso2.carbon.automation.test.utils.common.FileManager;
 import org.wso2.carbon.automation.test.utils.concurrency.test.ConcurrencyTest;
 import org.wso2.carbon.automation.test.utils.concurrency.test.exception.ConcurrencyTestFailedError;
+import org.wso2.carbon.registry.resource.stub.common.xsd.ResourceData;
 import org.wso2.dss.integration.common.clients.ResourceAdminServiceClient;
 import org.wso2.carbon.registry.resource.stub.ResourceAdminServiceExceptionException;
 import org.wso2.dss.integration.common.utils.DSSTestCaseUtils;
@@ -56,6 +57,13 @@ public class ExcelDataServiceTestCase extends DSSIntegrationTest {
 
         super.init();
         addResource();
+        try {
+            checkResourceExist("/_system/config/automation/resources/Products.xls");
+            checkResourceExist("/_system/config/automation/resources/transform.xslt");
+        } catch (Exception e) {
+            e.printStackTrace();
+            Assert.fail("ExcelDataServiceTestCase::serviceDeployment Failed, Required resources does deployed correctly to registry");
+        }
         deployService(serviceName,
                       AXIOMUtil.stringToOM(FileManager.readFile(getResourceLocation()
                                                                 + File.separator + "dbs" + File.separator
@@ -135,11 +143,31 @@ public class ExcelDataServiceTestCase extends DSSIntegrationTest {
                                                           + File.separator + "resources"
                                                           + File.separator + "Products.xls")));
 
+        log.info("resouce added successfully to the registry - /_system/config/automation/resources/Products.xls");
+
         resourceAdmin.addResource("/_system/config/automation/resources/transform.xslt",
                                   "application/xml", "",
                                   new DataHandler(new URL("file:///" + getResourceLocation()
                                                           + File.separator + "resources"
                                                           + File.separator + "transform.xslt")));
+        log.info("resouce added successfully to the registry - /_system/config/automation/resources/transform.xslt");
+    }
+
+    /**
+     * Helper method to check resource exist in registry.
+     *
+     * @param resourcePath
+     * @throws ResourceAdminServiceExceptionException
+     * @throws RemoteException
+     */
+    private void checkResourceExist(String resourcePath) throws ResourceAdminServiceExceptionException,
+                                                                RemoteException, XPathExpressionException {
+        ResourceAdminServiceClient resourceAdmin = new ResourceAdminServiceClient(dssContext.getContextUrls().getBackEndUrl()
+                , sessionCookie);
+        ResourceData[] resourceDatas = resourceAdmin.getResource(resourcePath);
+        if (resourceDatas == null || resourceDatas.length <= 0) {
+            throw new ResourceAdminServiceExceptionException("Resource not found in registry - " + resourcePath);
+        }
     }
 
     private void deleteResource()

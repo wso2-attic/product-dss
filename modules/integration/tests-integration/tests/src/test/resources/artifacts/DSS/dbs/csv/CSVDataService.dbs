@@ -1,6 +1,6 @@
 <data name="CSVDataService" serviceGroup="CSV" baseURI="http://ws.wso2.org/dataservice/samples/csv_sample_service">
    <config id="CSVDataSource">
-      <property name="csv_datasource">conf:/automation/resources/Products.csv</property>
+      <property name="csv_datasource">conf:/automation/resources/csv/Products.csv</property>
       <property name="csv_columnseperator">,</property>
       <property name="csv_startingrow">2</property>
       <property name="csv_maxrowcount">-1</property>

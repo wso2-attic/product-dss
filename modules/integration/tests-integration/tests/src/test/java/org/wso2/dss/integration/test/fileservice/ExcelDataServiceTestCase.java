@@ -58,8 +58,8 @@ public class ExcelDataServiceTestCase extends DSSIntegrationTest {
         super.init();
         addResource();
         try {
-            checkResourceExist("/_system/config/automation/resources/Products.xls");
-            checkResourceExist("/_system/config/automation/resources/transform.xslt");
+            checkResourceExist("/_system/config/automation/resources/excel/Products.xls");
+            checkResourceExist("/_system/config/automation/resources/excel/transform.xslt");
         } catch (Exception e) {
             e.printStackTrace();
             Assert.fail("ExcelDataServiceTestCase::serviceDeployment Failed, Required resources does deployed correctly to registry");
@@ -119,7 +119,7 @@ public class ExcelDataServiceTestCase extends DSSIntegrationTest {
         log.info("XSLT Transformation Success");
     }
 
-    @Test(groups = {"wso2.dss"}, dependsOnMethods = {"xsltTransformation"}, timeOut = 1000 * 60 * 1)
+    @Test(groups = {"wso2.dss"}, dependsOnMethods = {"xsltTransformation"}, timeOut = 1000 * 60 )
     public void concurrencyTest()
             throws ConcurrencyTestFailedError, InterruptedException, XPathExpressionException {
         OMFactory fac = OMAbstractFactory.getOMFactory();
@@ -135,28 +135,28 @@ public class ExcelDataServiceTestCase extends DSSIntegrationTest {
         ResourceAdminServiceClient resourceAdmin = new ResourceAdminServiceClient(dssContext.getContextUrls().getBackEndUrl()
                 , sessionCookie);
 
-        resourceAdmin.deleteResource("/_system/config/automation/resources/");
+        resourceAdmin.deleteResource("/_system/config/automation/resources/excel/");
 
-        resourceAdmin.addResource("/_system/config/automation/resources/Products.xls",
+        resourceAdmin.addResource("/_system/config/automation/resources/excel/Products.xls",
                                   "application/vnd.ms-excel", "",
                                   new DataHandler(new URL("file:///" + getResourceLocation()
                                                           + File.separator + "resources"
                                                           + File.separator + "Products.xls")));
 
-        log.info("resouce added successfully to the registry - /_system/config/automation/resources/Products.xls");
+        log.info("resource added successfully to the registry - /_system/config/automation/resources/excel/Products.xls");
 
-        resourceAdmin.addResource("/_system/config/automation/resources/transform.xslt",
+        resourceAdmin.addResource("/_system/config/automation/resources/excel/transform.xslt",
                                   "application/xml", "",
                                   new DataHandler(new URL("file:///" + getResourceLocation()
                                                           + File.separator + "resources"
                                                           + File.separator + "transform.xslt")));
-        log.info("resouce added successfully to the registry - /_system/config/automation/resources/transform.xslt");
+        log.info("resource added successfully to the registry - /_system/config/automation/resources/excel/transform.xslt");
     }
 
     /**
      * Helper method to check resource exist in registry.
      *
-     * @param resourcePath
+     * @param resourcePath Resource path
      * @throws ResourceAdminServiceExceptionException
      * @throws RemoteException
      */
@@ -175,7 +175,7 @@ public class ExcelDataServiceTestCase extends DSSIntegrationTest {
                    XPathExpressionException {
         ResourceAdminServiceClient resourceAdmin = new ResourceAdminServiceClient(dssContext.getContextUrls().getBackEndUrl()
                 , sessionCookie);
-        resourceAdmin.deleteResource("/_system/config/automation/resources/");
+        resourceAdmin.deleteResource("/_system/config/automation/resources/excel/");
     }
 
 }

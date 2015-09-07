@@ -85,7 +85,7 @@ public class CSVDataServiceTestCase extends DSSIntegrationTest {
         log.info("Service invocation success");
     }
 
-    @Test(groups = {"wso2.dss"}, dependsOnMethods = {"selectOperation"}, timeOut = 1000 * 60 * 1)
+    @Test(groups = {"wso2.dss"}, dependsOnMethods = {"selectOperation"}, timeOut = 1000 * 60 )
     public void concurrencyTest()
             throws ConcurrencyTestFailedError, InterruptedException, XPathExpressionException {
         OMFactory fac = OMAbstractFactory.getOMFactory();
@@ -100,8 +100,8 @@ public class CSVDataServiceTestCase extends DSSIntegrationTest {
                    XPathExpressionException {
         ResourceAdminServiceClient resourceAdmin = new ResourceAdminServiceClient(dssContext.getContextUrls().getBackEndUrl()
                 , sessionCookie);
-        resourceAdmin.deleteResource("/_system/config/automation/resources/");
-        resourceAdmin.addResource("/_system/config/automation/resources/Products.csv",
+        resourceAdmin.deleteResource("/_system/config/automation/resources/csv/");
+        resourceAdmin.addResource("/_system/config/automation/resources/csv/Products.csv",
                                   "text/comma-separated-values", "",
                                   new DataHandler(new URL("file:///" + getResourceLocation()
                                                           + File.separator + "resources" + File.separator
@@ -113,6 +113,6 @@ public class CSVDataServiceTestCase extends DSSIntegrationTest {
                    XPathExpressionException {
         ResourceAdminServiceClient resourceAdmin = new ResourceAdminServiceClient(dssContext.getContextUrls().getBackEndUrl()
                 , sessionCookie);
-        resourceAdmin.deleteResource("/_system/config/automation/resources/");
+        resourceAdmin.deleteResource("/_system/config/automation/resources/csv/");
     }
 }

@@ -40,9 +40,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class contains OData specific test cases.
+ * This class contains OData specific test cases. to verify the functionality of odata services in super tenant mode.
  */
-public class ODataSuperUserTestCase extends DSSIntegrationTest {
+public class ODataSuperTenantUserTestCase extends DSSIntegrationTest {
 	private final String serviceName = "ODataSampleService";
 	private final String configId = "default";
 	private String webappURL ;

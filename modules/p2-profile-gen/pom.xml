@@ -283,6 +283,9 @@
                                     org.wso2.carbon.deployment:org.wso2.carbon.webapp.mgt.server.feature:${carbon.deployment.version}
                                 </featureArtifactDef>
                                 <!-- ************** END - WebApp Deployment ************ -->
+                                <featureArtifactDef>
+                                    org.wso2.carbon.commons:org.wso2.carbon.ndatasource.capp.deployer.server.feature:${carbon.commons.ndatasource.version}
+                                </featureArtifactDef>
                             </featureArtifacts>
                         </configuration>
                     </execution>
@@ -627,6 +630,10 @@
                                     <version>${carbon.deployment.version}</version>
                                 </feature>
                                 <!-- ************** END - WebApp Deployment ************* -->
+                                <feature>
+                                    <id>org.wso2.carbon.ndatasource.capp.deployer.server.feature.group</id>
+                                    <version>${carbon.commons.ndatasource.version}</version>
+                                </feature>
                             </features>
                         </configuration>
                     </execution>
@@ -900,6 +907,10 @@
                                     <version>${carbon.deployment.version}</version>
                                 </feature>
                                 <!-- ************** END - WebApp Deployment ************* -->
+                                <feature>
+                                    <id>org.wso2.carbon.ndatasource.capp.deployer.server.feature.group</id>
+                                    <version>${carbon.commons.ndatasource.version}</version>
+                                </feature>
                             </features>
                         </configuration>
                     </execution>

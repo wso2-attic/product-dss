@@ -20,3 +20,13 @@ How to enable data service tests?
 
 
 2.Create MySQL database using supplied script 
+
+## How to Contribute
+* Please report issues at [DSS JIRA] (https://wso2.org/jira/browse/DS).
+* Send your bug fixes pull requests to [master branch] (https://github.com/wso2/product-dss/tree/master) 
+
+## Contact us
+WSO2 Carbon developers can be contacted via the mailing lists:
+
+* Carbon Developers List : dev@wso2.org
+* Carbon Architecture List : architecture@wso2.org

@@ -1,3 +1,14 @@
+# product-dss
+
+---
+
+|  Branch | Build Status |
+| :------------ |:-------------
+| master      | [![Build Status](https://wso2.org/jenkins/job/product-dss/badge/icon)](https://wso2.org/jenkins/job/product-dss) |
+
+
+---
+
 How to enable data service tests?
 =================================
 1.pom.xml

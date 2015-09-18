@@ -15,7 +15,7 @@
 *specific language governing permissions and limitations
 *under the License.
 */
-package org.wso2.dss.integration.test.fileservice;
+package org.wso2.dss.integration.test.gspread;
 
 import org.apache.axiom.om.OMAbstractFactory;
 import org.apache.axiom.om.OMElement;
@@ -60,7 +60,7 @@ public class GSpreadDataServiceTestCase extends DSSIntegrationTest {
         cleanup();
     }
 
-    @Test(groups = {"wso2.dss"}, invocationCount = 5, enabled = false)
+    @Test(groups = {"wso2.dss"}, invocationCount = 5, enabled = true)
     public void selectOperation() throws AxisFault, XPathExpressionException {
         OMFactory fac = OMAbstractFactory.getOMFactory();
         OMNamespace omNs = fac.createOMNamespace("http://ws.wso2.org/dataservice/samples/gspread_sample_service", "ns1");
@@ -76,7 +76,7 @@ public class GSpreadDataServiceTestCase extends DSSIntegrationTest {
         log.info("Service Invocation success");
     }
 
-    @Test(groups = {"wso2.dss"}, dependsOnMethods = {"selectOperation"}, timeOut = 1000 * 60 * 2, enabled = false)
+    @Test(groups = {"wso2.dss"}, dependsOnMethods = {"selectOperation"}, timeOut = 1000 * 60 * 2, enabled = true)
     public void concurrencyTest()
             throws ConcurrencyTestFailedError, InterruptedException, XPathExpressionException {
         OMFactory fac = OMAbstractFactory.getOMFactory();

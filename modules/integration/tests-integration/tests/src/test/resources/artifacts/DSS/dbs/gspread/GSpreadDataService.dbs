@@ -3,8 +3,9 @@
     <config id="GSpreadDataSource">
         <property name="gspread_datasource">https://spreadsheets.google.com/ccc?key=0Av5bU8aVtFjPdElrUVN3VmZlRkoyM1ZzVlE1MzdtbXc&amp;hl=en</property>
         <property name="gspread_visibility">private</property>
-        <property name="gspread_username">zaqxsw987592</property>
-        <property name="gspread_password">oijoacxe421</property>
+        <property name="gspread_client_id">117152539458-eci53bg8vkjk3601i2h1qna08d4mfg06.apps.googleusercontent.com</property>
+        <property name="gspread_client_secret">TpMOSmeySPDc5Q89HUiF_L-4</property>
+        <property name="gspread_refresh_token">1/BHqGAGToVABXF4T_0HDXeE7-PAO1YT--LduhN5Ax7YpIgOrJDtdun6zK6XiATCKT</property>
     </config>
     <query id="aa" useConfig="GSpreadDataSource">
         <gspread>

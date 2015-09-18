@@ -50,7 +50,7 @@ public class RequestBoxTenantUserTestCase extends DSSIntegrationTest {
 
     private final OMFactory fac = OMAbstractFactory.getOMFactory();
     private final OMNamespace omNs = fac.createOMNamespace("http://ws.wso2.org/dataservice", "ns1");
-    private final String serviceName = "RequestBoxTest";
+    private final String serviceName = "RequestBoxTenantTest";
 
     private String serviceEndPoint;
 
@@ -63,7 +63,7 @@ public class RequestBoxTenantUserTestCase extends DSSIntegrationTest {
         deployService(serviceName,
                       createArtifact(getResourceLocation() + File.separator + "dbs" + File.separator
                                      + "rdbms" + File.separator + "h2" + File.separator
-                                     + "RequestBoxTest.dbs", sqlFileLis));
+                                     + "RequestBoxTenantTest.dbs", sqlFileLis));
         serviceEndPoint = getServiceUrlHttp(serviceName);
     }
 

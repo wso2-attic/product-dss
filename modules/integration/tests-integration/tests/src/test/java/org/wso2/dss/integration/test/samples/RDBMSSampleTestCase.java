@@ -35,6 +35,8 @@ import javax.activation.DataHandler;
 import java.io.File;
 import java.net.URL;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class RDBMSSampleTestCase extends DSSIntegrationTest {
@@ -54,11 +56,15 @@ public class RDBMSSampleTestCase extends DSSIntegrationTest {
         super.init(userMode);
         String serviceEndPoint = getServiceUrlHttp(serviceName);
         stub = new RDBMSSampleStub(serviceEndPoint);
+        List<File> sqlFileLis = new ArrayList<File>();
+        sqlFileLis.add(selectSqlFile("CreateTables.sql"));
+        sqlFileLis.add(selectSqlFile("Employees.sql"));
+        sqlFileLis.add(selectSqlFile("Customers.sql"));
         deployService(serviceName,
                       new DataHandler(new URL("file:///" + getResourceLocation() + File.separator + "samples"
                                               + File.separator + "dbs" + File.separator
                                               + "rdbms" + File.separator + "RDBMSSample.dbs")));
-        randomNumber = new Random().nextInt(2000);
+        randomNumber = new Random().nextInt(2000) + 2000; //added 2000 because table already have ids up nearly to 2000
     }
 
 

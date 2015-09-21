@@ -58,8 +58,19 @@ public class RDBMSSampleTestCase extends DSSIntegrationTest {
         stub = new RDBMSSampleStub(serviceEndPoint);
         List<File> sqlFileLis = new ArrayList<File>();
         sqlFileLis.add(selectSqlFile("CreateTables.sql"));
-        sqlFileLis.add(selectSqlFile("Employees.sql"));
         sqlFileLis.add(selectSqlFile("Customers.sql"));
+        sqlFileLis.add(selectSqlFile("Employees.sql"));
+        sqlFileLis.add(selectSqlFile("Offices.sql"));
+        sqlFileLis.add(selectSqlFile("Students.sql"));
+        sqlFileLis.add(selectSqlFile("Products.sql"));
+        sqlFileLis.add(selectSqlFile("ProductLines.sql"));
+        sqlFileLis.add(selectSqlFile("Orders.sql"));
+        sqlFileLis.add(selectSqlFile("OrderDetails.sql"));
+        sqlFileLis.add(selectSqlFile("Payments.sql"));
+        sqlFileLis.add(selectSqlFile("department.sql"));
+        sqlFileLis.add(selectSqlFile("Files.sql"));
+        sqlFileLis.add(selectSqlFile("FileRecords.sql"));
+        sqlFileLis.add(selectSqlFile("Accounts.sql"));
         deployService(serviceName,
                       new DataHandler(new URL("file:///" + getResourceLocation() + File.separator + "samples"
                                               + File.separator + "dbs" + File.separator

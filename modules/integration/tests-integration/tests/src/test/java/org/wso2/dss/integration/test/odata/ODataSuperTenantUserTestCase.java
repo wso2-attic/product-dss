@@ -65,7 +65,7 @@ public class ODataSuperTenantUserTestCase extends DSSIntegrationTest {
         cleanup();
     }
 
-	@Test(groups = { "wso2.dss" }, description = "test the service document retrieval")
+	@Test(groups = { "wso2.dss" }, description = "service document retrieval test")
 	public void validateServiceDocumentTestCase() throws Exception {
 		String endpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/$metadata";
 		Object[] response = sendGET(endpoint, "Application/xml");
@@ -75,14 +75,14 @@ public class ODataSuperTenantUserTestCase extends DSSIntegrationTest {
 		Assert.assertEquals(response[0], 200);
 	}
 
-	@Test(groups = { "wso2.dss" }, description = "test the entity retrieval")
+	@Test(groups = { "wso2.dss" }, description = "entity retrieval test")
 	public void validateRetrievingData() throws Exception {
 		String endpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/CUSTOMERS";
 		Object[] response = sendGET(endpoint, "Application/json");
 		Assert.assertEquals(response[0], 200);
 	}
 
-	@Test(groups = { "wso2.dss" }, description = "test the entity retrieval")
+	@Test(groups = { "wso2.dss" }, description = "insertion entity test")
 	public void validatePostingData() throws Exception {
 		String endpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/FILES";
 		String content = "{\"FILENAME\": \"M.K.H.Gunasekara\" ,\"TYPE\" : \"dss\"}";
@@ -107,7 +107,7 @@ public class ODataSuperTenantUserTestCase extends DSSIntegrationTest {
 		Assert.assertEquals(response[0], 200);
 	}
 
-	@Test(groups = { "wso2.dss" }, description = "test the entity retrieval", dependsOnMethods = "validatePatchingData")
+	@Test(groups = { "wso2.dss" }, description = "entity modification with put method test", dependsOnMethods = "validatePatchingData")
 	public void validatePuttingData() throws Exception {
 		String endpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/STUDENT(1)";
 		String content = "{\"LASTNAME\" : \"GUNASEKARA\"}";
@@ -119,7 +119,7 @@ public class ODataSuperTenantUserTestCase extends DSSIntegrationTest {
 		                  response[1].toString().contains("\"LASTNAME\":\"GUNASEKARA\""));
 	}
 
-	@Test(groups = { "wso2.dss" }, description = "test the entity retrieval", dependsOnMethods = "validatePostingData")
+	@Test(groups = { "wso2.dss" }, description = "entity modification with patch method test", dependsOnMethods = "validatePostingData")
 	public void validatePatchingData() throws Exception {
 		String endpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/STUDENT(2)";
 		String content = "{\"LASTNAME\" : \"Lanka\"}";
@@ -131,7 +131,7 @@ public class ODataSuperTenantUserTestCase extends DSSIntegrationTest {
 		                  response[1].toString().contains("\"LASTNAME\":\"Lanka\""));
 	}
 
-	@Test(groups = { "wso2.dss" }, description = "test the entity retrieval", dependsOnMethods = "validatePuttingData")
+	@Test(groups = { "wso2.dss" }, description = "entity deletion test", dependsOnMethods = "validatePuttingData")
 	public void validateDeletingData() throws Exception {
 		String endpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/STUDENT(1)";
 		int responseCode = sendDELETE(endpoint, "application/json");
@@ -141,7 +141,7 @@ public class ODataSuperTenantUserTestCase extends DSSIntegrationTest {
 
 	}
 
-	@Test(groups = { "wso2.dss" }, description = "test the entity retrieval")
+	@Test(groups = { "wso2.dss" }, description = "entity retrieval with select test")
 	public void validateSelectingData() throws Exception {
 		String endpoint = webappURL + "/odata/" + serviceName + "/" + configId +
 		                  "/CUSTOMERS?$select=PHONE,COUNTRY,POSTALCODE";

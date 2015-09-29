@@ -29,16 +29,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This test was written to verify the fix for https://wso2.org/jira/browse/DS-1103
+ * This test was written to verify the fix for https://wso2.org/jira/browse/DS-1103.
  */
 public class DS1103DuplicateDataServiceTestCase extends DSSIntegrationTest {
-
 	private final String serviceName = "H2SimpleJsonTest";
 	private List<File> sqlFileLis;
 
 	@BeforeClass(alwaysRun = true)
 	public void serviceDeployment() throws Exception {
-
 		super.init();
 		sqlFileLis = new ArrayList<>();
 		sqlFileLis.add(selectSqlFile("CreateTables.sql"));

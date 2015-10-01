@@ -42,11 +42,9 @@ public class ODataQueryTestCase extends DSSIntegrationTest {
 		sqlFileLis.add(selectSqlFile("CreateODataTables.sql"));
 		sqlFileLis.add(selectSqlFile("Customers.sql"));
 		sqlFileLis.add(selectSqlFile("FIlesWithFIlesRecords.sql"));
-		deployService(serviceName, createArtifact(getResourceLocation() +
-		                                          File.separator + "dbs" +
-		                                          File.separator + "odata" +
-		                                          File.separator +
-		                                          "ODataBatchRequestSampleService.dbs", sqlFileLis));
+		deployService(serviceName, createArtifact(getResourceLocation() + File.separator + "dbs" + File.separator +
+		                                          "odata" + File.separator + "ODataBatchRequestSampleService.dbs",
+		                                          sqlFileLis));
 		webappURL = dssContext.getContextUrls().getWebAppURL();
 	}
 

@@ -44,7 +44,7 @@ import java.util.List;
  * This class contains OData specific test cases. to verify the functionality of odata services in tenant mode.
  */
 public class ODataTenantUserTestCase extends DSSIntegrationTest {
-	private final String serviceName = "ODataSampleService";
+	private final String serviceName = "ODataSampleTenantService";
 	private final String configId = "default";
 	private String webappURL ;
 
@@ -57,7 +57,7 @@ public class ODataTenantUserTestCase extends DSSIntegrationTest {
 		sqlFileLis.add(selectSqlFile("Customers.sql"));
 		deployService(serviceName,
 		              createArtifact(getResourceLocation() + File.separator + "dbs" + File.separator + "odata" +
-		                             File.separator + "ODataSampleService.dbs", sqlFileLis));
+		                             File.separator + "ODataSampleTenantService.dbs", sqlFileLis));
 		webappURL = dssContext.getContextUrls().getWebAppURL();
 		int i = webappURL.indexOf("/t/");
 		webappURL = webappURL.substring(0,i);

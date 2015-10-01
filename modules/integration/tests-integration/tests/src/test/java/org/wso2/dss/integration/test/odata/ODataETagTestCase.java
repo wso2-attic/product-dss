@@ -33,7 +33,7 @@ import static org.wso2.dss.integration.test.odata.ODataTestUtils.*;
 public class ODataETagTestCase extends DSSIntegrationTest {
 	private final String serviceName = "ODataETagSampleService";
 	private final String configId = "default";
-	private String webappURL;
+	private String webAppUrl;
 
 	@BeforeClass(alwaysRun = true)
 	public void serviceDeployment() throws Exception {
@@ -43,7 +43,7 @@ public class ODataETagTestCase extends DSSIntegrationTest {
 		sqlFileLis.add(selectSqlFile("Customers.sql"));
 		deployService(serviceName, createArtifact(getResourceLocation() + File.separator + "dbs" + File.separator +
 		                                          "odata" + File.separator + "ODataETagSampleService.dbs", sqlFileLis));
-		webappURL = dssContext.getContextUrls().getWebAppURL();
+		webAppUrl = dssContext.getContextUrls().getWebAppURL();
 	}
 
 	@AfterClass(alwaysRun = true)
@@ -54,77 +54,77 @@ public class ODataETagTestCase extends DSSIntegrationTest {
 
 	@Test(groups = "wso2.dss", description = "e tag retrieval test")
 	public void validateE_TagRetrievalTestCase() throws Exception {
-		String endpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/FILES";
+		String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/FILES";
 		String content = "{\"FILENAME\": \"M.K.H.Gunasekara\" ,\"TYPE\" : \"dss\"}";
 		Map<String, String> headers = new HashMap<>();
 		headers.put("Accept", "application/json");
 		Object[] response = sendPOST(endpoint, content, headers);
-		Assert.assertEquals(response[0], 204);
-		endpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/FILES(\'M.K.H.Gunasekara')";
+		Assert.assertEquals(response[0], ODataTestUtils.NO_CONTENT);
+		endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/FILES(\'M.K.H.Gunasekara')";
 		response = sendGET(endpoint, headers);
-		Assert.assertEquals(response[0], 200);
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
 		String etag = getETag(response[1].toString());
 		headers.put("If-Match", "1212122");
 		response = sendGET(endpoint, headers);
-		Assert.assertEquals(response[0], 412);
+		Assert.assertEquals(response[0], ODataTestUtils.PRE_CONDITION_FAILED);
 		headers.remove("If-Match");
 		headers.put("If-None-Match", etag);
 		response = sendGET(endpoint, headers);
-		Assert.assertEquals(response[0], 412);
+		Assert.assertEquals(response[0], ODataTestUtils.PRE_CONDITION_FAILED);
 		headers.remove("If-None-Match");
 		headers.put("If-Match", etag);
 		response = sendGET(endpoint, headers);
-		Assert.assertEquals(response[0], 200);
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
 	}
 
 	@Test(groups = "wso2.dss", description = "etag generation test", dependsOnMethods = "validateE_TagRetrievalTestCase")
 	public void validateE_TagGenerationTestCase() throws Exception {
-		String endpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/FILES";
+		String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/FILES";
 		String content = "{\"FILENAME\": \"WSO2\" ,\"TYPE\" : \"bam\"}";
 		Map<String, String> headers = new HashMap<>();
 		headers.put("Accept", "application/json");
 		Object[] response = sendPOST(endpoint, content, headers);
-		Assert.assertEquals(response[0], 204);
-		endpoint = webappURL + "/odata/" + serviceName + "/" + configId +
+		Assert.assertEquals(response[0], ODataTestUtils.NO_CONTENT);
+		endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId +
 		           "/FILES(\'WSO2\')";
 		response = sendGET(endpoint, headers);
-		Assert.assertEquals(response[0], 200);
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
 		String etag = getETag(response[1].toString());
-		endpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/FILES(\'WSO2\')";
+		endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/FILES(\'WSO2\')";
 		content = "{\"TYPE\" : \"USJP\"}";
 		int responseCode = sendPUT(endpoint, content, headers);
-		Assert.assertEquals(responseCode, 204);
+		Assert.assertEquals(responseCode, ODataTestUtils.NO_CONTENT);
 		response = sendGET(endpoint, headers);
-		Assert.assertEquals(response[0], 200);
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
 		String tempETag = getETag(response[1].toString());
 		Assert.assertNotEquals(etag, tempETag);
 	}
 
 	@Test(groups = "wso2.dss", description = "etag concurrent handling with put method test", dependsOnMethods = "validateE_TagGenerationTestCase")
 	public void validateE_TagConcurrentHandlingTestCaseForPutMethod() throws Exception {
-		String endpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/FILES(\'M.K.H.Gunasekara\')";
+		String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/FILES(\'M.K.H.Gunasekara\')";
 		Map<String, String> headers = new HashMap<>();
 		headers.put("Accept", "application/json");
 		Object[] response = sendGET(endpoint, headers);
-		Assert.assertEquals(response[0], 200);
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
 		String etag = getETag(response[1].toString());
 		//modifying data - E-Tag should be changed after processing the below request
 		headers.put("If-Match", etag);
 		String content = "{\"TYPE\" : \"ml\"}";
 
 		int responseCode = sendPUT(endpoint, content, headers);
-		Assert.assertEquals(responseCode, 204);
+		Assert.assertEquals(responseCode, ODataTestUtils.NO_CONTENT);
 		// Data has been modified therefore E-Tag has been changed, Then If-None-Match should be worked with previous E-Tag
 		headers.remove("If-Match");
 		headers.put("If-None-Match", etag);
 		content = "{\"TYPE\" : \"test\"}";
 		responseCode = sendPUT(endpoint, content, headers);
-		Assert.assertEquals(responseCode, 204);
+		Assert.assertEquals(responseCode, ODataTestUtils.NO_CONTENT);
 
 		//testing concurrent test with put method
 		// get the E-Tag
 		response = sendGET(endpoint, headers);
-		Assert.assertEquals(response[0], 200);
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
 		etag = getETag(response[1].toString());
 		content = "{\"TYPE\" : \"SriLanka\"}";
 		headers.remove("If-None-Match");
@@ -132,16 +132,16 @@ public class ODataETagTestCase extends DSSIntegrationTest {
 		threadExecutor.run();
 		Thread.sleep(1000);
 		response = sendGET(endpoint, headers);
-		Assert.assertEquals(response[0], 200);
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
 		String tempETag = getETag(response[1].toString());
 		Assert.assertNotEquals(etag, tempETag);
 		headers.put("If-Match", etag);
 		content = "{\"TYPE\" : \"MB\"}";
 		responseCode = sendPUT(endpoint, content, headers);
-		Assert.assertEquals(responseCode, 412);
+		Assert.assertEquals(responseCode, ODataTestUtils.PRE_CONDITION_FAILED);
 		headers.put("If-Match", tempETag);
 		response = sendGET(endpoint, headers);
-		Assert.assertEquals(response[0], 200);
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
 		// Data validation
 		Assert.assertFalse(response[1].toString().contains("MB"), "E-Tag with put method failed");
 		Assert.assertTrue(response[1].toString().contains("SriLanka"), "E-Tag with put method failed");
@@ -149,7 +149,7 @@ public class ODataETagTestCase extends DSSIntegrationTest {
 		//testing concurrent test with delete method
 		// get the E-Tag
 		response = sendGET(endpoint, headers);
-		Assert.assertEquals(response[0], 200);
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
 		headers.remove("If-Match");
 		threadExecutor = new ODataRequestThreadExecutor("DELETE", null, headers, endpoint);
 		threadExecutor.run();
@@ -157,33 +157,33 @@ public class ODataETagTestCase extends DSSIntegrationTest {
 		headers.put("If-Match", etag);
 		content = "{\"TYPE\" : \"MB\"}";
 		responseCode = sendPUT(endpoint, content, headers);
-		Assert.assertEquals(responseCode, 404);
+		Assert.assertEquals(responseCode, ODataTestUtils.NOT_FOUND);
 	}
 
 	@Test(groups = "wso2.dss", description = "etag concurrent handling with patch method test", dependsOnMethods = "validateE_TagConcurrentHandlingTestCaseForPutMethod")
 	public void validateE_TagConcurrentHandlingTestCaseForPatchMethod() throws Exception {
-		String endpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/FILES(\'WSO2\')";
+		String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/FILES(\'WSO2\')";
 		Map<String, String> headers = new HashMap<>();
 		headers.put("Accept", "application/json");
 		Object[] response = sendGET(endpoint, headers);
-		Assert.assertEquals(response[0], 200);
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
 		String etag = getETag(response[1].toString());
 		//modifying data - E-Tag should be changed after processing the below request
 		headers.put("If-Match", etag);
 		String content = "{\"TYPE\" : \"ml\"}";
 		int responseCode = sendPATCH(endpoint, content, headers);
-		Assert.assertEquals(responseCode, 204);
+		Assert.assertEquals(responseCode, ODataTestUtils.NO_CONTENT);
 		// Data has been modified therefore E-Tag has been changed, Then If-None-Match should be worked with previous E-Tag
 		headers.remove("If-Match");
 		headers.put("If-None-Match", etag);
 		content = "{\"TYPE\" : \"test\"}";
 		responseCode = sendPATCH(endpoint, content, headers);
-		Assert.assertEquals(responseCode, 204);
+		Assert.assertEquals(responseCode, ODataTestUtils.NO_CONTENT);
 
 		//testing concurrent test with put method
 		// get the E-Tag
 		response = sendGET(endpoint, headers);
-		Assert.assertEquals(response[0], 200);
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
 		etag = getETag(response[1].toString());
 		content = "{\"TYPE\" : \"SriLanka\"}";
 		headers.remove("If-None-Match");
@@ -191,16 +191,16 @@ public class ODataETagTestCase extends DSSIntegrationTest {
 		threadExecutor.run();
 		Thread.sleep(1000);
 		response = sendGET(endpoint, headers);
-		Assert.assertEquals(response[0], 200);
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
 		String tempETag = getETag(response[1].toString());
 		Assert.assertNotEquals(etag, tempETag);
 		headers.put("If-Match", etag);
 		content = "{\"TYPE\" : \"MB\"}";
 		responseCode = sendPATCH(endpoint, content, headers);
-		Assert.assertEquals(responseCode, 412);
+		Assert.assertEquals(responseCode, ODataTestUtils.PRE_CONDITION_FAILED);
 		headers.put("If-Match", tempETag);
 		response = sendGET(endpoint, headers);
-		Assert.assertEquals(response[0], 200);
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
 		// Data validation
 		Assert.assertFalse(response[1].toString().contains("MB"), "E-Tag with put method failed");
 		Assert.assertTrue(response[1].toString().contains("SriLanka"), "E-Tag with put method failed");
@@ -208,7 +208,7 @@ public class ODataETagTestCase extends DSSIntegrationTest {
 		//testing concurrent test with delete method
 		// get the E-Tag
 		response = sendGET(endpoint, headers);
-		Assert.assertEquals(response[0], 200);
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
 		headers.remove("If-Match");
 		threadExecutor = new ODataRequestThreadExecutor("DELETE", null, headers, endpoint);
 		threadExecutor.run();
@@ -216,30 +216,30 @@ public class ODataETagTestCase extends DSSIntegrationTest {
 		headers.put("If-Match", etag);
 		content = "{\"TYPE\" : \"MB\"}";
 		responseCode = sendPATCH(endpoint, content, headers);
-		Assert.assertEquals(responseCode, 404);
+		Assert.assertEquals(responseCode, ODataTestUtils.NOT_FOUND);
 	}
 
 	@Test(groups = "wso2.dss", description = "etag concurrent handling with delete method test", dependsOnMethods = "validateE_TagConcurrentHandlingTestCaseForPatchMethod")
 	public void validateE_TagConcurrentHandlingTestCaseForDeleteMethod() throws Exception {
-		String endpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/FILES";
+		String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/FILES";
 		String content = "{\"FILENAME\": \"M.K.H.Gunasekara\" ,\"TYPE\" : \"dss\"}";
 		Map<String, String> headers = new HashMap<>();
 		headers.put("Accept", "application/json");
 		Object[] response = sendPOST(endpoint, content, headers);
-		Assert.assertEquals(response[0], 204);
-		endpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/FILES(\'M.K.H.Gunasekara\')";
+		Assert.assertEquals(response[0], ODataTestUtils.NO_CONTENT);
+		endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/FILES(\'M.K.H.Gunasekara\')";
 		response = sendGET(endpoint, headers);
-		Assert.assertEquals(response[0], 200);
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
 		String etag = ODataTestUtils.getETag(response[1].toString());
 		headers.put("If-None-Match", etag);
 		int responseCode = sendDELETE(endpoint, headers);
-		Assert.assertEquals(responseCode, 412);
+		Assert.assertEquals(responseCode, ODataTestUtils.PRE_CONDITION_FAILED);
 		headers.remove("If-None-Match");
 		headers.put("If-Match", etag);
 		responseCode = sendDELETE(endpoint, headers);
-		Assert.assertEquals(responseCode, 204);
+		Assert.assertEquals(responseCode, ODataTestUtils.NO_CONTENT);
 		responseCode = sendDELETE(endpoint, headers);
-		Assert.assertEquals(responseCode, 404);
+		Assert.assertEquals(responseCode, ODataTestUtils.NOT_FOUND);
 
 		// To insert values
 		validateE_TagRetrievalTestCase();
@@ -247,7 +247,7 @@ public class ODataETagTestCase extends DSSIntegrationTest {
 		//testing concurrent test with put method
 		// get the E-Tag
 		response = sendGET(endpoint, headers);
-		Assert.assertEquals(response[0], 200);
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
 		etag = getETag(response[1].toString());
 		content = "{\"TYPE\" : \"SriLanka\"}";
 		headers.remove("If-Match");
@@ -255,15 +255,15 @@ public class ODataETagTestCase extends DSSIntegrationTest {
 		threadExecutor.run();
 		Thread.sleep(1000);
 		response = sendGET(endpoint, headers);
-		Assert.assertEquals(response[0], 200);
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
 		String tempETag = getETag(response[1].toString());
 		Assert.assertNotEquals(etag, tempETag);
 		headers.put("If-Match", etag);
 		responseCode = sendDELETE(endpoint, headers);
-		Assert.assertEquals(responseCode, 412);
+		Assert.assertEquals(responseCode, ODataTestUtils.PRE_CONDITION_FAILED);
 		headers.put("If-Match", tempETag);
 		responseCode = sendDELETE(endpoint, headers);
-		Assert.assertEquals(responseCode, 204);
+		Assert.assertEquals(responseCode, ODataTestUtils.NO_CONTENT);
 		responseCode = sendDELETE(endpoint, headers);
 		Assert.assertEquals(responseCode, 404);
 	}
@@ -271,101 +271,101 @@ public class ODataETagTestCase extends DSSIntegrationTest {
 	@Test(groups = "wso2.dss", description = "property modification using etag concurrent handling with put method test", dependsOnMethods = "validateE_TagConcurrentHandlingTestCaseForDeleteMethod")
 	public void validateE_TagConcurrentHandlingTestCaseForUpdatePropertyWithPutMethod() throws Exception {
 		// To insert values
-		String endpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/FILES";
+		String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/FILES";
 		String content = "{\"FILENAME\": \"M.K.H.Gunasekara\" ,\"TYPE\" : \"dss\"}";
 		Map<String, String> headers = new HashMap<>();
 		headers.put("Accept", "application/json");
 		Object[] response = sendPOST(endpoint, content, headers);
-		Assert.assertEquals(response[0], 204);
-		String entityEndpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/FILES(\'M.K.H.Gunasekara\')";
+		Assert.assertEquals(response[0], ODataTestUtils.NO_CONTENT);
+		String entityEndpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/FILES(\'M.K.H.Gunasekara\')";
 		response = sendGET(endpoint, headers);
-		Assert.assertEquals(response[0], 200);
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
 		String etag = getETag(response[1].toString());
-		endpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/FILES(\'M.K.H.Gunasekara\')/TYPE";
+		endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/FILES(\'M.K.H.Gunasekara\')/TYPE";
 		content = "{\"value\" : \"Jayasooriya\"}";
 		headers.put("If-None-Match", etag);
 		int responseCode = sendPUT(endpoint, content, headers);
-		Assert.assertEquals(responseCode, 412);
+		Assert.assertEquals(responseCode, ODataTestUtils.PRE_CONDITION_FAILED);
 		headers.remove("If-None-Match");
 		headers.put("If-Match", etag);
 		responseCode = sendPUT(endpoint, content, headers);
-		Assert.assertEquals(responseCode, 204);
+		Assert.assertEquals(responseCode, ODataTestUtils.NO_CONTENT);
 
 		//testing concurrent test with put method
 		// get the E-Tag
 		headers.remove("If-Match");
 		response = sendGET(entityEndpoint, headers);
-		Assert.assertEquals(response[0], 200);
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
 		etag = getETag(response[1].toString());
 		content = "{\"value\" : \"SriLanka\"}";
 		ODataRequestThreadExecutor threadExecutor = new ODataRequestThreadExecutor("PUT", content, headers, endpoint);
 		threadExecutor.run();
 		Thread.sleep(1000);
 		response = sendGET(entityEndpoint, headers);
-		Assert.assertEquals(response[0], 200);
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
 		String tempETag = getETag(response[1].toString());
 		Assert.assertNotEquals(etag, tempETag);
 		headers.put("If-Match", etag);
 		content = "{\"value\" : \"DSS Server\"}";
 		responseCode = sendPUT(endpoint, content, headers);
-		Assert.assertEquals(responseCode, 412);
+		Assert.assertEquals(responseCode, ODataTestUtils.PRE_CONDITION_FAILED);
 		// Data validation
 		headers.remove("If-Match");
 		response = sendGET(endpoint, headers);
-		Assert.assertEquals(response[0], 200);
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
 		Assert.assertFalse(response[1].toString().contains("DSS Server"), "E-Tag with put method failed");
 		Assert.assertTrue(response[1].toString().contains("SriLanka"), "E-Tag with put method failed");
 		headers.put("If-Match", tempETag);
 		responseCode = sendPUT(endpoint, content, headers);
-		Assert.assertEquals(responseCode, 204);
+		Assert.assertEquals(responseCode, ODataTestUtils.NO_CONTENT);
 
 	}
 
 	@Test(groups = "wso2.dss", description = "property modification using etag concurrent handling with patch method test", dependsOnMethods = "validateE_TagConcurrentHandlingTestCaseForUpdatePropertyWithPutMethod")
 	public void validateE_TagConcurrentHandlingTestCaseForUpdatePropertyWithPatchMethod() throws Exception {
-		String entityEndpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/FILES(\'M.K.H.Gunasekara\')";
-		String endpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/FILES(\'M.K.H.Gunasekara\')/TYPE";
+		String entityEndpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/FILES(\'M.K.H.Gunasekara\')";
+		String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/FILES(\'M.K.H.Gunasekara\')/TYPE";
 		Map<String, String> headers = new HashMap<>();
 		headers.put("Accept", "application/json");
 		Object[] response = sendGET(entityEndpoint, headers);
-		Assert.assertEquals(response[0], 200);
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
 		String etag = getETag(response[1].toString());
 		String content = "{\"value\" : \"Jayasooriya\"}";
 		headers.put("If-None-Match", etag);
 		int responseCode = sendPATCH(endpoint, content, headers);
-		Assert.assertEquals(responseCode, 412);
+		Assert.assertEquals(responseCode, ODataTestUtils.PRE_CONDITION_FAILED);
 		headers.remove("If-None-Match");
 		headers.put("If-Match", etag);
 		responseCode = sendPATCH(endpoint, content, headers);
-		Assert.assertEquals(responseCode, 204);
+		Assert.assertEquals(responseCode, ODataTestUtils.NO_CONTENT);
 
 		//testing concurrent test with put method
 		// get the E-Tag
 		headers.remove("If-Match");
 		response = sendGET(entityEndpoint, headers);
-		Assert.assertEquals(response[0], 200);
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
 		etag = getETag(response[1].toString());
 		content = "{\"value\" : \"SriLanka\"}";
 		ODataRequestThreadExecutor threadExecutor = new ODataRequestThreadExecutor("PUT", content, headers, endpoint);
 		threadExecutor.run();
 		Thread.sleep(1000);
 		response = sendGET(entityEndpoint, headers);
-		Assert.assertEquals(response[0], 200);
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
 		String tempETag = getETag(response[1].toString());
 		Assert.assertNotEquals(etag, tempETag);
 		headers.put("If-Match", etag);
 		content = "{\"value\" : \"DSS Server\"}";
 		responseCode = sendPATCH(endpoint, content, headers);
-		Assert.assertEquals(responseCode, 412);
+		Assert.assertEquals(responseCode, ODataTestUtils.PRE_CONDITION_FAILED);
 		// Data validation
 		headers.remove("If-Match");
 		response = sendGET(entityEndpoint, headers);
-		Assert.assertEquals(response[0], 200);
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
 		Assert.assertFalse(response[1].toString().contains("DSS Server"), "E-Tag with patch method failed");
 		Assert.assertTrue(response[1].toString().contains("SriLanka"), "E-Tag with patch method failed");
 		headers.put("If-Match", tempETag);
 		responseCode = sendPATCH(endpoint, content, headers);
-		Assert.assertEquals(responseCode, 204);
+		Assert.assertEquals(responseCode, ODataTestUtils.NO_CONTENT);
 
 	}
 }

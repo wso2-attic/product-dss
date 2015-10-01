@@ -33,7 +33,7 @@ import static org.wso2.dss.integration.test.odata.ODataTestUtils.sendGET;
 public class ODataQueryTestCase extends DSSIntegrationTest {
 	private final String serviceName = "ODataBatchRequestSampleService";
 	private final String configId = "default";
-	private String webappURL;
+	private String webAppUrl;
 
 	@BeforeClass(alwaysRun = true)
 	public void serviceDeployment() throws Exception {
@@ -45,7 +45,7 @@ public class ODataQueryTestCase extends DSSIntegrationTest {
 		deployService(serviceName, createArtifact(getResourceLocation() + File.separator + "dbs" + File.separator +
 		                                          "odata" + File.separator + "ODataBatchRequestSampleService.dbs",
 		                                          sqlFileLis));
-		webappURL = dssContext.getContextUrls().getWebAppURL();
+		webAppUrl = dssContext.getContextUrls().getWebAppURL();
 	}
 
 	@AfterClass(alwaysRun = true)
@@ -56,63 +56,63 @@ public class ODataQueryTestCase extends DSSIntegrationTest {
 
 	@Test(groups = "wso2.dss", description = "select query test")
 	public void validateSelectQueryTestCase() throws Exception {
-		String endpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/FILES?$select=TYPE";
+		String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/FILES?$select=TYPE";
 		Map<String, String> headers = new HashMap<>();
 		headers.put("Accept", "application/json");
 		Object[] response = sendGET(endpoint, headers);
-		Assert.assertEquals(response[0], 200);
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
 		Assert.assertTrue(!response[0].toString().contains("FILENAME"));
 	}
 
 	@Test(groups = "wso2.dss", description = "top query test")
 	public void validateTopQueryTestCase() throws Exception {
-		String endpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/CUSTOMERS?$top=1&$orderby=CONTACTFIRSTNAME%20desc";
+		String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/CUSTOMERS?$top=1&$orderby=CONTACTFIRSTNAME%20desc";
 		Map<String, String> headers = new HashMap<>();
 		headers.put("Accept", "application/json");
 		Object[] response = sendGET(endpoint, headers);
-		Assert.assertEquals(response[0], 200);
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
 		Assert.assertTrue(response[1].toString().contains("Zbyszek"));
 		Assert.assertTrue(!response[1].toString().contains("Yu"));
 	}
 
 	@Test(groups = "wso2.dss", description = "order by query test")
 	public void validateOrderByQueryTestCase() throws Exception {
-		String endpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/CUSTOMERS?$top=1&$orderby=length(ADDRESSLINE1)";
+		String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/CUSTOMERS?$top=1&$orderby=length(ADDRESSLINE1)";
 		Map<String, String> headers = new HashMap<>();
 		headers.put("Accept", "application/json");
 		Object[] response = sendGET(endpoint, headers);
-		Assert.assertEquals(response[0], 200);
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
 		Assert.assertTrue(response[1].toString().contains("Singapore"));
 	}
 
 	@Test(groups = "wso2.dss", description = "count query test")
 	public void validateCountQueryTestCase() throws Exception {
-		String endpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/FILES/$count";
+		String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/FILES/$count";
 		Map<String, String> headers = new HashMap<>();
 		headers.put("Accept", "application/json");
 		Object[] response = sendGET(endpoint, headers);
-		Assert.assertEquals(response[0], 200);
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
 		Assert.assertTrue(response[1].toString().contains("4"));
 	}
 
 	@Test(groups = "wso2.dss", description = "filter query test")
 	public void validateFilterQueryTestCase() throws Exception {
-		String endpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/CUSTOMERS?$filter=COUNTRY%20eq%20%27Singapore%27";
+		String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/CUSTOMERS?$filter=COUNTRY%20eq%20%27Singapore%27";
 		Map<String, String> headers = new HashMap<>();
 		headers.put("Accept", "application/json");
 		Object[] response = sendGET(endpoint, headers);
-		Assert.assertEquals(response[0], 200);
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
 		Assert.assertTrue(response[1].toString().contains("Singapore"));
 		Assert.assertTrue(!response[1].toString().contains("France"));
 	}
 
 	@Test(groups = "wso2.dss", description = "skip query test")
 	public void validateSkipQueryTestCase() throws Exception {
-		String endpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/CUSTOMERS?$skip=1&$top=2&$orderby=CONTACTFIRSTNAME%20desc";
+		String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/CUSTOMERS?$skip=1&$top=2&$orderby=CONTACTFIRSTNAME%20desc";
 		Map<String, String> headers = new HashMap<>();
 		headers.put("Accept", "application/json");
 		Object[] response = sendGET(endpoint, headers);
-		Assert.assertEquals(response[0], 200);
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
 		Assert.assertTrue(!response[1].toString().contains("Zbyszek"));
 		Assert.assertTrue(response[1].toString().contains("Yu"));
 		Assert.assertTrue(response[1].toString().contains("Yoshi"));

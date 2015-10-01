@@ -1,4 +1,20 @@
-<data name="InputParamsValidationTest" serviceGroup="InputValidation" baseURI="http://ws.wso2.org/dataservice/samples/InputParamsValidation">         
+<!--
+  ~ Copyright (c) 2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<data name="InputParamsValidationTest" serviceGroup="InputValidation" baseURI="http://ws.wso2.org/dataservice/samples/InputParamsValidation">
    <config id="MySqlDataSource">                  
       <property name="org.wso2.ws.dataservice.driver">com.mysql.jdbc.Driver</property>                  
       <property name="org.wso2.ws.dataservice.protocol">jdbc:mysql://192.168.4.27:3306/testDatabase_wso2automation_com</property>                  

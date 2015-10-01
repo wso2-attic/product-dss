@@ -41,9 +41,8 @@ public class ODataETagTestCase extends DSSIntegrationTest {
 		List<File> sqlFileLis = new ArrayList<>();
 		sqlFileLis.add(selectSqlFile("CreateODataTables.sql"));
 		sqlFileLis.add(selectSqlFile("Customers.sql"));
-		deployService(serviceName,
-		              createArtifact(getResourceLocation() + File.separator + "dbs" + File.separator + "odata" +
-		                             File.separator + "ODataETagSampleService.dbs", sqlFileLis));
+		deployService(serviceName, createArtifact(getResourceLocation() + File.separator + "dbs" + File.separator +
+		                                          "odata" + File.separator + "ODataETagSampleService.dbs", sqlFileLis));
 		webappURL = dssContext.getContextUrls().getWebAppURL();
 	}
 

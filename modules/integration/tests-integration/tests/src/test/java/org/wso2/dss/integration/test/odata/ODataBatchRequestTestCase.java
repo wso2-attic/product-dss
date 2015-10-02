@@ -33,7 +33,7 @@ import static org.wso2.dss.integration.test.odata.ODataTestUtils.sendPOST;
 public class ODataBatchRequestTestCase  extends DSSIntegrationTest {
 	private final String serviceName = "ODataBatchRequestSampleService";
 	private final String configId = "default";
-	private String webappURL;
+	private String webAppUrl;
 
 	@BeforeClass(alwaysRun = true)
 	public void serviceDeployment() throws Exception {
@@ -47,7 +47,7 @@ public class ODataBatchRequestTestCase  extends DSSIntegrationTest {
 		                                          File.separator + "odata" +
 		                                          File.separator +
 		                                          "ODataBatchRequestSampleService.dbs", sqlFileLis));
-		webappURL = dssContext.getContextUrls().getWebAppURL();
+		webAppUrl = dssContext.getContextUrls().getWebAppURL();
 	}
 
 	@AfterClass(alwaysRun = true)
@@ -58,7 +58,7 @@ public class ODataBatchRequestTestCase  extends DSSIntegrationTest {
 
 	@Test(groups = "wso2.dss", description = "test the service document retrieval")
 	public void validateBatchRequestTestCase() throws Exception {
-		String endpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/$batch";
+		String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/$batch";
 		String content = "--batch_36522ad7-fc75-4b56-8c71-56071383e77b\n" +
 		                 "Content-Type: application/http\n" +
 		                 "Content-Transfer-Encoding:binary\n" +
@@ -112,14 +112,14 @@ public class ODataBatchRequestTestCase  extends DSSIntegrationTest {
 		headers.put("OData-Version", "4.0");
 		headers.put("Content-Type", "multipart/mixed;boundary=batch_36522ad7-fc75-4b56-8c71-56071383e77b");
 		Object[] response = sendPOST(endpoint, content, headers);
-		Assert.assertEquals(response[0], 202);
+		Assert.assertEquals(response[0], ODataTestUtils.ACCEPTED);
 		Assert.assertTrue(response[1].toString().contains("WSO2 Business Activity Monitor") &&
 		                  response[1].toString().contains("WSO2 Message Broker"));
 	}
 
 	@Test(groups = "wso2.dss", description = "test the service document retrieval", dependsOnMethods = "validateBatchRequestTestCase")
 	public void validateBatchRequestRollBackTestCase() throws Exception {
-		String endpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/$batch";
+		String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/$batch";
 		String content = "--batch_36522ad7-fc75-4b56-8c71-56071383e77b\n" +
 		                 "Content-Type: application/http\n" +
 		                 "Content-Transfer-Encoding:binary\n" +
@@ -173,13 +173,13 @@ public class ODataBatchRequestTestCase  extends DSSIntegrationTest {
 		headers.put("OData-Version", "4.0");
 		headers.put("Content-Type", "multipart/mixed;boundary=batch_36522ad7-fc75-4b56-8c71-56071383e77b");
 		Object[] response = sendPOST(endpoint, content, headers);
-		Assert.assertEquals(response[0], 202);
+		Assert.assertEquals(response[0], ODataTestUtils.ACCEPTED);
 	}
 
 
 	@Test(groups = "wso2.dss", description = "test the service document retrieval", dependsOnMethods = "validateBatchRequestTestCase")
 	public void validateBatchRequestContinueOnErrorTestCase() throws Exception {
-		String endpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/$batch";
+		String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/$batch";
 		String content = "--batch_36522ad7-fc75-4b56-8c71-56071383e77b\n" +
 		                 "Content-Type: application/http\n" +
 		                 "Content-Transfer-Encoding:binary\n" +
@@ -234,7 +234,7 @@ public class ODataBatchRequestTestCase  extends DSSIntegrationTest {
 		headers.put("OData-Version", "4.0");
 		headers.put("Content-Type", "multipart/mixed;boundary=batch_36522ad7-fc75-4b56-8c71-56071383e77b");
 		Object[] response = sendPOST(endpoint, content, headers);
-		Assert.assertEquals(response[0], 202);
+		Assert.assertEquals(response[0], ODataTestUtils.ACCEPTED);
 		Assert.assertTrue(response[1].toString().indexOf("WSO2 Message Broker") != response[1].toString().lastIndexOf("WSO2 Message Broker"));
 	}
 

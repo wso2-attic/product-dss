@@ -46,7 +46,7 @@ import java.util.List;
 public class ODataTenantUserTestCase extends DSSIntegrationTest {
 	private final String serviceName = "ODataSampleTenantService";
 	private final String configId = "default";
-	private String webappURL ;
+	private String webAppUrl;
 
 
 	@BeforeClass(alwaysRun = true)
@@ -58,9 +58,9 @@ public class ODataTenantUserTestCase extends DSSIntegrationTest {
 		deployService(serviceName,
 		              createArtifact(getResourceLocation() + File.separator + "dbs" + File.separator + "odata" +
 		                             File.separator + "ODataSampleTenantService.dbs", sqlFileLis));
-		webappURL = dssContext.getContextUrls().getWebAppURL();
-		int i = webappURL.indexOf("/t/");
-		webappURL = webappURL.substring(0,i);
+		webAppUrl = dssContext.getContextUrls().getWebAppURL();
+		int i = webAppUrl.indexOf("/t/");
+		webAppUrl = webAppUrl.substring(0,i);
 	}
 
 	@AfterClass(alwaysRun = true)
@@ -71,88 +71,88 @@ public class ODataTenantUserTestCase extends DSSIntegrationTest {
 
 	@Test(groups = { "wso2.dss" }, description = "test the service document retrieval")
 	public void validateServiceDocumentTestCase() throws Exception {
-		String endpoint = webappURL +"/odata/t/wso2.com/" + serviceName + "/" + configId +
+		String endpoint = webAppUrl +"/odata/t/wso2.com/" + serviceName + "/" + configId +
 		                  "/$metadata";
 		Object[] response = sendGET(endpoint, "Application/xml");
-		Assert.assertEquals(response[0], 200);
-		endpoint =  webappURL +"/odata/t/wso2.com/" + serviceName + "/" + configId + "/";
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
+		endpoint =  webAppUrl +"/odata/t/wso2.com/" + serviceName + "/" + configId + "/";
 		response = sendGET(endpoint, "Application/json");
-		Assert.assertEquals(response[0], 200);
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
 	}
 
 	@Test(groups = { "wso2.dss" }, description = "test the entity retrieval")
 	public void validateRetrievingData() throws Exception {
-		String endpoint = webappURL +"/odata/t/wso2.com/" + serviceName + "/" + configId +
+		String endpoint = webAppUrl +"/odata/t/wso2.com/" + serviceName + "/" + configId +
 		                  "/CUSTOMERS";
 		Object[] response = sendGET(endpoint, "Application/json");
-		Assert.assertEquals(response[0], 200);
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
 	}
 
 	@Test(groups = { "wso2.dss" }, description = "test the entity retrieval")
 	public void validatePostingData() throws Exception {
-		String endpoint = webappURL + "/odata/t/wso2.com/" + serviceName + "/" + configId + "/FILES";
+		String endpoint = webAppUrl + "/odata/t/wso2.com/" + serviceName + "/" + configId + "/FILES";
 		String content = "{\"FILENAME\": \"M.K.H.Gunasekara\" ,\"TYPE\" : \"dss\"}";
 		int responseCode = sendPOST(endpoint, content, "application/json");
-		Assert.assertEquals(responseCode, 204);
-		endpoint = webappURL + "/odata/t/wso2.com/" + serviceName + "/" + configId +
+		Assert.assertEquals(responseCode, ODataTestUtils.NO_CONTENT);
+		endpoint = webAppUrl + "/odata/t/wso2.com/" + serviceName + "/" + configId +
 		           "/FILES(\'M.K.H.Gunasekara\')";
 		Object[] response = sendGET(endpoint, "Application/json");
-		Assert.assertEquals(response[0], 200);
-		endpoint = webappURL + "/odata/t/wso2.com/" + serviceName + "/" + configId + "/STUDENT";
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
+		endpoint = webAppUrl + "/odata/t/wso2.com/" + serviceName + "/" + configId + "/STUDENT";
 		content = "{\"STUDENTID\" : 3 , \"FIRSTNAME\" : \"Madhawa\" , \"LASTNAME\" : \"Kasun\"}";
 		responseCode = sendPOST(endpoint, content, "application/json");
-		Assert.assertEquals(responseCode, 204);
-		endpoint = webappURL + "/odata/t/wso2.com/" + serviceName + "/" + configId + "/STUDENT(3)";
+		Assert.assertEquals(responseCode, ODataTestUtils.NO_CONTENT);
+		endpoint = webAppUrl + "/odata/t/wso2.com/" + serviceName + "/" + configId + "/STUDENT(3)";
 		response = sendGET(endpoint, "Application/json");
-		Assert.assertEquals(response[0], 200);
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
 		content = "{\"STUDENTID\" : 4 , \"FIRSTNAME\" : \"Rajith\" , \"LASTNAME\" : \"Vitharana\"}";
 		responseCode = sendPOST(endpoint, content, "application/json");
-		Assert.assertEquals(responseCode, 204);
-		endpoint = webappURL + "/odata/t/wso2.com/" + serviceName + "/" + configId + "/STUDENT(4)";
+		Assert.assertEquals(responseCode, ODataTestUtils.NO_CONTENT);
+		endpoint = webAppUrl + "/odata/t/wso2.com/" + serviceName + "/" + configId + "/STUDENT(4)";
 		response = sendGET(endpoint, "Application/json");
-		Assert.assertEquals(response[0], 200);
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
 	}
 
 	@Test(groups = { "wso2.dss" }, description = "test the entity retrieval", dependsOnMethods = "validatePatchingData")
 	public void validatePuttingData() throws Exception {
-		String endpoint = webappURL + "/odata/t/wso2.com/" + serviceName + "/" + configId + "/STUDENT(3)";
+		String endpoint = webAppUrl + "/odata/t/wso2.com/" + serviceName + "/" + configId + "/STUDENT(3)";
 		String content = "{\"LASTNAME\" : \"GUNASEKARA\"}";
 		int responseCode = sendPUT(endpoint, content, "application/json");
-		Assert.assertEquals(responseCode, 204);
+		Assert.assertEquals(responseCode, ODataTestUtils.NO_CONTENT);
 		Object[] response = sendGET(endpoint, "Application/json");
-		Assert.assertEquals(response[0], 200);
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
 		Assert.assertTrue(response[1].toString().contains("\"FIRSTNAME\":null") &&
 		                  response[1].toString().contains("\"LASTNAME\":\"GUNASEKARA\""));
 	}
 
 	@Test(groups = { "wso2.dss" }, description = "test the entity retrieval", dependsOnMethods = "validatePostingData")
 	public void validatePatchingData() throws Exception {
-		String endpoint = webappURL + "/odata/t/wso2.com/" + serviceName + "/" + configId + "/STUDENT(4)";
+		String endpoint = webAppUrl + "/odata/t/wso2.com/" + serviceName + "/" + configId + "/STUDENT(4)";
 		String content = "{\"LASTNAME\" : \"Lanka\"}";
 		int responseCode = sendPATCH(endpoint, content, "application/json");
-		Assert.assertEquals(responseCode, 204);
+		Assert.assertEquals(responseCode, ODataTestUtils.NO_CONTENT);
 		Object[] response = sendGET(endpoint, "Application/json");
-		Assert.assertEquals(response[0], 200);
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
 		Assert.assertTrue(response[1].toString().contains("\"FIRSTNAME\":\"Rajith\"") &&
 		                  response[1].toString().contains("\"LASTNAME\":\"Lanka\""));
 	}
 
 	@Test(groups = { "wso2.dss" }, description = "test the entity retrieval", dependsOnMethods = "validatePuttingData")
 	public void validateDeletingData() throws Exception {
-		String endpoint = webappURL + "/odata/t/wso2.com/" + serviceName + "/" + configId + "/STUDENT(3)";
+		String endpoint = webAppUrl + "/odata/t/wso2.com/" + serviceName + "/" + configId + "/STUDENT(3)";
 		int responseCode = sendDELETE(endpoint, "application/json");
-		Assert.assertEquals(responseCode, 204);
+		Assert.assertEquals(responseCode, ODataTestUtils.NO_CONTENT);
 		Object[] response = sendGET(endpoint, "Application/json");
-		Assert.assertEquals(response[0], 404);
+		Assert.assertEquals(response[0], ODataTestUtils.NOT_FOUND);
 
 	}
 
 	@Test(groups = { "wso2.dss" }, description = "test the entity retrieval")
 	public void validateSelectingData() throws Exception {
-		String endpoint = webappURL + "/odata/t/wso2.com/" + serviceName + "/" + configId +
+		String endpoint = webAppUrl + "/odata/t/wso2.com/" + serviceName + "/" + configId +
 		                  "/CUSTOMERS?$select=PHONE,COUNTRY,POSTALCODE";
 		Object[] response = sendGET(endpoint, "Application/json");
-		Assert.assertEquals(response[0], 200);
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
 		Assert.assertTrue(response[1].toString().contains("$metadata#CUSTOMERS(PHONE,POSTALCODE,COUNTRY)"));
 	}
 

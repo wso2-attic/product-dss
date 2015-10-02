@@ -87,8 +87,8 @@ public class ODataReferenceTestCase extends DSSIntegrationTest {
 	public void validateUpdateReferenceTestCase() throws Exception {
 		String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/FILES('WSO2DSS')/FILERECORDS/$ref";
 		Map<String, String> headers = new HashMap<>();
-		String content = " {	\"@odata.id\": \"" + webAppUrl + "/odata/" + serviceName + "/" + configId +
-		                 "/FILERECORDS(5)\"} ";
+		String content = "{\"@odata.id\": \"" + webAppUrl + "/odata/" + serviceName + "/" + configId +
+		                 "/FILERECORDS(5)\"}";
 		headers.put("Accept", "application/json");
 		Object[] response = sendPOST(endpoint, content, headers);
 		Assert.assertEquals(response[0], ODataTestUtils.NO_CONTENT);

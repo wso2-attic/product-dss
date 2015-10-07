@@ -117,4 +117,14 @@ public class ODataQueryTestCase extends DSSIntegrationTest {
 		Assert.assertTrue(response[1].toString().contains("Yu"));
 		Assert.assertTrue(response[1].toString().contains("Yoshi"));
 	}
+
+	@Test(groups = "wso2.dss", description = "filter query test with not operator")
+	public void validateFilterWithNotQueryTestCase() throws Exception {
+		String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/CUSTOMERS?$filter=not(COUNTRY%20eq%20%27Singapore%27)";
+		Map<String, String> headers = new HashMap<>();
+		headers.put("Accept", "application/json");
+		Object[] response = sendGET(endpoint, headers);
+		Assert.assertEquals(response[0], 200);
+		Assert.assertFalse(response[1].toString().contains("Singapore"));
+	}
 }

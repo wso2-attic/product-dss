@@ -33,7 +33,7 @@ import static org.wso2.dss.integration.test.odata.ODataTestUtils.sendPOST;
 public class ODataBatchRequestTestCase  extends DSSIntegrationTest {
 	private final String serviceName = "ODataBatchRequestSampleService";
 	private final String configId = "default";
-	private String webAppUrl;
+	private String webappURL;
 
 	@BeforeClass(alwaysRun = true)
 	public void serviceDeployment() throws Exception {
@@ -42,12 +42,10 @@ public class ODataBatchRequestTestCase  extends DSSIntegrationTest {
 		sqlFileLis.add(selectSqlFile("CreateODataTables.sql"));
 		sqlFileLis.add(selectSqlFile("Customers.sql"));
 		sqlFileLis.add(selectSqlFile("FIlesWithFIlesRecords.sql"));
-		deployService(serviceName, createArtifact(getResourceLocation() +
-		                                          File.separator + "dbs" +
-		                                          File.separator + "odata" +
-		                                          File.separator +
-		                                          "ODataBatchRequestSampleService.dbs", sqlFileLis));
-		webAppUrl = dssContext.getContextUrls().getWebAppURL();
+		deployService(serviceName, createArtifact(getResourceLocation() + File.separator + "dbs" + File.separator +
+		                                          "odata" + File.separator + "ODataBatchRequestSampleService.dbs",
+		                                          sqlFileLis));
+		webappURL = dssContext.getContextUrls().getWebAppURL();
 	}
 
 	@AfterClass(alwaysRun = true)
@@ -58,12 +56,12 @@ public class ODataBatchRequestTestCase  extends DSSIntegrationTest {
 
 	@Test(groups = "wso2.dss", description = "test the service document retrieval")
 	public void validateBatchRequestTestCase() throws Exception {
-		String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/$batch";
+		String endpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/$batch";
 		String content = "--batch_36522ad7-fc75-4b56-8c71-56071383e77b\n" +
 		                 "Content-Type: application/http\n" +
 		                 "Content-Transfer-Encoding:binary\n" +
 		                 "\n" +
-		                 "GET http://localhost:10963/odata/ODataBatchRequestSampleService/default/FILES HTTP/1.1\n" +
+		                 "GET " + webappURL + "/odata/" + serviceName + "/" + configId + "/FILES HTTP/1.1\n" +
 		                 "Accept: application/json;odata.metadata=minimal\n" +
 		                 "\n" +
 		                 "--batch_36522ad7-fc75-4b56-8c71-56071383e77b\n" +
@@ -74,7 +72,7 @@ public class ODataBatchRequestTestCase  extends DSSIntegrationTest {
 		                 "Content-Transfer-Encoding: binary \n" +
 		                 "Content-ID: 1\n" +
 		                 "\n" +
-		                 "POST http://localhost:10963/odata/ODataBatchRequestSampleService/default/FILES HTTP/1.1\n" +
+		                 "POST " + webappURL + "/odata/" + serviceName + "/" + configId + "/FILES HTTP/1.1\n" +
 		                 "OData-Version: 4.0\n" +
 		                 "Content-Type: application/json;odata.metadata=minimal\n" +
 		                 "Accept: application/json;odata.metadata=minimal\n" +
@@ -89,7 +87,8 @@ public class ODataBatchRequestTestCase  extends DSSIntegrationTest {
 		                 "Content-Transfer-Encoding: binary \n" +
 		                 "Content-ID: 2\n" +
 		                 "\n" +
-		                 "PATCH http://localhost:10963/odata/ODataBatchRequestSampleService/default/FILES('WSO2DAS') HTTP/1.1\n" +
+		                 "PATCH " + webappURL + "/odata/" + serviceName + "/" + configId +
+		                 "/FILES('WSO2DAS') HTTP/1.1\n" +
 		                 "OData-Version: 4.0\n" +
 		                 "Content-Type: application/json;odata.metadata=minimal\n" +
 		                 "Accept: application/json;odata.metadata=minimal\n" +
@@ -103,7 +102,7 @@ public class ODataBatchRequestTestCase  extends DSSIntegrationTest {
 		                 "Content-Type: application/http\n" +
 		                 "Content-Transfer-Encoding:binary\n" +
 		                 "\n" +
-		                 "GET http://localhost:10963/odata/ODataBatchRequestSampleService/default/FILES HTTP/1.1\n" +
+		                 "GET " + webappURL + "/odata/" + serviceName + "/" + configId + "/FILES HTTP/1.1\n" +
 		                 "Accept: application/json;odata.metadata=minimal\n" +
 		                 "\n" +
 		                 "--batch_36522ad7-fc75-4b56-8c71-56071383e77b--";
@@ -112,19 +111,19 @@ public class ODataBatchRequestTestCase  extends DSSIntegrationTest {
 		headers.put("OData-Version", "4.0");
 		headers.put("Content-Type", "multipart/mixed;boundary=batch_36522ad7-fc75-4b56-8c71-56071383e77b");
 		Object[] response = sendPOST(endpoint, content, headers);
-		Assert.assertEquals(response[0], ODataTestUtils.ACCEPTED);
+		Assert.assertEquals(response[0], 202);
 		Assert.assertTrue(response[1].toString().contains("WSO2 Business Activity Monitor") &&
 		                  response[1].toString().contains("WSO2 Message Broker"));
 	}
 
 	@Test(groups = "wso2.dss", description = "test the service document retrieval", dependsOnMethods = "validateBatchRequestTestCase")
 	public void validateBatchRequestRollBackTestCase() throws Exception {
-		String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/$batch";
+		String endpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/$batch";
 		String content = "--batch_36522ad7-fc75-4b56-8c71-56071383e77b\n" +
 		                 "Content-Type: application/http\n" +
 		                 "Content-Transfer-Encoding:binary\n" +
 		                 "\n" +
-		                 "GET http://localhost:10963/odata/ODataBatchRequestSampleService/default/FILES HTTP/1.1\n" +
+		                 "GET " + webappURL + "/odata/" + serviceName + "/" + configId + "/FILES HTTP/1.1\n" +
 		                 "Accept: application/json;odata.metadata=minimal\n" +
 		                 "\n" +
 		                 "--batch_36522ad7-fc75-4b56-8c71-56071383e77b\n" +
@@ -135,7 +134,7 @@ public class ODataBatchRequestTestCase  extends DSSIntegrationTest {
 		                 "Content-Transfer-Encoding: binary \n" +
 		                 "Content-ID: 1\n" +
 		                 "\n" +
-		                 "POST http://localhost:10963/odata/ODataBatchRequestSampleService/default/FILES HTTP/1.1\n" +
+		                 "POST " + webappURL + "/odata/" + serviceName + "/" + configId + "/FILES HTTP/1.1\n" +
 		                 "OData-Version: 4.0\n" +
 		                 "Content-Type: application/json;odata.metadata=minimal\n" +
 		                 "Accept: application/json;odata.metadata=minimal\n" +
@@ -150,7 +149,8 @@ public class ODataBatchRequestTestCase  extends DSSIntegrationTest {
 		                 "Content-Transfer-Encoding: binary \n" +
 		                 "Content-ID: 2\n" +
 		                 "\n" +
-		                 "PATCH http://localhost:10963/odata/ODataBatchRequestSampleService/default/FILES('WSO2DAS') HTTP/1.1\n" +
+		                 "PATCH " + webappURL + "/odata/" + serviceName + "/" + configId +
+		                 "/FILES('WSO2DAS') HTTP/1.1\n" +
 		                 "OData-Version: 4.0\n" +
 		                 "Content-Type: application/json;odata.metadata=minimal\n" +
 		                 "Accept: application/json;odata.metadata=minimal\n" +
@@ -164,7 +164,7 @@ public class ODataBatchRequestTestCase  extends DSSIntegrationTest {
 		                 "Content-Type: application/http\n" +
 		                 "Content-Transfer-Encoding:binary\n" +
 		                 "\n" +
-		                 "GET http://localhost:10963/odata/ODataBatchRequestSampleService/default/FILES HTTP/1.1\n" +
+		                 "GET " + webappURL + "/odata/" + serviceName + "/" + configId + "/FILES HTTP/1.1\n" +
 		                 "Accept: application/json;odata.metadata=minimal\n" +
 		                 "\n" +
 		                 "--batch_36522ad7-fc75-4b56-8c71-56071383e77b--";
@@ -173,18 +173,18 @@ public class ODataBatchRequestTestCase  extends DSSIntegrationTest {
 		headers.put("OData-Version", "4.0");
 		headers.put("Content-Type", "multipart/mixed;boundary=batch_36522ad7-fc75-4b56-8c71-56071383e77b");
 		Object[] response = sendPOST(endpoint, content, headers);
-		Assert.assertEquals(response[0], ODataTestUtils.ACCEPTED);
-	}
+		Assert.assertEquals(response[0], 202);
 
+	}
 
 	@Test(groups = "wso2.dss", description = "test the service document retrieval", dependsOnMethods = "validateBatchRequestTestCase")
 	public void validateBatchRequestContinueOnErrorTestCase() throws Exception {
-		String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/$batch";
+		String endpoint = webappURL + "/odata/" + serviceName + "/" + configId + "/$batch";
 		String content = "--batch_36522ad7-fc75-4b56-8c71-56071383e77b\n" +
 		                 "Content-Type: application/http\n" +
 		                 "Content-Transfer-Encoding:binary\n" +
 		                 "\n" +
-		                 "GET http://localhost:10963/odata/ODataBatchRequestSampleService/default/FILES HTTP/1.1\n" +
+		                 "GET " + webappURL + "/odata/" + serviceName + "/" + configId + "/FILES HTTP/1.1\n" +
 		                 "Accept: application/json;odata.metadata=minimal\n" +
 		                 "\n" +
 		                 "--batch_36522ad7-fc75-4b56-8c71-56071383e77b\n" +
@@ -195,7 +195,7 @@ public class ODataBatchRequestTestCase  extends DSSIntegrationTest {
 		                 "Content-Transfer-Encoding: binary \n" +
 		                 "Content-ID: 1\n" +
 		                 "\n" +
-		                 "POST http://localhost:10963/odata/ODataBatchRequestSampleService/default/FILES HTTP/1.1\n" +
+		                 "POST " + webappURL + "/odata/" + serviceName + "/" + configId + "/FILES HTTP/1.1\n" +
 		                 "OData-Version: 4.0\n" +
 		                 "Content-Type: application/json;odata.metadata=minimal\n" +
 		                 "Accept: application/json;odata.metadata=minimal\n" +
@@ -210,7 +210,8 @@ public class ODataBatchRequestTestCase  extends DSSIntegrationTest {
 		                 "Content-Transfer-Encoding: binary \n" +
 		                 "Content-ID: 2\n" +
 		                 "\n" +
-		                 "PATCH http://localhost:10963/odata/ODataBatchRequestSampleService/default/FILES('WSO2DAS') HTTP/1.1\n" +
+		                 "PATCH " + webappURL + "/odata/" + serviceName + "/" + configId +
+		                 "/FILES('WSO2DAS') HTTP/1.1\n" +
 		                 "OData-Version: 4.0\n" +
 		                 "Content-Type: application/json;odata.metadata=minimal\n" +
 		                 "Accept: application/json;odata.metadata=minimal\n" +
@@ -224,18 +225,19 @@ public class ODataBatchRequestTestCase  extends DSSIntegrationTest {
 		                 "Content-Type: application/http\n" +
 		                 "Content-Transfer-Encoding:binary\n" +
 		                 "\n" +
-		                 "GET http://localhost:10963/odata/ODataBatchRequestSampleService/default/FILES HTTP/1.1\n" +
+		                 "GET " + webappURL + "/odata/" + serviceName + "/" + configId + "/FILES HTTP/1.1\n" +
 		                 "Accept: application/json;odata.metadata=minimal\n" +
 		                 "\n" +
 		                 "--batch_36522ad7-fc75-4b56-8c71-56071383e77b--";
 		Map<String, String> headers = new HashMap<>();
-		headers.put("Prefer","odata.continue-on-error");
+		headers.put("Prefer", "odata.continue-on-error");
 		headers.put("Accept", "application/json");
 		headers.put("OData-Version", "4.0");
 		headers.put("Content-Type", "multipart/mixed;boundary=batch_36522ad7-fc75-4b56-8c71-56071383e77b");
 		Object[] response = sendPOST(endpoint, content, headers);
 		Assert.assertEquals(response[0], ODataTestUtils.ACCEPTED);
-		Assert.assertTrue(response[1].toString().indexOf("WSO2 Message Broker") != response[1].toString().lastIndexOf("WSO2 Message Broker"));
+		Assert.assertTrue(response[1].toString().indexOf("WSO2 Message Broker") !=
+		                  response[1].toString().lastIndexOf("WSO2 Message Broker"));
 	}
 
 }

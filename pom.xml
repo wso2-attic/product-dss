@@ -621,9 +621,10 @@
 
     <properties>
         <product.dss.version>3.5.0-SNAPSHOT</product.dss.version>
-        <carbon.commons.version>4.5.0</carbon.commons.version>
+        <carbon.commons.version>4.4.7</carbon.commons.version>
         <carbon.commons.ndatasource.version>4.5.0</carbon.commons.ndatasource.version>
         <carbon.commons.ntask.version>4.4.3</carbon.commons.ntask.version>
+        <carbon.analytics-common.version>5.0.4</carbon.analytics-common.version>
         <wss4j.orbit.version>1.5.11.wso2v9</wss4j.orbit.version>
         <carbon-data.version>4.3.3-SNAPSHOT</carbon-data.version>
         <rampart.orbit.version>1.6.1.wso2v14</rampart.orbit.version>

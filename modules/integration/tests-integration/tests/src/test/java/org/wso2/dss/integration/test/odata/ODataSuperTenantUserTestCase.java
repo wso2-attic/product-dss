@@ -149,7 +149,10 @@ public class ODataSuperTenantUserTestCase extends DSSIntegrationTest {
 		                  "/CUSTOMERS?$select=PHONE,COUNTRY,POSTALCODE";
 		Object[] response = sendGET(endpoint, "Application/json");
 		Assert.assertEquals(response[0], ODataTestUtils.OK);
-		Assert.assertTrue(response[1].toString().contains("$metadata#CUSTOMERS(PHONE,POSTALCODE,COUNTRY)"));
+		Assert.assertTrue(response[1].toString().contains("PHONE") && response[1].toString().contains("COUNTRY") &&
+		                  response[1].toString().contains("POSTALCODE"));
+		Assert.assertTrue(!response[1].toString().contains("CONTACTLASTNAME") ||
+		                   !response[1].toString().contains("CUSTOMERNUMBER"));
 	}
 
 	private static int sendPOST(String endpoint, String content, String acceptType) throws IOException {

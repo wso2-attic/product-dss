@@ -32,10 +32,8 @@ import javax.activation.DataHandler;
 import java.io.File;
 import java.net.URL;
 import java.rmi.RemoteException;
-import java.util.StringTokenizer;
 
 import static org.testng.Assert.assertTrue;
-import static org.testng.Assert.fail;
 
 public class FaultDBExceptionTestCase extends DSSIntegrationTest {
 

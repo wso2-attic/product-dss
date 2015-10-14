@@ -4,22 +4,22 @@
         <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ws.wso2.org/dataservice">
             <xs:element name="DataServiceFault">
                 <xs:complexType>
-                    <xs:sequence>
+                    <xs:all>
                         <xs:element name="current_params" type="xs:string"/>
                         <xs:element name="current_request_name" type="xs:string"/>
                         <xs:element name="nested_exception" type="xs:string"/>
                         <xs:element name="source_data_service">
                             <xs:complexType>
-                                <xs:sequence>
+                                <xs:all>
                                     <xs:element name="location" type="xs:string"/>
                                     <xs:element name="default_namespace" type="xs:string"/>
                                     <xs:element name="description" type="xs:string"/>
                                     <xs:element name="data_service_name" type="xs:string"/>
-                                </xs:sequence>
+                                </xs:all>
                             </xs:complexType>
                         </xs:element>
                         <xs:element name="ds_code" type="xs:string"/>
-                    </xs:sequence>
+                    </xs:all>
                 </xs:complexType>
             </xs:element>
             <xs:element name="REQUEST_STATUS" type="xs:string"/>
@@ -44,13 +44,13 @@
                 </xs:sequence>
             </xs:complexType>
             <xs:complexType name="Movie">
-                <xs:sequence>
+                <xs:all>
                     <xs:element name="title" nillable="true" type="xs:string"/>
                     <xs:element name="director" nillable="true" type="xs:string"/>
                     <xs:element name="year" nillable="true" type="xs:string"/>
                     <xs:element name="genre" nillable="true" type="xs:string"/>
                     <xs:element name="actor" nillable="true" type="xs:string"/>
-                </xs:sequence>
+                </xs:all>
             </xs:complexType>
             <xs:element name="getAllMovieData">
                 <xs:complexType>

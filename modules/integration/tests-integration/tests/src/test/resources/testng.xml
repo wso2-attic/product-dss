@@ -31,6 +31,12 @@
         </packages>
     </test>
 
+    <test name="RDF-tests" parallel="false" verbose="2">
+        <packages>
+            <package name="org.wso2.dss.integration.test.rdf"/>
+        </packages>
+    </test>
+
     <test name="DSS-file-service-tests" parallel="false" verbose="2">
         <packages>
             <package name="org.wso2.dss.integration.test.fileservice"/>

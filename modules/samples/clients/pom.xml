@@ -143,6 +143,14 @@
                                     <classpath refid="maven.compile.classpath"/>
                                     <classpath refid="maven.runtime.classpath"/>
                                 </java>
+                                <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
+                                    <arg line="-uri wsdl/RDFSampleService.wsdl -u -uw
+                                      -o target/generated -p org.wso2.carbon.dataservices.samples.rdf_dataservice
+                                      -ns2p http://ws.wso2.org/dataservice/rdf_dataservice=org.wso2.carbon.dataservices.samples.types.rdf_dataservice"/>
+                                    <classpath refid="maven.dependency.classpath"/>
+                                    <classpath refid="maven.compile.classpath"/>
+                                    <classpath refid="maven.runtime.classpath"/>
+                                </java>
                               </tasks>
                         </configuration>
                     </execution>

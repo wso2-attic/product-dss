@@ -98,11 +98,11 @@
         </packages>
     </test>
 
-    <test name="DSS-jira-issues-tests-email" parallel="false" verbose="2">
-        <classes>
-            <class name="org.wso2.dss.integration.test.jira.issues.DS1063EmailUsernameTestCase"/>
-        </classes>
-    </test>
+    <!--<test name="DSS-jira-issues-tests-email" parallel="false" verbose="2">-->
+        <!--<classes>-->
+            <!--<class name="org.wso2.dss.integration.test.jira.issues.DS1063EmailUsernameTestCase"/>-->
+        <!--</classes>-->
+    <!--</test>-->
 
     <test name="DSS-jira-issues-tests" parallel="false" verbose="2">
         <classes>
@@ -110,11 +110,11 @@
         </classes>
     </test>
 
-    <test name="DSS-jira-issues-tests-time" parallel="false" verbose="2">
-        <classes>
-            <class name="org.wso2.dss.integration.test.jira.issues.DS1069DifferentTimeStampStoreIssueTestCase"/>
-        </classes>
-    </test>
+    <!--<test name="DSS-jira-issues-tests-time" parallel="false" verbose="2">-->
+        <!--<classes>-->
+            <!--<class name="org.wso2.dss.integration.test.jira.issues.DS1069DifferentTimeStampStoreIssueTestCase"/>-->
+        <!--</classes>-->
+    <!--</test>-->
 
     <test name="DSS-jira-issues-boxcarring-parallel-access" parallel="false" verbose="2">
         <classes>

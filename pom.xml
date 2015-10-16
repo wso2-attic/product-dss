@@ -602,42 +602,11 @@
         <url>https://wso2.org/jira/browse/DS</url>
     </issueManagement>
 
-    <!--<repositories>-->
-
-
-
-
-        <!--<repository>-->
-            <!--<id>staging</id>-->
-            <!--<name>WSO2 internal Repository</name>-->
-            <!--<url>http://maven.wso2.org/nexus/content/repositories/orgwso2carboncommons-094/</url>-->
-            <!--<releases>-->
-                <!--<enabled>true</enabled>-->
-                <!--<updatePolicy>daily</updatePolicy>-->
-                <!--<checksumPolicy>ignore</checksumPolicy>-->
-            <!--</releases>-->
-        <!--</repository>-->
-    <!--</repositories>-->
-
-    <repositories>
-        <!-- WSO2 released artifact repository -->
-        <repository>
-            <id>wso2.kernel.staging</id>
-            <name>WSO2 Releases Repository</name>
-            <url>http://maven.wso2.org/nexus/content/repositories/orgwso2carbon-019/</url>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-                <checksumPolicy>ignore</checksumPolicy>
-            </releases>
-        </repository>
-    </repositories>
-
     <properties>
         <product.dss.version>3.5.0-SNAPSHOT</product.dss.version>
         <carbon.commons.version>4.4.7</carbon.commons.version>
         <carbon.commons.ndatasource.version>4.5.0</carbon.commons.ndatasource.version>
-        <carbon.commons.ntask.version>4.4.3</carbon.commons.ntask.version>
+        <carbon.commons.ntask.version>4.4.3</carbon.commons.ntask.version> <!-- todo check and remove this - rajith -->
         <carbon.analytics-common.version>5.0.4</carbon.analytics-common.version>
         <wss4j.orbit.version>1.5.11.wso2v9</wss4j.orbit.version>
         <carbon-data.version>4.3.3-SNAPSHOT</carbon-data.version>
@@ -666,7 +635,7 @@
         <carbon.multitenancy.version>4.4.3</carbon.multitenancy.version>
         <carbon.identity.version>4.5.6</carbon.identity.version>
         <testng.version>6.8</testng.version>
-	    <carbon.kernel.version>4.4.2</carbon.kernel.version>
+	    <carbon.kernel.version>4.4.2-SNAPSHOT</carbon.kernel.version>
         <eclipse.version>3.2.0</eclipse.version>
         <servlet-api.version>2.4</servlet-api.version>
         <carbon.p2.plugin.version>1.5.3</carbon.p2.plugin.version>

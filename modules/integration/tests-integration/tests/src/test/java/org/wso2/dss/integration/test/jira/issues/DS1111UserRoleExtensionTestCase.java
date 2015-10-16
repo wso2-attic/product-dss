@@ -24,6 +24,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.wso2.carbon.automation.test.utils.http.client.HttpResponse;
+import org.wso2.carbon.integration.common.utils.LoginLogoutClient;
 import org.wso2.carbon.integration.common.utils.mgt.ServerConfigurationManager;
 import org.wso2.dss.integration.test.DSSIntegrationTest;
 
@@ -54,23 +55,20 @@ public class DS1111UserRoleExtensionTestCase extends DSSIntegrationTest {
     public void serviceDeployment() throws Exception {
 
         super.init();
+        serverConfigurationManager = new ServerConfigurationManager(dssContext);
+        serverConfigurationManager.copyToComponentLib(new File(getResourceLocation() + File.separator + "jar" + File.separator
+                                                               + "roleRetriever-1.0.0.jar"));
+        serverConfigurationManager.restartForcefully();
+        
+        LoginLogoutClient loginLogoutClient = new LoginLogoutClient(dssContext);
+        sessionCookie = loginLogoutClient.login();
+
         List<File> sqlFileLis = new ArrayList<File>();
         sqlFileLis.add(selectSqlFile("CreateEmailUsersTable.sql"));
         deployService(serviceName,
                 createArtifact(getResourceLocation() + File.separator + "dbs" + File.separator
                         + "rdbms" + File.separator + "h2" + File.separator
                         + serviceName + ".dbs", sqlFileLis));
-
-        serverConfigurationManager = new ServerConfigurationManager(dssContext);
-        serverConfigurationManager.copyToComponentLib(new File(getResourceLocation() + File.separator + "jar" + File.separator
-                + "roleRetriever-1.0.0.jar"));
-
-        String carbonHome = System.getProperty("carbon.home");
-        File sourceFile = new File(getResourceLocation() + File.separator + "serverConfigs" + File.separator
-                + "dataServices.xml");
-        File destinationFile = new File(carbonHome + File.separator + "repository" + File.separator + "conf" + File.separator + "dataServices.xml");
-
-        serverConfigurationManager.applyConfiguration(sourceFile,destinationFile);//this will restart the server as well
 
         serviceEndPoint = getServiceUrlHttp(serviceName);
 

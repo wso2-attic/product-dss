@@ -11,141 +11,141 @@
         <listener class-name="org.wso2.carbon.automation.engine.testlisteners.TestTransformerListener"/>
     </listeners>
 
-    <test name="InitializeAndSetupServer" preserve-order="true">
-        <classes>
-            <class name="org.wso2.dss.integration.test.server.mgt.DSSServerStartupTestCase"/>
-            <!--disabled due to test failure-->
-            <!--<class name="org.wso2.dss.integration.test.server.mgt.DSSServerBundleStatusTestCase"/>-->
-        </classes>
-    </test>
+    <!--<test name="InitializeAndSetupServer" preserve-order="true">-->
+        <!--<classes>-->
+            <!--<class name="org.wso2.dss.integration.test.server.mgt.DSSServerStartupTestCase"/>-->
+            <!--&lt;!&ndash;disabled due to test failure&ndash;&gt;-->
+            <!--&lt;!&ndash;<class name="org.wso2.dss.integration.test.server.mgt.DSSServerBundleStatusTestCase"/>&ndash;&gt;-->
+        <!--</classes>-->
+    <!--</test>-->
 
-    <test name="DSS-Schedule-task-tests" parallel="false" verbose="2">
-        <packages>
-            <package name="org.wso2.dss.integration.test.scheduletask"/>
-        </packages>
-    </test>
+    <!--<test name="DSS-Schedule-task-tests" parallel="false" verbose="2">-->
+        <!--<packages>-->
+            <!--<package name="org.wso2.dss.integration.test.scheduletask"/>-->
+        <!--</packages>-->
+    <!--</test>-->
 
-    <test name="OData-tests" parallel="false" verbose="2">
-        <packages>
-            <package name="org.wso2.dss.integration.test.odata"/>
-        </packages>
-    </test>
+    <!--<test name="OData-tests" parallel="false" verbose="2">-->
+        <!--<packages>-->
+            <!--<package name="org.wso2.dss.integration.test.odata"/>-->
+        <!--</packages>-->
+    <!--</test>-->
 
-    <test name="RDF-tests" parallel="false" verbose="2">
-        <packages>
-            <package name="org.wso2.dss.integration.test.rdf"/>
-        </packages>
-    </test>
+    <!--<test name="RDF-tests" parallel="false" verbose="2">-->
+        <!--<packages>-->
+            <!--<package name="org.wso2.dss.integration.test.rdf"/>-->
+        <!--</packages>-->
+    <!--</test>-->
 
-    <test name="SPARQL-tests" parallel="false" verbose="2">
-        <packages>
-            <package name="org.wso2.dss.integration.test.sparql"/>
-        </packages>
-    </test>
+    <!--<test name="SPARQL-tests" parallel="false" verbose="2">-->
+        <!--<packages>-->
+            <!--<package name="org.wso2.dss.integration.test.sparql"/>-->
+        <!--</packages>-->
+    <!--</test>-->
 
-    <test name="DSS-file-service-tests" parallel="false" verbose="2">
-        <packages>
-            <package name="org.wso2.dss.integration.test.fileservice"/>
-        </packages>
-    </test>
-    <test name="DSS-service-tests" parallel="false" verbose="2">
-        <packages>
-            <package name="org.wso2.dss.integration.test.services"/>
-        </packages>
-    </test>
+    <!--<test name="DSS-file-service-tests" parallel="false" verbose="2">-->
+        <!--<packages>-->
+            <!--<package name="org.wso2.dss.integration.test.fileservice"/>-->
+        <!--</packages>-->
+    <!--</test>-->
+    <!--<test name="DSS-service-tests" parallel="false" verbose="2">-->
+        <!--<packages>-->
+            <!--<package name="org.wso2.dss.integration.test.services"/>-->
+        <!--</packages>-->
+    <!--</test>-->
 
-    <test name="DSS-service-syntax-tests" parallel="false" verbose="2">
-        <packages>
-            <package name="org.wso2.dss.integration.test.syntax"/>
-        </packages>
-    </test>
+    <!--<test name="DSS-service-syntax-tests" parallel="false" verbose="2">-->
+        <!--<packages>-->
+            <!--<package name="org.wso2.dss.integration.test.syntax"/>-->
+        <!--</packages>-->
+    <!--</test>-->
 
-    <test name="DSS-faulty-service-tests" parallel="false" verbose="2">
-        <packages>
-            <package name="org.wso2.dss.integration.test.faulty.service"/>
-        </packages>
-    </test>
+    <!--<test name="DSS-faulty-service-tests" parallel="false" verbose="2">-->
+        <!--<packages>-->
+            <!--<package name="org.wso2.dss.integration.test.faulty.service"/>-->
+        <!--</packages>-->
+    <!--</test>-->
 
 
-    <test name="DSS-datasource-tests" parallel="false" verbose="2">
-        <packages>
-            <package name="org.wso2.dss.integration.test.datasource"/>
-        </packages>
-    </test>
+    <!--<test name="DSS-datasource-tests" parallel="false" verbose="2">-->
+        <!--<packages>-->
+            <!--<package name="org.wso2.dss.integration.test.datasource"/>-->
+        <!--</packages>-->
+    <!--</test>-->
 
-    <test name="DSS-jms-tests" parallel="false" verbose="2">
-        <packages>
-            <package name="org.wso2.dss.integration.test.jmx.statistics"/>
-        </packages>
-    </test>
+    <!--<test name="DSS-jms-tests" parallel="false" verbose="2">-->
+        <!--<packages>-->
+            <!--<package name="org.wso2.dss.integration.test.jmx.statistics"/>-->
+        <!--</packages>-->
+    <!--</test>-->
+
+    <!--&lt;!&ndash;<test name="DSS-jira-issues-tests" parallel="false" verbose="2">&ndash;&gt;-->
+    <!--&lt;!&ndash;<packages>&ndash;&gt;-->
+    <!--&lt;!&ndash;<package name="org.wso2.dss.integration.test.jira.issues"/>&ndash;&gt;-->
+    <!--&lt;!&ndash;</packages>&ndash;&gt;-->
+    <!--&lt;!&ndash;</test>&ndash;&gt;-->
+
+
+    <!--&lt;!&ndash;<test name="DSS-jira-issues-tests" parallel="false" verbose="2">&ndash;&gt;-->
+    <!--&lt;!&ndash;<classes>&ndash;&gt;-->
+    <!--&lt;!&ndash;<class name="org.wso2.dss.integration.test.jira.issues.CARBON15235JsonValueTypeMissMatchTest"/>&ndash;&gt;-->
+    <!--&lt;!&ndash;</classes>&ndash;&gt;-->
+    <!--&lt;!&ndash;</test>&ndash;&gt;-->
+
+    <!--<test name="DSS-samples-tests" parallel="false" verbose="2">-->
+        <!--<packages>-->
+            <!--<package name="org.wso2.dss.integration.test.samples"/>-->
+        <!--</packages>-->
+    <!--</test>-->
+
+    <!--&lt;!&ndash;<test name="DSS-jira-issues-tests-email" parallel="false" verbose="2">&ndash;&gt;-->
+        <!--&lt;!&ndash;<classes>&ndash;&gt;-->
+            <!--&lt;!&ndash;<class name="org.wso2.dss.integration.test.jira.issues.DS1063EmailUsernameTestCase"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;</classes>&ndash;&gt;-->
+    <!--&lt;!&ndash;</test>&ndash;&gt;-->
 
     <!--<test name="DSS-jira-issues-tests" parallel="false" verbose="2">-->
-    <!--<packages>-->
-    <!--<package name="org.wso2.dss.integration.test.jira.issues"/>-->
-    <!--</packages>-->
-    <!--</test>-->
-
-
-    <!--<test name="DSS-jira-issues-tests" parallel="false" verbose="2">-->
-    <!--<classes>-->
-    <!--<class name="org.wso2.dss.integration.test.jira.issues.CARBON15235JsonValueTypeMissMatchTest"/>-->
-    <!--</classes>-->
-    <!--</test>-->
-
-    <test name="DSS-samples-tests" parallel="false" verbose="2">
-        <packages>
-            <package name="org.wso2.dss.integration.test.samples"/>
-        </packages>
-    </test>
-
-    <!--<test name="DSS-jira-issues-tests-email" parallel="false" verbose="2">-->
         <!--<classes>-->
-            <!--<class name="org.wso2.dss.integration.test.jira.issues.DS1063EmailUsernameTestCase"/>-->
+            <!--<class name="org.wso2.dss.integration.test.jira.issues.DS954UseExcelFromRegistryTestCase"/>-->
         <!--</classes>-->
     <!--</test>-->
 
-    <test name="DSS-jira-issues-tests" parallel="false" verbose="2">
-        <classes>
-            <class name="org.wso2.dss.integration.test.jira.issues.DS954UseExcelFromRegistryTestCase"/>
-        </classes>
-    </test>
+    <!--&lt;!&ndash;<test name="DSS-jira-issues-tests-time" parallel="false" verbose="2">&ndash;&gt;-->
+        <!--&lt;!&ndash;<classes>&ndash;&gt;-->
+            <!--&lt;!&ndash;<class name="org.wso2.dss.integration.test.jira.issues.DS1069DifferentTimeStampStoreIssueTestCase"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;</classes>&ndash;&gt;-->
+    <!--&lt;!&ndash;</test>&ndash;&gt;-->
 
-    <!--<test name="DSS-jira-issues-tests-time" parallel="false" verbose="2">-->
+    <!--<test name="DSS-jira-issues-boxcarring-parallel-access" parallel="false" verbose="2">-->
         <!--<classes>-->
-            <!--<class name="org.wso2.dss.integration.test.jira.issues.DS1069DifferentTimeStampStoreIssueTestCase"/>-->
+            <!--<class name="org.wso2.dss.integration.test.jira.issues.DS1083BoxcarringParallelInsertTestCase"/>-->
         <!--</classes>-->
     <!--</test>-->
 
-    <test name="DSS-jira-issues-boxcarring-parallel-access" parallel="false" verbose="2">
-        <classes>
-            <class name="org.wso2.dss.integration.test.jira.issues.DS1083BoxcarringParallelInsertTestCase"/>
-        </classes>
-    </test>
-
-    <test name="DSS-jira-issues-dataservice-duplicate" parallel="false" verbose="2">
-        <classes>
-            <class name="org.wso2.dss.integration.test.jira.issues.DS1103DuplicateDataServiceTestCase"/>
-        </classes>
-    </test>
-
-    <!-- todo test and uncomment below test once DSS is upgraded to kernel 4.4.x or 4.5.0 -->
-    <!--<test name="DSS-jira-issues-XML-Entity-Attack-Test" parallel="false" verbose="2">-->
+    <!--<test name="DSS-jira-issues-dataservice-duplicate" parallel="false" verbose="2">-->
         <!--<classes>-->
-            <!--<class name="org.wso2.dss.integration.test.jira.issues.CARBON15379XMLExternalEntityAttacksTestCase"/>-->
+            <!--<class name="org.wso2.dss.integration.test.jira.issues.DS1103DuplicateDataServiceTestCase"/>-->
         <!--</classes>-->
     <!--</test>-->
 
-    <test name="DSS-requestBox-tests" parallel="false" verbose="2">
-        <packages>
-            <package name="org.wso2.dss.integration.test.requestBox"/>
-        </packages>
-    </test>
+    <!--&lt;!&ndash; todo test and uncomment below test once DSS is upgraded to kernel 4.4.x or 4.5.0 &ndash;&gt;-->
+    <!--&lt;!&ndash;<test name="DSS-jira-issues-XML-Entity-Attack-Test" parallel="false" verbose="2">&ndash;&gt;-->
+        <!--&lt;!&ndash;<classes>&ndash;&gt;-->
+            <!--&lt;!&ndash;<class name="org.wso2.dss.integration.test.jira.issues.CARBON15379XMLExternalEntityAttacksTestCase"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;</classes>&ndash;&gt;-->
+    <!--&lt;!&ndash;</test>&ndash;&gt;-->
 
-    <test name="DSS-gspread-tests" parallel="false" verbose="2">
-        <classes>
-            <class name="org.wso2.dss.integration.test.gspread.GSpreadDataServiceTestCase"/>
-        </classes>
-    </test>
+    <!--<test name="DSS-requestBox-tests" parallel="false" verbose="2">-->
+        <!--<packages>-->
+            <!--<package name="org.wso2.dss.integration.test.requestBox"/>-->
+        <!--</packages>-->
+    <!--</test>-->
+
+    <!--<test name="DSS-gspread-tests" parallel="false" verbose="2">-->
+        <!--<classes>-->
+            <!--<class name="org.wso2.dss.integration.test.gspread.GSpreadDataServiceTestCase"/>-->
+        <!--</classes>-->
+    <!--</test>-->
 
     <test name="DSS-jira-issues-role-extension-test" parallel="false" verbose="2">
         <classes>

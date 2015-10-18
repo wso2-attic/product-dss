@@ -66,7 +66,7 @@ public class ODataQueryTestCase extends DSSIntegrationTest {
 		headers.put("Accept", "application/json");
 		Object[] response = sendGET(endpoint, headers);
 		Assert.assertEquals(response[0], ODataTestUtils.OK);
-		Assert.assertTrue(!response[0].toString().contains("FILENAME"));
+		Assert.assertTrue(!response[1].toString().contains("FILENAME"));
 	}
 
 	@Test(groups = "wso2.dss", description = "top query test")
@@ -121,6 +121,17 @@ public class ODataQueryTestCase extends DSSIntegrationTest {
 		Assert.assertTrue(!response[1].toString().contains("Zbyszek"));
 		Assert.assertTrue(response[1].toString().contains("Yu"));
 		Assert.assertTrue(response[1].toString().contains("Yoshi"));
+	}
+
+	@Test(groups = "wso2.dss", description = "skip token query test")
+	public void validateSkipTokenQueryTestCase() throws Exception {
+		String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/CUSTOMERS?$skiptoken=2";
+		Map<String, String> headers = new HashMap<>();
+		headers.put("Prefer", "odata.maxpagesize=5");
+		headers.put("Accept", "application/json");
+		Object[] response = sendGET(endpoint, headers);
+		Assert.assertEquals(response[0], ODataTestUtils.OK);
+		Assert.assertTrue(response[1].toString().contains("CUSTOMERS?$skiptoken=3"));
 	}
 
 	@Test(groups = "wso2.dss", description = "filter query test with not operator")

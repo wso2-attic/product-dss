@@ -33,7 +33,7 @@ import java.util.Map;
 import static org.wso2.dss.integration.test.odata.ODataTestUtils.sendGET;
 
 public class ODataStringFunctionsTestCase extends DSSIntegrationTest {
-    private final String serviceName = "ODataBatchRequestSampleService";
+    private final String serviceName = "ODataQuerySampleService";
     private final String configId = "default";
     private String webAppUrl;
 
@@ -45,7 +45,7 @@ public class ODataStringFunctionsTestCase extends DSSIntegrationTest {
         sqlFileLis.add(selectSqlFile("Customers.sql"));
         sqlFileLis.add(selectSqlFile("FIlesWithFIlesRecords.sql"));
         deployService(serviceName, createArtifact(getResourceLocation() + File.separator + "dbs" + File.separator +
-                                                  "odata" + File.separator + "ODataBatchRequestSampleService.dbs",
+                                                  "odata" + File.separator + "ODataQuerySampleService.dbs",
                                                   sqlFileLis));
         webAppUrl = dssContext.getContextUrls().getWebAppURL();
     }
@@ -57,8 +57,8 @@ public class ODataStringFunctionsTestCase extends DSSIntegrationTest {
     }
 
     @Test(groups = "wso2.dss", description = "select query test")
-    public void validateSelectQueryTestCase() throws Exception {
-        String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/CUSTOMERS?$filter=substringof(Alfreds',20%CompanyName)20%eq20%true";
+    public void validateContainsFunctionTestCase() throws Exception {
+        String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/CUSTOMERS?$filter=contains(CUSTOMERNAME,%27Dragon%27)%20eq%20true";
         Map<String, String> headers = new HashMap<>();
         headers.put("Accept", "application/json");
         Object[] response = sendGET(endpoint, headers);
@@ -66,4 +66,60 @@ public class ODataStringFunctionsTestCase extends DSSIntegrationTest {
         Assert.assertTrue(!response[1].toString().contains("FILENAME"));
     }
 
+    @Test(groups = "wso2.dss", description = "select query test")
+    public void validateEndsWithFunctionTestCase() throws Exception {
+        String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/CUSTOMERS?$filter=endswith(CUSTOMERNAME,%27Stores%27)%20eq%20true";
+        Map<String, String> headers = new HashMap<>();
+        headers.put("Accept", "application/json");
+        Object[] response = sendGET(endpoint, headers);
+        Assert.assertEquals(response[0], ODataTestUtils.OK);
+    }
+
+    @Test(groups = "wso2.dss", description = "select query test")
+    public void validateStartsWithFunctionTestCase() throws Exception {
+        String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/CUSTOMERS?$filter=startswith(CUSTOMERNAME,%27Gift%27)%20eq%20true";
+        Map<String, String> headers = new HashMap<>();
+        headers.put("Accept", "application/json");
+        Object[] response = sendGET(endpoint, headers);
+        Assert.assertEquals(response[0], ODataTestUtils.OK);
+    }
+
+    @Test(groups = "wso2.dss", description = "select query test")
+    public void validateLengthFunctionTestCase() throws Exception {
+        String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/CUSTOMERS?$filter=length(CUSTOMERNAME)%20eq%2012";
+        Map<String, String> headers = new HashMap<>();
+        headers.put("Accept", "application/json");
+        Object[] response = sendGET(endpoint, headers);
+        Assert.assertEquals(response[0], ODataTestUtils.OK);
+    }
+
+    @Test(groups = "wso2.dss", description = "select query test")
+    public void validateIndexOfFunctionTestCase() throws Exception {
+        String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/CUSTOMERS?$filter=indexof(CUSTOMERNAME,%27Gift%27)%20eq%201";
+        Map<String, String> headers = new HashMap<>();
+        headers.put("Accept", "application/json");
+        Object[] response = sendGET(endpoint, headers);
+        Assert.assertEquals(response[0], ODataTestUtils.OK);
+    }
+
+
+    @Test(groups = "wso2.dss", description = "select query test")
+    public void validateToLowerFunctionTestCase() throws Exception {
+        String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/CUSTOMERS?$filter=tolower(CUSTOMERNAME)%20eq%20%27signal%20gift%20stores%27";
+        Map<String, String> headers = new HashMap<>();
+        headers.put("Accept", "application/json");
+        Object[] response = sendGET(endpoint, headers);
+        Assert.assertEquals(response[0], ODataTestUtils.OK);
+        Assert.assertTrue(!response[1].toString().contains("FILENAME"));
+    }
+
+    @Test(groups = "wso2.dss", description = "select query test")
+    public void validateToUpperFunctionTestCase() throws Exception {
+        String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/CUSTOMERS?$filter=toupper(CUSTOMERNAME)%20eq%20%27SIGNAL%20GIFT%20STORES%27";
+        Map<String, String> headers = new HashMap<>();
+        headers.put("Accept", "application/json");
+        Object[] response = sendGET(endpoint, headers);
+        Assert.assertEquals(response[0], ODataTestUtils.OK);
+        Assert.assertTrue(!response[1].toString().contains("FILENAME"));
+    }
 }

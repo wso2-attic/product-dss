@@ -25,6 +25,12 @@
         </packages>
     </test>
 
+    <test name="DSS-DBConsole" parallel="false" verbose="2">
+        <packages>
+            <package name="org.wso2.dss.integration.test.dbConsole"/>
+        </packages>
+    </test>
+
     <test name="OData-tests" parallel="false" verbose="2">
         <packages>
             <package name="org.wso2.dss.integration.test.odata"/>

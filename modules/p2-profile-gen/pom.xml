@@ -104,7 +104,10 @@
                                     org.wso2.carbon:org.wso2.carbon.core.runtime.feature:${carbon.kernel.version}
                                 </featureArtifactDef>
                                 <featureArtifactDef>
-                                    org.wso2.carbon.commons:org.wso2.carbon.ntask.feature:${carbon.commons.ntask.version}
+                                    org.wso2.carbon.commons:org.wso2.carbon.ntask.core.feature:${carbon.commons.version}
+                                </featureArtifactDef>
+                                <featureArtifactDef>
+                                    org.wso2.carbon.commons:org.wso2.carbon.ntask.feature:${carbon.commons.version}
                                 </featureArtifactDef>
                                 <featureArtifactDef>
                                     org.wso2.carbon.data:org.wso2.carbon.dbconsole.ui.feature:${carbon-data.version}
@@ -358,10 +361,14 @@
                                 <!--<version>${stratos.version}</version>-->
                                 <!--</feature>-->
 
-                                <!--<feature>-->
-                                    <!--<id>org.wso2.carbon.ntask.feature.group</id>-->
-                                    <!--<version>${carbon.commons.ntask.version}</version>-->
-                                <!--</feature>-->
+                                <feature>
+                                    <id>org.wso2.carbon.ntask.core.feature.group</id>
+                                    <version>${carbon.commons.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.ntask.feature.group</id>
+                                    <version>${carbon.commons.version}</version>
+                                </feature>
 
                                 <feature>
                                     <id>org.wso2.carbon.logging.mgt.feature.group</id>
@@ -676,10 +683,14 @@
                                 <!--<version>${stratos.version}</version>-->
                                 <!--</feature>-->
 
-                                <!--<feature>-->
-                                    <!--<id>org.wso2.carbon.ntask.feature.group</id>-->
-                                    <!--<version>${carbon.commons.ntask.version}</version>-->
-                                <!--</feature>-->
+                                <feature>
+                                    <id>org.wso2.carbon.ntask.core.feature.group</id>
+                                    <version>${carbon.commons.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.ntask.feature.group</id>
+                                    <version>${carbon.commons.version}</version>
+                                </feature>
 
                                 <feature>
                                     <id>org.wso2.carbon.logging.mgt.server.feature.group</id>

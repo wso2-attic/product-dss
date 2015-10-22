@@ -604,7 +604,7 @@
 
     <properties>
         <product.dss.version>3.5.0-SNAPSHOT</product.dss.version>
-        <carbon.commons.version>4.4.7</carbon.commons.version>
+        <carbon.commons.version>4.4.8</carbon.commons.version>
         <carbon.commons.ndatasource.version>4.5.0</carbon.commons.ndatasource.version>
         <carbon.commons.ntask.version>4.4.3</carbon.commons.ntask.version> <!-- todo check and remove this - rajith -->
         <carbon.analytics-common.version>5.0.4</carbon.analytics-common.version>

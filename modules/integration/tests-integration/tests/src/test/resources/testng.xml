@@ -25,11 +25,11 @@
         </packages>
     </test>
 
-    <test name="DSS-DBConsole" parallel="false" verbose="2">
+<!--    <test name="DSS-DBConsole" parallel="false" verbose="2">
         <packages>
             <package name="org.wso2.dss.integration.test.dbConsole"/>
         </packages>
-    </test>
+    </test>-->
 
     <test name="OData-tests" parallel="false" verbose="2">
         <packages>
@@ -177,4 +177,17 @@
         </classes>
     </test>
 
+<!--    <test name = "DSS-gson-tests">
+        <classes>
+            <class name="org.wso2.dss.integration.test.jira.issues.CARBON15263JsonGsonFormatterSuperTenantModeTest"/>
+            <class name="org.wso2.dss.integration.test.jira.issues.CARBON15339JsonGsonFormatterTenantModeTest"/>
+            <class name="org.wso2.dss.integration.test.jira.issues.CARBON15262JsonGsonFormatterTenantModeTest"/>
+        </classes>
+    </test>
+
+    <test name = "DSS-repeat-service-name">
+        <classes>
+            <class name="org.wso2.dss.integration.test.jira.issues.CARBON15280RepeatServiceNameInURLTest"/>
+        </classes>
+    </test>-->
 </suite>

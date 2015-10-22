@@ -37,7 +37,7 @@ import static org.wso2.dss.integration.test.odata.ODataTestUtils.sendPOST;
  * This class contains OData specific test cases. to verify the functionality of odata datatypes.
  */
 public class ODataDataTypeSupportTestCase extends DSSIntegrationTest {
-    private final String serviceName = "ODataBatchRequestSampleService";
+    private final String serviceName = "ODataDataTypesSampleService";
     private final String configId = "default";
     private String webAppUrl;
 
@@ -50,7 +50,7 @@ public class ODataDataTypeSupportTestCase extends DSSIntegrationTest {
         sqlFileLis.add(selectSqlFile("FIlesWithFIlesRecords.sql"));
         sqlFileLis.add(selectSqlFile("ODataDataTypes.sql"));
         deployService(serviceName, createArtifact(getResourceLocation() + File.separator + "dbs" + File.separator +
-                                                  "odata" + File.separator + "ODataBatchRequestSampleService.dbs",
+                                                  "odata" + File.separator + "ODataDataTypesSampleService.dbs",
                                                   sqlFileLis));
         webAppUrl = dssContext.getContextUrls().getWebAppURL();
     }

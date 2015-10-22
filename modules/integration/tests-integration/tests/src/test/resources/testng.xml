@@ -140,6 +140,18 @@
         </classes>
     </test>
 
+    <test name="DSS-jira-issues-escape-non-printable-chars" parallel="false" verbose="2">
+        <classes>
+            <class name="org.wso2.dss.integration.test.jira.issues.DS1090EscapeNonPrintableCharactersTestCase"/>
+        </classes>
+    </test>
+
+    <test name="DSS-jira-issues-resource-with-same-context" parallel="false" verbose="2">
+       <classes>
+            <class name="org.wso2.dss.integration.test.jira.issues.ResourcesServiceTestWithSameContextNameTestCase"/>
+        </classes>
+    </test>
+    
     <!-- todo test and uncomment below test once DSS is upgraded to kernel 4.4.x or 4.5.0 -->
     <test name="DSS-jira-issues-XML-Entity-Attack-Test" parallel="false" verbose="2">
         <classes>

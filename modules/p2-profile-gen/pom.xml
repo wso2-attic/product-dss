@@ -181,9 +181,9 @@
 
                                 <!--<featureArtifactDef>org.wso2.carbon:org.wso2.carbon.stratos.common.feature:${stratos.version}</featureArtifactDef>-->
                                 <!--<featureArtifactDef>org.wso2.carbon:org.wso2.carbon.stratos.deployment.feature:${stratos.version}</featureArtifactDef>-->
-                                <featureArtifactDef>
-                                    org.wso2.carbon.commons:org.wso2.carbon.tenant.mgt.common.feature:${carbon.commons.version}
-                                </featureArtifactDef>
+                                <!--<featureArtifactDef>-->
+                                    <!--org.wso2.carbon.commons:org.wso2.carbon.tenant.mgt.common.feature:${carbon.commons.version}-->
+                                <!--</featureArtifactDef>-->
 
                                 <featureArtifactDef>
                                     org.wso2.carbon.multitenancy:org.wso2.carbon.tenant.common.feature:${carbon.multitenancy.version}
@@ -250,12 +250,12 @@
                                     org.wso2.carbon.data:org.wso2.carbon.cassandra-jdbc-1.2.5.server.feature:${carbon-data.version}
                                 </featureArtifactDef>
 
-                                <featureArtifactDef>
-                                    org.wso2.carbon.identity:org.wso2.carbon.security.mgt.server.feature:${carbon.identity.version}
-                                </featureArtifactDef>
-                                <featureArtifactDef>
-                                    org.wso2.carbon.identity:org.wso2.carbon.security.mgt.ui.feature:${carbon.identity.version}
-                                </featureArtifactDef>
+                                <!--<featureArtifactDef>-->
+                                    <!--org.wso2.carbon.identity:org.wso2.carbon.security.mgt.server.feature:${carbon.identity.version}-->
+                                <!--</featureArtifactDef>-->
+                                <!--<featureArtifactDef>-->
+                                    <!--org.wso2.carbon.identity:org.wso2.carbon.security.mgt.ui.feature:${carbon.identity.version}-->
+                                <!--</featureArtifactDef>-->
                                 <featureArtifactDef>
                                     org.wso2.carbon.deployment:org.wso2.carbon.module.mgt.server.feature:${carbon.deployment.version}
                                 </featureArtifactDef>
@@ -269,12 +269,12 @@
                                 <!--<featureArtifactDef>org.wso2.carbon:org.wso2.carbon.rm.server.feature:${carbon.platform.version}</featureArtifactDef>-->
                                 <!--<featureArtifactDef>org.wso2.carbon:org.wso2.carbon.rm.ui.feature:${carbon.platform.version}</featureArtifactDef>-->
 
-                                <featureArtifactDef>
-                                    org.wso2.carbon.identity:org.wso2.carbon.identity.authenticator.saml2.sso.ui.feature:${carbon.identity.version}
-                                </featureArtifactDef>
-                                <featureArtifactDef>
-                                    org.wso2.carbon.identity:org.wso2.carbon.identity.authenticator.saml2.sso.server.feature:${carbon.identity.version}
-                                </featureArtifactDef>
+                                <!--<featureArtifactDef>-->
+                                    <!--org.wso2.carbon.identity:org.wso2.carbon.identity.authenticator.saml2.sso.ui.feature:${carbon.identity.version}-->
+                                <!--</featureArtifactDef>-->
+                                <!--<featureArtifactDef>-->
+                                    <!--org.wso2.carbon.identity:org.wso2.carbon.identity.authenticator.saml2.sso.server.feature:${carbon.identity.version}-->
+                                <!--</featureArtifactDef>-->
                                 <featureArtifactDef>
                                     org.wso2.carbon.identity:org.wso2.carbon.identity.core.ui.feature:${carbon.identity.version}
                                 </featureArtifactDef>
@@ -295,6 +295,24 @@
                                 <featureArtifactDef>
                                     org.wso2.carbon.commons:org.wso2.carbon.ndatasource.capp.deployer.server.feature:${carbon.commons.ndatasource.version}
                                 </featureArtifactDef>
+
+                                <!-- Multitenancy related -->
+                                <featureArtifactDef>
+                                    org.wso2.carbon.multitenancy:org.wso2.carbon.tenant.common.feature:${carbon.multitenancy.version}
+                                </featureArtifactDef>
+                                <featureArtifactDef>
+                                    org.wso2.carbon.identity:org.wso2.carbon.identity.authenticator.saml2.sso.server.feature:${carbon.identity.version}
+                                </featureArtifactDef>
+                                <featureArtifactDef>
+                                    org.wso2.carbon.identity:org.wso2.carbon.identity.authenticator.saml2.sso.ui.feature:${carbon.identity.version}
+                                </featureArtifactDef>
+                                <featureArtifactDef>
+                                    org.wso2.carbon.identity:org.wso2.carbon.security.mgt.feature:${carbon.identity.version}
+                                </featureArtifactDef>
+                                <featureArtifactDef>
+                                    org.wso2.carbon.commons:org.wso2.carbon.tenant.mgt.common.feature:${carbon.commons.version}
+                                </featureArtifactDef>
+                                <!-- END - Multitenancy related -->
                             </featureArtifacts>
                         </configuration>
                     </execution>
@@ -504,10 +522,10 @@
                                     <version>${carbon.version}</version>
                                 </feature-->
 
-                                <feature>
-                                    <id>org.wso2.carbon.tenant.common.feature.group</id>
-                                    <version>${carbon.multitenancy.version}</version>
-                                </feature>
+                                <!--<feature>-->
+                                    <!--<id>org.wso2.carbon.tenant.common.feature.group</id>-->
+                                    <!--<version>${carbon.multitenancy.version}</version>-->
+                                <!--</feature>-->
 
                                 <feature>
                                     <id>org.wso2.carbon.tenant.usage.agent.feature.group</id>
@@ -620,15 +638,15 @@
                                     <id>org.wso2.carbon.cassandra-jdbc-1.2.5.server.feature.group</id>
                                     <version>${carbon-data.version}</version>
                                 </feature>
-                                <feature>
-                                    <id>org.wso2.carbon.identity.authenticator.saml2.sso.ui.feature.group</id>
-                                    <version>${carbon.identity.version}</version>
-                                </feature>
+                                <!--<feature>-->
+                                    <!--<id>org.wso2.carbon.identity.authenticator.saml2.sso.ui.feature.group</id>-->
+                                    <!--<version>${carbon.identity.version}</version>-->
+                                <!--</feature>-->
 
-                                <feature>
-                                    <id>org.wso2.carbon.identity.authenticator.saml2.sso.server.feature.group</id>
-                                    <version>${carbon.identity.version}</version>
-                                </feature>
+                                <!--<feature>-->
+                                    <!--<id>org.wso2.carbon.identity.authenticator.saml2.sso.server.feature.group</id>-->
+                                    <!--<version>${carbon.identity.version}</version>-->
+                                <!--</feature>-->
                                 <feature>
                                     <id>org.wso2.carbon.identity.core.ui.feature.group</id>
                                     <version>${carbon.identity.version}</version>
@@ -655,6 +673,25 @@
                                     <id>org.wso2.carbon.ndatasource.capp.deployer.server.feature.group</id>
                                     <version>${carbon.commons.ndatasource.version}</version>
                                 </feature>
+
+                                <!-- START - Multitenancy related -->
+                                <feature>
+                                    <id>org.wso2.carbon.tenant.common.feature.group</id>
+                                    <version>${carbon.multitenancy.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.identity.authenticator.saml2.sso.server.feature.group</id>
+                                    <version>${carbon.identity.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.identity.authenticator.saml2.sso.ui.feature.group</id>
+                                    <version>${carbon.identity.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.security.mgt.feature.group</id>
+                                    <version>${carbon.identity.version}</version>
+                                </feature>
+                                <!-- END - Multitenancy related -->
                             </features>
                         </configuration>
                     </execution>
@@ -809,15 +846,15 @@
                                     <version>${carbon.registry.version}</version>
                                 </feature>
 
-                                <feature>
-                                    <id>org.wso2.carbon.tenant.mgt.common.feature.group</id>
-                                    <version>${carbon.commons.version}</version>
-                                </feature>
+                                <!--<feature>-->
+                                    <!--<id>org.wso2.carbon.tenant.mgt.common.feature.group</id>-->
+                                    <!--<version>${carbon.commons.version}</version>-->
+                                <!--</feature>-->
 
-                                <feature>
-                                    <id>org.wso2.carbon.tenant.common.feature.group</id>
-                                    <version>${carbon.multitenancy.version}</version>
-                                </feature>
+                                <!--<feature>-->
+                                    <!--<id>org.wso2.carbon.tenant.common.feature.group</id>-->
+                                    <!--<version>${carbon.multitenancy.version}</version>-->
+                                <!--</feature>-->
 
                                 <feature>
                                     <id>org.wso2.carbon.tenant.usage.agent.feature.group</id>
@@ -909,15 +946,15 @@
                                     <version>${carbon-data.version}</version>
                                 </feature>
 
-                                <feature>
-                                    <id>org.wso2.carbon.identity.authenticator.saml2.sso.ui.feature.group</id>
-                                    <version>${carbon.identity.version}</version>
-                                </feature>
+                                <!--<feature>-->
+                                    <!--<id>org.wso2.carbon.identity.authenticator.saml2.sso.ui.feature.group</id>-->
+                                    <!--<version>${carbon.identity.version}</version>-->
+                                <!--</feature>-->
 
-                                <feature>
-                                    <id>org.wso2.carbon.identity.authenticator.saml2.sso.server.feature.group</id>
-                                    <version>${carbon.identity.version}</version>
-                                </feature>
+                                <!--<feature>-->
+                                    <!--<id>org.wso2.carbon.identity.authenticator.saml2.sso.server.feature.group</id>-->
+                                    <!--<version>${carbon.identity.version}</version>-->
+                                <!--</feature>-->
 
                                 <feature>
                                     <id>org.wso2.carbon.user.mgt.server.feature.group</id>
@@ -941,6 +978,25 @@
                                     <id>org.wso2.carbon.ndatasource.capp.deployer.server.feature.group</id>
                                     <version>${carbon.commons.ndatasource.version}</version>
                                 </feature>
+
+                                <!-- START - Multitenancy related -->
+                                <feature>
+                                    <id>org.wso2.carbon.tenant.common.feature.group</id>
+                                    <version>${carbon.multitenancy.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.identity.authenticator.saml2.sso.server.feature.group</id>
+                                    <version>${carbon.identity.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.identity.authenticator.saml2.sso.ui.feature.group</id>
+                                    <version>${carbon.identity.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.security.mgt.feature.group</id>
+                                    <version>${carbon.identity.version}</version>
+                                </feature>
+                                <!-- END - Multitenancy related -->
                             </features>
                         </configuration>
                     </execution>

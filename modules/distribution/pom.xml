@@ -20,7 +20,7 @@
     <parent>
         <groupId>org.wso2.dss</groupId>
         <artifactId>dataservices-parent</artifactId>
-        <version>3.5.0</version>
+        <version>3.5.1-SNAPSHOT</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
@@ -50,7 +50,7 @@
     <scm>
         <connection>scm:svn:http://svn.wso2.org/repos/wso2/trunk/solutions/data-services/</connection>
         <developerConnection>scm:svn:https://svn.wso2.org/repos/wso2/trunk/solutions/data-services/</developerConnection>
-      <tag>v3.5.0-RC2</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <build>
@@ -160,13 +160,11 @@
                                     <fileset dir="target/wso2carbon-core-${carbon.kernel.version}/repository/components/plugins" includes="**/*.jar" />
                                     <fileset dir="target/wso2carbon-core-${carbon.kernel.version}/lib" includes="**/*.jar" />
                                     <fileset dir="target/wso2carbon-core-${carbon.kernel.version}/lib/patches" includes="**/*.jar" />
-                                    <!--<fileset dir="target/wso2carbon-core-${carbon.kernel.version}/lib/api"
-                                            includes="**/*.jar" /> -->
+                                    <!--<fileset dir="target/wso2carbon-core-${carbon.kernel.version}/lib/api" includes="**/*.jar" /> -->
                                     <fileset dir="target/wso2carbon-core-${carbon.kernel.version}/bin" includes="**/*.jar" />
                                     <fileset dir="target/wso2carbon-core-${carbon.kernel.version}/lib/xboot" includes="**/*.jar" />
                                     <fileset dir="target/wso2carbon-core-${carbon.kernel.version}/lib/endorsed" includes="**/*.jar" />
-                                    <!--<fileset dir="target/wso2carbon-core-${carbon.kernel.version}/lib/core/WEB-INF/lib"
-                                            includes="**/*.jar" /> -->
+                                    <!--<fileset dir="target/wso2carbon-core-${carbon.kernel.version}/lib/core/WEB-INF/lib" includes="**/*.jar" /> -->
                                     <fileset dir="target/wso2carbon-core-${carbon.kernel.version}/lib/patches" includes="**/*.jar" />
                                 </signjar>
 				</then>

@@ -125,6 +125,7 @@
     <test name="DSS-jira-issues-boxcarring-parallel-access" parallel="false" verbose="2">
         <classes>
             <class name="org.wso2.dss.integration.test.jira.issues.DS1083BoxcarringParallelInsertTestCase"/>
+            <class name="org.wso2.dss.integration.test.jira.issues.DS937BoxcarringTestCase"/>
         </classes>
     </test>
 

@@ -609,7 +609,7 @@
         <carbon.commons.ntask.version>4.4.3</carbon.commons.ntask.version> <!-- todo check and remove this - rajith -->
         <carbon.analytics-common.version>5.0.4</carbon.analytics-common.version>
         <wss4j.orbit.version>1.5.11.wso2v9</wss4j.orbit.version>
-        <carbon-data.version>4.3.4</carbon-data.version>
+        <carbon-data.version>4.3.5-SNAPSHOT</carbon-data.version>
         <rampart.orbit.version>1.6.1.wso2v14</rampart.orbit.version>
         <neethi.orbit.version>2.0.4.wso2v4</neethi.orbit.version>
         <h2.orbit.version>1.2.140.wso2v3</h2.orbit.version>

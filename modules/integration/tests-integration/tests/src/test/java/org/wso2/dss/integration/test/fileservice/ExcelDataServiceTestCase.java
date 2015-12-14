@@ -33,9 +33,9 @@ import org.wso2.carbon.automation.test.utils.axis2client.AxisServiceClient;
 import org.wso2.carbon.automation.test.utils.common.FileManager;
 import org.wso2.carbon.automation.test.utils.concurrency.test.ConcurrencyTest;
 import org.wso2.carbon.automation.test.utils.concurrency.test.exception.ConcurrencyTestFailedError;
+import org.wso2.carbon.registry.resource.stub.ResourceAdminServiceExceptionException;
 import org.wso2.carbon.registry.resource.stub.common.xsd.ResourceData;
 import org.wso2.dss.integration.common.clients.ResourceAdminServiceClient;
-import org.wso2.carbon.registry.resource.stub.ResourceAdminServiceExceptionException;
 import org.wso2.dss.integration.common.utils.DSSTestCaseUtils;
 import org.wso2.dss.integration.test.DSSIntegrationTest;
 
@@ -127,6 +127,8 @@ public class ExcelDataServiceTestCase extends DSSIntegrationTest {
         OMElement payload = fac.createOMElement("getProducts", omNs);
         ConcurrencyTest concurrencyTest = new ConcurrencyTest(5, 5);
         concurrencyTest.run(getServiceUrlHttp(serviceName), payload, "getProducts");
+        Thread.sleep(6000);
+        log.info("Concurrency Test Success");
     }
 
     private void addResource()

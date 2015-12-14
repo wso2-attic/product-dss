@@ -31,13 +31,13 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.wso2.carbon.automation.test.utils.axis2client.AxisServiceClient;
 import org.wso2.carbon.automation.test.utils.common.FileManager;
-import org.wso2.carbon.automation.test.utils.concurrency.test.ConcurrencyTest;
 import org.wso2.carbon.automation.test.utils.concurrency.test.exception.ConcurrencyTestFailedError;
 import org.wso2.carbon.registry.resource.stub.ResourceAdminServiceExceptionException;
 import org.wso2.carbon.registry.resource.stub.common.xsd.ResourceData;
 import org.wso2.dss.integration.common.clients.ResourceAdminServiceClient;
 import org.wso2.dss.integration.common.utils.DSSTestCaseUtils;
 import org.wso2.dss.integration.test.DSSIntegrationTest;
+import org.wso2.dss.integration.test.util.ConcurrencyTest;
 
 import javax.activation.DataHandler;
 import javax.xml.xpath.XPathExpressionException;
@@ -119,7 +119,7 @@ public class ExcelDataServiceTestCase extends DSSIntegrationTest {
         log.info("XSLT Transformation Success");
     }
 
-    @Test(groups = {"wso2.dss"}, dependsOnMethods = {"xsltTransformation"}, timeOut = 1000 * 60 )
+    @Test(groups = {"wso2.dss"}, dependsOnMethods = {"xsltTransformation"}, timeOut = 2000 * 60 )
     public void concurrencyTest()
             throws ConcurrencyTestFailedError, InterruptedException, XPathExpressionException {
         OMFactory fac = OMAbstractFactory.getOMFactory();
@@ -127,7 +127,6 @@ public class ExcelDataServiceTestCase extends DSSIntegrationTest {
         OMElement payload = fac.createOMElement("getProducts", omNs);
         ConcurrencyTest concurrencyTest = new ConcurrencyTest(5, 5);
         concurrencyTest.run(getServiceUrlHttp(serviceName), payload, "getProducts");
-        Thread.sleep(6000);
         log.info("Concurrency Test Success");
     }
 

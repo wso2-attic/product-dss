@@ -38,10 +38,11 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
 
 
-public class InvalidClosingTagFaultyServiceTestCase extends DSSIntegrationTest {
-    private static final Log log = LogFactory.getLog(InvalidClosingTagFaultyServiceTestCase.class);
+public class InvalidClosingTagUnDeployedServiceTestCase extends DSSIntegrationTest {
+    private static final Log log = LogFactory.getLog(InvalidClosingTagUnDeployedServiceTestCase.class);
 
     private final String serviceName = "FaultyDataService";
     private final String serviceFile = "FaultyDataService.dbs";
@@ -79,8 +80,8 @@ public class InvalidClosingTagFaultyServiceTestCase extends DSSIntegrationTest {
 
     @Test(groups = "wso2.dss", description = "Check whether fault service deployed or not",
           dependsOnMethods = "testDeployService")
-    public void isServiceFaulty() throws Exception {
-        assertFalse(isServiceFaulty(serviceName));
+    public void isServiceDeployed() throws Exception {
+        assertFalse(isServiceDeployed(serviceName));
         log.info(serviceName + " is faulty");
     }
 

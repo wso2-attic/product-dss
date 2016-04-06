@@ -178,6 +178,12 @@
         </classes>
     </test>
 
+    <test name="DSS-jira-issues-json-render" parallel="false" verbose="2">
+        <classes>
+            <class name="org.wso2.dss.integration.test.jira.issues.DS1186JsonRenderTestCase"/>
+        </classes>
+    </test>
+
 <!--    <test name = "DSS-gson-tests">
         <classes>
             <class name="org.wso2.dss.integration.test.jira.issues.CARBON15263JsonGsonFormatterSuperTenantModeTest"/>

@@ -26,7 +26,6 @@ import org.wso2.carbon.automation.test.utils.http.client.HttpResponse;
 import org.wso2.carbon.registry.resource.stub.ResourceAdminServiceExceptionException;
 import org.wso2.dss.integration.common.clients.ResourceAdminServiceClient;
 import org.wso2.dss.integration.test.DSSIntegrationTest;
-
 import javax.activation.DataHandler;
 import javax.xml.xpath.XPathExpressionException;
 import java.io.BufferedReader;
@@ -57,7 +56,6 @@ public class DS1186JsonRenderTestCase extends DSSIntegrationTest {
                 new DataHandler(new URL("file:///" + getResourceLocation() + File.separator + "samples" + File.separator + "dbs" + File.separator + "rdbms"
                         + File.separator + "JsonRenderService.dbs")));
         serviceEndPoint = getServiceUrlHttps(serviceName) + "/";
-
     }
 
     @AfterClass(alwaysRun = true)
@@ -74,7 +72,6 @@ public class DS1186JsonRenderTestCase extends DSSIntegrationTest {
         String expectedResult = "{\"Entries\":{\"Entry\":[{\"status\":\"1 & 2\"}]}}";
         Assert.assertNotNull(receivedResult, "Response is null");
         Assert.assertTrue(expectedResult.equals(receivedResult.toString()), "Expected result not found");
-
     }
 
     /**
@@ -121,6 +118,13 @@ public class DS1186JsonRenderTestCase extends DSSIntegrationTest {
         return null;
     }
 
+    /**
+     * This method add the Security policy which will be used with the service.
+     * @throws RemoteException
+     * @throws MalformedURLException
+     * @throws ResourceAdminServiceExceptionException
+     * @throws XPathExpressionException
+     */
     private void addResource()
             throws RemoteException, MalformedURLException, ResourceAdminServiceExceptionException,
             XPathExpressionException {
@@ -134,7 +138,13 @@ public class DS1186JsonRenderTestCase extends DSSIntegrationTest {
                         + "SecPolicy-withRoles.xml")));
     }
 
-
+    /**
+     * Delete the security policy from the registry.
+     * @throws RemoteException
+     * @throws MalformedURLException
+     * @throws ResourceAdminServiceExceptionException
+     * @throws XPathExpressionException
+     */
     private void deleteResource()
             throws RemoteException, MalformedURLException, ResourceAdminServiceExceptionException,
             XPathExpressionException {
@@ -142,8 +152,4 @@ public class DS1186JsonRenderTestCase extends DSSIntegrationTest {
                 , sessionCookie);
         resourceAdmin.deleteResource("/_system/config/automation/resources/policies/");
     }
-
-
-
-
 }

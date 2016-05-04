@@ -98,6 +98,12 @@
     <!--</classes>-->
     <!--</test>-->
 
+    <!--<test name="DSS-jira-issues-tests-jsontest" parallel="false" verbose="2">-->
+    <!--<classes>-->
+    <!--<class name="org.wso2.dss.integration.test.jira.issues.DS1190JsonValueTypeMisMatchTest"/>-->
+    <!--</classes>-->
+    <!--</test>-->
+
     <test name="DSS-samples-tests" parallel="false" verbose="2">
         <packages>
             <package name="org.wso2.dss.integration.test.samples"/>

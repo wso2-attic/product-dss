@@ -57,7 +57,6 @@ public class CARBON15879XmlNullElementTest extends DSSIntegrationTest {
                 getResourceLocation() + File.separator + "samples" + File.separator + "dbs" + File.separator + "rdbms"
                         + File.separator + serviceName + ".dbs", sqlFileLis));
         serviceEndPoint = getServiceUrlHttp(serviceName) + "/";
-
     }
 
     @AfterClass(alwaysRun = true)
@@ -70,10 +69,7 @@ public class CARBON15879XmlNullElementTest extends DSSIntegrationTest {
     public void jsonInputWithWrongValueTypeTestCase() throws Exception {
         HttpResponse response1 = this.getHttpResponse(serviceEndPoint + "_postperson", "application/json",
                 "{\"_postperson\":{\"PersonID\":1,\"LastName\":\"John\",\"City\":null,\"Weight\":null}}");
-
-
         assertTrue(202 == response1.getResponseCode());
-
         log.info("--------------- Test for null elements for Number types is successful -----------");
     }
 
@@ -126,5 +122,4 @@ public class CARBON15879XmlNullElementTest extends DSSIntegrationTest {
         }
         return null;
     }
-
 }

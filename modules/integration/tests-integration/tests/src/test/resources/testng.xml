@@ -104,6 +104,12 @@
     <!--</classes>-->
     <!--</test>-->
 
+    <!--<test name="DSS-jira-issues-xml-null-test" parallel="false" verbose="2">
+        <classes>
+            <class name="org.wso2.dss.integration.test.jira.issues.CARBON15879XmlNullElementTest"/>
+        </classes>
+    </test>-->
+
     <test name="DSS-samples-tests" parallel="false" verbose="2">
         <packages>
             <package name="org.wso2.dss.integration.test.samples"/>

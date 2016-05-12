@@ -58,13 +58,13 @@ public class ODataETagTestCase extends DSSIntegrationTest {
 	}
 
 	@Test(groups = "wso2.dss", description = "e tag retrieval test")
-	public void validateE_TagRetrievalTestCase() throws Exception {
+	public void validateETagRetrievalTestCase() throws Exception {
 		String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/FILES";
 		String content = "{\"FILENAME\": \"M.K.H.Gunasekara\" ,\"TYPE\" : \"dss\"}";
 		Map<String, String> headers = new HashMap<>();
 		headers.put("Accept", "application/json");
 		Object[] response = sendPOST(endpoint, content, headers);
-		Assert.assertEquals(response[0], ODataTestUtils.NO_CONTENT);
+		Assert.assertEquals(response[0], ODataTestUtils.CREATED);
 		endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/FILES(\'M.K.H.Gunasekara')";
 		response = sendGET(endpoint, headers);
 		Assert.assertEquals(response[0], ODataTestUtils.OK);
@@ -82,14 +82,14 @@ public class ODataETagTestCase extends DSSIntegrationTest {
 		Assert.assertEquals(response[0], ODataTestUtils.OK);
 	}
 
-	@Test(groups = "wso2.dss", description = "etag generation test", dependsOnMethods = "validateE_TagRetrievalTestCase")
-	public void validateE_TagGenerationTestCase() throws Exception {
+	@Test(groups = "wso2.dss", description = "etag generation test", dependsOnMethods = "validateETagRetrievalTestCase")
+	public void validateETagGenerationTestCase() throws Exception {
 		String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/FILES";
 		String content = "{\"FILENAME\": \"WSO2\" ,\"TYPE\" : \"bam\"}";
 		Map<String, String> headers = new HashMap<>();
 		headers.put("Accept", "application/json");
 		Object[] response = sendPOST(endpoint, content, headers);
-		Assert.assertEquals(response[0], ODataTestUtils.NO_CONTENT);
+		Assert.assertEquals(response[0], ODataTestUtils.CREATED);
 		endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId +
 		           "/FILES(\'WSO2\')";
 		response = sendGET(endpoint, headers);
@@ -105,8 +105,8 @@ public class ODataETagTestCase extends DSSIntegrationTest {
 		Assert.assertNotEquals(etag, tempETag);
 	}
 
-	@Test(groups = "wso2.dss", description = "etag concurrent handling with put method test", dependsOnMethods = "validateE_TagGenerationTestCase")
-	public void validateE_TagConcurrentHandlingTestCaseForPutMethod() throws Exception {
+	@Test(groups = "wso2.dss", description = "etag concurrent handling with put method test", dependsOnMethods = "validateETagGenerationTestCase")
+	public void validateETagConcurrentHandlingTestCaseForPutMethod() throws Exception {
 		String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/FILES(\'M.K.H.Gunasekara\')";
 		Map<String, String> headers = new HashMap<>();
 		headers.put("Accept", "application/json");
@@ -165,8 +165,8 @@ public class ODataETagTestCase extends DSSIntegrationTest {
 		Assert.assertEquals(responseCode, ODataTestUtils.NOT_FOUND);
 	}
 
-	@Test(groups = "wso2.dss", description = "etag concurrent handling with patch method test", dependsOnMethods = "validateE_TagConcurrentHandlingTestCaseForPutMethod")
-	public void validateE_TagConcurrentHandlingTestCaseForPatchMethod() throws Exception {
+	@Test(groups = "wso2.dss", description = "etag concurrent handling with patch method test", dependsOnMethods = "validateETagConcurrentHandlingTestCaseForPutMethod")
+	public void validateETagConcurrentHandlingTestCaseForPatchMethod() throws Exception {
 		String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/FILES(\'WSO2\')";
 		Map<String, String> headers = new HashMap<>();
 		headers.put("Accept", "application/json");
@@ -224,14 +224,14 @@ public class ODataETagTestCase extends DSSIntegrationTest {
 		Assert.assertEquals(responseCode, ODataTestUtils.NOT_FOUND);
 	}
 
-	@Test(groups = "wso2.dss", description = "etag concurrent handling with delete method test", dependsOnMethods = "validateE_TagConcurrentHandlingTestCaseForPatchMethod")
-	public void validateE_TagConcurrentHandlingTestCaseForDeleteMethod() throws Exception {
+	@Test(groups = "wso2.dss", description = "etag concurrent handling with delete method test", dependsOnMethods = "validateETagConcurrentHandlingTestCaseForPatchMethod")
+	public void validateETagConcurrentHandlingTestCaseForDeleteMethod() throws Exception {
 		String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/FILES";
 		String content = "{\"FILENAME\": \"M.K.H.Gunasekara\" ,\"TYPE\" : \"dss\"}";
 		Map<String, String> headers = new HashMap<>();
 		headers.put("Accept", "application/json");
 		Object[] response = sendPOST(endpoint, content, headers);
-		Assert.assertEquals(response[0], ODataTestUtils.NO_CONTENT);
+		Assert.assertEquals(response[0], ODataTestUtils.CREATED);
 		endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/FILES(\'M.K.H.Gunasekara\')";
 		response = sendGET(endpoint, headers);
 		Assert.assertEquals(response[0], ODataTestUtils.OK);
@@ -247,7 +247,7 @@ public class ODataETagTestCase extends DSSIntegrationTest {
 		Assert.assertEquals(responseCode, ODataTestUtils.NOT_FOUND);
 
 		// To insert values
-		validateE_TagRetrievalTestCase();
+		validateETagRetrievalTestCase();
 
 		//testing concurrent test with put method
 		// get the E-Tag
@@ -273,15 +273,15 @@ public class ODataETagTestCase extends DSSIntegrationTest {
 		Assert.assertEquals(responseCode, 404);
 	}
 
-	@Test(groups = "wso2.dss", description = "property modification using etag concurrent handling with put method test", dependsOnMethods = "validateE_TagConcurrentHandlingTestCaseForDeleteMethod")
-	public void validateE_TagConcurrentHandlingTestCaseForUpdatePropertyWithPutMethod() throws Exception {
+	@Test(groups = "wso2.dss", description = "property modification using etag concurrent handling with put method test", dependsOnMethods = "validateETagConcurrentHandlingTestCaseForDeleteMethod")
+	public void validateETagConcurrentHandlingTestCaseForUpdatePropertyWithPutMethod() throws Exception {
 		// To insert values
 		String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/FILES";
 		String content = "{\"FILENAME\": \"M.K.H.Gunasekara\" ,\"TYPE\" : \"dss\"}";
 		Map<String, String> headers = new HashMap<>();
 		headers.put("Accept", "application/json");
 		Object[] response = sendPOST(endpoint, content, headers);
-		Assert.assertEquals(response[0], ODataTestUtils.NO_CONTENT);
+		Assert.assertEquals(response[0], ODataTestUtils.CREATED);
 		String entityEndpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/FILES(\'M.K.H.Gunasekara\')";
 		response = sendGET(endpoint, headers);
 		Assert.assertEquals(response[0], ODataTestUtils.OK);
@@ -326,8 +326,8 @@ public class ODataETagTestCase extends DSSIntegrationTest {
 
 	}
 
-	@Test(groups = "wso2.dss", description = "property modification using etag concurrent handling with patch method test", dependsOnMethods = "validateE_TagConcurrentHandlingTestCaseForUpdatePropertyWithPutMethod")
-	public void validateE_TagConcurrentHandlingTestCaseForUpdatePropertyWithPatchMethod() throws Exception {
+	@Test(groups = "wso2.dss", description = "property modification using etag concurrent handling with patch method test", dependsOnMethods = "validateETagConcurrentHandlingTestCaseForUpdatePropertyWithPutMethod")
+	public void validateETagConcurrentHandlingTestCaseForUpdatePropertyWithPatchMethod() throws Exception {
 		String entityEndpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/FILES(\'M.K.H.Gunasekara\')";
 		String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/FILES(\'M.K.H.Gunasekara\')/TYPE";
 		Map<String, String> headers = new HashMap<>();

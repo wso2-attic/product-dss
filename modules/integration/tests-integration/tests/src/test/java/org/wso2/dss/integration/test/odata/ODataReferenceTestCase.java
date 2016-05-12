@@ -80,7 +80,7 @@ public class ODataReferenceTestCase extends DSSIntegrationTest {
 
 	@Test(groups = "wso2.dss", description = "testing the the entity navigation property retrieval")
 	public void validateNavigationPropertyTestCase() throws Exception {
-		String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/FILES('WSO2DSS')/FILERECORDS/";
+		String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/FILES('WSO2DSS')/FILERECORDS";
 		Map<String, String> headers = new HashMap<>();
 		headers.put("Accept", "application/json");
 		Object[] response = sendGET(endpoint, headers);
@@ -135,21 +135,21 @@ public class ODataReferenceTestCase extends DSSIntegrationTest {
 
 	@Test(groups = { "wso2.dss" }, description = "testing the add entity with navigation bindings ")
 	public void validateAddEntityWithReferenceTestCase() throws Exception {
-		String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/FILERECORDS/";
+		String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/FILERECORDS";
 		String content = "{\n" +
-		                 "\"FILERECORDID\":11,\n" +
-		                 "\"DATA\":\"AEIATABPAEIAMQ==\",\n" +
-		                 "\"FILES@odata.bind\" : \"http://localhost:10963/odata/ODataSampleService/default/FILES('WSO2DSS')\"\n" +
-		                 "}";
+						 "\"FILERECORDID\":11,\n" +
+						 "\"DATA\":\"AEIATABPAEIAMQ==\",\n" +
+						 "\"FILES@odata.bind\" : \"http://localhost:10963/odata/ODataSampleService/default/FILES('WSO2DSS')\"\n" +
+						 "}";
 		Map<String, String> headers = new HashMap<>();
 		headers.put("Accept", "application/json");
 		Object[] response = sendPOST(endpoint, content, headers);
-		Assert.assertEquals(response[0], ODataTestUtils.NO_CONTENT);
+		Assert.assertEquals(response[0], ODataTestUtils.CREATED);
 		endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/FILERECORDS(11)/FILES/$ref";
 		response = sendGET(endpoint, headers);
 		Assert.assertEquals(response[0], ODataTestUtils.OK);
 		Assert.assertTrue(response[1].toString().contains("FILES('WSO2DSS')"));
-		endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/FILERECORDS(11)/";
+		endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/FILERECORDS(11)";
 		response = sendGET(endpoint, headers);
 		Assert.assertEquals(response[0], ODataTestUtils.OK);
 		Assert.assertTrue(response[1].toString().contains("\"FILENAME\":\"WSO2DSS\""));

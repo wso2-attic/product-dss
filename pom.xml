@@ -456,6 +456,12 @@
                 <version>${jacoco.agent.version}</version>
             </dependency>
 
+            <!-- Adding cipertool feature to the product -->
+            <dependency>
+                <groupId>org.wso2.ciphertool</groupId>
+                <artifactId>org.wso2.ciphertool</artifactId>
+                <version>${cipher.tool.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -644,6 +650,7 @@
         <log4j.version>1.2.13</log4j.version>
         <commons.logging.version>1.1.1</commons.logging.version>
         <jacoco.agent.version>0.7.4.201502262128</jacoco.agent.version>
+        <cipher.tool.version>1.0.0-wso2v3</cipher.tool.version>
     </properties>
 
     <mailingLists>

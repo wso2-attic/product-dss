@@ -22,7 +22,7 @@
     <parent>
         <groupId>org.wso2.dss</groupId>
         <artifactId>dataservices-parent</artifactId>
-        <version>3.5.0-SNAPSHOT</version>
+        <version>3.5.1-SNAPSHOT</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
@@ -354,18 +354,6 @@
                                         token="&lt;Property name=&quot;GetAllRolesOfUserEnabled&quot;&gt;true&lt;/Property&gt;"
                                         value="&lt;!-- &lt;Property name=&quot;GetAllRolesOfUserEnabled&quot;&gt;true&lt;/Property&gt; --&gt;"
                                         />
-                                <!-- Moving identity UI component to "Configure" UI group -->
-                                <echo message="Moving identity-related UI component to 'Configure' in the management console"/>
-                                <property name="tempdir2" value="target/identity-ui"/>
-                                <mkdir dir="${tempdir2}"/>
-                                <unzip src="target/wso2carbon-core-${carbon.kernel.version}/repository/components/plugins/org.wso2.carbon.identity.account.mgt.menu.ui_${carbon.identity.version}.jar"
-                                       dest="${tempdir2}"/>
-                                <replace
-                                        file="${tempdir2}/META-INF/component.xml"
-                                        token="&lt;parent-menu&gt;identity_menu&lt;/parent-menu&gt;"
-                                        value="&lt;parent-menu&gt;configure_menu&lt;/parent-menu&gt;"/>
-                                <zip destfile="target/wso2carbon-core-${carbon.kernel.version}/repository/components/plugins/org.wso2.carbon.identity.account.mgt.menu.ui_${carbon.identity.version}.jar"
-                                     basedir="${tempdir2}"/>
                             </tasks>
                         </configuration>
                     </execution>

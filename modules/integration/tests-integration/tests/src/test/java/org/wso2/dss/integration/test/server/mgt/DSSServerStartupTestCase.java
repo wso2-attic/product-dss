@@ -17,8 +17,23 @@
 */
 package org.wso2.dss.integration.test.server.mgt;
 
+import org.apache.axis2.AxisFault;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.testng.annotations.BeforeSuite;
 import org.wso2.carbon.integration.common.tests.ServerStartupBaseTest;
 
+import javax.xml.xpath.XPathExpressionException;
+
 public class DSSServerStartupTestCase extends ServerStartupBaseTest {
+
+    private static final Log log = LogFactory.getLog(DSSServerStartupTestCase.class);
+
+    @BeforeSuite
+    @Override
+    public void initialize() throws XPathExpressionException, AxisFault {
+        log.info("Starting DSSServerStartupTestCase ...");
+        super.initialize();
+    }
 
 }

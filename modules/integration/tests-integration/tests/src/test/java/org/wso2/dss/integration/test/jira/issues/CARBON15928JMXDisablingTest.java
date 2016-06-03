@@ -161,7 +161,8 @@ public class CARBON15928JMXDisablingTest extends DSSIntegrationTest {
         return dataSourceInfo;
     }
 
-    @AfterClass(alwaysRun = true) public void destroy() throws Exception {
+    @AfterClass(alwaysRun = true)
+    public void destroy() throws Exception {
         cleanup();
     }
 }

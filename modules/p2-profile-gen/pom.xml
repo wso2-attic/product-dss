@@ -290,6 +290,9 @@
                                 <featureArtifactDef>
                                     org.apache.axis2.transport:org.apache.axis2.transport.jms.feature:${axis2.transport.version}
                                 </featureArtifactDef>
+                                <featureArtifactDef>
+                                    org.wso2.ciphertool:org.wso2.ciphertool.feature:${cipher.tool.version}
+                                </featureArtifactDef>
                                 <!-- ************** START - WebApp Deployment ************ -->
                                 <featureArtifactDef>
                                     org.wso2.carbon.deployment:org.wso2.carbon.webapp.mgt.server.feature:${carbon.deployment.version}
@@ -669,6 +672,10 @@
                                 <feature>
                                     <id>org.apache.axis2.transport.jms.feature.group</id>
                                     <version>${axis2.transport.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.ciphertool.feature.group</id>
+                                    <version>${cipher.tool.version}</version>
                                 </feature>
                                 <!-- ************** START - WebApp Deployment ************ -->
                                 <feature>

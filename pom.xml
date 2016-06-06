@@ -613,10 +613,10 @@
         <rampart.orbit.version>1.6.1.wso2v14</rampart.orbit.version>
         <neethi.orbit.version>2.0.4.wso2v4</neethi.orbit.version>
         <h2.orbit.version>1.2.140.wso2v3</h2.orbit.version>
-        <axis2.orbit.version>1.6.1.wso2v15</axis2.orbit.version>
-        <axis2.transport.version>1.1.0-wso2v17</axis2.transport.version>
+        <axis2.orbit.version>1.6.1.wso2v19</axis2.orbit.version>
+        <axis2.transport.version>1.1.1-wso2v3</axis2.transport.version>
         <!--<commons-logging.version>1.1.1</commons-logging.version>-->
-        <axiom.orbit.version>1.2.11.wso2v9</axiom.orbit.version>
+        <axiom.orbit.version>1.2.11.wso2v11</axiom.orbit.version>
         <derby.orbit.version>10.3.2.1wso2v1</derby.orbit.version>
         <hibernate.orbit.version>3.2.5.ga-wso2v1</hibernate.orbit.version>
         <bcel.orbit.version>5.2.0.wso2v1</bcel.orbit.version>

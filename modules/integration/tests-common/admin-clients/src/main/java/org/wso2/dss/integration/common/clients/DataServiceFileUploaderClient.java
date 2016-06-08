@@ -21,8 +21,8 @@ import org.apache.axis2.AxisFault;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.wso2.carbon.dataservices.ui.fileupload.stub.ExceptionException;
-import org.wso2.carbon.integration.common.admin.client.utils.AuthenticateStubUtil;
 import org.wso2.carbon.dataservices.ui.fileupload.stub.DataServiceFileUploaderStub;
+import org.wso2.dss.integration.common.clients.utils.AuthenticateStubUtil;
 
 import javax.activation.DataHandler;
 import java.rmi.RemoteException;

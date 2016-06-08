@@ -23,8 +23,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.wso2.carbon.dataservices.task.ui.stub.DSTaskAdminStub;
 import org.wso2.carbon.dataservices.task.ui.stub.xsd.DSTaskInfo;
-import org.wso2.carbon.integration.common.admin.client.utils.AuthenticateStubUtil;
-import org.wso2.dss.integration.common.clients.DataServiceAdminClient;
+import org.wso2.dss.integration.common.clients.utils.AuthenticateStubUtil;
 
 import java.rmi.RemoteException;
 

@@ -84,6 +84,8 @@
             <excludes>
                 <exclude>**/**.sh</exclude>
                 <exclude>**/pom.xml</exclude>
+                <exclude>**/pom.xml.releaseBackup</exclude>
+                <exclude>**/target/**</exclude>
             </excludes>
         </fileSet>
 

@@ -22,7 +22,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.wso2.carbon.dataservices.ui.stub.DataServiceAdminStub;
 import org.wso2.carbon.dataservices.ui.stub.admin.core.xsd.PaginatedTableInfo;
-import org.wso2.carbon.integration.common.admin.client.utils.AuthenticateStubUtil;
+import org.wso2.dss.integration.common.clients.utils.AuthenticateStubUtil;
 
 import java.rmi.RemoteException;
 

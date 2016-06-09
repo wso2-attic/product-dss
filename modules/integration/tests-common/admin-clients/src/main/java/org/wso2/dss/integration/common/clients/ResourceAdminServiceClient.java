@@ -20,7 +20,6 @@ package org.wso2.dss.integration.common.clients;
 import org.apache.axis2.AxisFault;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.wso2.carbon.integration.common.admin.client.utils.AuthenticateStubUtil;
 import org.wso2.carbon.registry.resource.stub.ResourceAdminServiceExceptionException;
 import org.wso2.carbon.registry.resource.stub.ResourceAdminServiceResourceServiceExceptionException;
 import org.wso2.carbon.registry.resource.stub.ResourceAdminServiceStub;
@@ -33,6 +32,7 @@ import org.wso2.carbon.registry.resource.stub.beans.xsd.ResourceTreeEntryBean;
 import org.wso2.carbon.registry.resource.stub.beans.xsd.VersionPath;
 import org.wso2.carbon.registry.resource.stub.beans.xsd.VersionsBean;
 import org.wso2.carbon.registry.resource.stub.common.xsd.ResourceData;
+import org.wso2.dss.integration.common.clients.utils.AuthenticateStubUtil;
 
 import javax.activation.DataHandler;
 import java.rmi.RemoteException;

@@ -204,6 +204,12 @@
         </classes>
     </test>
 
+    <test name="DSS-jira-issues-delete-with-batchtest" parallel="false" verbose="2">
+        <classes>
+            <class name="org.wso2.dss.integration.test.jira.issues.DS1201DeleteWithBatchReqTest"/>
+        </classes>
+    </test>
+
 <!--    <test name = "DSS-gson-tests">
         <classes>
             <class name="org.wso2.dss.integration.test.jira.issues.CARBON15263JsonGsonFormatterSuperTenantModeTest"/>

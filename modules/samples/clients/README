@@ -3,6 +3,11 @@ Prerequisites
 
 To run the samples, you must have ant installed "http://ant.apache.org/".
 
+Building the samples
+===================
+
+# ant
+
 Running the samples
 ===================
 
@@ -24,7 +29,7 @@ Google Spreadsheet:-
 
 Running all tests:-
 
-# ant
+# ant all
 
 The default server location is "localhost" and the default HTTP port is "9763". To override these settings,
 the following java system properties must be set.

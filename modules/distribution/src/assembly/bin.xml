@@ -39,6 +39,8 @@
                 <exclude>**/release-notes.html</exclude>
                 <exclude>**/lib/tomcat/conf/context.xml</exclude>
                 <exclude>**/log4j.properties</exclude>
+                <exclude>**/repository/conf/tomcat/carbon/WEB-INF/web.xml</exclude>
+                <exclude>**/repository/conf/security/Owasp.CsrfGuard.Carbon.properties</exclude>
             </excludes>
         </fileSet>
         <fileSet>

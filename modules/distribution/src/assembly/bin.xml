@@ -384,6 +384,13 @@
             <fileMode>644</fileMode>
         </file>
         <file>
+            <source>src/conf/security/Owasp.CsrfGuard.Carbon.properties</source>
+            <outputDirectory>${pom.artifactId}-${pom.version}/repository/conf/security</outputDirectory>
+            <destName>Owasp.CsrfGuard.Carbon.properties</destName>
+            <filtered>true</filtered>
+            <fileMode>644</fileMode>
+        </file>
+        <file>
             <source>src/conf/tomcat/carbon/WEB-INF/web.xml</source>
             <outputDirectory>${pom.artifactId}-${pom.version}/repository/conf/tomcat/carbon/WEB-INF</outputDirectory>
             <destName>web.xml</destName>

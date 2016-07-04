@@ -98,7 +98,7 @@
     </filter>
 
     <filter>
-        <filter-name>HttpHeaderSecurityFilter_DBConsole</filter-name>
+        <filter-name>HttpHeaderSecurityFilter_Tools</filter-name>
         <filter-class>org.apache.catalina.filters.HttpHeaderSecurityFilter</filter-class>
         <init-param>
             <param-name>hstsEnabled</param-name>
@@ -125,8 +125,9 @@
     </filter-mapping>
 
     <filter-mapping>
-        <filter-name>HttpHeaderSecurityFilter_DBConsole</filter-name>
+        <filter-name>HttpHeaderSecurityFilter_Tools</filter-name>
         <url-pattern>/dbconsole/*</url-pattern>
+        <url-pattern>/services/WSDLValidatorService/*</url-pattern>
         <url-pattern>/fileupload/wsdl</url-pattern>
         <url-pattern>/fileupload/tools</url-pattern>
     </filter-mapping>

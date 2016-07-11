@@ -44,10 +44,10 @@
    </query>
    <query id="mongo_remove" useConfig="mongo_ds">
       <expression>things.remove("{id:#}")</expression>
-      <param name="id" sqlType="STRING"/>
+      <param name="id" sqlType="INTEGER"/>
    </query>
    <query id="mongo_update" useConfig="mongo_ds">
-      <expression>things.update({name:'Bob'}, {name:'Zack', id: #}}, true)</expression>
+      <expression>things.update({name:'Bob'}, {name:'Zack', id: #}, true)</expression>
       <param name="id" sqlType="STRING"/>
    </query>
    <query id="mongo_drop" useConfig="mongo_ds">

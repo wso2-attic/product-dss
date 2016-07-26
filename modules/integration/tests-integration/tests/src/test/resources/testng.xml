@@ -210,7 +210,13 @@
         </classes>
     </test>
 
-<!--    <test name = "DSS-gson-tests">
+    <test name="DSS-jira-issues-nullvalues" parallel="false" verbose="2">
+        <classes>
+            <class name="org.wso2.dss.integration.test.jira.issues.DS1081NullValuesTest"/>
+        </classes>
+    </test>
+
+    <test name="DSS-gson-tests">
         <classes>
             <class name="org.wso2.dss.integration.test.jira.issues.CARBON15263JsonGsonFormatterSuperTenantModeTest"/>
             <class name="org.wso2.dss.integration.test.jira.issues.CARBON15339JsonGsonFormatterTenantModeTest"/>
@@ -218,9 +224,9 @@
         </classes>
     </test>
 
-    <test name = "DSS-repeat-service-name">
+    <test name="DSS-repeat-service-name">
         <classes>
             <class name="org.wso2.dss.integration.test.jira.issues.CARBON15280RepeatServiceNameInURLTest"/>
         </classes>
-    </test>-->
+    </test>
 </suite>

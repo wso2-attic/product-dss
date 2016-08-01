@@ -218,7 +218,7 @@
 
     <test name="DSS-gson-tests">
         <classes>
-            <class name="org.wso2.dss.integration.test.jira.issues.CARBON15263JsonGsonFormatterSuperTenantModeTest"/>
+            <!--<class name="org.wso2.dss.integration.test.jira.issues.CARBON15263JsonGsonFormatterSuperTenantModeTest"/>-->
             <class name="org.wso2.dss.integration.test.jira.issues.CARBON15339JsonGsonFormatterTenantModeTest"/>
             <class name="org.wso2.dss.integration.test.jira.issues.CARBON15262JsonGsonFormatterTenantModeTest"/>
         </classes>

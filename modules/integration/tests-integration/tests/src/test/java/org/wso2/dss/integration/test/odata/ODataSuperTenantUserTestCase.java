@@ -89,7 +89,7 @@ public class ODataSuperTenantUserTestCase extends DSSIntegrationTest {
 		String endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/FILES";
 		String content = "{\"FILENAME\": \"M.K.H.Gunasekara\" ,\"TYPE\" : \"dss\"}";
 		int responseCode = sendPOST(endpoint, content, "application/json");
-		Assert.assertEquals(responseCode, ODataTestUtils.NO_CONTENT);
+		Assert.assertEquals(responseCode, ODataTestUtils.CREATED);
 		endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId +
 		           "/FILES(\'M.K.H.Gunasekara\')";
 		Object[] response = sendGET(endpoint, "Application/json");
@@ -97,13 +97,13 @@ public class ODataSuperTenantUserTestCase extends DSSIntegrationTest {
 		endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/STUDENT";
 		content = "{\"STUDENTID\" : 1 , \"FIRSTNAME\" : \"Madhawa\" , \"LASTNAME\" : \"Kasun\"}";
 		responseCode = sendPOST(endpoint, content, "application/json");
-		Assert.assertEquals(responseCode, ODataTestUtils.NO_CONTENT);
+		Assert.assertEquals(responseCode, ODataTestUtils.CREATED);
 		endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/STUDENT(1)";
 		response = sendGET(endpoint, "Application/json");
 		Assert.assertEquals(response[0], ODataTestUtils.OK);
 		content = "{\"STUDENTID\" : 2 , \"FIRSTNAME\" : \"Rajith\" , \"LASTNAME\" : \"Vitharana\"}";
 		responseCode = sendPOST(endpoint, content, "application/json");
-		Assert.assertEquals(responseCode, ODataTestUtils.NO_CONTENT);
+		Assert.assertEquals(responseCode, ODataTestUtils.CREATED);
 		endpoint = webAppUrl + "/odata/" + serviceName + "/" + configId + "/STUDENT(2)";
 		response = sendGET(endpoint, "Application/json");
 		Assert.assertEquals(response[0], ODataTestUtils.OK);

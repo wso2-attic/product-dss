@@ -30,6 +30,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static org.wso2.dss.integration.test.odata.ODataTestUtils.CREATED;
 import static org.wso2.dss.integration.test.odata.ODataTestUtils.sendGET;
 import static org.wso2.dss.integration.test.odata.ODataTestUtils.sendPOST;
 
@@ -92,7 +93,7 @@ public class ODataDataTypeSupportTestCase extends DSSIntegrationTest {
         Map<String, String> headers = new HashMap<>();
         headers.put("Accept", "application/json");
         Object[] response = sendPOST(endpoint, content, headers);
-        Assert.assertEquals(response[0], 204);
+        Assert.assertEquals(response[0], CREATED);
     }
 
 

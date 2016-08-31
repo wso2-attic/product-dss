@@ -110,9 +110,6 @@
                                     org.wso2.carbon.commons:org.wso2.carbon.ntask.feature:${carbon.commons.version}
                                 </featureArtifactDef>
                                 <featureArtifactDef>
-                                    org.wso2.carbon.data:org.wso2.carbon.dbconsole.ui.feature:${carbon-data.version}
-                                </featureArtifactDef>
-                                <featureArtifactDef>
                                     org.wso2.carbon.commons:org.wso2.carbon.logging.mgt.feature:${carbon.commons.version}
                                 </featureArtifactDef>
                                 <!--<featureArtifactDef>
@@ -511,11 +508,6 @@
                                 <feature>
                                     <id>org.wso2.carbon.registry.resource.properties.feature.group</id>
                                     <version>${carbon.registry.version}</version>
-                                </feature>
-
-                                <feature>
-                                    <id>org.wso2.carbon.dbconsole.ui.feature.group</id>
-                                    <version>${carbon-data.version}</version>
                                 </feature>
 
                                 <!--feature>

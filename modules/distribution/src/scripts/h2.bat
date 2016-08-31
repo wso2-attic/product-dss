@@ -65,7 +65,7 @@ goto end
 rem set the classes
 setlocal EnableDelayedExpansion
 set CARBON_CLASSPATH=%CARBON_HOME%
-set CARBON_CLASSPATH=%CARBON_HOME%\bin\h2-1.2.140-wso2v3.jar;%CARBON_CLASSPATH%
+set CARBON_CLASSPATH=%CARBON_HOME%\bin\*;%CARBON_CLASSPATH%
 
 rem ----- Execute The Requested Command ---------------------------------------
 echo Using CARBON_HOME:   %CARBON_HOME%

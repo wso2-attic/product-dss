@@ -399,5 +399,19 @@
             <filtered>true</filtered>
             <fileMode>644</fileMode>
         </file>
+        <file>
+            <source>src/scripts/h2.sh</source>
+            <outputDirectory>${pom.artifactId}-${pom.version}/bin</outputDirectory>
+            <destName>h2.sh</destName>
+            <filtered>true</filtered>
+            <fileMode>755</fileMode>
+        </file>
+        <file>
+            <source>src/scripts/h2.bat</source>
+            <outputDirectory>${pom.artifactId}-${pom.version}/bin</outputDirectory>
+            <destName>h2.bat</destName>
+            <filtered>true</filtered>
+            <fileMode>644</fileMode>
+        </file>
     </files>
 </assembly>

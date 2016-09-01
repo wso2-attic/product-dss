@@ -44,8 +44,8 @@
             <type>mar</type>
         </dependency>
         <dependency>
-            <groupId>com.h2database.wso2</groupId>
-            <artifactId>h2-database-engine</artifactId>
+            <groupId>org.wso2.orbit.com.h2database</groupId>
+            <artifactId>h2</artifactId>
         </dependency>
     </dependencies>
 
@@ -383,7 +383,7 @@
                             <tasks>
                                 <property name="tempdir5" value="target/h2-jar" />
                                 <mkdir dir="${tempdir5}" />
-                                <unzip src="target/wso2carbon-core-${carbon.kernel.version}/repository/components/plugins/h2-database-engine_${h2.orbit.version}.jar" dest="${tempdir5}" />
+                                <unzip src="target/wso2carbon-core-${carbon.kernel.version}/repository/components/plugins/h2_${h2.orbit.version}.jar" dest="${tempdir5}" />
                                 <copy todir="target/wso2carbon-core-${carbon.kernel.version}/bin"
                                       overwrite="true">
                                     <fileset dir="${tempdir5}">

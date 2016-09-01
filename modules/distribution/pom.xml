@@ -373,7 +373,27 @@
                             </tasks>
                         </configuration>
                     </execution>
-
+                    <execution>
+                        <id>copy-h2-jar-to-bin</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <tasks>
+                                <property name="tempdir5" value="target/h2-jar" />
+                                <mkdir dir="${tempdir5}" />
+                                <unzip src="target/wso2carbon-core-${carbon.kernel.version}/repository/components/plugins/h2-database-engine_${h2.orbit.version}.jar" dest="${tempdir5}" />
+                                <copy todir="target/wso2carbon-core-${carbon.kernel.version}/bin"
+                                      overwrite="true">
+                                    <fileset dir="${tempdir5}">
+                                        <include name="h2*"/>
+                                    </fileset>
+                                </copy>
+                                <delete dir="${tempdir5}"/>
+                            </tasks>
+                        </configuration>
+                    </execution>
                     <execution>
                         <id>clean_target</id>
                         <phase>install</phase>

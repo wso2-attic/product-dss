@@ -218,9 +218,12 @@
 
     <test name="DSS-gson-tests">
         <classes>
+            <!--TODO: This was commented out due to intermittent build failures. Need to find the root cause and fix-->
             <!--<class name="org.wso2.dss.integration.test.jira.issues.CARBON15263JsonGsonFormatterSuperTenantModeTest"/>-->
             <class name="org.wso2.dss.integration.test.jira.issues.CARBON15339JsonGsonFormatterTenantModeTest"/>
             <class name="org.wso2.dss.integration.test.jira.issues.CARBON15262JsonGsonFormatterTenantModeTest"/>
+            <!--TODO: This should be uncommented once kernel is upgraded to 4.4.8-->
+            <!--<class name="org.wso2.dss.integration.test.jira.issues.DS1209EqualElementNamesInJSONHierarchyTestCase"/>-->
         </classes>
     </test>
 

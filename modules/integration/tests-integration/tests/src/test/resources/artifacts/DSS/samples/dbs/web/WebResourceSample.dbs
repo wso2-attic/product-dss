@@ -3,13 +3,13 @@
       <property name="web_harvest_config">./samples/resources/web_resource_config.xml</property>
    </config>
    <query id="webQuery" useConfig="WebHarvestDataSource">
-      <scraperVariable>BooksInfo</scraperVariable>
-      <result element="BooksInfo" rowName="Book">
+      <scraperVariable>AppInfo</scraperVariable>
+      <result element="AppInfo" rowName="App">
          <element column="Title" name="Title" xsdType="string"/>
-         <element column="Author" name="Author" xsdType="string"/>
+         <element column="Description" name="Description" xsdType="string"/>
       </result>
    </query>
-   <operation name="getBooksInfo">
+   <operation name="getAppInfo">
       <call-query href="webQuery"/>
    </operation>
 </data>

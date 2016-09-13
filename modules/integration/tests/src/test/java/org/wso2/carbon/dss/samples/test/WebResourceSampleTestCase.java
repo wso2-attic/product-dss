@@ -72,11 +72,11 @@ public class WebResourceSampleTestCase extends DSSIntegrationTest {
     public void selectOperation() throws AxisFault, InterruptedException {
         OMFactory fac = OMAbstractFactory.getOMFactory();
         OMNamespace omNs = fac.createOMNamespace("http://www.w3.org/2005/08/addressing", "ns1");
-        OMElement payload = fac.createOMElement("getBooksInfo", omNs);
+        OMElement payload = fac.createOMElement("getAppInfo", omNs);
         Thread.sleep(1000);
-        OMElement result = new AxisServiceClient().sendReceive(payload,dssServer.getServiceUrl()+"/"+serviceName, "getBooksInfo");
+        OMElement result = new AxisServiceClient().sendReceive(payload,dssServer.getServiceUrl()+"/"+serviceName, "getAppInfo");
         Assert.assertTrue(result.toString().contains("<Title>"));
-        Assert.assertTrue(result.toString().contains("<Author>"));
+        Assert.assertTrue(result.toString().contains("<Description>"));
 
         log.info("Service invocation success");
     }

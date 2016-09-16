@@ -113,7 +113,6 @@
 
     <filter-mapping>
         <filter-name>HttpHeaderSecurityFilter_Tools</filter-name>
-        <url-pattern>/dbconsole/*</url-pattern>
         <url-pattern>/services/WSDLValidatorService/*</url-pattern>
         <url-pattern>/fileupload/wsdl</url-pattern>
         <url-pattern>/fileupload/tools</url-pattern>

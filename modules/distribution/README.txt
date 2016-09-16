@@ -52,7 +52,7 @@ http://docs.wso2.org/wiki/display/Carbon400/Installation+Prerequisites
 Known Issues
 ------------
 
-All known issues have been recorded at https://wso2.org/jira/browse/CARBON
+All known issues have been recorded at https://wso2.org/jira/browse/DS
 
 Samples:-
 
@@ -208,7 +208,7 @@ Bouncycastle     : http://www.bouncycastle.org/
 
 
 For further details, see the WSO2 Carbon documentation at
-http://wso2.org/project/data-services/3.1.1/docs/
+https://docs.wso2.com/display/DSS351/WSO2+Data+Services+Server+Documentation
 
 ---------------------------------------------------------------------------
  Copyright 2012 WSO2 Inc.

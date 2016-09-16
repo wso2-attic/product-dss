@@ -15,9 +15,7 @@
  ~ specific language governing permissions and limitations
  ~ under the License.
  -->
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <parent>
         <groupId>org.wso2</groupId>
@@ -29,7 +27,7 @@
     <groupId>org.wso2.dss</groupId>
     <artifactId>dataservices-parent</artifactId>
     <packaging>pom</packaging>
-    <version>3.5.1-SNAPSHOT</version>
+    <version>3.5.1</version>
     <name>WSO2 DataServices Parent</name>
     <url>http://wso2.org/projects/solutions/data-services/java</url>
     <description>WSO2 Data Services Server</description>
@@ -45,7 +43,7 @@
         <url>https://github.com/wso2/product-dss.git</url>
         <developerConnection>scm:git:https://github.com/wso2/product-dss.git</developerConnection>
         <connection>scm:git:https://github.com/wso2/product-dss.git</connection>
-        <tag>HEAD</tag>
+        <tag>v3.5.1-RC1</tag>
     </scm>
 
 
@@ -549,7 +547,7 @@
     </issueManagement>
 
     <properties>
-        <product.dss.version>3.5.1-SNAPSHOT</product.dss.version>
+        <product.dss.version>3.5.1</product.dss.version>
         <carbon.commons.version>4.5.4</carbon.commons.version>
         <carbon.commons.ndatasource.version>4.5.4</carbon.commons.ndatasource.version>
         <carbon.commons.ntask.version>4.5.4</carbon.commons.ntask.version> <!-- todo check and remove this - rajith -->

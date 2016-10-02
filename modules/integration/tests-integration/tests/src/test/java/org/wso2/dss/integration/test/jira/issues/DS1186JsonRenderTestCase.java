@@ -52,9 +52,9 @@ public class DS1186JsonRenderTestCase extends DSSIntegrationTest {
     public void serviceDeployment() throws Exception {
         super.init();
         addResource();
-        deployService(serviceName,
-                new DataHandler(new URL("file:///" + getResourceLocation() + File.separator + "samples" + File.separator + "dbs" + File.separator + "rdbms"
-                        + File.separator + "JsonRenderService.dbs")));
+        deployService(serviceName, new DataHandler(
+                        new URL("file:///" + getResourceLocation() + File.separator + "samples" + File.separator + "dbs"
+                                + File.separator + "rdbms" + File.separator + "JsonRenderService.dbs")));
         serviceEndPoint = getServiceUrlHttps(serviceName) + "/";
     }
 
@@ -68,7 +68,7 @@ public class DS1186JsonRenderTestCase extends DSSIntegrationTest {
     @Test(groups = {"wso2.dss"}, description = "Check whether the JSON render service works when there is '&'", alwaysRun = true)
     public void jsonRenderWithSecurity() throws Exception {
         HttpResponse response = this.getHttpResponse(serviceEndPoint + "status", "application/json");
-        String receivedResult=response.getData();
+        String receivedResult = response.getData();
         String expectedResult = "{\"Entries\":{\"Entry\":[{\"status\":\"1 & 2\"}]}}";
         Assert.assertNotNull(receivedResult, "Response is null");
         Assert.assertTrue(expectedResult.equals(receivedResult.toString()), "Expected result not found");
@@ -76,13 +76,13 @@ public class DS1186JsonRenderTestCase extends DSSIntegrationTest {
 
     /**
      * This method will "Accept" header Types "application/json", etc..
+     *
      * @param endpoint service endpoint
      * @param contentType header type
      * @return HttpResponse
      * @throws Exception
      */
     private HttpResponse getHttpResponse(String endpoint, String contentType) throws Exception {
-
         if (endpoint.startsWith("https://")) {
             String urlStr = endpoint;
             URL url = new URL(urlStr);
@@ -91,26 +91,17 @@ public class DS1186JsonRenderTestCase extends DSSIntegrationTest {
             conn.setDoOutput(true);
             conn.setRequestProperty("Accept", contentType);
             conn.setRequestProperty("charset", "UTF-8");
-
             String encode = (new String((new Base64()).encode((userInfo.getUserName() + ":" + userInfo.getPassword())
                         .getBytes()))).replaceAll("\n", "");
                 conn.setRequestProperty("Authorization", "Basic " + encode);
-
             conn.setReadTimeout(10000);
             conn.connect();
             // Get the response
             StringBuilder sb = new StringBuilder();
-            BufferedReader rd = null;
-            try {
-                rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            try (BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()))) {
                 String line;
                 while ((line = rd.readLine()) != null) {
                     sb.append(line);
-                }
-            } catch (FileNotFoundException ignored) {
-            } finally {
-                if (rd != null) {
-                    rd.close();
                 }
             }
             return new HttpResponse(sb.toString(), conn.getResponseCode());
@@ -120,6 +111,7 @@ public class DS1186JsonRenderTestCase extends DSSIntegrationTest {
 
     /**
      * This method add the Security policy which will be used with the service.
+     *
      * @throws RemoteException
      * @throws MalformedURLException
      * @throws ResourceAdminServiceExceptionException
@@ -128,8 +120,8 @@ public class DS1186JsonRenderTestCase extends DSSIntegrationTest {
     private void addResource()
             throws RemoteException, MalformedURLException, ResourceAdminServiceExceptionException,
             XPathExpressionException {
-        ResourceAdminServiceClient resourceAdmin = new ResourceAdminServiceClient(dssContext.getContextUrls().getBackEndUrl()
-                , sessionCookie);
+        ResourceAdminServiceClient resourceAdmin = new ResourceAdminServiceClient(
+                dssContext.getContextUrls().getBackEndUrl(), sessionCookie);
         deleteResource();
         resourceAdmin.addResource("/_system/config/automation/resources/policies/SecPolicy-withRoles.xml",
                 "text/comma-separated-values", "",
@@ -140,6 +132,7 @@ public class DS1186JsonRenderTestCase extends DSSIntegrationTest {
 
     /**
      * Delete the security policy from the registry.
+     *
      * @throws RemoteException
      * @throws MalformedURLException
      * @throws ResourceAdminServiceExceptionException
@@ -148,8 +141,8 @@ public class DS1186JsonRenderTestCase extends DSSIntegrationTest {
     private void deleteResource()
             throws RemoteException, MalformedURLException, ResourceAdminServiceExceptionException,
             XPathExpressionException {
-        ResourceAdminServiceClient resourceAdmin = new ResourceAdminServiceClient(dssContext.getContextUrls().getBackEndUrl()
-                , sessionCookie);
+        ResourceAdminServiceClient resourceAdmin = new ResourceAdminServiceClient(
+                dssContext.getContextUrls().getBackEndUrl(), sessionCookie);
         resourceAdmin.deleteResource("/_system/config/automation/resources/policies/");
     }
 }

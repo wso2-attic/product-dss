@@ -45,49 +45,32 @@ public class DS1189LeagyTimeStampModeTestCase extends DSSIntegrationTest {
 
     @BeforeClass(alwaysRun = true)
     public void serviceDeployment() throws Exception {
-
         super.init();
-
         startupParameterMap = new HashMap<String, String>();
         startupParameterMap.put("-DportOffset", "1210");
-
         testServerManager = new DSSTestServerManager(dssContext, null, startupParameterMap) {
-
             public void configureServer() throws AutomationFrameworkException {
-
                 try {
-                    File sourceFile = new File(getResourceLocation() + File.separator + "serverConfigs" + File.separator
-                            + getParameter("shFilename"));
-
+                    File sourceFile = new File(
+                            getResourceLocation() + File.separator + "serverConfigs" + File.separator + getParameter(
+                                    "shFilename"));
                     //copying wso2server.sh file to bin folder
-                    FileManager.copyFile(sourceFile, this.getCarbonHome() + File.separator + "bin" + File.separator + "wso2server.sh");
-
-
+                    FileManager.copyFile(sourceFile,
+                            this.getCarbonHome() + File.separator + "bin" + File.separator + "wso2server.sh");
                 } catch (IOException e) {
                     throw new AutomationFrameworkException(e.getMessage(), e);
                 } catch (XPathExpressionException e) {
                     throw new AutomationFrameworkException(e.getMessage(), e);
                 }
-
             }
         };
-
         testServerManager.setParameter("shFilename", "wso2serverLegacyMode.sh");
-
         String testServerCarbonHome = testServerManager.startServer();
-
         backupUserDir = System.getProperty("user.dir");
         backupCarbonHome = System.getProperty("carbon.home");
-
-        System.out.println("****************  back up user dir   " + backupUserDir);
-        System.out.println("****************  back up carbonhome " + backupCarbonHome);
-
-
         System.setProperty("carbon.home", testServerCarbonHome);
-
         loginClient = new AuthenticatorClient(backendUrl);
         sessionCookie = loginClient.login(userInfo.getUserName(), userInfo.getPassword(), "localhost");
-
         List<File> sqlFileLis = new ArrayList<File>();
         sqlFileLis.add(selectSqlFile("CreateTableTimeStamp.sql"));
         deployService(serviceName,
@@ -96,17 +79,13 @@ public class DS1189LeagyTimeStampModeTestCase extends DSSIntegrationTest {
                         + serviceName + ".dbs", sqlFileLis));
 
         insertTimeStampToDb("Insert With America/New_York Time Zone", "1970-01-02T12:00:00.000+02:00");
-
         testServerManager.stopServer();
         testServerManager.removeParameter("shFilename");
         testServerManager.setParameter("shFilename", "wso2serverLegacyMode1.sh");
         testServerManager.configureServer();
         testServerManager.startServer();
-
         sessionCookie = loginClient.login(userInfo.getUserName(), userInfo.getPassword(), "localhost");
-
         insertTimeStampToDb("Insert With UTC Time Zone", "1970-01-02T12:00:00.000+02:00");
-
     }
 
     @AfterClass(alwaysRun = true)
@@ -119,13 +98,9 @@ public class DS1189LeagyTimeStampModeTestCase extends DSSIntegrationTest {
     @Test(groups = {"wso2.dss"}, description = "insert timestamp in America/New_York timezone and UTC timezone, retrieve all and compare whether they are different", alwaysRun = true)
     public void insertAndTestTimeStampValuesInDbTest() throws Exception {
         OMElement payload = fac.createOMElement("getTimeStamps", omNs);
-
         OMElement result = new AxisServiceClient().sendReceive(payload, backendUrl + serviceName, "getTimeStamps");
-
         Iterator iterator = result.getChildrenWithLocalName("timeStamp");
-
         String timeStampString = null;
-
         while (iterator.hasNext()) {
             OMElement timeStamp = (OMElement) iterator.next();
             if (timeStampString == null) {
@@ -144,7 +119,7 @@ public class DS1189LeagyTimeStampModeTestCase extends DSSIntegrationTest {
     }
 
     /**
-     * helper method to insert timestamp values to the database
+     * Helper method to insert timestamp values to the database.
      *
      * @param idString
      * @param timeStamp
@@ -152,20 +127,17 @@ public class DS1189LeagyTimeStampModeTestCase extends DSSIntegrationTest {
      */
     private void insertTimeStampToDb(String idString, String timeStamp) throws Exception {
         OMElement payload = fac.createOMElement("insertTimeStamp", omNs);
-
         OMElement idStringElmnt = fac.createOMElement("idString", omNs);
         idStringElmnt.setText(idString + "");
         payload.addChild(idStringElmnt);
-
         OMElement timeStampElmnt = fac.createOMElement("testTimeStamp", omNs);
         timeStampElmnt.setText(timeStamp + "");
         payload.addChild(timeStampElmnt);
-
         new AxisServiceClient().sendRobust(payload, backendUrl + serviceName, "insertTimeStamp");
     }
 
     /**
-     * helper method to deploy the service in custom new server
+     * Helper method to deploy the service in custom new server.
      *
      * @param serviceName
      * @param dssConfiguration

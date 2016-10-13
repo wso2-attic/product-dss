@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,22 +39,26 @@ import java.rmi.RemoteException;
 import java.util.Map;
 
 /**
- * This test case is written to verify the fix for https://wso2.org/jira/browse/DS-1053
+ * This test case is written to verify the fix for https://wso2.org/jira/browse/DS-1186.
+ * If there is a '&' in a JSON payload DSS fails to render the JSON properly and this test case tests the fix for it.
  */
 public class DS1186JsonRenderTestCase extends DSSIntegrationTest {
-    private static final Log log = LogFactory.getLog(DS1186JsonRenderTestCase.class);
 
+    private static final Log log = LogFactory.getLog(DS1186JsonRenderTestCase.class);
     private final String serviceName = "JsonRenderService";
     private String serviceEndPoint;
     Map<String, String> headers;
 
+    /**
+     * Deploy the Data Service.
+     */
     @BeforeClass(alwaysRun = true)
     public void serviceDeployment() throws Exception {
         super.init();
         addResource();
         deployService(serviceName, new DataHandler(
-                        new URL("file:///" + getResourceLocation() + File.separator + "samples" + File.separator + "dbs"
-                                + File.separator + "rdbms" + File.separator + "JsonRenderService.dbs")));
+                new URL("file:///" + getResourceLocation() + File.separator + "samples" + File.separator + "dbs"
+                        + File.separator + "rdbms" + File.separator + "JsonRenderService.dbs")));
         serviceEndPoint = getServiceUrlHttps(serviceName) + "/";
     }
 
@@ -65,7 +69,11 @@ public class DS1186JsonRenderTestCase extends DSSIntegrationTest {
         cleanup();
     }
 
-    @Test(groups = {"wso2.dss"}, description = "Check whether the JSON render service works when there is '&'", alwaysRun = true)
+    /**
+     * Check whether the JSON render service working properly when there is '&' in the response.
+     */
+    @Test(groups = {"wso2.dss"}, description = "Check whether the JSON render service works when there is '&'",
+            alwaysRun = true)
     public void jsonRenderWithSecurity() throws Exception {
         HttpResponse response = this.getHttpResponse(serviceEndPoint + "status", "application/json");
         String receivedResult = response.getData();
@@ -91,9 +99,10 @@ public class DS1186JsonRenderTestCase extends DSSIntegrationTest {
             conn.setDoOutput(true);
             conn.setRequestProperty("Accept", contentType);
             conn.setRequestProperty("charset", "UTF-8");
-            String encode = (new String((new Base64()).encode((userInfo.getUserName() + ":" + userInfo.getPassword())
-                        .getBytes()))).replaceAll("\n", "");
-                conn.setRequestProperty("Authorization", "Basic " + encode);
+            String encode = (new String(
+                    (new Base64()).encode((userInfo.getUserName() + ":" + userInfo.getPassword()).getBytes())))
+                    .replaceAll("\n", "");
+            conn.setRequestProperty("Authorization", "Basic " + encode);
             conn.setReadTimeout(10000);
             conn.connect();
             // Get the response
@@ -117,17 +126,15 @@ public class DS1186JsonRenderTestCase extends DSSIntegrationTest {
      * @throws ResourceAdminServiceExceptionException
      * @throws XPathExpressionException
      */
-    private void addResource()
-            throws RemoteException, MalformedURLException, ResourceAdminServiceExceptionException,
+    private void addResource() throws RemoteException, MalformedURLException, ResourceAdminServiceExceptionException,
             XPathExpressionException {
         ResourceAdminServiceClient resourceAdmin = new ResourceAdminServiceClient(
                 dssContext.getContextUrls().getBackEndUrl(), sessionCookie);
         deleteResource();
         resourceAdmin.addResource("/_system/config/automation/resources/policies/SecPolicy-withRoles.xml",
-                "text/comma-separated-values", "",
-                new DataHandler(new URL("file:///" + getResourceLocation()
-                        + File.separator + "resources" + File.separator
-                        + "SecPolicy-withRoles.xml")));
+                "text/comma-separated-values", "", new DataHandler(
+                        new URL("file:///" + getResourceLocation() + File.separator + "resources" + File.separator
+                                + "SecPolicy-withRoles.xml")));
     }
 
     /**
@@ -138,8 +145,7 @@ public class DS1186JsonRenderTestCase extends DSSIntegrationTest {
      * @throws ResourceAdminServiceExceptionException
      * @throws XPathExpressionException
      */
-    private void deleteResource()
-            throws RemoteException, MalformedURLException, ResourceAdminServiceExceptionException,
+    private void deleteResource() throws RemoteException, MalformedURLException, ResourceAdminServiceExceptionException,
             XPathExpressionException {
         ResourceAdminServiceClient resourceAdmin = new ResourceAdminServiceClient(
                 dssContext.getContextUrls().getBackEndUrl(), sessionCookie);

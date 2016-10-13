@@ -35,16 +35,19 @@ import java.util.List;
 import static org.testng.Assert.assertTrue;
 
 /**
- * This test is to verify the fix for the jira https://wso2.org/jira/browse/DS-1190
- * and https://wso2.org/jira/browse/DS-1192
- * When we invoke the rest endpoint with Numeric, Binary/Blob data types, Exception is thrown.
+ * This test is to verify the fix for the jira DS-1190,DS-1192.
+ * When we invoke the rest endpoint with Numeric, Binary/Blob data types, value type mismatch Exception is thrown.
+ * This Test case verifes the fix for that.
  */
 public class DS1190JsonValueTypeMisMatchTest extends DSSIntegrationTest {
-    private static final Log log = LogFactory.getLog(DS1190JsonValueTypeMisMatchTest.class);
 
+    private static final Log log = LogFactory.getLog(DS1190JsonValueTypeMisMatchTest.class);
     private final String serviceName = "JsonValueTypeMismatchTest";
     private String serviceEndPoint;
 
+    /**
+     * Deploy the Data Service.
+     */
     @BeforeClass(alwaysRun = true)
     public void serviceDeployment() throws Exception {
         super.init();
@@ -54,7 +57,6 @@ public class DS1190JsonValueTypeMisMatchTest extends DSSIntegrationTest {
                 getResourceLocation() + File.separator + "samples" + File.separator + "dbs" + File.separator + "rdbms"
                         + File.separator + serviceName + ".dbs", sqlFileLis));
         serviceEndPoint = getServiceUrlHttp(serviceName) + "/";
-
     }
 
     @AfterClass(alwaysRun = true)
@@ -63,29 +65,26 @@ public class DS1190JsonValueTypeMisMatchTest extends DSSIntegrationTest {
         cleanup();
     }
 
-    @Test(groups = {"wso2.dss"}, description = "Check whether the service returns with wrong error message", alwaysRun = true)
+    /**
+     * Tests the service with json input having wrong and correct parameter types.
+     */
+    @Test(groups = {"wso2.dss"}, description = "Check whether the service returns with wrong error message",
+            alwaysRun = true)
     public void jsonInputWithWrongValueTypeTestCase() throws Exception {
         HttpResponse response1 = this.getHttpResponse(serviceEndPoint + "_postpersons", "application/json",
-                "{\"_postpersons\": {\"PersonID\" : 14,\"LastName\": \"Smith\",\"FirstName\": \"Will\"," +
-                        "\"Address\": \"will@google.com\",\"Image\": \"iVBORw0KGgoAAAANSUhEUgAAAyEAAAD\"}}");
-
-
+                "{\"_postpersons\": {\"PersonID\" : 14,\"LastName\": \"Smith\",\"FirstName\": \"Will\","
+                        + "\"Address\": \"will@google.com\",\"Image\": \"iVBORw0KGgoAAAANSUhEUgAAAyEAAAD\"}}");
         HttpResponse response2 = this.getHttpResponse(serviceEndPoint + "_postpersons", "application/json",
-                "{\"_postpersons\": {\"PersonID\" : \"14\",\"LastName\": \"Smith\",\"FirstName\": \"Will\"," +
-                        "\"Address\": \"will@google.com\",\"Image\": \"iVBORw0KGgoAAAANSUhEUgAAAyEAAAD\"}}");
-
+                "{\"_postpersons\": {\"PersonID\" : \"14\",\"LastName\": \"Smith\",\"FirstName\": \"Will\","
+                        + "\"Address\": \"will@google.com\",\"Image\": \"iVBORw0KGgoAAAANSUhEUgAAAyEAAAD\"}}");
         assertTrue(202 == response1.getResponseCode());
-
-        log.info("--------------- Test for json input with decimal/base64Binary parameter types is successfull -----------");
-
-        assertTrue(responseDataEvaluator(response2.getData(), "Value type miss match, Expected value type", "decimal", "STRING"));
+        assertTrue(responseDataEvaluator(response2.getData(), "Value type miss match, Expected value type", "decimal",
+                "STRING"));
         assertTrue(500 == response2.getResponseCode());
-
-        log.info("--------------- Test for json input with wrong parameter types is successfull ----------------------------");
     }
 
     /**
-     * private method to evaluate the error response which came back from the server
+     * Evaluate the error response which cones from the server.
      *
      * @param data
      * @param errorMsg
@@ -94,7 +93,8 @@ public class DS1190JsonValueTypeMisMatchTest extends DSSIntegrationTest {
      * @return
      * @throws Exception
      */
-    private boolean responseDataEvaluator(String data, String errorMsg, String expected, String found) throws Exception {
+    private boolean responseDataEvaluator(String data, String errorMsg, String expected, String found)
+            throws Exception {
         String result[] = data.split("java.lang.IllegalArgumentException:");
         String errorMessage[] = result[1].split("-");
         String msg = errorMessage[0].trim();
@@ -113,7 +113,7 @@ public class DS1190JsonValueTypeMisMatchTest extends DSSIntegrationTest {
     }
 
     /**
-     * private method to call the back end service and get the error response from the server
+     * Call the back end service and get the error response from the server.
      *
      * @param endpoint
      * @param contentType

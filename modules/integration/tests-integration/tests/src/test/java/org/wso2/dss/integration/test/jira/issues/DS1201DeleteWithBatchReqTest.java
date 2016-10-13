@@ -38,15 +38,19 @@ import java.util.List;
 import static org.testng.Assert.assertTrue;
 
 /**
- * This test is to verify the fix for the jira https://wso2.org/jira/browse/DS-1201
- * When we invoke the DELETE endpoint with batchrequests enabled, java.lang.StringIndexOutOfBoundsException is thrown
+ * This test is to verify the fix for the jira https://wso2.org/jira/browse/DS-1201.
+ * When we invoke the DELETE endpoint with batchrequests enabled,java.lang.StringIndexOutOfBoundsException is thrown.
+ * This test case tests the fix for it.
  */
 public class DS1201DeleteWithBatchReqTest extends DSSIntegrationTest {
-    private static final Log log = LogFactory.getLog(DS1201DeleteWithBatchReqTest.class);
 
+    private static final Log log = LogFactory.getLog(DS1201DeleteWithBatchReqTest.class);
     private final String serviceName = "DELETEWithBatchTest";
     private String serviceEndPoint;
 
+    /**
+     * Deploy the Data Service.
+     */
     @BeforeClass(alwaysRun = true)
     public void serviceDeployment() throws Exception {
         super.init();
@@ -64,6 +68,9 @@ public class DS1201DeleteWithBatchReqTest extends DSSIntegrationTest {
         cleanup();
     }
 
+    /**
+     * Invoke delete operation and check whether the service returns the correct code.
+     */
     @Test(groups = {"wso2.dss" }, description = "Check the service returns correct code", alwaysRun = true)
     public void deleteWithBatchReqTestCase() throws Exception {
         HttpResponse response1 = this.getHttpResponse(serviceEndPoint + "filter/" + Integer.toString(2));
@@ -71,7 +78,7 @@ public class DS1201DeleteWithBatchReqTest extends DSSIntegrationTest {
     }
 
     /**
-     * private method to call the back end service and get the error response from the server
+     * Call the back end service and get the error response from the server.
      *
      * @param endpoint
      * @return
@@ -82,14 +89,12 @@ public class DS1201DeleteWithBatchReqTest extends DSSIntegrationTest {
             String urlStr = endpoint;
             URL url = new URL(urlStr);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-
             connection.setDoInput(true);
             connection.setDoOutput(true);
             connection.setRequestProperty("charset", "UTF-8");
             connection.setReadTimeout(10000);
             connection.setRequestMethod("DELETE");
             connection.setRequestProperty("Accept", "application/json");
-
             connection.connect();
             // Get the response
             StringBuilder sb = new StringBuilder();

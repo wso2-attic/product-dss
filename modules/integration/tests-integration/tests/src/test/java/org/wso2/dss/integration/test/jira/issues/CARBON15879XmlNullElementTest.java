@@ -39,15 +39,18 @@ import java.util.List;
 import static org.testng.Assert.assertTrue;
 
 /**
- * This test is to verify the fix for the jira https://wso2.org/jira/browse/CARBON-15879
+ * This test is to verify the fix for the jira https://wso2.org/jira/browse/CARBON-15879.
  * Doesn't create xml null element when text is null.
  */
 public class CARBON15879XmlNullElementTest extends DSSIntegrationTest {
-    private static final Log log = LogFactory.getLog(CARBON15879XmlNullElementTest.class);
 
+    private static final Log log = LogFactory.getLog(CARBON15879XmlNullElementTest.class);
     private final String serviceName = "XmlNullElementTest";
     private String serviceEndPoint;
 
+    /**
+     * Deploy the Data Service.
+     */
     @BeforeClass(alwaysRun = true)
     public void serviceDeployment() throws Exception {
         super.init();
@@ -65,16 +68,19 @@ public class CARBON15879XmlNullElementTest extends DSSIntegrationTest {
         cleanup();
     }
 
+    /**
+     * Check whether the service return success with the null element.
+     */
     @Test(groups = {"wso2.dss"}, description = "Check the service returns success with null element", alwaysRun = true)
     public void jsonInputWithWrongValueTypeTestCase() throws Exception {
         HttpResponse response1 = this.getHttpResponse(serviceEndPoint + "_postperson", "application/json",
                 "{\"_postperson\":{\"PersonID\":1,\"LastName\":\"John\",\"City\":null,\"Weight\":null}}");
         assertTrue(202 == response1.getResponseCode());
-        log.info("--------------- Test for null elements for Number types is successful -----------");
+        log.info("Test for null elements for Number types is successful.");
     }
 
     /**
-     * private method to call the back end service and get the error response from the server
+     * Call the back end service and get the error response from the server.
      *
      * @param endpoint
      * @param contentType

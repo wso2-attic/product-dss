@@ -180,9 +180,10 @@
     </test>
 
     <test name="DSS-requestBox-tests" parallel="false" verbose="2">
-        <packages>
-            <package name="org.wso2.dss.integration.test.requestBox"/>
-        </packages>
+        <classes>
+            <class name="org.wso2.dss.integration.test.requestBox.RequestBoxTenantUserTestCase"/>
+            <class name="org.wso2.dss.integration.test.requestBox.RequestBoxTestCase"/>
+        </classes>
     </test>
 <!--TODO: Check what caused the test failure. Could be due to a change in Google side --> 
     <!--test name="DSS-gspread-tests" parallel="false" verbose="2">

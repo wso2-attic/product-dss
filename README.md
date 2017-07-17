@@ -1,3 +1,6 @@
+# NOTE
+Since WSO2 DSS is included in WSO2 Integrator(http://wso2.com/integration) Integrator profile, we are deprecating this product and moving it to attic.
+
 # product-dss
 
 ---
